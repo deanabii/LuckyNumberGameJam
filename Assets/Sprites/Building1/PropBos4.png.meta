@@ -1,0 +1,1508 @@
+fileFormatVersion: 2
+guid: 77df0257b3eaf33469521562707bd3ec
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4456721658139672634
+    second: PropBos4_0
+  - first:
+      213: 5677087856720106192
+    second: PropBos4_1
+  - first:
+      213: 8141685844566217579
+    second: PropBos4_2
+  - first:
+      213: -3771310655956039490
+    second: PropBos4_3
+  - first:
+      213: -6366853243444012181
+    second: PropBos4_4
+  - first:
+      213: -1989279989964954462
+    second: PropBos4_5
+  - first:
+      213: 2524099455855966725
+    second: PropBos4_6
+  - first:
+      213: -6394722426018125752
+    second: PropBos4_7
+  - first:
+      213: -6509619587552977540
+    second: PropBos4_8
+  - first:
+      213: -1826278323203852650
+    second: PropBos4_9
+  - first:
+      213: 3003803442737403491
+    second: PropBos4_10
+  - first:
+      213: -5383389322269698785
+    second: PropBos4_11
+  - first:
+      213: -4301006752661238618
+    second: PropBos4_12
+  - first:
+      213: -3732259572272712729
+    second: PropBos4_13
+  - first:
+      213: 7703268630084793123
+    second: PropBos4_14
+  - first:
+      213: -1167946285998693361
+    second: PropBos4_15
+  - first:
+      213: -5426565487122765259
+    second: PropBos4_16
+  - first:
+      213: 2868209760566698438
+    second: PropBos4_17
+  - first:
+      213: 933733191718091698
+    second: PropBos4_18
+  - first:
+      213: -8861123039858827377
+    second: PropBos4_19
+  - first:
+      213: 4180048552254251688
+    second: PropBos4_20
+  - first:
+      213: -872999522481179720
+    second: PropBos4_21
+  - first:
+      213: 7543448107484795054
+    second: PropBos4_22
+  - first:
+      213: 1240902482012154429
+    second: PropBos4_23
+  - first:
+      213: 5066322480634500792
+    second: PropBos4_24
+  - first:
+      213: -5297525080394490540
+    second: PropBos4_25
+  - first:
+      213: 511766094418664170
+    second: PropBos4_26
+  - first:
+      213: -5637123418928407476
+    second: PropBos4_27
+  - first:
+      213: 26158134902288936
+    second: PropBos4_28
+  - first:
+      213: -4890876029773108335
+    second: PropBos4_29
+  - first:
+      213: -1391891680065464466
+    second: PropBos4_30
+  - first:
+      213: 3305698442517013348
+    second: PropBos4_31
+  - first:
+      213: 5010450501469778757
+    second: PropBos4_32
+  - first:
+      213: -801009829645164884
+    second: PropBos4_33
+  - first:
+      213: -1597585499908240102
+    second: PropBos4_34
+  - first:
+      213: 6184549837550265953
+    second: PropBos4_35
+  - first:
+      213: -748184601166318182
+    second: PropBos4_36
+  - first:
+      213: -3729665913801490469
+    second: PropBos4_37
+  - first:
+      213: 7923134209646061038
+    second: PropBos4_38
+  - first:
+      213: 726797888969618229
+    second: PropBos4_39
+  - first:
+      213: 5497660447224152971
+    second: PropBos4_40
+  - first:
+      213: 8359790256955715417
+    second: PropBos4_41
+  - first:
+      213: 5988510770106177421
+    second: PropBos4_42
+  - first:
+      213: 4923120645377364023
+    second: PropBos4_43
+  - first:
+      213: 128659295309090821
+    second: PropBos4_44
+  - first:
+      213: -7919291076114873775
+    second: PropBos4_45
+  - first:
+      213: -1881541513809686137
+    second: PropBos4_46
+  - first:
+      213: 5484687758208444521
+    second: PropBos4_47
+  - first:
+      213: 8615286139452988763
+    second: PropBos4_48
+  - first:
+      213: 6762340036077126560
+    second: PropBos4_49
+  - first:
+      213: 1547840769761160754
+    second: PropBos4_50
+  - first:
+      213: 5710803812136241794
+    second: PropBos4_51
+  - first:
+      213: -5807943457466964731
+    second: PropBos4_52
+  - first:
+      213: 6697808087687949479
+    second: PropBos4_53
+  - first:
+      213: -4106750442316641571
+    second: PropBos4_54
+  - first:
+      213: -4710255742848872617
+    second: PropBos4_55
+  - first:
+      213: 8481812089539206072
+    second: PropBos4_56
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PropBos4_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 622
+        width: 69
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3084304cb479dd30800000000000000
+      internalID: 4456721658139672634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_1
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 616
+        width: 73
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d25c72c35119ce40800000000000000
+      internalID: 5677087856720106192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_2
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 620
+        width: 125
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b63123e93241df070800000000000000
+      internalID: 8141685844566217579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_3
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 616
+        width: 159
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb8481e80fc99abc0800000000000000
+      internalID: -3771310655956039490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_4
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 403
+        width: 366
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6bd97745b464a7a0800000000000000
+      internalID: -6366853243444012181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_5
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 493
+        width: 111
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a4a8578368a464e0800000000000000
+      internalID: -1989279989964954462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 490
+        width: 99
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50a3d04f417670320800000000000000
+      internalID: 2524099455855966725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_9
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 489
+        width: 186
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69630748a81c7a6e0800000000000000
+      internalID: -1826278323203852650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_12
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 392
+        width: 105
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ac021b6521cf44c0800000000000000
+      internalID: -4301006752661238618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_13
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 392
+        width: 118
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e3322181b9543cc0800000000000000
+      internalID: -3732259572272712729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_16
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 393
+        width: 202
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53a27adc077f0b4b0800000000000000
+      internalID: -5426565487122765259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_17
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 264
+        width: 79
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1e2efa49dedc720800000000000000
+      internalID: 2868209760566698438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_18
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 271
+        width: 47
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bb3957046945fc00800000000000000
+      internalID: 933733191718091698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_19
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 271
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8f5f222b87f60580800000000000000
+      internalID: -8861123039858827377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_20
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 269
+        width: 91
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a2200de204820a30800000000000000
+      internalID: 4180048552254251688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_21
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 260
+        width: 94
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b37c654f8b72e3f0800000000000000
+      internalID: -872999522481179720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_22
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 258
+        width: 117
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea0593c3616bfa860800000000000000
+      internalID: 7543448107484795054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_23
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 258
+        width: 114
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3a2c399b32983110800000000000000
+      internalID: 1240902482012154429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_24
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 265
+        width: 100
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b69bcf14713f4640800000000000000
+      internalID: 5066322480634500792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_25
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 264
+        width: 127
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45d1d52c1096b76b0800000000000000
+      internalID: -5297525080394490540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_26
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 195
+        width: 82
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aead9e92d882a1700800000000000000
+      internalID: 511766094418664170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_27
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 195
+        width: 68
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4c9cb30e1ae4c1b0800000000000000
+      internalID: -5637123418928407476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_28
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 197
+        width: 54
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82276d26faeec5000800000000000000
+      internalID: 26158134902288936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_29
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 197
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19ba6e4f92e102cb0800000000000000
+      internalID: -4890876029773108335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_30
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 196
+        width: 50
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6750eb34e10face0800000000000000
+      internalID: -1391891680065464466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_31
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 196
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 463e9c8183330ed20800000000000000
+      internalID: 3305698442517013348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_32
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 197
+        width: 42
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 543b8c04f22b88540800000000000000
+      internalID: 5010450501469778757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_33
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 196
+        width: 47
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cae576acdcd32e4f0800000000000000
+      internalID: -801009829645164884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_34
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 196
+        width: 57
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1d87a3c37c34d9e0800000000000000
+      internalID: -1597585499908240102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_35
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 195
+        width: 64
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16622e26f4fe3d550800000000000000
+      internalID: 6184549837550265953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_36
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 196
+        width: 68
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a95701db11aed95f0800000000000000
+      internalID: -748184601166318182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_37
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 195
+        width: 68
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdfbafcac909d3cc0800000000000000
+      internalID: -3729665913801490469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_38
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 97
+        width: 76
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee5e2b9c590a4fd60800000000000000
+      internalID: 7923134209646061038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_39
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 97
+        width: 67
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 533b98b44da161a00800000000000000
+      internalID: 726797888969618229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_40
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 97
+        width: 199
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b83c2848c0d9b4c40800000000000000
+      internalID: 5497660447224152971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_41
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 122
+        width: 75
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95fed9652f0f30470800000000000000
+      internalID: 8359790256955715417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_42
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 123
+        width: 75
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8797c121d67b1350800000000000000
+      internalID: 5988510770106177421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_43
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 14
+        width: 75
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7301c16a420725440800000000000000
+      internalID: 4923120645377364023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_44
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 14
+        width: 69
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50053f982f619c100800000000000000
+      internalID: 128659295309090821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_45
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 17
+        width: 199
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 152804779b6091290800000000000000
+      internalID: -7919291076114873775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_46
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 22
+        width: 73
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 781193746fb63e5e0800000000000000
+      internalID: -1881541513809686137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_47
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 11
+        width: 53
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 968a2fbf4768d1c40800000000000000
+      internalID: 5484687758208444521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_48
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 9
+        width: 54
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5d117c1915af8770800000000000000
+      internalID: 8615286139452988763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_49
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 48
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a387c43f68a8dd50800000000000000
+      internalID: 6762340036077126560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_50
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 42
+        width: 54
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23e2b72baf80b7510800000000000000
+      internalID: 1547840769761160754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_51
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 34
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28ac35c5fc9d04f40800000000000000
+      internalID: 5710803812136241794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_52
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 29
+        width: 85
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 505a02e723a066fa0800000000000000
+      internalID: -5807943457466964731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_53
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 38
+        width: 35
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ace06028f463fc50800000000000000
+      internalID: 6697808087687949479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_54
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 42
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddac9803b34e107c0800000000000000
+      internalID: -4106750442316641571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_55
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 42
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75fcf3e9b5fc1aeb0800000000000000
+      internalID: -4710255742848872617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropBos4_56
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 40
+        width: 41
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bb1998282375b570800000000000000
+      internalID: 8481812089539206072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4883127a824ee344483eb3f80698ccf6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PropBos4_0: 4456721658139672634
+      PropBos4_1: 5677087856720106192
+      PropBos4_10: 3003803442737403491
+      PropBos4_11: -5383389322269698785
+      PropBos4_12: -4301006752661238618
+      PropBos4_13: -3732259572272712729
+      PropBos4_14: 7703268630084793123
+      PropBos4_15: -1167946285998693361
+      PropBos4_16: -5426565487122765259
+      PropBos4_17: 2868209760566698438
+      PropBos4_18: 933733191718091698
+      PropBos4_19: -8861123039858827377
+      PropBos4_2: 8141685844566217579
+      PropBos4_20: 4180048552254251688
+      PropBos4_21: -872999522481179720
+      PropBos4_22: 7543448107484795054
+      PropBos4_23: 1240902482012154429
+      PropBos4_24: 5066322480634500792
+      PropBos4_25: -5297525080394490540
+      PropBos4_26: 511766094418664170
+      PropBos4_27: -5637123418928407476
+      PropBos4_28: 26158134902288936
+      PropBos4_29: -4890876029773108335
+      PropBos4_3: -3771310655956039490
+      PropBos4_30: -1391891680065464466
+      PropBos4_31: 3305698442517013348
+      PropBos4_32: 5010450501469778757
+      PropBos4_33: -801009829645164884
+      PropBos4_34: -1597585499908240102
+      PropBos4_35: 6184549837550265953
+      PropBos4_36: -748184601166318182
+      PropBos4_37: -3729665913801490469
+      PropBos4_38: 7923134209646061038
+      PropBos4_39: 726797888969618229
+      PropBos4_4: -6366853243444012181
+      PropBos4_40: 5497660447224152971
+      PropBos4_41: 8359790256955715417
+      PropBos4_42: 5988510770106177421
+      PropBos4_43: 4923120645377364023
+      PropBos4_44: 128659295309090821
+      PropBos4_45: -7919291076114873775
+      PropBos4_46: -1881541513809686137
+      PropBos4_47: 5484687758208444521
+      PropBos4_48: 8615286139452988763
+      PropBos4_49: 6762340036077126560
+      PropBos4_5: -1989279989964954462
+      PropBos4_50: 1547840769761160754
+      PropBos4_51: 5710803812136241794
+      PropBos4_52: -5807943457466964731
+      PropBos4_53: 6697808087687949479
+      PropBos4_54: -4106750442316641571
+      PropBos4_55: -4710255742848872617
+      PropBos4_56: 8481812089539206072
+      PropBos4_6: 2524099455855966725
+      PropBos4_7: -6394722426018125752
+      PropBos4_8: -6509619587552977540
+      PropBos4_9: -1826278323203852650
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

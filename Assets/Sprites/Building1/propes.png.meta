@@ -1,0 +1,1460 @@
+fileFormatVersion: 2
+guid: a837feb23ea8648469424a62a0e16e85
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5906413133841941332
+    second: propes_0
+  - first:
+      213: -3593786864155219478
+    second: propes_1
+  - first:
+      213: -2783083754830695405
+    second: propes_2
+  - first:
+      213: 4786746856969019060
+    second: propes_3
+  - first:
+      213: 3184635323538697791
+    second: propes_4
+  - first:
+      213: -5235646258332073187
+    second: propes_5
+  - first:
+      213: -8536850409894903024
+    second: propes_6
+  - first:
+      213: -5862982387436061685
+    second: propes_7
+  - first:
+      213: -3175628243569736273
+    second: propes_8
+  - first:
+      213: 5222900356110308061
+    second: propes_9
+  - first:
+      213: 3540250317085818975
+    second: propes_10
+  - first:
+      213: 4971769553901032344
+    second: propes_11
+  - first:
+      213: -4680287848153114350
+    second: propes_12
+  - first:
+      213: 5698775974803059908
+    second: propes_13
+  - first:
+      213: 4999808090351718444
+    second: propes_14
+  - first:
+      213: 5919134128389776925
+    second: propes_15
+  - first:
+      213: 5873121974334637594
+    second: propes_16
+  - first:
+      213: -3397858435871367911
+    second: propes_17
+  - first:
+      213: 3458200531088428189
+    second: propes_18
+  - first:
+      213: 5847030952513561011
+    second: propes_19
+  - first:
+      213: 1396447148677500613
+    second: propes_20
+  - first:
+      213: 746653171302266307
+    second: propes_21
+  - first:
+      213: -3047501456623897912
+    second: propes_22
+  - first:
+      213: 432768630998367047
+    second: propes_23
+  - first:
+      213: 193147945526679876
+    second: propes_24
+  - first:
+      213: -5571765908633778794
+    second: propes_25
+  - first:
+      213: 3471181006344639060
+    second: propes_26
+  - first:
+      213: -653977241608847240
+    second: propes_27
+  - first:
+      213: 6863341118525665795
+    second: propes_28
+  - first:
+      213: 528366439750425636
+    second: propes_29
+  - first:
+      213: 8493521432824071010
+    second: propes_30
+  - first:
+      213: -5936991503249557944
+    second: propes_31
+  - first:
+      213: -4080808944487255033
+    second: propes_32
+  - first:
+      213: 1271993128705516605
+    second: propes_33
+  - first:
+      213: 4607938835560876983
+    second: propes_34
+  - first:
+      213: 7752063098822124123
+    second: propes_35
+  - first:
+      213: 6038227637424553127
+    second: propes_36
+  - first:
+      213: 6868074564752216814
+    second: propes_37
+  - first:
+      213: -1458463011038453889
+    second: propes_38
+  - first:
+      213: 1797297707633321855
+    second: propes_39
+  - first:
+      213: -6015131181601419116
+    second: propes_40
+  - first:
+      213: 1071838115087942567
+    second: propes_41
+  - first:
+      213: 6301200511200650031
+    second: propes_42
+  - first:
+      213: 2886828228281086979
+    second: propes_43
+  - first:
+      213: 7725847501300887233
+    second: propes_44
+  - first:
+      213: 5282337226383410670
+    second: propes_45
+  - first:
+      213: 1299954939129661814
+    second: propes_46
+  - first:
+      213: 439370709131065434
+    second: propes_47
+  - first:
+      213: 4582271622972413316
+    second: propes_48
+  - first:
+      213: 1288050600449215985
+    second: propes_49
+  - first:
+      213: -6525442427807124833
+    second: propes_50
+  - first:
+      213: -4653615501517342574
+    second: propes_51
+  - first:
+      213: -3619451601262635203
+    second: propes_52
+  - first:
+      213: -3430019830417134236
+    second: propes_53
+  - first:
+      213: -1814684210922824284
+    second: propes_54
+  - first:
+      213: 1621693499218184649
+    second: propes_55
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: propes_0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 909
+        width: 1227
+        height: 721
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cac36ac5c84380ea0800000000000000
+      internalID: -5906413133841941332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_1
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 1372
+        width: 342
+        height: 364
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae9209343ed402ec0800000000000000
+      internalID: -3593786864155219478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_2
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 1386
+        width: 245
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 314f72502108069d0800000000000000
+      internalID: -2783083754830695405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_3
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 1379
+        width: 213
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4be1b57b7e0fd6240800000000000000
+      internalID: 4786746856969019060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_4
+      rect:
+        serializedVersion: 2
+        x: 2192
+        y: 1382
+        width: 150
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3e6fae24f8123c20800000000000000
+      internalID: 3184635323538697791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_5
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 1089
+        width: 411
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d13838ab77f3757b0800000000000000
+      internalID: -5235646258332073187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_9
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 1099
+        width: 245
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd25737a3387b7840800000000000000
+      internalID: 5222900356110308061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_10
+      rect:
+        serializedVersion: 2
+        x: 1813
+        y: 1099
+        width: 214
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f504dd508ee712130800000000000000
+      internalID: 3540250317085818975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_12
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 877
+        width: 449
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2199144dff64c0fb0800000000000000
+      internalID: -4680287848153114350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_15
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 876
+        width: 261
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d16609cf02df42250800000000000000
+      internalID: 5919134128389776925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_16
+      rect:
+        serializedVersion: 2
+        x: 2083
+        y: 875
+        width: 232
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a16c1ca8155818150800000000000000
+      internalID: 5873121974334637594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_17
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 564
+        width: 291
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91d92d451c168d0d0800000000000000
+      internalID: -3397858435871367911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_18
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 577
+        width: 223
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9cc7998f0ffdff20800000000000000
+      internalID: 3458200531088428189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_19
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 575
+        width: 251
+        height: 261
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b1e8432ca3d42150800000000000000
+      internalID: 5847030952513561011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_20
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 576
+        width: 242
+        height: 257
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ce8784784d216310800000000000000
+      internalID: 1396447148677500613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_21
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 570
+        width: 195
+        height: 203
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c5f3e57a15ac5a00800000000000000
+      internalID: 746653171302266307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_22
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 601
+        width: 198
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c27271529915b5d0800000000000000
+      internalID: -3047501456623897912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_23
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 603
+        width: 108
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74bf698e6c0810600800000000000000
+      internalID: 432768630998367047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_24
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 603
+        width: 103
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 449d63a78033ea200800000000000000
+      internalID: 193147945526679876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_25
+      rect:
+        serializedVersion: 2
+        x: 2182
+        y: 589
+        width: 172
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69580443d6c1da2b0800000000000000
+      internalID: -5571765908633778794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_26
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 436
+        width: 147
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4525142fbbc1c2030800000000000000
+      internalID: 3471181006344639060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_27
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 437
+        width: 154
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87007b6e92b9ce6f0800000000000000
+      internalID: -653977241608847240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_28
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 437
+        width: 137
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 302fd0e326c7f3f50800000000000000
+      internalID: 6863341118525665795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_29
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 437
+        width: 125
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42cdf804a72255700800000000000000
+      internalID: 528366439750425636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_30
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 436
+        width: 104
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26345a71ebc0fd570800000000000000
+      internalID: 8493521432824071010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_31
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 439
+        width: 90
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8463c4eeea19b9da0800000000000000
+      internalID: -5936991503249557944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_32
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 440
+        width: 73
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 704b993d2ed0e57c0800000000000000
+      internalID: -4080808944487255033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_33
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 438
+        width: 108
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d34ea31e20707a110800000000000000
+      internalID: 1271993128705516605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_34
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 440
+        width: 69
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bb455005ffa2ff30800000000000000
+      internalID: 4607938835560876983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_35
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 439
+        width: 118
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b52e4b1f05cd49b60800000000000000
+      internalID: 7752063098822124123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_36
+      rect:
+        serializedVersion: 2
+        x: 1818
+        y: 436
+        width: 149
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7acf2a95b081cc350800000000000000
+      internalID: 6038227637424553127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_37
+      rect:
+        serializedVersion: 2
+        x: 2044
+        y: 434
+        width: 178
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee293f29d6d405f50800000000000000
+      internalID: 6868074564752216814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_38
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 274
+        width: 165
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7f91056e9f72cbe0800000000000000
+      internalID: -1458463011038453889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_39
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 274
+        width: 163
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f77ab1b1eb841f810800000000000000
+      internalID: 1797297707633321855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_40
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 218
+        width: 442
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49095435f06f58ca0800000000000000
+      internalID: -6015131181601419116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_41
+      rect:
+        serializedVersion: 2
+        x: 2028
+        y: 217
+        width: 146
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a38a8a361fefde00800000000000000
+      internalID: 1071838115087942567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_42
+      rect:
+        serializedVersion: 2
+        x: 2191
+        y: 217
+        width: 165
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f23ef90da7c527750800000000000000
+      internalID: 6301200511200650031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_43
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 92
+        width: 89
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 304b3428af2101820800000000000000
+      internalID: 2886828228281086979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_44
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 95
+        width: 62
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cee0ef7e59b73b60800000000000000
+      internalID: 7725847501300887233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_45
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 96
+        width: 73
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee5c76a68b1ae4940800000000000000
+      internalID: 5282337226383410670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_46
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 86
+        width: 97
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67986d2312e5a0210800000000000000
+      internalID: 1299954939129661814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_47
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 79
+        width: 184
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a58f7720555f81600800000000000000
+      internalID: 439370709131065434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_48
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 74
+        width: 135
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4859f9f53cf779f30800000000000000
+      internalID: 4582271622972413316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_50
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 23
+        width: 117
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f923b486fa8f075a0800000000000000
+      internalID: -6525442427807124833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_51
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 27
+        width: 117
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 298bec67b590b6fb0800000000000000
+      internalID: -4653615501517342574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_52
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 52
+        width: 159
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d37950102ff15cdc0800000000000000
+      internalID: -3619451601262635203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_53
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 42
+        width: 441
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46de073232f1660d0800000000000000
+      internalID: -3430019830417134236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_54
+      rect:
+        serializedVersion: 2
+        x: 2025
+        y: 33
+        width: 150
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ad5f642352f0d6e0800000000000000
+      internalID: -1814684210922824284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: propes_55
+      rect:
+        serializedVersion: 2
+        x: 2191
+        y: 33
+        width: 165
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c9c57b35a9618610800000000000000
+      internalID: 1621693499218184649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1ace1b443c78f304b9188ad21fdadc50
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      propes_0: -5906413133841941332
+      propes_1: -3593786864155219478
+      propes_10: 3540250317085818975
+      propes_11: 4971769553901032344
+      propes_12: -4680287848153114350
+      propes_13: 5698775974803059908
+      propes_14: 4999808090351718444
+      propes_15: 5919134128389776925
+      propes_16: 5873121974334637594
+      propes_17: -3397858435871367911
+      propes_18: 3458200531088428189
+      propes_19: 5847030952513561011
+      propes_2: -2783083754830695405
+      propes_20: 1396447148677500613
+      propes_21: 746653171302266307
+      propes_22: -3047501456623897912
+      propes_23: 432768630998367047
+      propes_24: 193147945526679876
+      propes_25: -5571765908633778794
+      propes_26: 3471181006344639060
+      propes_27: -653977241608847240
+      propes_28: 6863341118525665795
+      propes_29: 528366439750425636
+      propes_3: 4786746856969019060
+      propes_30: 8493521432824071010
+      propes_31: -5936991503249557944
+      propes_32: -4080808944487255033
+      propes_33: 1271993128705516605
+      propes_34: 4607938835560876983
+      propes_35: 7752063098822124123
+      propes_36: 6038227637424553127
+      propes_37: 6868074564752216814
+      propes_38: -1458463011038453889
+      propes_39: 1797297707633321855
+      propes_4: 3184635323538697791
+      propes_40: -6015131181601419116
+      propes_41: 1071838115087942567
+      propes_42: 6301200511200650031
+      propes_43: 2886828228281086979
+      propes_44: 7725847501300887233
+      propes_45: 5282337226383410670
+      propes_46: 1299954939129661814
+      propes_47: 439370709131065434
+      propes_48: 4582271622972413316
+      propes_49: 1288050600449215985
+      propes_5: -5235646258332073187
+      propes_50: -6525442427807124833
+      propes_51: -4653615501517342574
+      propes_52: -3619451601262635203
+      propes_53: -3430019830417134236
+      propes_54: -1814684210922824284
+      propes_55: 1621693499218184649
+      propes_6: -8536850409894903024
+      propes_7: -5862982387436061685
+      propes_8: -3175628243569736273
+      propes_9: 5222900356110308061
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

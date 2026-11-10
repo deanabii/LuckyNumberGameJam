@@ -1,0 +1,626 @@
+fileFormatVersion: 2
+guid: 4656a78aa8938fa47875351188739c27
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1749097664872637216
+    second: Dark Fantasy Rogue Sprite Sheet_0
+  - first:
+      213: 1988215758729208818
+    second: Dark Fantasy Rogue Sprite Sheet_1
+  - first:
+      213: -4917570322951323980
+    second: Dark Fantasy Rogue Sprite Sheet_2
+  - first:
+      213: 4687709749621906193
+    second: Dark Fantasy Rogue Sprite Sheet_3
+  - first:
+      213: -567754086622011418
+    second: Dark Fantasy Rogue Sprite Sheet_4
+  - first:
+      213: 6252138066064546641
+    second: Dark Fantasy Rogue Sprite Sheet_5
+  - first:
+      213: -6658367315457841966
+    second: Dark Fantasy Rogue Sprite Sheet_6
+  - first:
+      213: 2959492265903845843
+    second: Dark Fantasy Rogue Sprite Sheet_7
+  - first:
+      213: -6909661670847093257
+    second: Dark Fantasy Rogue Sprite Sheet_8
+  - first:
+      213: -3037350949173912920
+    second: Dark Fantasy Rogue Sprite Sheet_9
+  - first:
+      213: -1457186822173420299
+    second: Dark Fantasy Rogue Sprite Sheet_10
+  - first:
+      213: -6113485084380568272
+    second: Dark Fantasy Rogue Sprite Sheet_11
+  - first:
+      213: 4721134381152174382
+    second: Dark Fantasy Rogue Sprite Sheet_12
+  - first:
+      213: -6575047037663576805
+    second: Dark Fantasy Rogue Sprite Sheet_13
+  - first:
+      213: 4656669645349812039
+    second: Dark Fantasy Rogue Sprite Sheet_14
+  - first:
+      213: 6521638567488256218
+    second: Dark Fantasy Rogue Sprite Sheet_15
+  - first:
+      213: -1008284565415263024
+    second: Dark Fantasy Rogue Sprite Sheet_16
+  - first:
+      213: 8878691851355047214
+    second: Dark Fantasy Rogue Sprite Sheet_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 271
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 023e2302f0b064810800000000000000
+      internalID: 1749097664872637216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 0
+        width: 233
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f363e3d2bf879b10800000000000000
+      internalID: 1988215758729208818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 0
+        width: 269
+        height: 1018
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bebb7e78d741cbb0800000000000000
+      internalID: -4917570322951323980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 287
+        height: 1020
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11b59544e271e0140800000000000000
+      internalID: 4687709749621906193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 1015
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ef5e139aaeee18f0800000000000000
+      internalID: -567754086622011418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 499
+        width: 235
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15b9972227e04c650800000000000000
+      internalID: 6252138066064546641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 763
+        width: 230
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d46012443ab893a0800000000000000
+      internalID: -6658367315457841966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 423
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d1f6b8298a321920800000000000000
+      internalID: 2959492265903845843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 251
+        width: 227
+        height: 509
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f5e60fb153fb10a0800000000000000
+      internalID: -6909661670847093257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 0
+        width: 263
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aa1b40876929d5d0800000000000000
+      internalID: -3037350949173912920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 337
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f419f44e4807cbe0800000000000000
+      internalID: -1457186822173420299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 197
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 035e8d5d4b9882ba0800000000000000
+      internalID: -6113485084380568272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 0
+        width: 197
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e21857db4b6d48140800000000000000
+      internalID: 4721134381152174382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 187
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1df39a2e8db0c4a0800000000000000
+      internalID: -6575047037663576805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 163
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7477b6fce50df9040800000000000000
+      internalID: 4656669645349812039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 183
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad8ff9859b3818a50800000000000000
+      internalID: 6521638567488256218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 102
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d40ae5a78ad102f0800000000000000
+      internalID: -1008284565415263024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Fantasy Rogue Sprite Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 83
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e254c2e8233773b70800000000000000
+      internalID: 8878691851355047214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Dark Fantasy Rogue Sprite Sheet_0: 1749097664872637216
+      Dark Fantasy Rogue Sprite Sheet_1: 1988215758729208818
+      Dark Fantasy Rogue Sprite Sheet_10: -1457186822173420299
+      Dark Fantasy Rogue Sprite Sheet_11: -6113485084380568272
+      Dark Fantasy Rogue Sprite Sheet_12: 4721134381152174382
+      Dark Fantasy Rogue Sprite Sheet_13: -6575047037663576805
+      Dark Fantasy Rogue Sprite Sheet_14: 4656669645349812039
+      Dark Fantasy Rogue Sprite Sheet_15: 6521638567488256218
+      Dark Fantasy Rogue Sprite Sheet_16: -1008284565415263024
+      Dark Fantasy Rogue Sprite Sheet_17: 8878691851355047214
+      Dark Fantasy Rogue Sprite Sheet_2: -4917570322951323980
+      Dark Fantasy Rogue Sprite Sheet_3: 4687709749621906193
+      Dark Fantasy Rogue Sprite Sheet_4: -567754086622011418
+      Dark Fantasy Rogue Sprite Sheet_5: 6252138066064546641
+      Dark Fantasy Rogue Sprite Sheet_6: -6658367315457841966
+      Dark Fantasy Rogue Sprite Sheet_7: 2959492265903845843
+      Dark Fantasy Rogue Sprite Sheet_8: -6909661670847093257
+      Dark Fantasy Rogue Sprite Sheet_9: -3037350949173912920
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

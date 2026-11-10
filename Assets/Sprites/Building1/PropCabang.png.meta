@@ -1,0 +1,1952 @@
+fileFormatVersion: 2
+guid: be4e3a0077a3cff46af014e34f90dcdd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3353365475212816344
+    second: PropCabang_0
+  - first:
+      213: 5681379231417439625
+    second: PropCabang_1
+  - first:
+      213: 8419826048626068838
+    second: PropCabang_2
+  - first:
+      213: -5916855012027624049
+    second: PropCabang_3
+  - first:
+      213: -6517566273325590129
+    second: PropCabang_4
+  - first:
+      213: -2207002087102066744
+    second: PropCabang_5
+  - first:
+      213: 8008601513653449802
+    second: PropCabang_6
+  - first:
+      213: -8182046223737269349
+    second: PropCabang_7
+  - first:
+      213: -6998568982301323976
+    second: PropCabang_8
+  - first:
+      213: 6356913780054663068
+    second: PropCabang_9
+  - first:
+      213: 7113153598188627991
+    second: PropCabang_10
+  - first:
+      213: 6199523343387702762
+    second: PropCabang_11
+  - first:
+      213: 3729260054220784540
+    second: PropCabang_12
+  - first:
+      213: 7500257804998670229
+    second: PropCabang_13
+  - first:
+      213: 8824995212313708759
+    second: PropCabang_14
+  - first:
+      213: 2093845472565563578
+    second: PropCabang_15
+  - first:
+      213: 82088992275263538
+    second: PropCabang_16
+  - first:
+      213: 7891861713206103271
+    second: PropCabang_17
+  - first:
+      213: 4316807495600803769
+    second: PropCabang_18
+  - first:
+      213: 1955482401250314131
+    second: PropCabang_19
+  - first:
+      213: 4407801252221427174
+    second: PropCabang_20
+  - first:
+      213: 1351784856042074365
+    second: PropCabang_21
+  - first:
+      213: 3885515580774286099
+    second: PropCabang_22
+  - first:
+      213: -2086759633480089612
+    second: PropCabang_23
+  - first:
+      213: 5424573683025452007
+    second: PropCabang_24
+  - first:
+      213: -1194972181334869986
+    second: PropCabang_25
+  - first:
+      213: -2864210305912335484
+    second: PropCabang_26
+  - first:
+      213: 4696602084840741380
+    second: PropCabang_27
+  - first:
+      213: 5603273951768602137
+    second: PropCabang_28
+  - first:
+      213: 1760313015072986117
+    second: PropCabang_29
+  - first:
+      213: 943939391195589928
+    second: PropCabang_30
+  - first:
+      213: 9202055627904829651
+    second: PropCabang_31
+  - first:
+      213: 1260838673646183862
+    second: PropCabang_32
+  - first:
+      213: 8878184391946122563
+    second: PropCabang_33
+  - first:
+      213: -8903044937248835611
+    second: PropCabang_34
+  - first:
+      213: -8446289936883794084
+    second: PropCabang_35
+  - first:
+      213: -2739209334317405538
+    second: PropCabang_36
+  - first:
+      213: 1321976779256604393
+    second: PropCabang_37
+  - first:
+      213: 2296760929186625467
+    second: PropCabang_38
+  - first:
+      213: -1678445302500385461
+    second: PropCabang_39
+  - first:
+      213: 3489193936986755507
+    second: PropCabang_40
+  - first:
+      213: -5390726835584515835
+    second: PropCabang_41
+  - first:
+      213: 7164526647700372387
+    second: PropCabang_42
+  - first:
+      213: 2336143403867880117
+    second: PropCabang_43
+  - first:
+      213: -5248676314767329740
+    second: PropCabang_44
+  - first:
+      213: -479576332933318445
+    second: PropCabang_45
+  - first:
+      213: -5313579050617701061
+    second: PropCabang_46
+  - first:
+      213: 7100310997282774535
+    second: PropCabang_47
+  - first:
+      213: 8514292785528614296
+    second: PropCabang_48
+  - first:
+      213: -8803170627295133764
+    second: PropCabang_49
+  - first:
+      213: -3441053594753570687
+    second: PropCabang_50
+  - first:
+      213: 7649135843727620899
+    second: PropCabang_51
+  - first:
+      213: 3861465359228948268
+    second: PropCabang_52
+  - first:
+      213: -4113449504803429008
+    second: PropCabang_53
+  - first:
+      213: -398093217823924778
+    second: PropCabang_54
+  - first:
+      213: 6320843571712292218
+    second: PropCabang_55
+  - first:
+      213: -4308332956643975008
+    second: PropCabang_56
+  - first:
+      213: 2595752422519066908
+    second: PropCabang_57
+  - first:
+      213: 1318183393018281833
+    second: PropCabang_58
+  - first:
+      213: -8760506588668157377
+    second: PropCabang_59
+  - first:
+      213: 502814744322648137
+    second: PropCabang_60
+  - first:
+      213: 2751592238760265403
+    second: PropCabang_61
+  - first:
+      213: 5800540591809577995
+    second: PropCabang_62
+  - first:
+      213: 2268056073922410045
+    second: PropCabang_63
+  - first:
+      213: 7338514453083370306
+    second: PropCabang_64
+  - first:
+      213: 6642759558432221655
+    second: PropCabang_65
+  - first:
+      213: -5427210585473042873
+    second: PropCabang_66
+  - first:
+      213: 6922597120188253938
+    second: PropCabang_67
+  - first:
+      213: 8085330366349634035
+    second: PropCabang_68
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 60
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PropCabang_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 582
+        width: 201
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82091effdd37671d0800000000000000
+      internalID: -3353365475212816344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_1
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 587
+        width: 161
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9851bea4f4058de40800000000000000
+      internalID: 5681379231417439625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_2
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 587
+        width: 156
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66d00fa5e2b39d470800000000000000
+      internalID: 8419826048626068838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_3
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 587
+        width: 140
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f859a9427bb13eda0800000000000000
+      internalID: -5916855012027624049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_4
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 587
+        width: 147
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f899c568104fc85a0800000000000000
+      internalID: -6517566273325590129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_5
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 587
+        width: 152
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cf4cb38b472f51e0800000000000000
+      internalID: -2207002087102066744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_6
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 477
+        width: 128
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4438f035a4442f60800000000000000
+      internalID: 8008601513653449802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_7
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 477
+        width: 113
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9350525f48837e80800000000000000
+      internalID: -8182046223737269349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_8
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 477
+        width: 108
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83dccd1379610ee90800000000000000
+      internalID: -6998568982301323976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_9
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 479
+        width: 95
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9f91ff076b483850800000000000000
+      internalID: 6356913780054663068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_10
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 477
+        width: 88
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71823dca28ff6b260800000000000000
+      internalID: 7113153598188627991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_11
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 477
+        width: 120
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae5bd5362a1290650800000000000000
+      internalID: 6199523343387702762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_12
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 481
+        width: 103
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9342e6c24ef0c330800000000000000
+      internalID: 3729260054220784540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_13
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 477
+        width: 113
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 597fbce4cb4461860800000000000000
+      internalID: 7500257804998670229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_14
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 396
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d84b76836ea87a70800000000000000
+      internalID: 8824995212313708759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_15
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 396
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab094d61d55de0d10800000000000000
+      internalID: 2093845472565563578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_16
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 396
+        width: 37
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2307988e083a32100800000000000000
+      internalID: 82088992275263538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_17
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 396
+        width: 37
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ecc7205a66858d60800000000000000
+      internalID: 7891861713206103271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_18
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 392
+        width: 76
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bf870bbb8168eb30800000000000000
+      internalID: 4316807495600803769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_19
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 393
+        width: 65
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3978d0322e4432b10800000000000000
+      internalID: 1955482401250314131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_20
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 392
+        width: 88
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ed1e27a2e7ab2d30800000000000000
+      internalID: 4407801252221427174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_21
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 395
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df0f32d1a2182c210800000000000000
+      internalID: 1351784856042074365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_22
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 395
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3130c4995df1ce530800000000000000
+      internalID: 3885515580774286099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_23
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 395
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ff7bc26b275a03e0800000000000000
+      internalID: -2086759633480089612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_24
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 388
+        width: 41
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eb1aaa2605f74b40800000000000000
+      internalID: 5424573683025452007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_25
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 357
+        width: 65
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e18bf0fd12b9a6fe0800000000000000
+      internalID: -1194972181334869986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_26
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 348
+        width: 69
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 483151ae6e74048d0800000000000000
+      internalID: -2864210305912335484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_27
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 348
+        width: 71
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40a9a4666bead2140800000000000000
+      internalID: 4696602084840741380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_28
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 261
+        width: 537
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 916ed52c8f3d2cd40800000000000000
+      internalID: 5603273951768602137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_29
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 363
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5041ce45c53ed6810800000000000000
+      internalID: 1760313015072986117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_30
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 364
+        width: 36
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82d26b500eb891d00800000000000000
+      internalID: 943939391195589928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_31
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 266
+        width: 94
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d8c6a8c6d444bf70800000000000000
+      internalID: 9202055627904829651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_32
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 269
+        width: 91
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b561cde7166f7110800000000000000
+      internalID: 1260838673646183862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_33
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 270
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 345bd547aa5a53b70800000000000000
+      internalID: 8878184391946122563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_34
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 270
+        width: 47
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e771f7ccc7027480800000000000000
+      internalID: -8903044937248835611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_35
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 264
+        width: 79
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5fb5128d00c8ca80800000000000000
+      internalID: -8446289936883794084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_36
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 195
+        width: 67
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9aa3969f9f5cf9d0800000000000000
+      internalID: -2739209334317405538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_37
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 196
+        width: 69
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e6a7e860ea985210800000000000000
+      internalID: 1321976779256604393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_38
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 196
+        width: 63
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb73a2675ebbfdf10800000000000000
+      internalID: 2296760929186625467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_39
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 196
+        width: 57
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4d9a81e3e6f4b8e0800000000000000
+      internalID: -1678445302500385461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_40
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 195
+        width: 47
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b1da8e266b1c6030800000000000000
+      internalID: 3489193936986755507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_41
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 197
+        width: 42
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 501c1db118a4035b0800000000000000
+      internalID: -5390726835584515835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_42
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 197
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ab300cd6038d6360800000000000000
+      internalID: 7164526647700372387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_43
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 197
+        width: 50
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5babae36c06ab6020800000000000000
+      internalID: 2336143403867880117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_44
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 197
+        width: 32
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 436794d43b4f827b0800000000000000
+      internalID: -5248676314767329740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_45
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 197
+        width: 54
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d833d8bdd33859f0800000000000000
+      internalID: -479576332933318445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_46
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 195
+        width: 68
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3d79f981006246b0800000000000000
+      internalID: -5313579050617701061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_47
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 194
+        width: 82
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70ed6d3ab3f598260800000000000000
+      internalID: 7100310997282774535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_48
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 124
+        width: 71
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89daa138d28d82670800000000000000
+      internalID: 8514292785528614296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_49
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 123
+        width: 83
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbfbbe6a4fad4d580800000000000000
+      internalID: -8803170627295133764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_50
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 89
+        width: 90
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 188e1afacfbee30d0800000000000000
+      internalID: -3441053594753570687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_51
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 131
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32bb714e580372a60800000000000000
+      internalID: 7649135843727620899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_52
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 131
+        width: 50
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2f4159094ea69530800000000000000
+      internalID: 3861465359228948268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_53
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 101
+        width: 77
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0756fa828771ae6c0800000000000000
+      internalID: -4113449504803429008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_54
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 101
+        width: 76
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dddc1cd350b97af0800000000000000
+      internalID: -398093217823924778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_55
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 101
+        width: 76
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a75f8bc3db528b750800000000000000
+      internalID: 6320843571712292218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_56
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 101
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a0a021a00ab534c0800000000000000
+      internalID: -4308332956643975008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_57
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 101
+        width: 75
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c11db1d4317f50420800000000000000
+      internalID: 2595752422519066908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_58
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 32
+        width: 52
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96f7ca9dfc02b4210800000000000000
+      internalID: 1318183393018281833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_59
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 36
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3227f93cad6c6680800000000000000
+      internalID: -8760506588668157377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_60
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 24
+        width: 72
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9482e2f885b5af600800000000000000
+      internalID: 502814744322648137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_61
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 11
+        width: 54
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb60706009e9f2620800000000000000
+      internalID: 2751592238760265403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_62
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 10
+        width: 54
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b044b088fe8af7050800000000000000
+      internalID: 5800540591809577995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_63
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 11
+        width: 53
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d36ffc88bf0c97f10800000000000000
+      internalID: 2268056073922410045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_64
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 13
+        width: 76
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 243ba139304a7d560800000000000000
+      internalID: 7338514453083370306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_65
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 13
+        width: 122
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d9eea0af92df2c50800000000000000
+      internalID: 6642759558432221655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_66
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 13
+        width: 76
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 746b3a32abcaea4b0800000000000000
+      internalID: -5427210585473042873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_67
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 13
+        width: 72
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f686ff3761021060800000000000000
+      internalID: 6922597120188253938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PropCabang_68
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 13
+        width: 75
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f9e2f9512dd43070800000000000000
+      internalID: 8085330366349634035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PropCabang_0: -3353365475212816344
+      PropCabang_1: 5681379231417439625
+      PropCabang_10: 7113153598188627991
+      PropCabang_11: 6199523343387702762
+      PropCabang_12: 3729260054220784540
+      PropCabang_13: 7500257804998670229
+      PropCabang_14: 8824995212313708759
+      PropCabang_15: 2093845472565563578
+      PropCabang_16: 82088992275263538
+      PropCabang_17: 7891861713206103271
+      PropCabang_18: 4316807495600803769
+      PropCabang_19: 1955482401250314131
+      PropCabang_2: 8419826048626068838
+      PropCabang_20: 4407801252221427174
+      PropCabang_21: 1351784856042074365
+      PropCabang_22: 3885515580774286099
+      PropCabang_23: -2086759633480089612
+      PropCabang_24: 5424573683025452007
+      PropCabang_25: -1194972181334869986
+      PropCabang_26: -2864210305912335484
+      PropCabang_27: 4696602084840741380
+      PropCabang_28: 5603273951768602137
+      PropCabang_29: 1760313015072986117
+      PropCabang_3: -5916855012027624049
+      PropCabang_30: 943939391195589928
+      PropCabang_31: 9202055627904829651
+      PropCabang_32: 1260838673646183862
+      PropCabang_33: 8878184391946122563
+      PropCabang_34: -8903044937248835611
+      PropCabang_35: -8446289936883794084
+      PropCabang_36: -2739209334317405538
+      PropCabang_37: 1321976779256604393
+      PropCabang_38: 2296760929186625467
+      PropCabang_39: -1678445302500385461
+      PropCabang_4: -6517566273325590129
+      PropCabang_40: 3489193936986755507
+      PropCabang_41: -5390726835584515835
+      PropCabang_42: 7164526647700372387
+      PropCabang_43: 2336143403867880117
+      PropCabang_44: -5248676314767329740
+      PropCabang_45: -479576332933318445
+      PropCabang_46: -5313579050617701061
+      PropCabang_47: 7100310997282774535
+      PropCabang_48: 8514292785528614296
+      PropCabang_49: -8803170627295133764
+      PropCabang_5: -2207002087102066744
+      PropCabang_50: -3441053594753570687
+      PropCabang_51: 7649135843727620899
+      PropCabang_52: 3861465359228948268
+      PropCabang_53: -4113449504803429008
+      PropCabang_54: -398093217823924778
+      PropCabang_55: 6320843571712292218
+      PropCabang_56: -4308332956643975008
+      PropCabang_57: 2595752422519066908
+      PropCabang_58: 1318183393018281833
+      PropCabang_59: -8760506588668157377
+      PropCabang_6: 8008601513653449802
+      PropCabang_60: 502814744322648137
+      PropCabang_61: 2751592238760265403
+      PropCabang_62: 5800540591809577995
+      PropCabang_63: 2268056073922410045
+      PropCabang_64: 7338514453083370306
+      PropCabang_65: 6642759558432221655
+      PropCabang_66: -5427210585473042873
+      PropCabang_67: 6922597120188253938
+      PropCabang_68: 8085330366349634035
+      PropCabang_7: -8182046223737269349
+      PropCabang_8: -6998568982301323976
+      PropCabang_9: 6356913780054663068
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
