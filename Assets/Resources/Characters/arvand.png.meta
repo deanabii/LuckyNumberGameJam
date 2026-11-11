@@ -1,0 +1,782 @@
+fileFormatVersion: 2
+guid: 8ae55f018822ed94f81c7e324ecc4150
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7275852222046745189
+    second: arvand_0
+  - first:
+      213: 7076291900738453478
+    second: arvand_1
+  - first:
+      213: 6227363649233847498
+    second: arvand_2
+  - first:
+      213: -4486028343090614262
+    second: arvand_3
+  - first:
+      213: 7775689525932084173
+    second: arvand_4
+  - first:
+      213: 7497302478047264171
+    second: arvand_5
+  - first:
+      213: 7319371869223401070
+    second: arvand_6
+  - first:
+      213: -8118128684943414653
+    second: arvand_7
+  - first:
+      213: -6254138216713889667
+    second: arvand_8
+  - first:
+      213: 5770373168365237144
+    second: arvand_9
+  - first:
+      213: -5680702695448484473
+    second: arvand_10
+  - first:
+      213: 4202305664249677895
+    second: arvand_11
+  - first:
+      213: 5952862885088671080
+    second: arvand_12
+  - first:
+      213: -7823743780289978280
+    second: arvand_13
+  - first:
+      213: -9187780628401372503
+    second: arvand_14
+  - first:
+      213: 4989181581242425820
+    second: arvand_15
+  - first:
+      213: -3285826905874705148
+    second: arvand_16
+  - first:
+      213: -8104279436706390667
+    second: arvand_17
+  - first:
+      213: -4150554339985089795
+    second: arvand_18
+  - first:
+      213: -2657958889347849669
+    second: arvand_19
+  - first:
+      213: -6888314019561481692
+    second: arvand_20
+  - first:
+      213: 8289536534081773534
+    second: arvand_21
+  - first:
+      213: 499029468288016368
+    second: arvand_22
+  - first:
+      213: 5596110225574289590
+    second: arvand_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: arvand_0
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 2074
+        width: 512
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 562355dfb0509f460800000000000000
+      internalID: 7275852222046745189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_1
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 2074
+        width: 514
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ef3d7eedf9043260800000000000000
+      internalID: 7076291900738453478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_2
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 2074
+        width: 511
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac483c7be3a0c6650800000000000000
+      internalID: 6227363649233847498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_3
+      rect:
+        serializedVersion: 2
+        x: 2164
+        y: 2074
+        width: 512
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a00ffbd6dfc6eb1c0800000000000000
+      internalID: -4486028343090614262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_4
+      rect:
+        serializedVersion: 2
+        x: 2785
+        y: 2074
+        width: 513
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcb48ec2d6cc8eb60800000000000000
+      internalID: 7775689525932084173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_5
+      rect:
+        serializedVersion: 2
+        x: 3404
+        y: 2075
+        width: 514
+        height: 647
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: badb9a1a1e4cb0860800000000000000
+      internalID: 7497302478047264171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_6
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 1398
+        width: 407
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e663c047fe1a39560800000000000000
+      internalID: 7319371869223401070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_7
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 1397
+        width: 410
+        height: 657
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38ae90509fc965f80800000000000000
+      internalID: -8118128684943414653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_8
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 1398
+        width: 410
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d78d2908d66d439a0800000000000000
+      internalID: -6254138216713889667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_9
+      rect:
+        serializedVersion: 2
+        x: 2195
+        y: 1398
+        width: 411
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 893fad9e2db741050800000000000000
+      internalID: 5770373168365237144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_10
+      rect:
+        serializedVersion: 2
+        x: 2821
+        y: 1398
+        width: 408
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78560330ff61a21b0800000000000000
+      internalID: -5680702695448484473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_11
+      rect:
+        serializedVersion: 2
+        x: 3445
+        y: 1397
+        width: 410
+        height: 657
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 748c633acb6915a30800000000000000
+      internalID: 4202305664249677895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_12
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 714
+        width: 413
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 865315e1141dc9250800000000000000
+      internalID: 5952862885088671080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_13
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 714
+        width: 414
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 850e42adb7a7c6390800000000000000
+      internalID: -7823743780289978280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_14
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 714
+        width: 415
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a2cbe982327e7080800000000000000
+      internalID: -9187780628401372503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_15
+      rect:
+        serializedVersion: 2
+        x: 2235
+        y: 714
+        width: 417
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd160edd6322d3540800000000000000
+      internalID: 4989181581242425820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_16
+      rect:
+        serializedVersion: 2
+        x: 2861
+        y: 714
+        width: 414
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 405dae196d56662d0800000000000000
+      internalID: -3285826905874705148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_17
+      rect:
+        serializedVersion: 2
+        x: 3486
+        y: 714
+        width: 411
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57ddc966ac0d78f80800000000000000
+      internalID: -8104279436706390667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_18
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 6
+        width: 506
+        height: 694
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfa9b3081d44666c0800000000000000
+      internalID: -4150554339985089795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_19
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 6
+        width: 508
+        height: 694
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3264dcf8780d1bd0800000000000000
+      internalID: -2657958889347849669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_20
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 6
+        width: 507
+        height: 694
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42ad1b225eac760a0800000000000000
+      internalID: -6888314019561481692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_21
+      rect:
+        serializedVersion: 2
+        x: 2168
+        y: 6
+        width: 510
+        height: 694
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edf1192de895a0370800000000000000
+      internalID: 8289536534081773534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_22
+      rect:
+        serializedVersion: 2
+        x: 2799
+        y: 6
+        width: 507
+        height: 694
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ff52cd48a8ece600800000000000000
+      internalID: 499029468288016368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arvand_23
+      rect:
+        serializedVersion: 2
+        x: 3416
+        y: 6
+        width: 507
+        height: 694
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b06947c99069ad40800000000000000
+      internalID: 5596110225574289590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      arvand_0: 7275852222046745189
+      arvand_1: 7076291900738453478
+      arvand_10: -5680702695448484473
+      arvand_11: 4202305664249677895
+      arvand_12: 5952862885088671080
+      arvand_13: -7823743780289978280
+      arvand_14: -9187780628401372503
+      arvand_15: 4989181581242425820
+      arvand_16: -3285826905874705148
+      arvand_17: -8104279436706390667
+      arvand_18: -4150554339985089795
+      arvand_19: -2657958889347849669
+      arvand_2: 6227363649233847498
+      arvand_20: -6888314019561481692
+      arvand_21: 8289536534081773534
+      arvand_22: 499029468288016368
+      arvand_23: 5596110225574289590
+      arvand_3: -4486028343090614262
+      arvand_4: 7775689525932084173
+      arvand_5: 7497302478047264171
+      arvand_6: 7319371869223401070
+      arvand_7: -8118128684943414653
+      arvand_8: -6254138216713889667
+      arvand_9: 5770373168365237144
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
