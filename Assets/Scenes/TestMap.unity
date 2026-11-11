@@ -1817,7 +1817,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 6312746007239324ca0c14b90a432a8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1841,7 +1841,7 @@ TilemapRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 1, y: 1.5, z: 0}
   m_MaxChunkCount: 32
   m_MaxFrameAge: 64
   m_SortOrder: 0
@@ -4619,8 +4619,8 @@ Tilemap:
   - first: {x: 0, y: 24, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 21
-      m_TileSpriteIndex: 15
+      m_TileIndex: 22
+      m_TileSpriteIndex: 22
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6722,8 +6722,11 @@ Tilemap:
     m_RefCount: 42
     m_Data: {fileID: 11400000, guid: 1660f2496b598ae4f9bc4fdda110afc1, type: 2}
   - serializedVersion: 2
-    m_RefCount: 17
+    m_RefCount: 16
     m_Data: {fileID: 11400000, guid: c4cb00beb36df884982081664fb50cdc, type: 2}
+  - serializedVersion: 2
+    m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 3d400f81b1e98ee4d801e822bb466d09, type: 2}
   m_TileSpriteArray:
   - serializedVersion: 2
     m_RefCount: 133
@@ -6771,7 +6774,7 @@ Tilemap:
     m_RefCount: 5
     m_Data: {fileID: -1861889110, guid: 778f3f1e37d1e4747988e7bf1dc4eccb, type: 3}
   - serializedVersion: 2
-    m_RefCount: 17
+    m_RefCount: 16
     m_Data: {fileID: 1735370300, guid: 778f3f1e37d1e4747988e7bf1dc4eccb, type: 3}
   - serializedVersion: 2
     m_RefCount: 12
@@ -6791,6 +6794,9 @@ Tilemap:
   - serializedVersion: 2
     m_RefCount: 1
     m_Data: {fileID: -1786232054, guid: 778f3f1e37d1e4747988e7bf1dc4eccb, type: 3}
+  - serializedVersion: 2
+    m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 1afe493e049254cfc884ffa58152ca50, type: 3}
   m_TileMatrixArray:
   - serializedVersion: 2
     m_RefCount: 480
@@ -8009,7 +8015,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 6312746007239324ca0c14b90a432a8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26424,7 +26430,7 @@ TilemapRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 1, y: 1.5, z: 0}
   m_MaxChunkCount: 32
   m_MaxFrameAge: 64
   m_SortOrder: 0
@@ -29299,6 +29305,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -22, y: 28, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 12
+      m_TileSpriteIndex: 12
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 14, y: 28, z: 0}
     second:
       serializedVersion: 2
@@ -30117,6 +30133,9 @@ Tilemap:
   - serializedVersion: 2
     m_RefCount: 7
     m_Data: {fileID: 11400000, guid: b026f736ac5793c40a8d87257d69462c, type: 2}
+  - serializedVersion: 2
+    m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: cdc0a85cad03c064391db13724d1fa11, type: 2}
   m_TileSpriteArray:
   - serializedVersion: 2
     m_RefCount: 97
@@ -30154,9 +30173,12 @@ Tilemap:
   - serializedVersion: 2
     m_RefCount: 26
     m_Data: {fileID: 1998518854, guid: 20c4aef9fab43fc4983aaefe4e5652bb, type: 3}
+  - serializedVersion: 2
+    m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 1d779a0d7152745999fafde02345208d, type: 3}
   m_TileMatrixArray:
   - serializedVersion: 2
-    m_RefCount: 364
+    m_RefCount: 365
     m_Data:
       e00: 1
       e01: 0
@@ -30176,7 +30198,7 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - serializedVersion: 2
-    m_RefCount: 364
+    m_RefCount: 365
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
