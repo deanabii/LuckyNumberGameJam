@@ -1,0 +1,474 @@
+fileFormatVersion: 2
+guid: abb1ac962748e1c40b97aa9996b00517
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2573564714429589939
+    second: Eight-Frame Lava Demon Idle Animation_0
+  - first:
+      213: 8627810378563878327
+    second: Eight-Frame Lava Demon Idle Animation_1
+  - first:
+      213: -6518108597902454536
+    second: Eight-Frame Lava Demon Idle Animation_2
+  - first:
+      213: 1559465808049078643
+    second: Eight-Frame Lava Demon Idle Animation_3
+  - first:
+      213: 4904739449497511929
+    second: Eight-Frame Lava Demon Idle Animation_4
+  - first:
+      213: -7659790733479335620
+    second: Eight-Frame Lava Demon Idle Animation_5
+  - first:
+      213: 2407151765471332794
+    second: Eight-Frame Lava Demon Idle Animation_6
+  - first:
+      213: -5398141535693862899
+    second: Eight-Frame Lava Demon Idle Animation_7
+  - first:
+      213: 8341734344279342206
+    second: Eight-Frame Lava Demon Idle Animation_8
+  - first:
+      213: 6224116616517190685
+    second: Eight-Frame Lava Demon Idle Animation_9
+  - first:
+      213: 6645528996836308764
+    second: Eight-Frame Lava Demon Idle Animation_10
+  - first:
+      213: -6460736524247825235
+    second: Eight-Frame Lava Demon Idle Animation_11
+  - first:
+      213: -3823436566310049375
+    second: Eight-Frame Lava Demon Idle Animation_12
+  - first:
+      213: -8669203267003194352
+    second: Eight-Frame Lava Demon Idle Animation_13
+  - first:
+      213: 4665860222279107462
+    second: Eight-Frame Lava Demon Idle Animation_14
+  - first:
+      213: 3975655506393054838
+    second: Eight-Frame Lava Demon Idle Animation_15
+  - first:
+      213: -3687350053794859975
+    second: Eight-Frame Lava Demon Idle Animation_16
+  - first:
+      213: 1907385730897943795
+    second: Eight-Frame Lava Demon Idle Animation_17
+  - first:
+      213: 9204763707151299177
+    second: Eight-Frame Lava Demon Idle Animation_18
+  - first:
+      213: -6965038751681292024
+    second: Eight-Frame Lava Demon Idle Animation_19
+  - first:
+      213: -5218337545428046516
+    second: Eight-Frame Lava Demon Idle Animation_20
+  - first:
+      213: -1259283184584144836
+    second: Eight-Frame Lava Demon Idle Animation_21
+  - first:
+      213: 5290341124569512845
+    second: Eight-Frame Lava Demon Idle Animation_22
+  - first:
+      213: 947169718596820959
+    second: Eight-Frame Lava Demon Idle Animation_23
+  - first:
+      213: -7246603344847485259
+    second: Eight-Frame Lava Demon Idle Animation_24
+  - first:
+      213: -3876700186010656257
+    second: Eight-Frame Lava Demon Idle Animation_25
+  - first:
+      213: -7020803929274098470
+    second: Eight-Frame Lava Demon Idle Animation_26
+  - first:
+      213: 8653838785355174244
+    second: Eight-Frame Lava Demon Idle Animation_27
+  - first:
+      213: -7139708791504517156
+    second: Eight-Frame Lava Demon Idle Animation_28
+  - first:
+      213: -7048006744290266529
+    second: Eight-Frame Lava Demon Idle Animation_29
+  - first:
+      213: -7638365272489143799
+    second: Eight-Frame Lava Demon Idle Animation_30
+  - first:
+      213: 7331318143390625958
+    second: Eight-Frame Lava Demon Idle Animation_31
+  - first:
+      213: -1857831565295423711
+    second: Eight-Frame Lava Demon Idle Animation_32
+  - first:
+      213: -5029156513088934285
+    second: Eight-Frame Lava Demon Idle Animation_33
+  - first:
+      213: -3088899324031341313
+    second: Eight-Frame Lava Demon Idle Animation_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Eight-Frame Lava Demon Idle Animation_0
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 274
+        width: 273
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d46d1fd078cd84cd0800000000000000
+      internalID: -2573564714429589939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eight-Frame Lava Demon Idle Animation_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 272
+        width: 272
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bd7ab3c3d32cb770800000000000000
+      internalID: 8627810378563878327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eight-Frame Lava Demon Idle Animation_2
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 269
+        width: 261
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f0da9eb3c60b85a0800000000000000
+      internalID: -6518108597902454536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eight-Frame Lava Demon Idle Animation_3
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 271
+        width: 269
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3710228d3e554a510800000000000000
+      internalID: 1559465808049078643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eight-Frame Lava Demon Idle Animation_4
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 276
+        width: 265
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f7e42bfa82211440800000000000000
+      internalID: 4904739449497511929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eight-Frame Lava Demon Idle Animation_5
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 273
+        width: 270
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c39a22549e4f2b590800000000000000
+      internalID: -7659790733479335620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eight-Frame Lava Demon Idle Animation_6
+      rect:
+        serializedVersion: 2
+        x: 1634
+        y: 276
+        width: 265
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab98f5de6cbe76120800000000000000
+      internalID: 2407151765471332794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eight-Frame Lava Demon Idle Animation_7
+      rect:
+        serializedVersion: 2
+        x: 1905
+        y: 280
+        width: 265
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d088fa5bfd2f515b0800000000000000
+      internalID: -5398141535693862899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e0332959c0386b24ba503cb470c0e349
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Eight-Frame Lava Demon Idle Animation_0: -2573564714429589939
+      Eight-Frame Lava Demon Idle Animation_1: 8627810378563878327
+      Eight-Frame Lava Demon Idle Animation_10: 6645528996836308764
+      Eight-Frame Lava Demon Idle Animation_11: -6460736524247825235
+      Eight-Frame Lava Demon Idle Animation_12: -3823436566310049375
+      Eight-Frame Lava Demon Idle Animation_13: -8669203267003194352
+      Eight-Frame Lava Demon Idle Animation_14: 4665860222279107462
+      Eight-Frame Lava Demon Idle Animation_15: 3975655506393054838
+      Eight-Frame Lava Demon Idle Animation_16: -3687350053794859975
+      Eight-Frame Lava Demon Idle Animation_17: 1907385730897943795
+      Eight-Frame Lava Demon Idle Animation_18: 9204763707151299177
+      Eight-Frame Lava Demon Idle Animation_19: -6965038751681292024
+      Eight-Frame Lava Demon Idle Animation_2: -6518108597902454536
+      Eight-Frame Lava Demon Idle Animation_20: -5218337545428046516
+      Eight-Frame Lava Demon Idle Animation_21: -1259283184584144836
+      Eight-Frame Lava Demon Idle Animation_22: 5290341124569512845
+      Eight-Frame Lava Demon Idle Animation_23: 947169718596820959
+      Eight-Frame Lava Demon Idle Animation_24: -7246603344847485259
+      Eight-Frame Lava Demon Idle Animation_25: -3876700186010656257
+      Eight-Frame Lava Demon Idle Animation_26: -7020803929274098470
+      Eight-Frame Lava Demon Idle Animation_27: 8653838785355174244
+      Eight-Frame Lava Demon Idle Animation_28: -7139708791504517156
+      Eight-Frame Lava Demon Idle Animation_29: -7048006744290266529
+      Eight-Frame Lava Demon Idle Animation_3: 1559465808049078643
+      Eight-Frame Lava Demon Idle Animation_30: -7638365272489143799
+      Eight-Frame Lava Demon Idle Animation_31: 7331318143390625958
+      Eight-Frame Lava Demon Idle Animation_32: -1857831565295423711
+      Eight-Frame Lava Demon Idle Animation_33: -5029156513088934285
+      Eight-Frame Lava Demon Idle Animation_34: -3088899324031341313
+      Eight-Frame Lava Demon Idle Animation_4: 4904739449497511929
+      Eight-Frame Lava Demon Idle Animation_5: -7659790733479335620
+      Eight-Frame Lava Demon Idle Animation_6: 2407151765471332794
+      Eight-Frame Lava Demon Idle Animation_7: -5398141535693862899
+      Eight-Frame Lava Demon Idle Animation_8: 8341734344279342206
+      Eight-Frame Lava Demon Idle Animation_9: 6224116616517190685
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

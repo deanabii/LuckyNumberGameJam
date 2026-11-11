@@ -1,0 +1,537 @@
+fileFormatVersion: 2
+guid: 0c12443f8f394884097c49a28324746a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4148390896743281079
+    second: Five-Frame Lava Demon Animation Sheet_0
+  - first:
+      213: 3847927215446196077
+    second: Five-Frame Lava Demon Animation Sheet_1
+  - first:
+      213: -3414020931996544330
+    second: Five-Frame Lava Demon Animation Sheet_2
+  - first:
+      213: 5485934589320965309
+    second: Five-Frame Lava Demon Animation Sheet_3
+  - first:
+      213: 3247621515266196691
+    second: Five-Frame Lava Demon Animation Sheet_4
+  - first:
+      213: 4659764920283790452
+    second: Five-Frame Lava Demon Animation Sheet_5
+  - first:
+      213: 169949993037828078
+    second: Five-Frame Lava Demon Animation Sheet_6
+  - first:
+      213: -5307124897597420705
+    second: Five-Frame Lava Demon Animation Sheet_7
+  - first:
+      213: -3614494089534757480
+    second: Five-Frame Lava Demon Animation Sheet_8
+  - first:
+      213: 5408188019467369597
+    second: Five-Frame Lava Demon Animation Sheet_9
+  - first:
+      213: -3444964447699152170
+    second: Five-Frame Lava Demon Animation Sheet_10
+  - first:
+      213: 4412789714882701409
+    second: Five-Frame Lava Demon Animation Sheet_11
+  - first:
+      213: -21903450054475211
+    second: Five-Frame Lava Demon Animation Sheet_12
+  - first:
+      213: -8827787133165514267
+    second: Five-Frame Lava Demon Animation Sheet_13
+  - first:
+      213: -4317848658364576916
+    second: Five-Frame Lava Demon Animation Sheet_14
+  - first:
+      213: 7613004593167387960
+    second: Five-Frame Lava Demon Animation Sheet_15
+  - first:
+      213: 8602889127757580003
+    second: Five-Frame Lava Demon Animation Sheet_16
+  - first:
+      213: -6251712304585487339
+    second: Five-Frame Lava Demon Animation Sheet_17
+  - first:
+      213: 2372740694940004116
+    second: Five-Frame Lava Demon Animation Sheet_18
+  - first:
+      213: 1217162141312354825
+    second: Five-Frame Lava Demon Animation Sheet_19
+  - first:
+      213: -1525447727053387432
+    second: Five-Frame Lava Demon Animation Sheet_20
+  - first:
+      213: -3220776732591800327
+    second: Five-Frame Lava Demon Animation Sheet_21
+  - first:
+      213: 2541106390829957138
+    second: Five-Frame Lava Demon Animation Sheet_22
+  - first:
+      213: -8795381213105264798
+    second: Five-Frame Lava Demon Animation Sheet_23
+  - first:
+      213: 102386882423510532
+    second: Five-Frame Lava Demon Animation Sheet_24
+  - first:
+      213: -2115235277131096661
+    second: Five-Frame Lava Demon Animation Sheet_25
+  - first:
+      213: -9193299522931217826
+    second: Five-Frame Lava Demon Animation Sheet_26
+  - first:
+      213: 6793790724703879402
+    second: Five-Frame Lava Demon Animation Sheet_27
+  - first:
+      213: -9177578732356963838
+    second: Five-Frame Lava Demon Animation Sheet_28
+  - first:
+      213: -5543849947467756053
+    second: Five-Frame Lava Demon Animation Sheet_29
+  - first:
+      213: -4927555259761904120
+    second: Five-Frame Lava Demon Animation Sheet_30
+  - first:
+      213: -3149391682714090577
+    second: Five-Frame Lava Demon Animation Sheet_31
+  - first:
+      213: -6500105336309914703
+    second: Five-Frame Lava Demon Animation Sheet_32
+  - first:
+      213: -2092308619491483111
+    second: Five-Frame Lava Demon Animation Sheet_33
+  - first:
+      213: -8681554248430069570
+    second: Five-Frame Lava Demon Animation Sheet_34
+  - first:
+      213: 1982955875048627423
+    second: Five-Frame Lava Demon Animation Sheet_35
+  - first:
+      213: -6267931844634095863
+    second: Five-Frame Lava Demon Animation Sheet_36
+  - first:
+      213: -626028146483352888
+    second: Five-Frame Lava Demon Animation Sheet_37
+  - first:
+      213: -9009820520849960324
+    second: Five-Frame Lava Demon Animation Sheet_38
+  - first:
+      213: 1373805666505708988
+    second: Five-Frame Lava Demon Animation Sheet_39
+  - first:
+      213: 19710944666195966
+    second: Five-Frame Lava Demon Animation Sheet_40
+  - first:
+      213: -5882004139370768232
+    second: Five-Frame Lava Demon Animation Sheet_41
+  - first:
+      213: 383254485150730028
+    second: Five-Frame Lava Demon Animation Sheet_42
+  - first:
+      213: 2081588135088690062
+    second: Five-Frame Lava Demon Animation Sheet_43
+  - first:
+      213: 6422647444017184543
+    second: Five-Frame Lava Demon Animation Sheet_44
+  - first:
+      213: -608038288547606715
+    second: Five-Frame Lava Demon Animation Sheet_45
+  - first:
+      213: 5032109535605865194
+    second: Five-Frame Lava Demon Animation Sheet_46
+  - first:
+      213: 2739851911013112278
+    second: Five-Frame Lava Demon Animation Sheet_47
+  - first:
+      213: -3235623758967592496
+    second: Five-Frame Lava Demon Animation Sheet_48
+  - first:
+      213: -1360142101788554183
+    second: Five-Frame Lava Demon Animation Sheet_49
+  - first:
+      213: 8957201027761588237
+    second: Five-Frame Lava Demon Animation Sheet_50
+  - first:
+      213: -7894835224546564599
+    second: Five-Frame Lava Demon Animation Sheet_51
+  - first:
+      213: -1069520100145268619
+    second: Five-Frame Lava Demon Animation Sheet_52
+  - first:
+      213: -1915765500865549480
+    second: Five-Frame Lava Demon Animation Sheet_53
+  - first:
+      213: -7431841886457356320
+    second: Five-Frame Lava Demon Animation Sheet_54
+  - first:
+      213: -6727461825288806493
+    second: Five-Frame Lava Demon Animation Sheet_55
+  - first:
+      213: -5226131587401386937
+    second: Five-Frame Lava Demon Animation Sheet_56
+  - first:
+      213: 3009099184996913767
+    second: Five-Frame Lava Demon Animation Sheet_57
+  - first:
+      213: 4005135943072282391
+    second: Five-Frame Lava Demon Animation Sheet_58
+  - first:
+      213: 5906136280280900511
+    second: Five-Frame Lava Demon Animation Sheet_59
+  - first:
+      213: 6201871996036442051
+    second: Five-Frame Lava Demon Animation Sheet_60
+  - first:
+      213: 588199114969170629
+    second: Five-Frame Lava Demon Animation Sheet_61
+  - first:
+      213: -3549663113697686613
+    second: Five-Frame Lava Demon Animation Sheet_62
+  - first:
+      213: -1576042311765217716
+    second: Five-Frame Lava Demon Animation Sheet_63
+  - first:
+      213: 2370530557069087218
+    second: Five-Frame Lava Demon Animation Sheet_64
+  - first:
+      213: 5343593322033771
+    second: Five-Frame Lava Demon Animation Sheet_65
+  - first:
+      213: 8116975656276970329
+    second: Five-Frame Lava Demon Animation Sheet_66
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Five-Frame Lava Demon Animation Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 178
+        width: 435
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94e07226574fd66c0800000000000000
+      internalID: -4148390896743281079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Five-Frame Lava Demon Animation Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 176
+        width: 409
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6f7a3e4a65966530800000000000000
+      internalID: 3847927215446196077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Five-Frame Lava Demon Animation Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 175
+        width: 440
+        height: 403
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b21994fc06fe90d0800000000000000
+      internalID: -3414020931996544330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Five-Frame Lava Demon Animation Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 179
+        width: 412
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbc21897174f12c40800000000000000
+      internalID: 5485934589320965309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Five-Frame Lava Demon Animation Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1730
+        y: 179
+        width: 432
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d48b5ebf8ed11d20800000000000000
+      internalID: 3247621515266196691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f816948a291c7e946bcf9c1f628e192a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Five-Frame Lava Demon Animation Sheet_0: -4148390896743281079
+      Five-Frame Lava Demon Animation Sheet_1: 3847927215446196077
+      Five-Frame Lava Demon Animation Sheet_10: -3444964447699152170
+      Five-Frame Lava Demon Animation Sheet_11: 4412789714882701409
+      Five-Frame Lava Demon Animation Sheet_12: -21903450054475211
+      Five-Frame Lava Demon Animation Sheet_13: -8827787133165514267
+      Five-Frame Lava Demon Animation Sheet_14: -4317848658364576916
+      Five-Frame Lava Demon Animation Sheet_15: 7613004593167387960
+      Five-Frame Lava Demon Animation Sheet_16: 8602889127757580003
+      Five-Frame Lava Demon Animation Sheet_17: -6251712304585487339
+      Five-Frame Lava Demon Animation Sheet_18: 2372740694940004116
+      Five-Frame Lava Demon Animation Sheet_19: 1217162141312354825
+      Five-Frame Lava Demon Animation Sheet_2: -3414020931996544330
+      Five-Frame Lava Demon Animation Sheet_20: -1525447727053387432
+      Five-Frame Lava Demon Animation Sheet_21: -3220776732591800327
+      Five-Frame Lava Demon Animation Sheet_22: 2541106390829957138
+      Five-Frame Lava Demon Animation Sheet_23: -8795381213105264798
+      Five-Frame Lava Demon Animation Sheet_24: 102386882423510532
+      Five-Frame Lava Demon Animation Sheet_25: -2115235277131096661
+      Five-Frame Lava Demon Animation Sheet_26: -9193299522931217826
+      Five-Frame Lava Demon Animation Sheet_27: 6793790724703879402
+      Five-Frame Lava Demon Animation Sheet_28: -9177578732356963838
+      Five-Frame Lava Demon Animation Sheet_29: -5543849947467756053
+      Five-Frame Lava Demon Animation Sheet_3: 5485934589320965309
+      Five-Frame Lava Demon Animation Sheet_30: -4927555259761904120
+      Five-Frame Lava Demon Animation Sheet_31: -3149391682714090577
+      Five-Frame Lava Demon Animation Sheet_32: -6500105336309914703
+      Five-Frame Lava Demon Animation Sheet_33: -2092308619491483111
+      Five-Frame Lava Demon Animation Sheet_34: -8681554248430069570
+      Five-Frame Lava Demon Animation Sheet_35: 1982955875048627423
+      Five-Frame Lava Demon Animation Sheet_36: -6267931844634095863
+      Five-Frame Lava Demon Animation Sheet_37: -626028146483352888
+      Five-Frame Lava Demon Animation Sheet_38: -9009820520849960324
+      Five-Frame Lava Demon Animation Sheet_39: 1373805666505708988
+      Five-Frame Lava Demon Animation Sheet_4: 3247621515266196691
+      Five-Frame Lava Demon Animation Sheet_40: 19710944666195966
+      Five-Frame Lava Demon Animation Sheet_41: -5882004139370768232
+      Five-Frame Lava Demon Animation Sheet_42: 383254485150730028
+      Five-Frame Lava Demon Animation Sheet_43: 2081588135088690062
+      Five-Frame Lava Demon Animation Sheet_44: 6422647444017184543
+      Five-Frame Lava Demon Animation Sheet_45: -608038288547606715
+      Five-Frame Lava Demon Animation Sheet_46: 5032109535605865194
+      Five-Frame Lava Demon Animation Sheet_47: 2739851911013112278
+      Five-Frame Lava Demon Animation Sheet_48: -3235623758967592496
+      Five-Frame Lava Demon Animation Sheet_49: -1360142101788554183
+      Five-Frame Lava Demon Animation Sheet_5: 4659764920283790452
+      Five-Frame Lava Demon Animation Sheet_50: 8957201027761588237
+      Five-Frame Lava Demon Animation Sheet_51: -7894835224546564599
+      Five-Frame Lava Demon Animation Sheet_52: -1069520100145268619
+      Five-Frame Lava Demon Animation Sheet_53: -1915765500865549480
+      Five-Frame Lava Demon Animation Sheet_54: -7431841886457356320
+      Five-Frame Lava Demon Animation Sheet_55: -6727461825288806493
+      Five-Frame Lava Demon Animation Sheet_56: -5226131587401386937
+      Five-Frame Lava Demon Animation Sheet_57: 3009099184996913767
+      Five-Frame Lava Demon Animation Sheet_58: 4005135943072282391
+      Five-Frame Lava Demon Animation Sheet_59: 5906136280280900511
+      Five-Frame Lava Demon Animation Sheet_6: 169949993037828078
+      Five-Frame Lava Demon Animation Sheet_60: 6201871996036442051
+      Five-Frame Lava Demon Animation Sheet_61: 588199114969170629
+      Five-Frame Lava Demon Animation Sheet_62: -3549663113697686613
+      Five-Frame Lava Demon Animation Sheet_63: -1576042311765217716
+      Five-Frame Lava Demon Animation Sheet_64: 2370530557069087218
+      Five-Frame Lava Demon Animation Sheet_65: 5343593322033771
+      Five-Frame Lava Demon Animation Sheet_66: 8116975656276970329
+      Five-Frame Lava Demon Animation Sheet_67: 1674302499
+      Five-Frame Lava Demon Animation Sheet_7: -5307124897597420705
+      Five-Frame Lava Demon Animation Sheet_8: -3614494089534757480
+      Five-Frame Lava Demon Animation Sheet_9: 5408188019467369597
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
