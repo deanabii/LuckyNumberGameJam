@@ -29,8 +29,8 @@ namespace LuckyNumber.Core
         }
 
         /// <summary>
-        /// Safe to call in both Edit Mode and Play Mode: ensures Malios and Arvand exist in the scene
-        /// with their initial sliced sprites visible in Scene View and Game View.
+        /// Safe to call in both Edit Mode and Play Mode: ensures Malios (with Footstep VFX),
+        /// Arvand, Camera Follow, and Prop Colliders exist in the scene.
         /// </summary>
         public static void EnsureCharactersAndCameraInScene(GameAssetRegistry registry)
         {
@@ -47,10 +47,15 @@ namespace LuckyNumber.Core
                     typeof(Rigidbody2D),
                     typeof(CircleCollider2D),
                     typeof(CharacterSpriteAnimator),
+                    typeof(PlayerFootstepVFX),
                     typeof(PlayerController)
                 );
                 maliosObj.transform.position = new Vector3(0f, -2.2f, 0f);
                 maliosObj.transform.localScale = new Vector3(0.22f, 0.22f, 1f);
+            }
+            else if (maliosObj.GetComponent<PlayerFootstepVFX>() == null)
+            {
+                maliosObj.AddComponent<PlayerFootstepVFX>();
             }
 
             SpriteRenderer maliosSr = maliosObj.GetComponent<SpriteRenderer>();
@@ -117,39 +122,46 @@ namespace LuckyNumber.Core
                     follow = cam.gameObject.AddComponent<SmoothCameraFollow>();
                 }
                 follow.SetTarget(maliosObj.transform, true);
-                // Ensure solid colliders on all Prop Tilemaps (excluding grass/flowers/puddles)
-                WorldPropColliderBuilder.RebuildAllWorldColliders();
             }
+
+            // 4. Ensure solid colliders on all Prop Tilemaps (excluding grass/flowers/puddles)
+            WorldPropColliderBuilder.RebuildAllWorldColliders();
         }
 
+        /// <summary>
+        /// Safe to call in both Edit Mode and Play Mode!
+        /// Creates/updates LuckyNumber_GameSystems and LuckyNumber_UICanvas (with Cutscene, Dialogue, HUD & Cloud Transition panels)
+        /// directly in the scene Hierarchy so they can be inspected and customized in Edit Mode.
+        /// </summary>
         public static void EnsureWorldSetup()
         {
             var registry = GameAssetRegistry.Instance;
 
-            // 1. Ensure Core Managers exist
+            // 1. Ensure Core Managers exist on LuckyNumber_GameSystems
+            GameObject sysObj = GameObject.Find("LuckyNumber_GameSystems");
             GameProgressionManager progMgr = FindFirstObjectByType<GameProgressionManager>();
-            if (progMgr == null)
+            if (sysObj == null && progMgr != null)
             {
-                GameObject sysObj = new GameObject("LuckyNumber_GameSystems");
-                progMgr = sysObj.AddComponent<GameProgressionManager>();
-                sysObj.AddComponent<MapZoneProgressionManager>();
-                sysObj.AddComponent<WorldPropColliderBuilder>();
-                sysObj.AddComponent<DialogueSystem>();
-                sysObj.AddComponent<CutsceneManager>();
+                sysObj = progMgr.gameObject;
             }
-            else
+            if (sysObj == null)
             {
-                if (FindFirstObjectByType<MapZoneProgressionManager>() == null)
-                    progMgr.gameObject.AddComponent<MapZoneProgressionManager>();
-                if (FindFirstObjectByType<WorldPropColliderBuilder>() == null)
-                    progMgr.gameObject.AddComponent<WorldPropColliderBuilder>();
-                if (FindFirstObjectByType<DialogueSystem>() == null)
-                    progMgr.gameObject.AddComponent<DialogueSystem>();
-                if (FindFirstObjectByType<CutsceneManager>() == null)
-                    progMgr.gameObject.AddComponent<CutsceneManager>();
+                sysObj = new GameObject("LuckyNumber_GameSystems");
             }
 
-            WorldPropColliderBuilder.RebuildAllWorldColliders();
+            if (sysObj.GetComponent<GameProgressionManager>() == null)
+                sysObj.AddComponent<GameProgressionManager>();
+            MapZoneProgressionManager zoneMgr = sysObj.GetComponent<MapZoneProgressionManager>();
+            if (zoneMgr == null)
+                zoneMgr = sysObj.AddComponent<MapZoneProgressionManager>();
+            if (sysObj.GetComponent<WorldPropColliderBuilder>() == null)
+                sysObj.AddComponent<WorldPropColliderBuilder>();
+            DialogueSystem dlgSys = sysObj.GetComponent<DialogueSystem>();
+            if (dlgSys == null)
+                dlgSys = sysObj.AddComponent<DialogueSystem>();
+            CutsceneManager cutMgr = sysObj.GetComponent<CutsceneManager>();
+            if (cutMgr == null)
+                cutMgr = sysObj.AddComponent<CutsceneManager>();
 
             // 2. Ensure EventSystem with InputSystemUIInputModule exists
             EventSystem es = FindFirstObjectByType<EventSystem>();
@@ -160,11 +172,15 @@ namespace LuckyNumber.Core
             else if (es.GetComponent<InputSystemUIInputModule>() == null)
             {
                 StandaloneInputModule legacy = es.GetComponent<StandaloneInputModule>();
-                if (legacy != null) Destroy(legacy);
+                if (legacy != null)
+                {
+                    if (Application.isPlaying) Destroy(legacy);
+                    else DestroyImmediate(legacy);
+                }
                 es.gameObject.AddComponent<InputSystemUIInputModule>();
             }
 
-            // 3. Ensure Main UI Canvas exists
+            // 3. Ensure Main UI Canvas exists in Scene Hierarchy
             Canvas mainCanvas = null;
             GameObject existingCanvasObj = GameObject.Find("LuckyNumber_UICanvas");
             if (existingCanvasObj != null)
@@ -185,15 +201,13 @@ namespace LuckyNumber.Core
                 scaler.matchWidthOrHeight = 0.5f;
             }
 
-            // Initialize UIs on Canvas
-            if (DialogueSystem.Instance != null)
-                DialogueSystem.Instance.InitializeUI(mainCanvas.transform);
-            if (MapZoneProgressionManager.Instance != null)
-                MapZoneProgressionManager.Instance.InitializeUI(mainCanvas.transform);
-            if (CutsceneManager.Instance != null)
-                CutsceneManager.Instance.InitializeUI(mainCanvas.transform);
+            // Initialize / bind UI panels on LuckyNumber_UICanvas (works in both Edit Mode and Play Mode)
+            dlgSys.InitializeUI(mainCanvas.transform);
+            zoneMgr.InitializeUI(mainCanvas.transform);
+            zoneMgr.CreateWorldSignpostsAndBossMarkers();
+            cutMgr.InitializeUI(mainCanvas.transform);
 
-            // 4. Ensure Malios, Arvand, and Camera Follow exist
+            // 4. Ensure Malios, Arvand, Camera Follow, and Prop Colliders exist
             EnsureCharactersAndCameraInScene(registry);
         }
     }

@@ -23,23 +23,26 @@ namespace LuckyNumber.UI
     {
         public static DialogueSystem Instance { get; private set; }
 
-        [Header("Dialogue Settings")]
+        [Header("Font & Dialogue Settings (Bisa Diedit di Inspector)")]
+        [SerializeField] private TMP_FontAsset customDialogueFont;
         [SerializeField] private float charDelay = 0.02f;
 
-        // Dialogue UI Elements
-        private GameObject _dialoguePanel;
-        private Image _portraitImage;
-        private TextMeshProUGUI _speakerNameText;
-        private TextMeshProUGUI _dialogueBodyText;
-        private TextMeshProUGUI _continueHintText;
-        private Button _nextLineButton;
+        [Header("Dialogue UI References (LuckyNumber_UICanvas/DialogueSystemPanel)")]
+        [SerializeField] private GameObject _dialoguePanel;
+        [SerializeField] private Image _portraitImage;
+        [SerializeField] private TextMeshProUGUI _speakerNameText;
+        [SerializeField] private TextMeshProUGUI _dialogueBodyText;
+        [SerializeField] private TextMeshProUGUI _continueHintText;
+        [SerializeField] private Button _nextLineButton;
 
-        // Main HUD Elements
-        private TextMeshProUGUI _hudZoneText;
-        private TextMeshProUGUI _hudHokiProgressText;
-        private TextMeshProUGUI _hudObjectiveText;
-        private GameObject _interactionPromptBar;
-        private TextMeshProUGUI _interactionPromptText;
+        [Header("HUD & Prompt References (LuckyNumber_UICanvas)")]
+        [SerializeField] private TextMeshProUGUI _hudZoneText;
+        [SerializeField] private TextMeshProUGUI _hudHokiProgressText;
+        [SerializeField] private TextMeshProUGUI _hudObjectiveText;
+        [SerializeField] private GameObject _interactionPromptBar;
+        [SerializeField] private TextMeshProUGUI _interactionPromptText;
+        [SerializeField] private Button _replayCutsceneButton;
+        [SerializeField] private TextMeshProUGUI _replayCutsceneLabel;
 
         private DialogueLine[] _currentLines;
         private int _lineIndex;
@@ -49,6 +52,7 @@ namespace LuckyNumber.UI
         private Coroutine _typingRoutine;
         private Action _onDialogueFinished;
         private float _openFrameTime;
+        private bool _listenersBound;
 
         public bool IsDialogueOpen => _isOpen;
 
@@ -62,22 +66,131 @@ namespace LuckyNumber.UI
             Instance = this;
         }
 
+        public void ApplyFont(TMP_FontAsset fontAsset)
+        {
+            if (fontAsset == null) return;
+            customDialogueFont = fontAsset;
+            if (_speakerNameText != null) _speakerNameText.font = fontAsset;
+            if (_dialogueBodyText != null) _dialogueBodyText.font = fontAsset;
+            if (_continueHintText != null) _continueHintText.font = fontAsset;
+            if (_hudZoneText != null) _hudZoneText.font = fontAsset;
+            if (_hudHokiProgressText != null) _hudHokiProgressText.font = fontAsset;
+            if (_hudObjectiveText != null) _hudObjectiveText.font = fontAsset;
+            if (_interactionPromptText != null) _interactionPromptText.font = fontAsset;
+            if (_replayCutsceneLabel != null) _replayCutsceneLabel.font = fontAsset;
+        }
+
         public void InitializeUI(Transform canvasTransform)
         {
-            if (_dialoguePanel != null) return;
-
             var registry = GameAssetRegistry.Instance;
-            TMP_FontAsset font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
+            TMP_FontAsset font = registry != null
+                ? registry.GetPreferredFont(customDialogueFont)
+                : customDialogueFont ?? Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
+
+            if (_dialoguePanel == null && canvasTransform != null)
+            {
+                Transform existingPanel = canvasTransform.Find("DialogueSystemPanel");
+                if (existingPanel != null) _dialoguePanel = existingPanel.gameObject;
+            }
+
+            if (_dialoguePanel != null)
+            {
+                BindExistingUIReferences(canvasTransform);
+                if (customDialogueFont != null || (registry != null && registry.customUIFont != null))
+                {
+                    ApplyFont(font);
+                }
+                BindRuntimeButtons();
+                if (Application.isPlaying)
+                {
+                    if (!_isOpen) _dialoguePanel.SetActive(false);
+                    if (_interactionPromptBar != null) _interactionPromptBar.SetActive(false);
+                    if (GameProgressionManager.Instance != null)
+                    {
+                        GameProgressionManager.Instance.OnProgressionChanged -= RefreshHUD;
+                        GameProgressionManager.Instance.OnProgressionChanged += RefreshHUD;
+                    }
+                    RefreshHUD();
+                }
+                return;
+            }
+
+            if (canvasTransform == null) return;
 
             CreateMainHUD(canvasTransform, registry, font);
             CreateInteractionPromptUI(canvasTransform, registry, font);
             CreateDialogueBoxUI(canvasTransform, registry, font);
+            BindRuntimeButtons();
 
             if (GameProgressionManager.Instance != null)
             {
+                GameProgressionManager.Instance.OnProgressionChanged -= RefreshHUD;
                 GameProgressionManager.Instance.OnProgressionChanged += RefreshHUD;
             }
             RefreshHUD();
+        }
+
+        private void BindExistingUIReferences(Transform canvasTransform)
+        {
+            if (canvasTransform != null)
+            {
+                Transform hudBoard = canvasTransform.Find("MainHUD_QuestBoard");
+                if (hudBoard != null)
+                {
+                    if (_hudZoneText == null) _hudZoneText = hudBoard.Find("HUD_ZoneText")?.GetComponent<TextMeshProUGUI>();
+                    if (_hudHokiProgressText == null) _hudHokiProgressText = hudBoard.Find("HUD_HokiText")?.GetComponent<TextMeshProUGUI>();
+                    if (_hudObjectiveText == null) _hudObjectiveText = hudBoard.Find("HUD_ObjectiveText")?.GetComponent<TextMeshProUGUI>();
+                }
+
+                Transform replayBtn = canvasTransform.Find("ReplayIntroCutsceneBtn");
+                if (replayBtn != null)
+                {
+                    if (_replayCutsceneButton == null) _replayCutsceneButton = replayBtn.GetComponent<Button>();
+                    if (_replayCutsceneLabel == null) _replayCutsceneLabel = replayBtn.GetComponentInChildren<TextMeshProUGUI>(true);
+                }
+
+                Transform promptBar = canvasTransform.Find("InteractionPromptBar");
+                if (promptBar != null)
+                {
+                    _interactionPromptBar = promptBar.gameObject;
+                    if (_interactionPromptText == null) _interactionPromptText = promptBar.Find("PromptText")?.GetComponent<TextMeshProUGUI>();
+                }
+            }
+
+            if (_dialoguePanel != null)
+            {
+                Transform dp = _dialoguePanel.transform;
+                if (_speakerNameText == null) _speakerNameText = dp.Find("SpeakerRibbon/SpeakerName")?.GetComponent<TextMeshProUGUI>();
+                if (_portraitImage == null) _portraitImage = dp.Find("PortraitFrame/SpeakerPortrait")?.GetComponent<Image>();
+                if (_dialogueBodyText == null) _dialogueBodyText = dp.Find("DialogueBodyText")?.GetComponent<TextMeshProUGUI>();
+                if (_nextLineButton == null) _nextLineButton = dp.Find("NextDialogueButton")?.GetComponent<Button>();
+                if (_continueHintText == null && _nextLineButton != null)
+                    _continueHintText = _nextLineButton.GetComponentInChildren<TextMeshProUGUI>(true);
+            }
+        }
+
+        private void BindRuntimeButtons()
+        {
+            if (!Application.isPlaying || _listenersBound) return;
+            _listenersBound = true;
+
+            if (_nextLineButton != null)
+            {
+                _nextLineButton.onClick.RemoveListener(AdvanceOrCompleteLine);
+                _nextLineButton.onClick.AddListener(AdvanceOrCompleteLine);
+            }
+
+            if (_replayCutsceneButton != null)
+            {
+                _replayCutsceneButton.onClick.RemoveAllListeners();
+                _replayCutsceneButton.onClick.AddListener(() =>
+                {
+                    if (CutsceneManager.Instance != null && !CutsceneManager.Instance.IsPlaying)
+                    {
+                        CutsceneManager.Instance.PlayIntroCutscene();
+                    }
+                });
+            }
         }
 
         private void OnDestroy()
@@ -113,6 +226,7 @@ namespace LuckyNumber.UI
 
             _hudZoneText = CreateTMP("HUD_ZoneText", hudBoard.transform, font, 16f, FontStyles.Bold, TextAlignmentOptions.Left);
             _hudZoneText.color = new Color(0.32f, 0.18f, 0.06f, 1f);
+            _hudZoneText.text = "Lokasi: Desa Eldoria";
             _hudZoneText.rectTransform.anchorMin = new Vector2(0.08f, 0.70f);
             _hudZoneText.rectTransform.anchorMax = new Vector2(0.92f, 0.92f);
             _hudZoneText.rectTransform.offsetMin = Vector2.zero;
@@ -120,6 +234,7 @@ namespace LuckyNumber.UI
 
             _hudHokiProgressText = CreateTMP("HUD_HokiText", hudBoard.transform, font, 15f, FontStyles.Bold, TextAlignmentOptions.Left);
             _hudHokiProgressText.color = new Color(0.58f, 0.22f, 0.04f, 1f);
+            _hudHokiProgressText.text = "Kepingan HOKI: 0 / 4";
             _hudHokiProgressText.rectTransform.anchorMin = new Vector2(0.08f, 0.48f);
             _hudHokiProgressText.rectTransform.anchorMax = new Vector2(0.92f, 0.70f);
             _hudHokiProgressText.rectTransform.offsetMin = Vector2.zero;
@@ -128,6 +243,7 @@ namespace LuckyNumber.UI
             _hudObjectiveText = CreateTMP("HUD_ObjectiveText", hudBoard.transform, font, 14f, FontStyles.Normal, TextAlignmentOptions.TopLeft);
             _hudObjectiveText.color = new Color(0.18f, 0.12f, 0.06f, 1f);
             _hudObjectiveText.textWrappingMode = TextWrappingModes.Normal;
+            _hudObjectiveText.text = "Misi: Temui Kepala Desa Arvand di tengah Desa Eldoria [Tekan E]";
             _hudObjectiveText.rectTransform.anchorMin = new Vector2(0.08f, 0.08f);
             _hudObjectiveText.rectTransform.anchorMax = new Vector2(0.92f, 0.48f);
             _hudObjectiveText.rectTransform.offsetMin = Vector2.zero;
@@ -153,19 +269,12 @@ namespace LuckyNumber.UI
                 replayImg.color = new Color(0.38f, 0.24f, 0.11f, 0.95f);
             }
 
-            TextMeshProUGUI replayLabel = CreateTMP("Label", replayBtnObj.transform, font, 14f, FontStyles.Bold, TextAlignmentOptions.Center);
-            replayLabel.color = new Color(1f, 0.94f, 0.78f, 1f);
-            replayLabel.text = "Cutscene Awal [C]";
-            SetStretch(replayLabel.rectTransform, 6f, 2f, 6f, 2f);
+            _replayCutsceneLabel = CreateTMP("Label", replayBtnObj.transform, font, 14f, FontStyles.Bold, TextAlignmentOptions.Center);
+            _replayCutsceneLabel.color = new Color(1f, 0.94f, 0.78f, 1f);
+            _replayCutsceneLabel.text = "Cutscene Awal [C]";
+            SetStretch(_replayCutsceneLabel.rectTransform, 6f, 2f, 6f, 2f);
 
-            Button replayBtn = replayBtnObj.GetComponent<Button>();
-            replayBtn.onClick.AddListener(() =>
-            {
-                if (CutsceneManager.Instance != null && !CutsceneManager.Instance.IsPlaying)
-                {
-                    CutsceneManager.Instance.PlayIntroCutscene();
-                }
-            });
+            _replayCutsceneButton = replayBtnObj.GetComponent<Button>();
         }
 
         private void CreateInteractionPromptUI(Transform canvasTransform, GameAssetRegistry registry, TMP_FontAsset font)
@@ -192,6 +301,7 @@ namespace LuckyNumber.UI
 
             _interactionPromptText = CreateTMP("PromptText", _interactionPromptBar.transform, font, 18f, FontStyles.Bold, TextAlignmentOptions.Center);
             _interactionPromptText.color = new Color(1f, 0.94f, 0.72f, 1f);
+            _interactionPromptText.text = "[E] Bicara dengan Kepala Desa Arvand";
             SetStretch(_interactionPromptText.rectTransform, 14f, 4f, 14f, 6f);
 
             _interactionPromptBar.SetActive(false);
@@ -245,6 +355,7 @@ namespace LuckyNumber.UI
 
             _speakerNameText = CreateTMP("SpeakerName", ribbonObj.transform, font, 20f, FontStyles.Bold, TextAlignmentOptions.Center);
             _speakerNameText.color = new Color(1f, 0.95f, 0.78f, 1f);
+            _speakerNameText.text = "Kepala Desa Arvand";
             SetStretch(_speakerNameText.rectTransform, 14f, 6f, 14f, 8f);
 
             // Portrait Box (Left side of wooden board)
@@ -274,11 +385,16 @@ namespace LuckyNumber.UI
             _portraitImage = portraitObj.GetComponent<Image>();
             _portraitImage.preserveAspect = true;
             _portraitImage.raycastTarget = false;
+            if (registry != null && registry.arvandSprites != null && registry.arvandSprites.Length > 0)
+            {
+                _portraitImage.sprite = registry.arvandSprites[0];
+            }
 
             // Dialogue Body Text
             _dialogueBodyText = CreateTMP("DialogueBodyText", _dialoguePanel.transform, font, 20f, FontStyles.Normal, TextAlignmentOptions.TopLeft);
             _dialogueBodyText.color = new Color(0.20f, 0.12f, 0.06f, 1f);
             _dialogueBodyText.textWrappingMode = TextWrappingModes.Normal;
+            _dialogueBodyText.text = "Syukurlah kau tiba, Malios! Empat demon Vorthak telah mencuri pecahan Artefak HOKI dari Desa Eldoria.";
             _dialogueBodyText.rectTransform.anchorMin = new Vector2(0.24f, 0.24f);
             _dialogueBodyText.rectTransform.anchorMax = new Vector2(0.94f, 0.77f);
             _dialogueBodyText.rectTransform.offsetMin = Vector2.zero;
@@ -310,7 +426,6 @@ namespace LuckyNumber.UI
             SetStretch(_continueHintText.rectTransform, 6f, 2f, 6f, 2f);
 
             _nextLineButton = nextBtnObj.GetComponent<Button>();
-            _nextLineButton.onClick.AddListener(AdvanceOrCompleteLine);
 
             _dialoguePanel.SetActive(false);
         }
@@ -354,7 +469,10 @@ namespace LuckyNumber.UI
             if (shouldShow)
             {
                 _interactionPromptBar.SetActive(true);
-                _interactionPromptText.text = PlayerController.Instance.NearestInteractable.InteractionPrompt;
+                if (_interactionPromptText != null)
+                {
+                    _interactionPromptText.text = PlayerController.Instance.NearestInteractable.InteractionPrompt;
+                }
             }
             else if (_interactionPromptBar.activeSelf)
             {
@@ -374,6 +492,11 @@ namespace LuckyNumber.UI
             {
                 Canvas canvas = FindFirstObjectByType<Canvas>();
                 if (canvas != null) InitializeUI(canvas.transform);
+            }
+            else
+            {
+                BindExistingUIReferences(_dialoguePanel.transform.parent);
+                BindRuntimeButtons();
             }
 
             _currentLines = lines;
@@ -395,7 +518,10 @@ namespace LuckyNumber.UI
         private void DisplayCurrentLine()
         {
             DialogueLine line = _currentLines[_lineIndex];
-            _speakerNameText.text = string.IsNullOrEmpty(line.speakerName) ? "NPC" : line.speakerName;
+            if (_speakerNameText != null)
+            {
+                _speakerNameText.text = string.IsNullOrEmpty(line.speakerName) ? "NPC" : line.speakerName;
+            }
 
             if (_portraitImage != null)
             {
@@ -427,15 +553,15 @@ namespace LuckyNumber.UI
         private IEnumerator TypeLineRoutine(string text)
         {
             _isTyping = true;
-            _dialogueBodyText.text = string.Empty;
+            if (_dialogueBodyText != null) _dialogueBodyText.text = string.Empty;
 
             for (int i = 0; i < text.Length; i++)
             {
-                _dialogueBodyText.text = text.Substring(0, i + 1);
+                if (_dialogueBodyText != null) _dialogueBodyText.text = text.Substring(0, i + 1);
                 yield return new WaitForSecondsRealtime(charDelay);
             }
 
-            _dialogueBodyText.text = text;
+            if (_dialogueBodyText != null) _dialogueBodyText.text = text;
             _isTyping = false;
         }
 
@@ -446,7 +572,7 @@ namespace LuckyNumber.UI
             if (_isTyping)
             {
                 if (_typingRoutine != null) StopCoroutine(_typingRoutine);
-                _dialogueBodyText.text = _currentFullText;
+                if (_dialogueBodyText != null) _dialogueBodyText.text = _currentFullText;
                 _isTyping = false;
                 return;
             }

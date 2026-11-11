@@ -17,6 +17,7 @@ namespace LuckyNumber.Characters
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CircleCollider2D))]
     [RequireComponent(typeof(CharacterSpriteAnimator))]
+    [RequireComponent(typeof(PlayerFootstepVFX))]
     public class PlayerController : MonoBehaviour
     {
         public static PlayerController Instance { get; private set; }

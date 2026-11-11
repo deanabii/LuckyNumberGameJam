@@ -7,14 +7,16 @@ using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using TMPro;
 using LuckyNumber.Core;
+using LuckyNumber.UI;
 
 namespace LuckyNumber.EditorTools
 {
     [InitializeOnLoad]
     public static class SpriteSliceAndProjectSetupEditor
     {
-        private const string SessionInitKey = "LuckyNumber_ProjectSetup_Done_v2";
+        private const string SessionInitKey = "LuckyNumber_ProjectSetup_Done_v4";
 
         static SpriteSliceAndProjectSetupEditor()
         {
@@ -28,7 +30,7 @@ namespace LuckyNumber.EditorTools
             };
         }
 
-        [MenuItem("Tools/Lucky Number/1. Slice Character Sprites & Setup TestMap")]
+        [MenuItem("Tools/Lucky Number/1. Slice Character Sprites & Setup TestMap Hierarchy")]
         public static void RunManualSetup()
         {
             RunAutomaticSetup(silent: false);
@@ -47,6 +49,81 @@ namespace LuckyNumber.EditorTools
             Debug.Log($"[Lucky Number] Berhasil mengatur {tileAssetsUpdated} Tile Asset di PaletProp dan membangun {sceneColliders} collider elemen solid (tanpa rumput/bunga kecil)!");
         }
 
+        [MenuItem("Tools/Lucky Number/3. Toggle Preview Panel Cutscene di Scene")]
+        public static void ToggleCutscenePanelPreview()
+        {
+            GameWorldBootstrapper.EnsureWorldSetup();
+            GameObject canvas = GameObject.Find("LuckyNumber_UICanvas");
+            if (canvas == null) return;
+            Transform cutscene = canvas.transform.Find("CutsceneComicOverlay");
+            if (cutscene != null)
+            {
+                bool nextState = !cutscene.gameObject.activeSelf;
+                cutscene.gameObject.SetActive(nextState);
+                Selection.activeGameObject = cutscene.gameObject;
+                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+                Debug.Log($"[Lucky Number] Preview CutsceneComicOverlay: {(nextState ? "AKTIF (Silakan edit Font/Layout di Inspector)" : "DISEMBUNYIKAN")}");
+            }
+        }
+
+        [MenuItem("Tools/Lucky Number/4. Toggle Preview Panel Dialog di Scene")]
+        public static void ToggleDialoguePanelPreview()
+        {
+            GameWorldBootstrapper.EnsureWorldSetup();
+            GameObject canvas = GameObject.Find("LuckyNumber_UICanvas");
+            if (canvas == null) return;
+            Transform dlg = canvas.transform.Find("DialogueSystemPanel");
+            if (dlg != null)
+            {
+                bool nextState = !dlg.gameObject.activeSelf;
+                dlg.gameObject.SetActive(nextState);
+                Selection.activeGameObject = dlg.gameObject;
+                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+                Debug.Log($"[Lucky Number] Preview DialogueSystemPanel: {(nextState ? "AKTIF (Silakan edit Font/Layout di Inspector)" : "DISEMBUNYIKAN")}");
+            }
+        }
+
+        [MenuItem("Tools/Lucky Number/5. Apply Custom Font (GameAssetRegistry) ke Semua UI")]
+        public static void ApplyCustomFontToAllSceneUI()
+        {
+            var registry = GameAssetRegistry.Instance;
+            if (registry == null || registry.customUIFont == null)
+            {
+                Selection.activeObject = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>("Assets/Resources/GameAssetRegistry.asset");
+                Debug.LogWarning("[Lucky Number] Silakan isi field 'Custom UI Font' pada Assets/Resources/GameAssetRegistry.asset terlebih dahulu, lalu klik menu ini lagi!");
+                return;
+            }
+
+            TMP_FontAsset font = registry.customUIFont;
+            int count = 0;
+
+            foreach (var tmp in UnityEngine.Object.FindObjectsByType<TextMeshProUGUI>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                Undo.RecordObject(tmp, "Apply Custom UI Font");
+                tmp.font = font;
+                EditorUtility.SetDirty(tmp);
+                count++;
+            }
+
+            foreach (var tmpWorld in UnityEngine.Object.FindObjectsByType<TextMeshPro>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                Undo.RecordObject(tmpWorld, "Apply Custom World Font");
+                tmpWorld.font = font;
+                EditorUtility.SetDirty(tmpWorld);
+                count++;
+            }
+
+            var dlg = UnityEngine.Object.FindFirstObjectByType<DialogueSystem>();
+            if (dlg != null) dlg.ApplyFont(font);
+            var cut = UnityEngine.Object.FindFirstObjectByType<CutsceneManager>();
+            if (cut != null) cut.ApplyFont(font);
+            var zone = UnityEngine.Object.FindFirstObjectByType<MapZoneProgressionManager>();
+            if (zone != null) zone.ApplyFont(font);
+
+            EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+            Debug.Log($"[Lucky Number] Berhasil menerapkan font '{font.name}' ke {count} komponen teks UI & World di scene!");
+        }
+
         private static void RunAutomaticSetup(bool silent)
         {
             try
@@ -57,17 +134,22 @@ namespace LuckyNumber.EditorTools
                 EnsureCharacterSheetSliced("Assets/Resources/Characters/malios.png", "malios", 6, 4);
                 EnsureCharacterSheetSliced("Assets/Resources/Characters/arvand.png", "arvand", 6, 4);
 
-                // 2. Ensure Cutscene & UI textures in Resources are imported as Single Sprites
+                // 2. Ensure Dust Sprite Sheets in Resources/VFX are sliced (8 frames & 10 frames)
+                EnsureCharacterSheetSliced("Assets/Resources/VFX/Dust_01.png", "Dust_01", 8, 1);
+                EnsureCharacterSheetSliced("Assets/Resources/VFX/Dust_02.png", "Dust_02", 10, 1);
+
+                // 3. Ensure Cutscene, UI & Cloud textures in Resources are imported as Single Sprites
                 ConfigureFolderAsSingleSprites("Assets/Resources/Cutscenes");
                 ConfigureFolderAsSingleSprites("Assets/Resources/UI");
+                ConfigureCloudsAsSingleSprites("Assets/Resources/VFX");
 
-                // 3. Configure Tile assets in Assets/Sprites/PaletProp (None for grass/flowers, Sprite for solid props)
+                // 4. Configure Tile assets in Assets/Sprites/PaletProp (None for grass/flowers, Sprite for solid props)
                 ConfigurePalettePropTileAssets();
 
-                // 4. Populate GameAssetRegistry.asset in Assets/Resources
+                // 5. Populate GameAssetRegistry.asset in Assets/Resources
                 GameAssetRegistry registry = PopulateGameAssetRegistry();
 
-                // 5. If TestMap scene is currently open in Editor, ensure Bootstrapper, Malios, Arvand & Prop Colliders are present
+                // 6. If TestMap scene is currently open in Editor, create full UI Canvas, Systems, Characters & Colliders in Hierarchy!
                 Scene activeScene = SceneManager.GetActiveScene();
                 if (activeScene.IsValid() && (activeScene.name == "TestMap" || UnityEngine.Object.FindFirstObjectByType<Grid>() != null))
                 {
@@ -75,14 +157,13 @@ namespace LuckyNumber.EditorTools
                     {
                         new GameObject("LuckyNumber_Bootstrapper", typeof(GameWorldBootstrapper));
                     }
-                    GameWorldBootstrapper.EnsureCharactersAndCameraInScene(registry);
-                    WorldPropColliderBuilder.RebuildAllWorldColliders();
+                    GameWorldBootstrapper.EnsureWorldSetup();
                     EditorSceneManager.MarkSceneDirty(activeScene);
                 }
 
                 if (!silent)
                 {
-                    Debug.Log("[Lucky Number] Berhasil memotong sprite Malios & Arvand (24 frame), menyiapkan collider elemen prop (tanpa rumput), serta mengonfigurasi GameAssetRegistry!");
+                    Debug.Log("[Lucky Number] Berhasil menyiapkan LuckyNumber_UICanvas (Cutscene, Dialog, HUD, Transisi Awan), VFX Langkah Kaki Malios, dan Collider di Hierarchy TestMap!");
                 }
             }
             catch (Exception ex)
@@ -128,7 +209,7 @@ namespace LuckyNumber.EditorTools
 
         /// <summary>
         /// Follows the Safe Core Pattern with mandatory ISpriteFrameEditCapability checks
-        /// to slice or update pivots on a 6x4 character sprite sheet.
+        /// to slice or update pivots on a sprite sheet.
         /// </summary>
         public static void EnsureCharacterSheetSliced(string assetPath, string baseName, int cols, int rows)
         {
@@ -186,7 +267,6 @@ namespace LuckyNumber.EditorTools
 
             if (existingRects == null || existingRects.Length < cols * rows)
             {
-                // Slice into cols x rows grid using original source image dimensions
                 var textureProvider = dataProvider.GetDataProvider<ITextureDataProvider>();
                 int actualWidth = 2048;
                 int actualHeight = 1360;
@@ -208,8 +288,8 @@ namespace LuckyNumber.EditorTools
                     for (int c = 0; c < cols; c++)
                     {
                         int index = r * cols + c;
-                        float padX = cellW * 0.04f;
-                        float padY = cellH * 0.01f;
+                        float padX = rows > 1 ? cellW * 0.04f : 0f;
+                        float padY = rows > 1 ? cellH * 0.01f : 0f;
 
                         var sr = new SpriteRect
                         {
@@ -238,7 +318,6 @@ namespace LuckyNumber.EditorTools
             }
             else
             {
-                // Ensure Center alignment on existing 24 sliced sprites
                 for (int i = 0; i < existingRects.Length; i++)
                 {
                     if (existingRects[i].alignment != (SpriteAlignment)(int)SpriteAlignment.Center)
@@ -291,6 +370,34 @@ namespace LuckyNumber.EditorTools
             }
         }
 
+        private static void ConfigureCloudsAsSingleSprites(string folderPath)
+        {
+            if (!AssetDatabase.IsValidFolder(folderPath)) return;
+            string[] guids = AssetDatabase.FindAssets("Clouds_ t:Texture2D", new[] { folderPath });
+            foreach (string guid in guids)
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                TextureImporter ti = AssetImporter.GetAtPath(path) as TextureImporter;
+                if (ti == null) continue;
+
+                bool changed = false;
+                if (ti.textureType != TextureImporterType.Sprite)
+                {
+                    ti.textureType = TextureImporterType.Sprite;
+                    changed = true;
+                }
+                if (ti.spriteImportMode != SpriteImportMode.Single)
+                {
+                    ti.spriteImportMode = SpriteImportMode.Single;
+                    changed = true;
+                }
+                if (changed)
+                {
+                    ti.SaveAndReimport();
+                }
+            }
+        }
+
         private static GameAssetRegistry PopulateGameAssetRegistry()
         {
             const string registryPath = "Assets/Resources/GameAssetRegistry.asset";
@@ -307,6 +414,18 @@ namespace LuckyNumber.EditorTools
 
             registry.maliosSprites = LoadSortedSpritesAtPath("Assets/Asset/Karakter/malios.png");
             registry.arvandSprites = LoadSortedSpritesAtPath("Assets/Asset/Karakter/arvand.png");
+
+            registry.dust1Sprites = LoadSortedSpritesAtPath("Assets/Tiny Swords/Particle FX/Dust_01.png");
+            registry.dust2Sprites = LoadSortedSpritesAtPath("Assets/Tiny Swords/Particle FX/Dust_02.png");
+            registry.cloudSprites = new[]
+            {
+                AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Tiny Swords/Terrain/Decorations/Clouds/Clouds_01.png"),
+                AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Tiny Swords/Terrain/Decorations/Clouds/Clouds_02.png"),
+                AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Tiny Swords/Terrain/Decorations/Clouds/Clouds_03.png"),
+                AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Tiny Swords/Terrain/Decorations/Clouds/Clouds_04.png"),
+                AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Tiny Swords/Terrain/Decorations/Clouds/Clouds_05.png"),
+                AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Tiny Swords/Terrain/Decorations/Clouds/Clouds_06.png")
+            };
 
             registry.dialogueBoardSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Fantasy Wooden GUI  Free/normal_ui_set A/UI board Large  parchment.png");
             registry.smallBoardSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Fantasy Wooden GUI  Free/normal_ui_set A/UI board Small  parchment.png");

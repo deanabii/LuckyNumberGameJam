@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0fed80d5ef0ee4d9ff6f115a70b24d, type: 3}
   m_Name: GameAssetRegistry
   m_EditorClassIdentifier: Assembly-CSharp::LuckyNumber.Core.GameAssetRegistry
+  customUIFont: {fileID: 0}
   maliosSprites:
   - {fileID: 4237681542253015899, guid: b1290cf9d98fb064692b7fc9b77bc283, type: 3}
   - {fileID: -1253462998148892557, guid: b1290cf9d98fb064692b7fc9b77bc283, type: 3}
@@ -62,6 +63,33 @@ MonoBehaviour:
   - {fileID: 8289536534081773534, guid: 762612cbeb458dd46ba5563faa3f39c9, type: 3}
   - {fileID: 499029468288016368, guid: 762612cbeb458dd46ba5563faa3f39c9, type: 3}
   - {fileID: 5596110225574289590, guid: 762612cbeb458dd46ba5563faa3f39c9, type: 3}
+  dust1Sprites:
+  - {fileID: -3938067102993155475, guid: dc61687b6a5c544dd919bee8fb6648ab, type: 3}
+  - {fileID: -2814413885907626888, guid: dc61687b6a5c544dd919bee8fb6648ab, type: 3}
+  - {fileID: 511644010118226858, guid: dc61687b6a5c544dd919bee8fb6648ab, type: 3}
+  - {fileID: 5573429324852406649, guid: dc61687b6a5c544dd919bee8fb6648ab, type: 3}
+  - {fileID: -437083963760578091, guid: dc61687b6a5c544dd919bee8fb6648ab, type: 3}
+  - {fileID: 5397500908387719711, guid: dc61687b6a5c544dd919bee8fb6648ab, type: 3}
+  - {fileID: -7625881852923091777, guid: dc61687b6a5c544dd919bee8fb6648ab, type: 3}
+  - {fileID: -1636112882996861530, guid: dc61687b6a5c544dd919bee8fb6648ab, type: 3}
+  dust2Sprites:
+  - {fileID: -1816181534746063121, guid: a14746fc3b7dd4c11b8ddfba1629a28d, type: 3}
+  - {fileID: 1915886111900610273, guid: a14746fc3b7dd4c11b8ddfba1629a28d, type: 3}
+  - {fileID: 864970246688699690, guid: a14746fc3b7dd4c11b8ddfba1629a28d, type: 3}
+  - {fileID: 3623962637607264606, guid: a14746fc3b7dd4c11b8ddfba1629a28d, type: 3}
+  - {fileID: 8762429002948413843, guid: a14746fc3b7dd4c11b8ddfba1629a28d, type: 3}
+  - {fileID: -6678866189017181242, guid: a14746fc3b7dd4c11b8ddfba1629a28d, type: 3}
+  - {fileID: -5614916648683932799, guid: a14746fc3b7dd4c11b8ddfba1629a28d, type: 3}
+  - {fileID: -415409350319509725, guid: a14746fc3b7dd4c11b8ddfba1629a28d, type: 3}
+  - {fileID: 3150438332194645857, guid: a14746fc3b7dd4c11b8ddfba1629a28d, type: 3}
+  - {fileID: -7163496338456348702, guid: a14746fc3b7dd4c11b8ddfba1629a28d, type: 3}
+  cloudSprites:
+  - {fileID: 21300000, guid: f6f0e53d863ee47e59f269cada8e711a, type: 3}
+  - {fileID: 21300000, guid: ed913e18216254ce6a098078c02ef683, type: 3}
+  - {fileID: 21300000, guid: 1e7e70e696d2b4a02bfd5355f801766f, type: 3}
+  - {fileID: 21300000, guid: f2ed26cb6dd1041dd9ee9c41ab988af0, type: 3}
+  - {fileID: 21300000, guid: b4fdf8be587754c7ea72d1cabd4347b1, type: 3}
+  - {fileID: 21300000, guid: 678a2da2eafd845eb929587b3b44d4c6, type: 3}
   dialogueBoardSprite: {fileID: 21300000, guid: 43a7d98bd4222b64e933596512dc09ad, type: 3}
   smallBoardSprite: {fileID: 21300000, guid: a454050719005b444b59a84eaafba779, type: 3}
   stoneBoardSprite: {fileID: 21300000, guid: 9a6560e5bacb40847bb1b879ede354fb, type: 3}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace LuckyNumber.Core
 {
@@ -25,9 +26,24 @@ namespace LuckyNumber.Core
             }
         }
 
+        public TMP_FontAsset GetPreferredFont(TMP_FontAsset localOverride = null)
+        {
+            if (localOverride != null) return localOverride;
+            if (customUIFont != null) return customUIFont;
+            return Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
+        }
+
+        [Header("Custom Font (Isi untuk mengganti Font Dialog, Cutscene & UI)")]
+        public TMP_FontAsset customUIFont;
+
         [Header("Character Sprites (24 Frames: 0-5 Down, 6-11 Row2, 12-17 Row3, 18-23 Up)")]
         public Sprite[] maliosSprites;
         public Sprite[] arvandSprites;
+
+        [Header("VFX Sprites (Walking Dust & Cloud Transition)")]
+        public Sprite[] dust1Sprites;
+        public Sprite[] dust2Sprites;
+        public Sprite[] cloudSprites;
 
         [Header("Wooden GUI & Tiny Swords UI Sprites")]
         public Sprite dialogueBoardSprite;
@@ -62,6 +78,34 @@ namespace LuckyNumber.Core
             if (arvandSprites == null || arvandSprites.Length < 24 || arvandSprites[0] == null)
             {
                 arvandSprites = LoadOrSliceCharacterSheet("Characters/arvand", 6, 4);
+            }
+
+            if (dust1Sprites == null || dust1Sprites.Length < 4 || dust1Sprites[0] == null)
+            {
+                dust1Sprites = LoadOrSliceCharacterSheet("VFX/Dust_01", 8, 1);
+            }
+
+            if (dust2Sprites == null || dust2Sprites.Length < 4 || dust2Sprites[0] == null)
+            {
+                dust2Sprites = LoadOrSliceCharacterSheet("VFX/Dust_02", 10, 1);
+            }
+
+            string[] cloudPaths =
+            {
+                "VFX/Clouds_01",
+                "VFX/Clouds_02",
+                "VFX/Clouds_03",
+                "VFX/Clouds_04",
+                "VFX/Clouds_05",
+                "VFX/Clouds_06"
+            };
+            if (cloudSprites == null || cloudSprites.Length < cloudPaths.Length || cloudSprites[0] == null)
+            {
+                cloudSprites = new Sprite[cloudPaths.Length];
+                for (int i = 0; i < cloudPaths.Length; i++)
+                {
+                    cloudSprites[i] = LoadSingleSprite(cloudPaths[i]);
+                }
             }
 
             if (dialogueBoardSprite == null) dialogueBoardSprite = LoadSingleSprite("UI/board_large_parchment");

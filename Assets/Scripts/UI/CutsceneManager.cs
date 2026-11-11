@@ -22,20 +22,27 @@ namespace LuckyNumber.UI
     {
         public static CutsceneManager Instance { get; private set; }
 
-        [Header("Cutscene Settings")]
+        [Header("Font & Cutscene Settings (Bisa Diedit di Inspector)")]
+        [SerializeField] private TMP_FontAsset customCutsceneFont;
         [SerializeField] private float typewriterCharDelay = 0.018f;
         [SerializeField] private bool playIntroOnStart = true;
 
-        private GameObject _cutsceneRoot;
-        private CanvasGroup _rootCanvasGroup;
-        private Image _comicArtworkImage;
-        private RectTransform _comicArtworkRect;
-        private TextMeshProUGUI _chapterTitleText;
-        private TextMeshProUGUI _pageCounterText;
-        private TextMeshProUGUI _narrativeText;
-        private TextMeshProUGUI _nextButtonLabel;
-        private Button _nextButton;
-        private Button _skipButton;
+        [Header("Daftar Slide Cutscene (Otomatis Terisi, Bisa Diedit di Inspector)")]
+        [SerializeField] private CutsceneSlide[] introSlides;
+        [SerializeField] private CutsceneSlide[] endingSlides;
+
+        [Header("UI References (Tersambung ke LuckyNumber_UICanvas/CutsceneComicOverlay)")]
+        [SerializeField] private GameObject _cutsceneRoot;
+        [SerializeField] private CanvasGroup _rootCanvasGroup;
+        [SerializeField] private Image _comicArtworkImage;
+        [SerializeField] private RectTransform _comicArtworkRect;
+        [SerializeField] private TextMeshProUGUI _chapterTitleText;
+        [SerializeField] private TextMeshProUGUI _pageCounterText;
+        [SerializeField] private TextMeshProUGUI _narrativeText;
+        [SerializeField] private TextMeshProUGUI _nextButtonLabel;
+        [SerializeField] private TextMeshProUGUI _skipButtonLabel;
+        [SerializeField] private Button _nextButton;
+        [SerializeField] private Button _skipButton;
 
         private CutsceneSlide[] _activeSlides;
         private int _currentSlideIndex;
@@ -45,6 +52,7 @@ namespace LuckyNumber.UI
         private Coroutine _typingCoroutine;
         private Action _onCutsceneComplete;
         private float _slideZoomTimer;
+        private bool _listenersBound;
 
         public bool IsPlaying => _isPlaying;
 
@@ -58,14 +66,87 @@ namespace LuckyNumber.UI
             Instance = this;
         }
 
+        public void ApplyFont(TMP_FontAsset fontAsset)
+        {
+            if (fontAsset == null) return;
+            customCutsceneFont = fontAsset;
+            if (_chapterTitleText != null) _chapterTitleText.font = fontAsset;
+            if (_pageCounterText != null) _pageCounterText.font = fontAsset;
+            if (_narrativeText != null) _narrativeText.font = fontAsset;
+            if (_nextButtonLabel != null) _nextButtonLabel.font = fontAsset;
+            if (_skipButtonLabel != null) _skipButtonLabel.font = fontAsset;
+        }
+
+        public void EnsureDefaultSlidesPopulated()
+        {
+            var registry = GameAssetRegistry.Instance;
+            Sprite[] introSprites = registry != null ? registry.introCutsceneSprites : null;
+            Sprite[] endingSprites = registry != null ? registry.endingCutsceneSprites : null;
+
+            if (introSlides == null || introSlides.Length == 0)
+            {
+                introSlides = CreateDefaultIntroSlides(introSprites);
+            }
+            else
+            {
+                for (int i = 0; i < introSlides.Length; i++)
+                {
+                    if (introSlides[i].artwork == null)
+                        introSlides[i].artwork = GetSafeSprite(introSprites, i);
+                }
+            }
+
+            if (endingSlides == null || endingSlides.Length == 0)
+            {
+                endingSlides = CreateDefaultEndingSlides(endingSprites);
+            }
+            else
+            {
+                for (int i = 0; i < endingSlides.Length; i++)
+                {
+                    if (endingSlides[i].artwork == null)
+                        endingSlides[i].artwork = GetSafeSprite(endingSprites, i);
+                }
+            }
+        }
+
         public void InitializeUI(Transform canvasTransform)
         {
-            if (_cutsceneRoot != null) return;
-
             var registry = GameAssetRegistry.Instance;
-            TMP_FontAsset font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
+            TMP_FontAsset font = registry != null
+                ? registry.GetPreferredFont(customCutsceneFont)
+                : customCutsceneFont ?? Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
 
-            // Fullscreen dark backdrop
+            EnsureDefaultSlidesPopulated();
+
+            // Check if CutsceneComicOverlay already exists in the Canvas Hierarchy (from Edit Mode)
+            if (_cutsceneRoot == null && canvasTransform != null)
+            {
+                Transform existing = canvasTransform.Find("CutsceneComicOverlay");
+                if (existing != null)
+                {
+                    _cutsceneRoot = existing.gameObject;
+                }
+            }
+
+            if (_cutsceneRoot != null)
+            {
+                BindExistingUIReferences();
+                if (customCutsceneFont != null || (registry != null && registry.customUIFont != null))
+                {
+                    ApplyFont(font);
+                }
+                BindRuntimeButtons();
+                if (Application.isPlaying && !_isPlaying)
+                {
+                    _cutsceneRoot.SetActive(false);
+                }
+                return;
+            }
+
+            if (canvasTransform == null) return;
+
+            // Create CutsceneComicOverlay in Canvas Hierarchy
             _cutsceneRoot = new GameObject("CutsceneComicOverlay", typeof(RectTransform), typeof(CanvasGroup), typeof(Image));
             _cutsceneRoot.transform.SetParent(canvasTransform, false);
             RectTransform rootRect = _cutsceneRoot.GetComponent<RectTransform>();
@@ -199,7 +280,6 @@ namespace LuckyNumber.UI
                 registry,
                 out _nextButtonLabel
             );
-            _nextButton.onClick.AddListener(OnNextClicked);
 
             // Skip Button (Bottom Left)
             _skipButton = CreateWoodenButton(
@@ -210,11 +290,69 @@ namespace LuckyNumber.UI
                 "Lewati Cerita [Esc]",
                 font,
                 registry,
-                out _
+                out _skipButtonLabel
             );
-            _skipButton.onClick.AddListener(SkipCutscene);
 
+            // Populate slide 0 preview so when toggled active in Edit Mode, user sees actual cutscene layout
+            if (introSlides != null && introSlides.Length > 0)
+            {
+                _chapterTitleText.text = introSlides[0].chapterTitle;
+                _pageCounterText.text = $"PANEL 1 / {introSlides.Length}";
+                _narrativeText.text = introSlides[0].narrativeText;
+                if (introSlides[0].artwork != null)
+                {
+                    _comicArtworkImage.sprite = introSlides[0].artwork;
+                    _comicArtworkImage.color = Color.white;
+                }
+            }
+
+            BindRuntimeButtons();
             _cutsceneRoot.SetActive(false);
+        }
+
+        private void BindExistingUIReferences()
+        {
+            if (_cutsceneRoot == null) return;
+            if (_rootCanvasGroup == null) _rootCanvasGroup = _cutsceneRoot.GetComponent<CanvasGroup>();
+
+            Transform frame = _cutsceneRoot.transform.Find("ComicBoardFrame");
+            if (frame == null) return;
+
+            if (_chapterTitleText == null)
+                _chapterTitleText = frame.Find("ChapterHeader/ChapterTitleText")?.GetComponent<TextMeshProUGUI>();
+            if (_comicArtworkImage == null)
+                _comicArtworkImage = frame.Find("ComicPanelBorder/ComicPanelViewport/ComicArtwork")?.GetComponent<Image>();
+            if (_comicArtworkRect == null && _comicArtworkImage != null)
+                _comicArtworkRect = _comicArtworkImage.rectTransform;
+            if (_pageCounterText == null)
+                _pageCounterText = frame.Find("ComicPanelBorder/PageBadge/PageCounterText")?.GetComponent<TextMeshProUGUI>();
+            if (_narrativeText == null)
+                _narrativeText = frame.Find("NarrativeBox/NarrativeText")?.GetComponent<TextMeshProUGUI>();
+            if (_nextButton == null)
+                _nextButton = frame.Find("NextSlideButton")?.GetComponent<Button>();
+            if (_nextButtonLabel == null && _nextButton != null)
+                _nextButtonLabel = _nextButton.GetComponentInChildren<TextMeshProUGUI>(true);
+            if (_skipButton == null)
+                _skipButton = frame.Find("SkipCutsceneButton")?.GetComponent<Button>();
+            if (_skipButtonLabel == null && _skipButton != null)
+                _skipButtonLabel = _skipButton.GetComponentInChildren<TextMeshProUGUI>(true);
+        }
+
+        private void BindRuntimeButtons()
+        {
+            if (!Application.isPlaying || _listenersBound) return;
+            _listenersBound = true;
+
+            if (_nextButton != null)
+            {
+                _nextButton.onClick.RemoveListener(OnNextClicked);
+                _nextButton.onClick.AddListener(OnNextClicked);
+            }
+            if (_skipButton != null)
+            {
+                _skipButton.onClick.RemoveListener(SkipCutscene);
+                _skipButton.onClick.AddListener(SkipCutscene);
+            }
         }
 
         private void Start()
@@ -258,10 +396,33 @@ namespace LuckyNumber.UI
 
         public void PlayIntroCutscene(Action onComplete = null)
         {
-            var registry = GameAssetRegistry.Instance;
-            Sprite[] sprites = registry != null ? registry.introCutsceneSprites : null;
+            EnsureDefaultSlidesPopulated();
+            PlaySequence(introSlides, () =>
+            {
+                if (GameProgressionManager.Instance != null)
+                {
+                    GameProgressionManager.Instance.MarkIntroWatched();
+                }
+                onComplete?.Invoke();
+            });
+        }
 
-            CutsceneSlide[] introSlides =
+        public void PlayEndingCutscene(Action onComplete = null)
+        {
+            EnsureDefaultSlidesPopulated();
+            PlaySequence(endingSlides, () =>
+            {
+                if (GameProgressionManager.Instance != null)
+                {
+                    GameProgressionManager.Instance.MarkHokiRestored();
+                }
+                onComplete?.Invoke();
+            });
+        }
+
+        private static CutsceneSlide[] CreateDefaultIntroSlides(Sprite[] sprites)
+        {
+            return new[]
             {
                 new CutsceneSlide
                 {
@@ -304,23 +465,11 @@ namespace LuckyNumber.UI
                     artwork = GetSafeSprite(sprites, 4)
                 }
             };
-
-            PlaySequence(introSlides, () =>
-            {
-                if (GameProgressionManager.Instance != null)
-                {
-                    GameProgressionManager.Instance.MarkIntroWatched();
-                }
-                onComplete?.Invoke();
-            });
         }
 
-        public void PlayEndingCutscene(Action onComplete = null)
+        private static CutsceneSlide[] CreateDefaultEndingSlides(Sprite[] sprites)
         {
-            var registry = GameAssetRegistry.Instance;
-            Sprite[] sprites = registry != null ? registry.endingCutsceneSprites : null;
-
-            CutsceneSlide[] endingSlides =
+            return new[]
             {
                 new CutsceneSlide
                 {
@@ -355,15 +504,6 @@ namespace LuckyNumber.UI
                     artwork = GetSafeSprite(sprites, 3)
                 }
             };
-
-            PlaySequence(endingSlides, () =>
-            {
-                if (GameProgressionManager.Instance != null)
-                {
-                    GameProgressionManager.Instance.MarkHokiRestored();
-                }
-                onComplete?.Invoke();
-            });
         }
 
         public void PlaySequence(CutsceneSlide[] slides, Action onComplete = null)
@@ -378,6 +518,11 @@ namespace LuckyNumber.UI
             {
                 Canvas canvas = FindFirstObjectByType<Canvas>();
                 if (canvas != null) InitializeUI(canvas.transform);
+            }
+            else
+            {
+                BindExistingUIReferences();
+                BindRuntimeButtons();
             }
 
             _activeSlides = slides;
@@ -400,8 +545,8 @@ namespace LuckyNumber.UI
             if (_activeSlides == null || index < 0 || index >= _activeSlides.Length) return;
 
             CutsceneSlide slide = _activeSlides[index];
-            _chapterTitleText.text = slide.chapterTitle;
-            _pageCounterText.text = $"PANEL {index + 1} / {_activeSlides.Length}";
+            if (_chapterTitleText != null) _chapterTitleText.text = slide.chapterTitle;
+            if (_pageCounterText != null) _pageCounterText.text = $"PANEL {index + 1} / {_activeSlides.Length}";
 
             if (_comicArtworkImage != null)
             {
@@ -429,15 +574,15 @@ namespace LuckyNumber.UI
         private IEnumerator TypewriterRoutine(string text)
         {
             _isTyping = true;
-            _narrativeText.text = string.Empty;
+            if (_narrativeText != null) _narrativeText.text = string.Empty;
 
             for (int i = 0; i < text.Length; i++)
             {
-                _narrativeText.text = text.Substring(0, i + 1);
+                if (_narrativeText != null) _narrativeText.text = text.Substring(0, i + 1);
                 yield return new WaitForSecondsRealtime(typewriterCharDelay);
             }
 
-            _narrativeText.text = text;
+            if (_narrativeText != null) _narrativeText.text = text;
             _isTyping = false;
         }
 
@@ -448,7 +593,7 @@ namespace LuckyNumber.UI
             if (_isTyping)
             {
                 if (_typingCoroutine != null) StopCoroutine(_typingCoroutine);
-                _narrativeText.text = _fullSlideText;
+                if (_narrativeText != null) _narrativeText.text = _fullSlideText;
                 _isTyping = false;
                 return;
             }

@@ -27,27 +27,30 @@ namespace LuckyNumber.Core
     {
         public static MapZoneProgressionManager Instance { get; private set; }
 
+        [Header("Font Settings (Bisa Diedit di Inspector)")]
+        [SerializeField] private TMP_FontAsset customTransitionFont;
+
+        [Header("UI References (LuckyNumber_UICanvas)")]
+        [SerializeField] private GameObject _transitionOverlayObj;
+        [SerializeField] private CanvasGroup _transitionCanvasGroup;
+        [SerializeField] private GameObject _warningCardObj;
+        [SerializeField] private TextMeshProUGUI _warningTitleText;
+        [SerializeField] private TextMeshProUGUI _warningBodyText;
+        [SerializeField] private TextMeshProUGUI _warningButtonLabel;
+        [SerializeField] private Button _warningCloseButton;
+        [SerializeField] private GameObject _zoneBannerObj;
+        [SerializeField] private CanvasGroup _zoneBannerGroup;
+        [SerializeField] private TextMeshProUGUI _zoneBannerText;
+
         private readonly List<ZoneGatewayDefinition> _gateways = new List<ZoneGatewayDefinition>();
         private readonly Dictionary<MapZoneId, Rect> _zoneCameraBounds = new Dictionary<MapZoneId, Rect>();
         private readonly List<TextMeshPro> _gateSignpostLabels = new List<TextMeshPro>();
 
-        // Black Transition & Warning UI
-        private GameObject _transitionOverlayObj;
-        private CanvasGroup _transitionCanvasGroup;
-        private GameObject _warningCardObj;
-        private TextMeshProUGUI _warningTitleText;
-        private TextMeshProUGUI _warningBodyText;
-        private Button _warningCloseButton;
-
-        // Zone Banner Toast UI
-        private GameObject _zoneBannerObj;
-        private CanvasGroup _zoneBannerGroup;
-        private TextMeshProUGUI _zoneBannerText;
         private Coroutine _bannerRoutine;
-
         private bool _isTransitioning;
         private bool _waitingForWarningDismiss;
         private float _cooldownUntilTime;
+        private bool _listenersBound;
 
         private void Awake()
         {
@@ -64,6 +67,7 @@ namespace LuckyNumber.Core
         {
             if (GameProgressionManager.Instance != null)
             {
+                GameProgressionManager.Instance.OnProgressionChanged -= RefreshGateSignposts;
                 GameProgressionManager.Instance.OnProgressionChanged += RefreshGateSignposts;
             }
             CreateWorldSignpostsAndBossMarkers();
@@ -77,6 +81,16 @@ namespace LuckyNumber.Core
             {
                 GameProgressionManager.Instance.OnProgressionChanged -= RefreshGateSignposts;
             }
+        }
+
+        public void ApplyFont(TMP_FontAsset fontAsset)
+        {
+            if (fontAsset == null) return;
+            customTransitionFont = fontAsset;
+            if (_warningTitleText != null) _warningTitleText.font = fontAsset;
+            if (_warningBodyText != null) _warningBodyText.font = fontAsset;
+            if (_warningButtonLabel != null) _warningButtonLabel.font = fontAsset;
+            if (_zoneBannerText != null) _zoneBannerText.font = fontAsset;
         }
 
         private void SetupZoneBoundsAndGateways()
@@ -224,10 +238,40 @@ namespace LuckyNumber.Core
 
         public void InitializeUI(Transform canvasTransform)
         {
-            if (_transitionOverlayObj != null) return;
-
             var registry = GameAssetRegistry.Instance;
-            TMP_FontAsset font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
+            TMP_FontAsset font = registry != null
+                ? registry.GetPreferredFont(customTransitionFont)
+                : customTransitionFont ?? Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
+
+            if (_transitionOverlayObj == null && canvasTransform != null)
+            {
+                Transform existingOverlay = canvasTransform.Find("BlackZoneTransitionOverlay");
+                if (existingOverlay != null) _transitionOverlayObj = existingOverlay.gameObject;
+            }
+            if (_zoneBannerObj == null && canvasTransform != null)
+            {
+                Transform existingBanner = canvasTransform.Find("ZoneBannerToast");
+                if (existingBanner != null) _zoneBannerObj = existingBanner.gameObject;
+            }
+
+            if (_transitionOverlayObj != null)
+            {
+                RemoveLegacyCloudCurtainIfAny();
+                BindExistingUIReferences();
+                if (customTransitionFont != null || (registry != null && registry.customUIFont != null))
+                {
+                    ApplyFont(font);
+                }
+                BindRuntimeButtons();
+                if (Application.isPlaying && !_isTransitioning)
+                {
+                    _transitionOverlayObj.SetActive(false);
+                    if (_zoneBannerObj != null) _zoneBannerObj.SetActive(false);
+                }
+                return;
+            }
+
+            if (canvasTransform == null) return;
 
             // Top Area Banner Toast
             _zoneBannerObj = new GameObject("ZoneBannerToast", typeof(RectTransform), typeof(CanvasGroup), typeof(Image));
@@ -256,10 +300,11 @@ namespace LuckyNumber.Core
 
             _zoneBannerText = CreateTMP("ZoneBannerText", _zoneBannerObj.transform, font, 19f, FontStyles.Bold, TextAlignmentOptions.Center);
             _zoneBannerText.color = new Color(1f, 0.95f, 0.76f, 1f);
+            _zoneBannerText.text = "Desa Eldoria";
             SetStretch(_zoneBannerText.rectTransform, 14f, 4f, 14f, 6f);
             _zoneBannerObj.SetActive(false);
 
-            // Fullscreen Black Transition & Locked Area Warning Overlay
+            // Fullscreen Black Transition & Locked Area Warning Overlay (Original Style)
             _transitionOverlayObj = new GameObject("BlackZoneTransitionOverlay", typeof(RectTransform), typeof(CanvasGroup), typeof(Image));
             _transitionOverlayObj.transform.SetParent(canvasTransform, false);
             RectTransform trRect = _transitionOverlayObj.GetComponent<RectTransform>();
@@ -296,6 +341,7 @@ namespace LuckyNumber.Core
 
             _warningTitleText = CreateTMP("WarningTitle", _warningCardObj.transform, font, 24f, FontStyles.Bold, TextAlignmentOptions.Center);
             _warningTitleText.color = new Color(0.68f, 0.14f, 0.08f, 1f);
+            _warningTitleText.text = "BAGIAN INI BELUM BISA KAMU MASUKI";
             _warningTitleText.rectTransform.anchorMin = new Vector2(0.08f, 0.72f);
             _warningTitleText.rectTransform.anchorMax = new Vector2(0.92f, 0.90f);
             _warningTitleText.rectTransform.offsetMin = Vector2.zero;
@@ -304,6 +350,7 @@ namespace LuckyNumber.Core
             _warningBodyText = CreateTMP("WarningBody", _warningCardObj.transform, font, 19f, FontStyles.Normal, TextAlignmentOptions.Center);
             _warningBodyText.color = new Color(0.20f, 0.12f, 0.06f, 1f);
             _warningBodyText.textWrappingMode = TextWrappingModes.Normal;
+            _warningBodyText.text = "Segel di jalur ini masih terkunci rapat. Selesaikan pertarungan bos sebelumnya secara berurutan!";
             _warningBodyText.rectTransform.anchorMin = new Vector2(0.10f, 0.26f);
             _warningBodyText.rectTransform.anchorMax = new Vector2(0.90f, 0.70f);
             _warningBodyText.rectTransform.offsetMin = Vector2.zero;
@@ -328,15 +375,69 @@ namespace LuckyNumber.Core
                 cbImg.color = new Color(0.45f, 0.26f, 0.12f, 1f);
             }
 
-            TextMeshProUGUI btnLabel = CreateTMP("Label", closeBtnObj.transform, font, 17f, FontStyles.Bold, TextAlignmentOptions.Center);
-            btnLabel.color = new Color(1f, 0.94f, 0.78f, 1f);
-            btnLabel.text = "Mengerti [E / Spasi]";
-            SetStretch(btnLabel.rectTransform, 6f, 2f, 6f, 2f);
+            _warningButtonLabel = CreateTMP("Label", closeBtnObj.transform, font, 17f, FontStyles.Bold, TextAlignmentOptions.Center);
+            _warningButtonLabel.color = new Color(1f, 0.94f, 0.78f, 1f);
+            _warningButtonLabel.text = "Mengerti [E / Spasi]";
+            SetStretch(_warningButtonLabel.rectTransform, 6f, 2f, 6f, 2f);
 
             _warningCloseButton = closeBtnObj.GetComponent<Button>();
-            _warningCloseButton.onClick.AddListener(() => _waitingForWarningDismiss = false);
+            BindRuntimeButtons();
 
             _transitionOverlayObj.SetActive(false);
+        }
+
+        private void RemoveLegacyCloudCurtainIfAny()
+        {
+            if (_transitionOverlayObj == null) return;
+            Transform cc = _transitionOverlayObj.transform.Find("CloudCurtainContainer");
+            if (cc != null)
+            {
+                if (Application.isPlaying) Destroy(cc.gameObject);
+                else DestroyImmediate(cc.gameObject);
+            }
+
+            Image blackImg = _transitionOverlayObj.GetComponent<Image>();
+            if (blackImg != null)
+            {
+                blackImg.color = new Color(0.03f, 0.02f, 0.05f, 0.96f);
+            }
+        }
+
+        private void BindExistingUIReferences()
+        {
+            if (_zoneBannerObj != null)
+            {
+                if (_zoneBannerGroup == null) _zoneBannerGroup = _zoneBannerObj.GetComponent<CanvasGroup>();
+                if (_zoneBannerText == null) _zoneBannerText = _zoneBannerObj.transform.Find("ZoneBannerText")?.GetComponent<TextMeshProUGUI>();
+            }
+
+            if (_transitionOverlayObj != null)
+            {
+                if (_transitionCanvasGroup == null) _transitionCanvasGroup = _transitionOverlayObj.GetComponent<CanvasGroup>();
+
+                Transform wc = _transitionOverlayObj.transform.Find("LockedZoneWarningCard");
+                if (wc != null)
+                {
+                    _warningCardObj = wc.gameObject;
+                    if (_warningTitleText == null) _warningTitleText = wc.Find("WarningTitle")?.GetComponent<TextMeshProUGUI>();
+                    if (_warningBodyText == null) _warningBodyText = wc.Find("WarningBody")?.GetComponent<TextMeshProUGUI>();
+                    if (_warningCloseButton == null) _warningCloseButton = wc.Find("DismissWarningBtn")?.GetComponent<Button>();
+                    if (_warningButtonLabel == null && _warningCloseButton != null)
+                        _warningButtonLabel = _warningCloseButton.GetComponentInChildren<TextMeshProUGUI>(true);
+                }
+            }
+        }
+
+        private void BindRuntimeButtons()
+        {
+            if (!Application.isPlaying || _listenersBound) return;
+            _listenersBound = true;
+
+            if (_warningCloseButton != null)
+            {
+                _warningCloseButton.onClick.RemoveAllListeners();
+                _warningCloseButton.onClick.AddListener(() => _waitingForWarningDismiss = false);
+            }
         }
 
         private void Update()
@@ -405,9 +506,9 @@ namespace LuckyNumber.Core
 
             _transitionOverlayObj.SetActive(true);
             _transitionOverlayObj.transform.SetAsLastSibling();
-            _warningCardObj.SetActive(true);
-            _warningTitleText.text = warnTitle;
-            _warningBodyText.text = warnBody;
+            if (_warningCardObj != null) _warningCardObj.SetActive(true);
+            if (_warningTitleText != null) _warningTitleText.text = warnTitle;
+            if (_warningBodyText != null) _warningBodyText.text = warnBody;
 
             // Fade to black
             float t = 0f;
@@ -425,7 +526,7 @@ namespace LuckyNumber.Core
                 PlayerController.Instance.TeleportTo(gateway.blockedPushbackPosition, gateway.blockedFacing);
             }
 
-            // Wait until player presses E / Space / Click (or max 4 seconds)
+            // Wait until player presses E / Space / Click (or max 4.5 seconds)
             _waitingForWarningDismiss = true;
             float waitTimer = 0f;
             while (_waitingForWarningDismiss && waitTimer < 4.5f)
@@ -466,9 +567,9 @@ namespace LuckyNumber.Core
 
             _transitionOverlayObj.SetActive(true);
             _transitionOverlayObj.transform.SetAsLastSibling();
-            _warningCardObj.SetActive(false);
+            if (_warningCardObj != null) _warningCardObj.SetActive(false);
 
-            // Quick fade out
+            // Quick fade out to black
             float t = 0f;
             while (t < 0.16f)
             {
@@ -492,7 +593,7 @@ namespace LuckyNumber.Core
 
             yield return new WaitForSecondsRealtime(0.06f);
 
-            // Quick fade in
+            // Quick fade in from black
             t = 0f;
             while (t < 0.18f)
             {
@@ -533,7 +634,7 @@ namespace LuckyNumber.Core
         private IEnumerator ZoneBannerRoutine(string zoneTitle)
         {
             _zoneBannerObj.SetActive(true);
-            _zoneBannerText.text = zoneTitle;
+            if (_zoneBannerText != null) _zoneBannerText.text = zoneTitle;
 
             float t = 0f;
             while (t < 0.25f)
@@ -557,17 +658,17 @@ namespace LuckyNumber.Core
             _zoneBannerObj.SetActive(false);
         }
 
-        private void CreateWorldSignpostsAndBossMarkers()
+        public void CreateWorldSignpostsAndBossMarkers()
         {
             _gateSignpostLabels.Clear();
 
             // 4 Crossroads Signposts so the player clearly sees the 4 sequential boss paths
-            _gateSignpostLabels.Add(CreateWorldLabel("Sign_Boss1", new Vector3(-9.5f, 25.0f, 0f), ""));
-            _gateSignpostLabels.Add(CreateWorldLabel("Sign_Boss2", new Vector3(-4.0f, 30.8f, 0f), ""));
-            _gateSignpostLabels.Add(CreateWorldLabel("Sign_Boss3", new Vector3(3.8f, 30.8f, 0f), ""));
-            _gateSignpostLabels.Add(CreateWorldLabel("Sign_Boss4", new Vector3(8.5f, 25.0f, 0f), ""));
-            CreateWorldLabel("Sign_BackToVillage", new Vector3(0f, 14.0f, 0f), "▼ Selatan: Desa Eldoria");
-            CreateWorldLabel("Sign_NorthToCrossroads", new Vector3(0f, 7.8f, 0f), "▲ Utara: Persimpangan 4 Demon");
+            _gateSignpostLabels.Add(GetOrCreateWorldLabel("Sign_Boss1", new Vector3(-9.5f, 25.0f, 0f), ""));
+            _gateSignpostLabels.Add(GetOrCreateWorldLabel("Sign_Boss2", new Vector3(-4.0f, 30.8f, 0f), ""));
+            _gateSignpostLabels.Add(GetOrCreateWorldLabel("Sign_Boss3", new Vector3(3.8f, 30.8f, 0f), ""));
+            _gateSignpostLabels.Add(GetOrCreateWorldLabel("Sign_Boss4", new Vector3(8.5f, 25.0f, 0f), ""));
+            GetOrCreateWorldLabel("Sign_BackToVillage", new Vector3(0f, 14.0f, 0f), "▼ Selatan: Desa Eldoria");
+            GetOrCreateWorldLabel("Sign_NorthToCrossroads", new Vector3(0f, 7.8f, 0f), "▲ Utara: Persimpangan 4 Demon");
 
             // Sacred Altar in Desa Eldoria
             CreateAltarInteractable(new Vector3(-3.2f, 2.2f, 0f));
@@ -611,14 +712,21 @@ namespace LuckyNumber.Core
             _gateSignpostLabels[3].color = b4Done ? new Color(0.5f, 1f, 0.5f) : (b3Done ? new Color(1f, 0.92f, 0.45f) : new Color(1f, 0.5f, 0.5f));
         }
 
-        private TextMeshPro CreateWorldLabel(string name, Vector3 position, string content)
+        private TextMeshPro GetOrCreateWorldLabel(string name, Vector3 position, string content)
         {
-            GameObject go = new GameObject(name, typeof(TextMeshPro));
-            go.transform.SetParent(transform, false);
+            Transform existing = transform.Find(name);
+            GameObject go = existing != null ? existing.gameObject : new GameObject(name, typeof(TextMeshPro));
+            if (existing == null)
+            {
+                go.transform.SetParent(transform, false);
+            }
             go.transform.position = position;
 
             TextMeshPro tmp = go.GetComponent<TextMeshPro>();
-            tmp.text = content;
+            if (existing == null || !string.IsNullOrEmpty(content))
+            {
+                tmp.text = content;
+            }
             tmp.fontSize = 3.2f;
             tmp.fontStyle = FontStyles.Bold;
             tmp.alignment = TextAlignmentOptions.Center;
@@ -638,28 +746,37 @@ namespace LuckyNumber.Core
 
         private void CreateAltarInteractable(Vector3 position)
         {
-            GameObject altarObj = new GameObject("Altar_Suci_HOKI", typeof(NPCInteractable));
-            altarObj.transform.SetParent(transform, false);
+            Transform existing = transform.Find("Altar_Suci_HOKI");
+            GameObject altarObj = existing != null ? existing.gameObject : new GameObject("Altar_Suci_HOKI", typeof(NPCInteractable));
+            if (existing == null)
+            {
+                altarObj.transform.SetParent(transform, false);
+            }
             altarObj.transform.position = position;
 
             NPCInteractable interactable = altarObj.GetComponent<NPCInteractable>();
             interactable.Configure(InteractableRole.HokiSacredAltar, "Altar Suci HOKI (6 & 7)", 0, 2.5f);
 
-            TextMeshPro label = CreateWorldLabel("AltarLabel", position + new Vector3(0f, 0.9f, 0f), "★ ALTAR SUCI HOKI [6 & 7] ★");
+            TextMeshPro label = GetOrCreateWorldLabel("AltarLabel", position + new Vector3(0f, 0.9f, 0f), "★ ALTAR SUCI HOKI [6 & 7] ★");
             label.color = new Color(1f, 0.88f, 0.35f, 1f);
             label.fontSize = 3.0f;
         }
 
         private void CreateBossPedestal(int bossIndex, string bossTitle, Vector3 position, Color themeColor)
         {
-            GameObject bossObj = new GameObject($"BossEncounter_{bossIndex + 1}", typeof(NPCInteractable));
-            bossObj.transform.SetParent(transform, false);
+            string objName = $"BossEncounter_{bossIndex + 1}";
+            Transform existing = transform.Find(objName);
+            GameObject bossObj = existing != null ? existing.gameObject : new GameObject(objName, typeof(NPCInteractable));
+            if (existing == null)
+            {
+                bossObj.transform.SetParent(transform, false);
+            }
             bossObj.transform.position = position;
 
             NPCInteractable interactable = bossObj.GetComponent<NPCInteractable>();
             interactable.Configure(InteractableRole.BossEncounter, bossTitle, bossIndex, 3.0f);
 
-            TextMeshPro label = CreateWorldLabel($"BossLabel_{bossIndex + 1}", position + new Vector3(0f, 1.1f, 0f), $"⚔ {bossTitle}\n[Tekan E untuk Bertarung]");
+            TextMeshPro label = GetOrCreateWorldLabel($"BossLabel_{bossIndex + 1}", position + new Vector3(0f, 1.1f, 0f), $"⚔ {bossTitle}\n[Tekan E untuk Bertarung]");
             label.color = themeColor;
             label.fontSize = 3.4f;
         }
