@@ -40,10 +40,18 @@ namespace LuckyNumber.Core
         public Sprite[] maliosSprites;
         public Sprite[] arvandSprites;
 
-        [Header("VFX Sprites (Walking Dust & Cloud Transition)")]
+        [Header("VFX Sprites (Walking Dust, Cloud, Fire & Explosion)")]
         public Sprite[] dust1Sprites;
         public Sprite[] dust2Sprites;
         public Sprite[] cloudSprites;
+        public Sprite[] fireSprites;
+        public Sprite[] explosionSprites;
+
+        [Header("VFXPack Impact Sprites (Slash, Shockwave, Blast, Crit)")]
+        public Sprite[] vfxSlashSprites;
+        public Sprite[] vfxShockwaveSprites;
+        public Sprite[] vfxImpactBlastSprites;
+        public Sprite[] vfxCritCrossSprites;
 
         [Header("Wooden GUI & Tiny Swords UI Sprites")]
         public Sprite dialogueBoardSprite;
@@ -67,7 +75,13 @@ namespace LuckyNumber.Core
 
         public void EnsureRuntimeFallbacks()
         {
-            if (_initializedFallbacks) return;
+            if (_initializedFallbacks &&
+                vfxSlashSprites != null && vfxSlashSprites.Length > 0 &&
+                fireSprites != null && fireSprites.Length > 0 &&
+                explosionSprites != null && explosionSprites.Length > 0)
+            {
+                return;
+            }
             _initializedFallbacks = true;
 
             if (maliosSprites == null || maliosSprites.Length < 24 || maliosSprites[0] == null)
@@ -88,6 +102,41 @@ namespace LuckyNumber.Core
             if (dust2Sprites == null || dust2Sprites.Length < 4 || dust2Sprites[0] == null)
             {
                 dust2Sprites = LoadOrSliceCharacterSheet("VFX/Dust_02", 10, 1);
+            }
+
+            if (fireSprites == null || fireSprites.Length < 4 || fireSprites[0] == null)
+            {
+                fireSprites = LoadOrSliceCharacterSheet("VFX/Fire_02", 10, 1);
+                if (fireSprites == null || fireSprites.Length == 0)
+                {
+                    fireSprites = LoadOrSliceCharacterSheet("VFX/Fire_01", 8, 1);
+                }
+            }
+
+            if (explosionSprites == null || explosionSprites.Length < 4 || explosionSprites[0] == null)
+            {
+                explosionSprites = LoadOrSliceCharacterSheet("VFX/Explosion_01", 8, 1);
+                if (explosionSprites == null || explosionSprites.Length == 0)
+                {
+                    explosionSprites = LoadOrSliceCharacterSheet("VFX/Explosion_02", 10, 1);
+                }
+            }
+
+            if (vfxSlashSprites == null || vfxSlashSprites.Length < 4 || vfxSlashSprites[0] == null)
+            {
+                vfxSlashSprites = LoadOrSliceFlipbookSheet("VFX/SlashV3", 3, 3);
+            }
+            if (vfxShockwaveSprites == null || vfxShockwaveSprites.Length < 4 || vfxShockwaveSprites[0] == null)
+            {
+                vfxShockwaveSprites = LoadOrSliceFlipbookSheet("VFX/CircleImpact02", 3, 3);
+            }
+            if (vfxImpactBlastSprites == null || vfxImpactBlastSprites.Length < 4 || vfxImpactBlastSprites[0] == null)
+            {
+                vfxImpactBlastSprites = LoadOrSliceFlipbookSheet("VFX/ImpactValo", 3, 3);
+            }
+            if (vfxCritCrossSprites == null || vfxCritCrossSprites.Length < 4 || vfxCritCrossSprites[0] == null)
+            {
+                vfxCritCrossSprites = LoadOrSliceFlipbookSheet("VFX/Impact06", 3, 2, 5);
             }
 
             string[] cloudPaths =
@@ -176,17 +225,38 @@ namespace LuckyNumber.Core
 
         public static Sprite[] LoadOrSliceCharacterSheet(string resourcePath, int cols, int rows)
         {
+            return LoadOrSliceGridSheet(resourcePath, cols, rows, 0.04f, 0.01f, -1);
+        }
+
+        public static Sprite[] LoadOrSliceFlipbookSheet(string resourcePath, int cols, int rows, int maxFrames = -1)
+        {
+            return LoadOrSliceGridSheet(resourcePath, cols, rows, 0f, 0f, maxFrames);
+        }
+
+        private static Sprite[] LoadOrSliceGridSheet(
+            string resourcePath,
+            int cols,
+            int rows,
+            float padXRatio,
+            float padYRatio,
+            int maxFrames)
+        {
+            int expected = maxFrames > 0 ? maxFrames : cols * rows;
             Sprite[] loaded = Resources.LoadAll<Sprite>(resourcePath);
-            if (loaded != null && loaded.Length >= cols * rows)
+            if (loaded != null && loaded.Length >= expected)
             {
                 Array.Sort(loaded, CompareSpritesByTrailingNumber);
+                if (maxFrames > 0 && loaded.Length > maxFrames)
+                {
+                    Array.Resize(ref loaded, maxFrames);
+                }
                 return loaded;
             }
 
             Texture2D tex = Resources.Load<Texture2D>(resourcePath);
             if (tex == null) return Array.Empty<Sprite>();
 
-            List<Sprite> sliced = new List<Sprite>(cols * rows);
+            List<Sprite> sliced = new List<Sprite>(expected);
             float cellW = (float)tex.width / cols;
             float cellH = (float)tex.height / rows;
 
@@ -196,9 +266,9 @@ namespace LuckyNumber.Core
                 int unityRow = (rows - 1) - r;
                 for (int c = 0; c < cols; c++)
                 {
-                    // Trim horizontal cell padding slightly so adjacent frames never bleed
-                    float padX = cellW * 0.04f;
-                    float padY = cellH * 0.01f;
+                    if (maxFrames > 0 && sliced.Count >= maxFrames) break;
+                    float padX = cellW * padXRatio;
+                    float padY = cellH * padYRatio;
                     Rect rect = new Rect(
                         c * cellW + padX,
                         unityRow * cellH + padY,

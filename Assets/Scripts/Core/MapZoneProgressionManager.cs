@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using TMPro;
 using LuckyNumber.Characters;
 using LuckyNumber.UI;
@@ -42,9 +43,13 @@ namespace LuckyNumber.Core
         [SerializeField] private CanvasGroup _zoneBannerGroup;
         [SerializeField] private TextMeshProUGUI _zoneBannerText;
 
+        private const string Boss1SceneName = "Bos1 Test";
+        private static readonly Rect Boss1CavePortalRect = new Rect(-38.6f, 22.4f, 4.2f, 2.4f);
+
         private readonly List<ZoneGatewayDefinition> _gateways = new List<ZoneGatewayDefinition>();
         private readonly Dictionary<MapZoneId, Rect> _zoneCameraBounds = new Dictionary<MapZoneId, Rect>();
         private readonly List<TextMeshPro> _gateSignpostLabels = new List<TextMeshPro>();
+        private TextMeshPro _boss1CaveLabel;
 
         private Coroutine _bannerRoutine;
         private bool _isTransitioning;
@@ -72,7 +77,30 @@ namespace LuckyNumber.Core
             }
             CreateWorldSignpostsAndBossMarkers();
             RefreshGateSignposts();
-            ApplyCameraBoundsForZone(MapZoneId.DesaEldoria);
+
+            if (GameProgressionManager.Instance != null &&
+                GameProgressionManager.Instance.ConsumeBossReturnState(out MapZoneId returnZone, out Vector3 returnPos, out int wonBossIndex))
+            {
+                _cooldownUntilTime = Time.time + 1.0f;
+                GameProgressionManager.Instance.SetCurrentZone(returnZone);
+                ApplyCameraBoundsForZone(returnZone);
+
+                if (PlayerController.Instance != null)
+                {
+                    PlayerController.Instance.TeleportTo(returnPos, FacingDirection.Down);
+                    PlayerController.Instance.IsMovementLocked = false;
+                }
+
+                StartCoroutine(FadeInFromBlackOnReturn(
+                    wonBossIndex == 0
+                        ? "★ Kepingan HOKI Api Diperoleh! ★"
+                        : GameProgressionManager.GetZoneDisplayName(returnZone)
+                ));
+            }
+            else
+            {
+                ApplyCameraBoundsForZone(MapZoneId.DesaEldoria);
+            }
         }
 
         private void OnDestroy()
@@ -460,6 +488,24 @@ namespace LuckyNumber.Core
                 ? GameProgressionManager.Instance.CurrentZone
                 : MapZoneId.DesaEldoria;
 
+            if (currentZone == MapZoneId.Boss1_GunungBara && Boss1CavePortalRect.Contains(playerPos))
+            {
+                if (GameProgressionManager.Instance != null && GameProgressionManager.Instance.IsBossDefeated(0))
+                {
+                    StartCoroutine(ShowBlockedAccessRoutine(
+                        new Vector3(-36.5f, 20.8f, 0f),
+                        FacingDirection.Down,
+                        "STAGE BOS SUDAH DISELESAIKAN",
+                        "Kamu sudah berhasil mengalahkan BOS 1 – Ignaroth!\n\nGoa Gunung Bara telah selesai ditaklukkan dan tidak bisa dimasuki lagi. Silakan lanjut ke area bos berikutnya!"
+                    ));
+                }
+                else
+                {
+                    StartCoroutine(EnterBoss1CaveRoutine());
+                }
+                return;
+            }
+
             for (int i = 0; i < _gateways.Count; i++)
             {
                 ZoneGatewayDefinition gw = _gateways[i];
@@ -498,6 +544,16 @@ namespace LuckyNumber.Core
 
         private IEnumerator BlockedZoneTransitionRoutine(ZoneGatewayDefinition gateway, string warnTitle, string warnBody)
         {
+            yield return StartCoroutine(ShowBlockedAccessRoutine(
+                gateway.blockedPushbackPosition,
+                gateway.blockedFacing,
+                warnTitle,
+                warnBody
+            ));
+        }
+
+        private IEnumerator ShowBlockedAccessRoutine(Vector3 pushbackPos, FacingDirection pushbackFacing, string warnTitle, string warnBody)
+        {
             _isTransitioning = true;
             if (PlayerController.Instance != null)
             {
@@ -520,10 +576,10 @@ namespace LuckyNumber.Core
             }
             _transitionCanvasGroup.alpha = 1f;
 
-            // Push player back to safe road spot while screen is black
+            // Push player back to safe spot while screen is black
             if (PlayerController.Instance != null)
             {
-                PlayerController.Instance.TeleportTo(gateway.blockedPushbackPosition, gateway.blockedFacing);
+                PlayerController.Instance.TeleportTo(pushbackPos, pushbackFacing);
             }
 
             // Wait until player presses E / Space / Click (or max 4.5 seconds)
@@ -615,6 +671,67 @@ namespace LuckyNumber.Core
             _isTransitioning = false;
         }
 
+        private IEnumerator EnterBoss1CaveRoutine()
+        {
+            _isTransitioning = true;
+            if (PlayerController.Instance != null)
+            {
+                PlayerController.Instance.IsMovementLocked = true;
+            }
+
+            if (_transitionOverlayObj != null)
+            {
+                _transitionOverlayObj.SetActive(true);
+                _transitionOverlayObj.transform.SetAsLastSibling();
+            }
+            if (_warningCardObj != null) _warningCardObj.SetActive(false);
+
+            float t = 0f;
+            while (t < 0.28f)
+            {
+                t += Time.unscaledDeltaTime;
+                if (_transitionCanvasGroup != null)
+                {
+                    _transitionCanvasGroup.alpha = Mathf.Clamp01(t / 0.28f);
+                }
+                yield return null;
+            }
+            if (_transitionCanvasGroup != null) _transitionCanvasGroup.alpha = 1f;
+
+            if (GameProgressionManager.Instance != null)
+            {
+                GameProgressionManager.Instance.PrepareEnterBossScene(
+                    MapZoneId.Boss1_GunungBara,
+                    new Vector3(-36.5f, 21.2f, 0f)
+                );
+            }
+
+            SceneManager.LoadScene(Boss1SceneName);
+        }
+
+        private IEnumerator FadeInFromBlackOnReturn(string bannerTitle)
+        {
+            if (_transitionOverlayObj != null && _transitionCanvasGroup != null)
+            {
+                _transitionOverlayObj.SetActive(true);
+                _transitionOverlayObj.transform.SetAsLastSibling();
+                if (_warningCardObj != null) _warningCardObj.SetActive(false);
+                _transitionCanvasGroup.alpha = 1f;
+
+                float t = 0f;
+                while (t < 0.25f)
+                {
+                    t += Time.unscaledDeltaTime;
+                    _transitionCanvasGroup.alpha = 1f - Mathf.Clamp01(t / 0.25f);
+                    yield return null;
+                }
+                _transitionCanvasGroup.alpha = 0f;
+                _transitionOverlayObj.SetActive(false);
+            }
+
+            ShowZoneBanner(bannerTitle);
+        }
+
         private void ApplyCameraBoundsForZone(MapZoneId zone)
         {
             if (SmoothCameraFollow.Instance != null && _zoneCameraBounds.TryGetValue(zone, out Rect bounds))
@@ -673,8 +790,29 @@ namespace LuckyNumber.Core
             // Sacred Altar in Desa Eldoria
             CreateAltarInteractable(new Vector3(-3.2f, 2.2f, 0f));
 
-            // 4 Boss Encounter Pedestals inside their respective arenas
-            CreateBossPedestal(0, "BOS 1 – Ignaroth (Demon Api)", new Vector3(-27.5f, 23.5f, 0f), new Color(1f, 0.38f, 0.15f, 1f));
+            // Boss 1 Cave Entrance Portal Marker at Giant Volcano Cave (-36.5, 24.4)
+            Transform oldBoss1Pedestal = transform.Find("BossEncounter_1");
+            if (oldBoss1Pedestal != null)
+            {
+                if (Application.isPlaying) Destroy(oldBoss1Pedestal.gameObject);
+                else DestroyImmediate(oldBoss1Pedestal.gameObject);
+            }
+            Transform oldBoss1Label = transform.Find("BossLabel_1");
+            if (oldBoss1Label != null)
+            {
+                if (Application.isPlaying) Destroy(oldBoss1Label.gameObject);
+                else DestroyImmediate(oldBoss1Label.gameObject);
+            }
+
+            _boss1CaveLabel = GetOrCreateWorldLabel(
+                "Boss1_CavePortalLabel",
+                new Vector3(-36.5f, 24.4f, 0f),
+                "▲ GOA IGNAROTH\n[Dekati Pintu Goa untuk Masuk]"
+            );
+            _boss1CaveLabel.color = new Color(1f, 0.48f, 0.20f, 1f);
+            _boss1CaveLabel.fontSize = 3.2f;
+
+            // Boss 2-4 Encounter Pedestals (untouched for now)
             CreateBossPedestal(1, "BOS 2 – Glaciera (Demon Es)", new Vector3(-12.5f, 52.0f, 0f), new Color(0.35f, 0.85f, 1f, 1f));
             CreateBossPedestal(2, "BOS 3 – Venomark (Demon Racun)", new Vector3(14.5f, 52.0f, 0f), new Color(0.45f, 0.95f, 0.35f, 1f));
             CreateBossPedestal(3, "BOS 4 – Nocthar (Demon Bayangan)", new Vector3(26.5f, 23.5f, 0f), new Color(0.75f, 0.45f, 1f, 1f));
@@ -710,6 +848,14 @@ namespace LuckyNumber.Core
                 ? "▶ BOS 4: Nocthar\n[SELESAI ✔]"
                 : (b3Done ? "▶ BOS 4: Kastil Bayangan\n[TERBUKA]" : "▶ BOS 4: Kastil Bayangan\n[TERKUNCI - Butuh Kunci Bos 3]");
             _gateSignpostLabels[3].color = b4Done ? new Color(0.5f, 1f, 0.5f) : (b3Done ? new Color(1f, 0.92f, 0.45f) : new Color(1f, 0.5f, 0.5f));
+
+            if (_boss1CaveLabel != null)
+            {
+                _boss1CaveLabel.text = b1Done
+                    ? "✔ GOA IGNAROTH [SELESAI]\n[Bos Sudah Dikalahkan]"
+                    : "▲ GOA IGNAROTH\n[Dekati Pintu Goa untuk Masuk]";
+                _boss1CaveLabel.color = b1Done ? new Color(0.45f, 1f, 0.55f, 1f) : new Color(1f, 0.48f, 0.20f, 1f);
+            }
         }
 
         private TextMeshPro GetOrCreateWorldLabel(string name, Vector3 position, string content)

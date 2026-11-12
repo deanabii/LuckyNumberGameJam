@@ -33,7 +33,14 @@ public class GameManager : MonoBehaviour
     [Header("Referensi Animasi & Layout")]
     public List<Card> cards; 
     public HorizontalLayoutGroup cardLayoutGroup; 
-    public Transform centerPoint; 
+    public Transform centerPoint;
+
+    [Header("Placeholder Sound Effect (Drag AudioClip ke Sini)")]
+    public AudioSource sfxAudioSource;
+    public AudioClip playerHitEnemySFX;
+    public AudioClip playerHeavyFinisherSFX;
+    public AudioClip enemyHitPlayerSFX;
+    [Range(0f, 1f)] public float sfxVolume = 1f;
     
     private List<Card> selectedCards = new List<Card>();
     private Dictionary<Card, Vector3> cardInitialPositions = new Dictionary<Card, Vector3>();
@@ -43,6 +50,7 @@ public class GameManager : MonoBehaviour
     {
         winPanel.SetActive(false);
         losePanel.SetActive(false);
+        LuckyNumber.UI.Boss1IntroGuideBridge.EnsureForActiveScene();
         
         UpdateUI();
         StartNewTurn();
@@ -91,7 +99,7 @@ public class GameManager : MonoBehaviour
         {
             if (cardTargetPositions.ContainsKey(card))
             {
-                card.transform.position = Vector3.Lerp(card.transform.position, cardTargetPositions[card], Time.deltaTime * 10f);
+                card.transform.position = Vector3.Lerp(card.transform.position, cardTargetPositions[card], Time.deltaTime * 28f);
             }
         }
     }
@@ -128,7 +136,8 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            newCardValues.Add(Random.Range(1, 10));
+            int maxFillerExclusive = Mathf.Max(2, Mathf.Min(10, target));
+            newCardValues.Add(Random.Range(1, maxFillerExclusive));
         }
 
         for (int i = 0; i < newCardValues.Count; i++)
@@ -179,7 +188,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ValidateSelection()
     {
-        yield return new WaitForSeconds(1f); 
+        // Immediate validation on correct answer (0ms delay)
 
         int currentTarget = roundTargets[currentRound - 1];
         int total = selectedCards[0].cardValue + selectedCards[1].cardValue;
@@ -187,6 +196,9 @@ public class GameManager : MonoBehaviour
         if (total == currentTarget)
         {
             successfulGuesses++;
+            bool isFinisherHit = (successfulGuesses >= 3);
+            AudioClip hitClip = (isFinisherHit && playerHeavyFinisherSFX != null) ? playerHeavyFinisherSFX : playerHitEnemySFX;
+            LuckyNumber.UI.Boss1IntroGuideBridge.PlayPlayerAttackEffect(isFinisherHit, () => PlayBattleSFX(hitClip));
             successText.text = successfulGuesses + "/3";
             
             if (successfulGuesses >= 3)
@@ -197,18 +209,20 @@ public class GameManager : MonoBehaviour
                 if (bossHP > 0)
                 {
                     currentRound++;
-                    statusText.text = "Luar Biasa! Ignaroth terkena damage.";
+                    statusText.text = "MEGA BOOM!! Ignaroth hancur -1 HP!";
                 }
             }
             else
             {
-                statusText.text = "Tebakan Tepat!";
+                statusText.text = successfulGuesses == 1 ? "BOOM!! Serangan telak!" : "DUARRR!! Combo menghantam!";
             }
         }
         else
         {
+            yield return new WaitForSeconds(0.10f);
             playerHP--;
             statusText.text = "Kombinasi Salah!";
+            LuckyNumber.UI.Boss1IntroGuideBridge.PlayBossAttackOnPlayerEffect(() => PlayBattleSFX(enemyHitPlayerSFX));
         }
 
         UpdateUI();
@@ -216,12 +230,14 @@ public class GameManager : MonoBehaviour
         if (playerHP <= 0)
         {
             statusText.text = "Game Over! Malios gugur.";
-            losePanel.SetActive(true); 
+            losePanel.SetActive(true);
+            LuckyNumber.UI.Boss1IntroGuideBridge.SetBattleEndedUI();
         }
         else if (bossHP <= 0)
         {
             statusText.text = "Menang! Ignaroth hancur.";
-            winPanel.SetActive(true); 
+            winPanel.SetActive(true);
+            LuckyNumber.UI.Boss1IntroGuideBridge.SetBattleEndedUI();
         }
         else
         {
@@ -247,7 +263,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DelayNextTurn()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.80f);
         StartNewTurn();
     }
 
@@ -267,16 +283,32 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        LuckyNumber.UI.Boss1IntroGuideBridge.MarkRestartNextLoad();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ExitGame()
     {
-        Debug.Log("Pindah ke Scene Exit (Belum Dibuat)");
+        LuckyNumber.UI.Boss1IntroGuideBridge.ReturnToMapFromBoss1(false);
     }
 
     public void ContinueGame()
     {
-        Debug.Log("Lanjut ke level berikutnya (Belum Dibuat)");
+        LuckyNumber.UI.Boss1IntroGuideBridge.ReturnToMapFromBoss1(true);
+    }
+
+    private void PlayBattleSFX(AudioClip clip)
+    {
+        if (clip == null) return;
+        if (sfxAudioSource == null)
+        {
+            sfxAudioSource = GetComponent<AudioSource>();
+            if (sfxAudioSource == null)
+            {
+                sfxAudioSource = gameObject.AddComponent<AudioSource>();
+            }
+            sfxAudioSource.playOnAwake = false;
+        }
+        sfxAudioSource.PlayOneShot(clip, sfxVolume);
     }
 }

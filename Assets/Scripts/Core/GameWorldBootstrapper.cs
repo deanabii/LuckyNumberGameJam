@@ -62,7 +62,7 @@ namespace LuckyNumber.Core
             if (maliosSr != null)
             {
                 maliosSr.sortingLayerName = "Prop";
-                maliosSr.sortingOrder = 60;
+                maliosSr.sortingOrder = 1000;
                 if (registry != null && registry.maliosSprites != null && registry.maliosSprites.Length > 0 && registry.maliosSprites[0] != null)
                 {
                     maliosSr.sprite = registry.maliosSprites[0];
@@ -93,7 +93,7 @@ namespace LuckyNumber.Core
             if (arvandSr != null)
             {
                 arvandSr.sortingLayerName = "Prop";
-                arvandSr.sortingOrder = 45;
+                arvandSr.sortingOrder = 985;
                 if (registry != null && registry.arvandSprites != null && registry.arvandSprites.Length > 0 && registry.arvandSprites[0] != null)
                 {
                     arvandSr.sprite = registry.arvandSprites[0];
@@ -156,6 +156,11 @@ namespace LuckyNumber.Core
                 zoneMgr = sysObj.AddComponent<MapZoneProgressionManager>();
             if (sysObj.GetComponent<WorldPropColliderBuilder>() == null)
                 sysObj.AddComponent<WorldPropColliderBuilder>();
+            if (sysObj.GetComponent<WorldGrassAnimator>() == null)
+                sysObj.AddComponent<WorldGrassAnimator>();
+            WorldLightingManager lightingMgr = sysObj.GetComponent<WorldLightingManager>();
+            if (lightingMgr == null)
+                lightingMgr = sysObj.AddComponent<WorldLightingManager>();
             DialogueSystem dlgSys = sysObj.GetComponent<DialogueSystem>();
             if (dlgSys == null)
                 dlgSys = sysObj.AddComponent<DialogueSystem>();
@@ -209,6 +214,9 @@ namespace LuckyNumber.Core
 
             // 4. Ensure Malios, Arvand, Camera Follow, and Prop Colliders exist
             EnsureCharactersAndCameraInScene(registry);
+
+            // 5. Ensure 2D URP Lighting & Sprite-Lit materials are configured in Hierarchy
+            lightingMgr.SetupWorldLighting();
         }
     }
 }

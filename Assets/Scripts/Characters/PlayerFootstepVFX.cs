@@ -132,8 +132,8 @@ namespace LuckyNumber.Characters
             puff.renderer.sprite = frames[0];
             puff.renderer.color = dustColor;
             puff.renderer.sortingLayerName = "Prop";
-            // Render just behind character feet
-            puff.renderer.sortingOrder = Mathf.RoundToInt(-spawnPos.y * 100f) + 55;
+            // Render just behind character feet and above Prop tilemaps (order 0) across the whole map
+            puff.renderer.sortingOrder = Mathf.Max(15, 990 - Mathf.RoundToInt(spawnPos.y * 10f));
             puff.gameObject.SetActive(true);
         }
 

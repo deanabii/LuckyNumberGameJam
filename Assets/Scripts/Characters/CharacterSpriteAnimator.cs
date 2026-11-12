@@ -27,7 +27,7 @@ namespace LuckyNumber.Characters
 
         [Header("Sorting Settings")]
         [SerializeField] private string sortingLayerName = "Prop";
-        [SerializeField] private int baseSortingOrder = 50;
+        [SerializeField] private int baseSortingOrder = 1000;
 
         private SpriteRenderer _spriteRenderer;
         private FacingDirection _currentDirection = FacingDirection.Down;
@@ -38,13 +38,12 @@ namespace LuckyNumber.Characters
 
         // Natural idle sequence for Arvand (eyes open + occasional wise blink from frames 0..5)
         private static readonly int[] ArvandIdleSequence = { 0, 1, 2, 1, 0, 0, 1, 2, 3, 4, 5, 3, 0, 1 };
-        // Subtle idle sequence for Malios when standing still
-        private static readonly int[] MaliosIdleSequence = { 0, 1, 0, 5 };
 
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _baseScale = transform.localScale;
+            if (baseSortingOrder < 200) baseSortingOrder = 1000;
             ConfigureSortingLayer();
         }
 
@@ -58,6 +57,7 @@ namespace LuckyNumber.Characters
         {
             spriteFrames = frames;
             isArvandIdleNPC = arvandMode;
+            if (baseSortingOrder < 200) baseSortingOrder = 1000;
             if (_spriteRenderer == null) _spriteRenderer = GetComponent<SpriteRenderer>();
             ConfigureSortingLayer();
             ApplyCurrentFrame();
@@ -126,9 +126,9 @@ namespace LuckyNumber.Characters
                 }
                 else
                 {
-                    int seqIdx = Mathf.FloorToInt(_animTimer) % MaliosIdleSequence.Length;
-                    int col = MaliosIdleSequence[seqIdx];
-                    int idx = Mathf.Clamp(rowOffset + col, 0, spriteFrames.Length - 1);
+                    // Stand completely still on the neutral standing frame (col 0) so Malios's feet do not move while idle
+                    _animTimer = 0f;
+                    int idx = Mathf.Clamp(rowOffset, 0, spriteFrames.Length - 1);
                     if (spriteFrames[idx] != null)
                     {
                         _spriteRenderer.sprite = spriteFrames[idx];
@@ -150,10 +150,10 @@ namespace LuckyNumber.Characters
                 );
             }
 
-            // Dynamic Y-sorting so characters higher on Y render behind characters lower on Y
+            // Dynamic Y-sorting above Prop tilemaps (order 0) across all islands (Y up to ~65)
             if (_spriteRenderer != null)
             {
-                _spriteRenderer.sortingOrder = baseSortingOrder - Mathf.RoundToInt(transform.position.y * 10f);
+                _spriteRenderer.sortingOrder = Mathf.Max(20, baseSortingOrder - Mathf.RoundToInt(transform.position.y * 10f));
             }
         }
 

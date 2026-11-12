@@ -41,8 +41,6 @@ namespace LuckyNumber.UI
         [SerializeField] private TextMeshProUGUI _hudObjectiveText;
         [SerializeField] private GameObject _interactionPromptBar;
         [SerializeField] private TextMeshProUGUI _interactionPromptText;
-        [SerializeField] private Button _replayCutsceneButton;
-        [SerializeField] private TextMeshProUGUI _replayCutsceneLabel;
 
         private DialogueLine[] _currentLines;
         private int _lineIndex;
@@ -77,7 +75,6 @@ namespace LuckyNumber.UI
             if (_hudHokiProgressText != null) _hudHokiProgressText.font = fontAsset;
             if (_hudObjectiveText != null) _hudObjectiveText.font = fontAsset;
             if (_interactionPromptText != null) _interactionPromptText.font = fontAsset;
-            if (_replayCutsceneLabel != null) _replayCutsceneLabel.font = fontAsset;
         }
 
         public void InitializeUI(Transform canvasTransform)
@@ -145,8 +142,8 @@ namespace LuckyNumber.UI
                 Transform replayBtn = canvasTransform.Find("ReplayIntroCutsceneBtn");
                 if (replayBtn != null)
                 {
-                    if (_replayCutsceneButton == null) _replayCutsceneButton = replayBtn.GetComponent<Button>();
-                    if (_replayCutsceneLabel == null) _replayCutsceneLabel = replayBtn.GetComponentInChildren<TextMeshProUGUI>(true);
+                    if (Application.isPlaying) Destroy(replayBtn.gameObject);
+                    else DestroyImmediate(replayBtn.gameObject);
                 }
 
                 Transform promptBar = canvasTransform.Find("InteractionPromptBar");
@@ -178,18 +175,6 @@ namespace LuckyNumber.UI
             {
                 _nextLineButton.onClick.RemoveListener(AdvanceOrCompleteLine);
                 _nextLineButton.onClick.AddListener(AdvanceOrCompleteLine);
-            }
-
-            if (_replayCutsceneButton != null)
-            {
-                _replayCutsceneButton.onClick.RemoveAllListeners();
-                _replayCutsceneButton.onClick.AddListener(() =>
-                {
-                    if (CutsceneManager.Instance != null && !CutsceneManager.Instance.IsPlaying)
-                    {
-                        CutsceneManager.Instance.PlayIntroCutscene();
-                    }
-                });
             }
         }
 
@@ -248,33 +233,6 @@ namespace LuckyNumber.UI
             _hudObjectiveText.rectTransform.anchorMax = new Vector2(0.92f, 0.48f);
             _hudObjectiveText.rectTransform.offsetMin = Vector2.zero;
             _hudObjectiveText.rectTransform.offsetMax = Vector2.zero;
-
-            // Top-Right Cutscene Replay Button
-            GameObject replayBtnObj = new GameObject("ReplayIntroCutsceneBtn", typeof(RectTransform), typeof(Image), typeof(Button));
-            replayBtnObj.transform.SetParent(canvasTransform, false);
-            RectTransform replayRect = replayBtnObj.GetComponent<RectTransform>();
-            replayRect.anchorMin = new Vector2(0.81f, 0.91f);
-            replayRect.anchorMax = new Vector2(0.985f, 0.98f);
-            replayRect.offsetMin = Vector2.zero;
-            replayRect.offsetMax = Vector2.zero;
-
-            Image replayImg = replayBtnObj.GetComponent<Image>();
-            if (registry != null && registry.buttonNormalSprite != null)
-            {
-                replayImg.sprite = registry.buttonNormalSprite;
-                replayImg.color = Color.white;
-            }
-            else
-            {
-                replayImg.color = new Color(0.38f, 0.24f, 0.11f, 0.95f);
-            }
-
-            _replayCutsceneLabel = CreateTMP("Label", replayBtnObj.transform, font, 14f, FontStyles.Bold, TextAlignmentOptions.Center);
-            _replayCutsceneLabel.color = new Color(1f, 0.94f, 0.78f, 1f);
-            _replayCutsceneLabel.text = "Cutscene Awal [C]";
-            SetStretch(_replayCutsceneLabel.rectTransform, 6f, 2f, 6f, 2f);
-
-            _replayCutsceneButton = replayBtnObj.GetComponent<Button>();
         }
 
         private void CreateInteractionPromptUI(Transform canvasTransform, GameAssetRegistry registry, TMP_FontAsset font)
@@ -434,19 +392,9 @@ namespace LuckyNumber.UI
         {
             UpdateInteractionPrompt();
 
-            Keyboard kb = Keyboard.current;
-            if (kb != null && kb.cKey.wasPressedThisFrame && !_isOpen &&
-                (CutsceneManager.Instance == null || !CutsceneManager.Instance.IsPlaying))
-            {
-                if (CutsceneManager.Instance != null)
-                {
-                    CutsceneManager.Instance.PlayIntroCutscene();
-                }
-                return;
-            }
-
             if (!_isOpen) return;
 
+            Keyboard kb = Keyboard.current;
             // Prevent the exact same frame 'E' press that opened the dialogue from skipping line 0
             if (Time.unscaledTime - _openFrameTime < 0.12f) return;
 

@@ -16,7 +16,7 @@ namespace LuckyNumber.EditorTools
     [InitializeOnLoad]
     public static class SpriteSliceAndProjectSetupEditor
     {
-        private const string SessionInitKey = "LuckyNumber_ProjectSetup_Done_v4";
+        private const string SessionInitKey = "LuckyNumber_ProjectSetup_Done_v11";
 
         static SpriteSliceAndProjectSetupEditor()
         {
@@ -30,79 +30,21 @@ namespace LuckyNumber.EditorTools
             };
         }
 
-        [MenuItem("Tools/Lucky Number/1. Slice Character Sprites & Setup TestMap Hierarchy")]
-        public static void RunManualSetup()
-        {
-            RunAutomaticSetup(silent: false);
-        }
-
-        [MenuItem("Tools/Lucky Number/2. Rebuild Prop Colliders (Exclude Grass & Flowers)")]
-        public static void RunRebuildPropCollidersMenu()
-        {
-            int tileAssetsUpdated = ConfigurePalettePropTileAssets();
-            int sceneColliders = WorldPropColliderBuilder.RebuildAllWorldColliders();
-            Scene activeScene = SceneManager.GetActiveScene();
-            if (activeScene.IsValid())
-            {
-                EditorSceneManager.MarkSceneDirty(activeScene);
-            }
-            Debug.Log($"[Lucky Number] Berhasil mengatur {tileAssetsUpdated} Tile Asset di PaletProp dan membangun {sceneColliders} collider elemen solid (tanpa rumput/bunga kecil)!");
-        }
-
-        [MenuItem("Tools/Lucky Number/3. Toggle Preview Panel Cutscene di Scene")]
-        public static void ToggleCutscenePanelPreview()
-        {
-            GameWorldBootstrapper.EnsureWorldSetup();
-            GameObject canvas = GameObject.Find("LuckyNumber_UICanvas");
-            if (canvas == null) return;
-            Transform cutscene = canvas.transform.Find("CutsceneComicOverlay");
-            if (cutscene != null)
-            {
-                bool nextState = !cutscene.gameObject.activeSelf;
-                cutscene.gameObject.SetActive(nextState);
-                Selection.activeGameObject = cutscene.gameObject;
-                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-                Debug.Log($"[Lucky Number] Preview CutsceneComicOverlay: {(nextState ? "AKTIF (Silakan edit Font/Layout di Inspector)" : "DISEMBUNYIKAN")}");
-            }
-        }
-
-        [MenuItem("Tools/Lucky Number/4. Toggle Preview Panel Dialog di Scene")]
-        public static void ToggleDialoguePanelPreview()
-        {
-            GameWorldBootstrapper.EnsureWorldSetup();
-            GameObject canvas = GameObject.Find("LuckyNumber_UICanvas");
-            if (canvas == null) return;
-            Transform dlg = canvas.transform.Find("DialogueSystemPanel");
-            if (dlg != null)
-            {
-                bool nextState = !dlg.gameObject.activeSelf;
-                dlg.gameObject.SetActive(nextState);
-                Selection.activeGameObject = dlg.gameObject;
-                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-                Debug.Log($"[Lucky Number] Preview DialogueSystemPanel: {(nextState ? "AKTIF (Silakan edit Font/Layout di Inspector)" : "DISEMBUNYIKAN")}");
-            }
-        }
-
-        [MenuItem("Tools/Lucky Number/5. Apply Custom Font (GameAssetRegistry) ke Semua UI")]
-        public static void ApplyCustomFontToAllSceneUI()
+        private static void ApplyCustomFontToAllSceneUI()
         {
             var registry = GameAssetRegistry.Instance;
             if (registry == null || registry.customUIFont == null)
             {
-                Selection.activeObject = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>("Assets/Resources/GameAssetRegistry.asset");
-                Debug.LogWarning("[Lucky Number] Silakan isi field 'Custom UI Font' pada Assets/Resources/GameAssetRegistry.asset terlebih dahulu, lalu klik menu ini lagi!");
                 return;
             }
 
             TMP_FontAsset font = registry.customUIFont;
-            int count = 0;
 
             foreach (var tmp in UnityEngine.Object.FindObjectsByType<TextMeshProUGUI>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             {
                 Undo.RecordObject(tmp, "Apply Custom UI Font");
                 tmp.font = font;
                 EditorUtility.SetDirty(tmp);
-                count++;
             }
 
             foreach (var tmpWorld in UnityEngine.Object.FindObjectsByType<TextMeshPro>(FindObjectsInactive.Include, FindObjectsSortMode.None))
@@ -110,7 +52,6 @@ namespace LuckyNumber.EditorTools
                 Undo.RecordObject(tmpWorld, "Apply Custom World Font");
                 tmpWorld.font = font;
                 EditorUtility.SetDirty(tmpWorld);
-                count++;
             }
 
             var dlg = UnityEngine.Object.FindFirstObjectByType<DialogueSystem>();
@@ -119,9 +60,6 @@ namespace LuckyNumber.EditorTools
             if (cut != null) cut.ApplyFont(font);
             var zone = UnityEngine.Object.FindFirstObjectByType<MapZoneProgressionManager>();
             if (zone != null) zone.ApplyFont(font);
-
-            EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-            Debug.Log($"[Lucky Number] Berhasil menerapkan font '{font.name}' ke {count} komponen teks UI & World di scene!");
         }
 
         private static void RunAutomaticSetup(bool silent)
@@ -146,7 +84,10 @@ namespace LuckyNumber.EditorTools
                 // 4. Configure Tile assets in Assets/Sprites/PaletProp (None for grass/flowers, Sprite for solid props)
                 ConfigurePalettePropTileAssets();
 
-                // 5. Populate GameAssetRegistry.asset in Assets/Resources
+                // 5. Ensure TestMap & Bos1 Test are registered in Build Settings for scene transitions
+                EnsureRequiredScenesInBuildSettings();
+
+                // 6. Populate GameAssetRegistry.asset in Assets/Resources
                 GameAssetRegistry registry = PopulateGameAssetRegistry();
 
                 // 6. If TestMap scene is currently open in Editor, create full UI Canvas, Systems, Characters & Colliders in Hierarchy!
@@ -158,7 +99,63 @@ namespace LuckyNumber.EditorTools
                         new GameObject("LuckyNumber_Bootstrapper", typeof(GameWorldBootstrapper));
                     }
                     GameWorldBootstrapper.EnsureWorldSetup();
+                    ApplyCustomFontToAllSceneUI();
                     EditorSceneManager.MarkSceneDirty(activeScene);
+                }
+                else if (activeScene.IsValid() && activeScene.name == "MainMenu")
+                {
+                    // 1. Remove duplicate/unwanted objects added previously
+                    string[] unwantedNames = { "MainMenuCanvas", "MainMenu_Malios", "LuckyNumber_MainMenuBootstrapper" };
+                    foreach (string uName in unwantedNames)
+                    {
+                        GameObject unwanted = GameObject.Find(uName);
+                        if (unwanted != null)
+                        {
+                            Undo.DestroyObjectImmediate(unwanted);
+                        }
+                    }
+
+                    // 2. Configure user's Canvas 'Button Main Menu'
+                    GameObject menuCanvasObj = GameObject.Find("Button Main Menu");
+                    if (menuCanvasObj != null)
+                    {
+                        MainMenuController controller = menuCanvasObj.GetComponent<MainMenuController>();
+                        if (controller == null)
+                        {
+                            controller = Undo.AddComponent<MainMenuController>(menuCanvasObj);
+                        }
+                        controller.SetupButtons();
+                        EditorUtility.SetDirty(menuCanvasObj);
+                    }
+
+                    // 3. Attach cover animator to title_0
+                    GameObject titleObj = GameObject.Find("title_0");
+                    if (titleObj != null)
+                    {
+                        MainMenuCoverAnimator animator = titleObj.GetComponent<MainMenuCoverAnimator>();
+                        if (animator == null)
+                        {
+                            animator = Undo.AddComponent<MainMenuCoverAnimator>(titleObj);
+                        }
+                        EditorUtility.SetDirty(titleObj);
+                    }
+
+                    // 4. Configure existing Particle System with atmospheric twilight fog
+                    ParticleSystem ps = UnityEngine.Object.FindFirstObjectByType<ParticleSystem>();
+                    if (ps != null)
+                    {
+                        MainMenuFogController fog = ps.GetComponent<MainMenuFogController>();
+                        if (fog == null)
+                        {
+                            fog = Undo.AddComponent<MainMenuFogController>(ps.gameObject);
+                        }
+                        fog.ApplyFogSettings();
+                        EditorUtility.SetDirty(ps.gameObject);
+                    }
+
+                    ApplyCustomFontToAllSceneUI();
+                    EditorSceneManager.MarkSceneDirty(activeScene);
+                    EditorSceneManager.SaveScene(activeScene);
                 }
 
                 if (!silent)
@@ -169,6 +166,41 @@ namespace LuckyNumber.EditorTools
             catch (Exception ex)
             {
                 Debug.LogWarning($"[Lucky Number Setup] {ex.Message}");
+            }
+        }
+
+        private static void EnsureRequiredScenesInBuildSettings()
+        {
+            string[] requiredScenePaths =
+            {
+                "Assets/Scenes/MainMenu.unity",
+                "Assets/Scenes/TestMap.unity",
+                "Assets/Scenes/Bos1 Test.unity"
+            };
+
+            var scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+            bool changed = false;
+
+            foreach (string reqPath in requiredScenePaths)
+            {
+                if (!System.IO.File.Exists(reqPath)) continue;
+
+                int existingIdx = scenes.FindIndex(s => string.Equals(s.path, reqPath, StringComparison.OrdinalIgnoreCase));
+                if (existingIdx < 0)
+                {
+                    scenes.Add(new EditorBuildSettingsScene(reqPath, true));
+                    changed = true;
+                }
+                else if (!scenes[existingIdx].enabled)
+                {
+                    scenes[existingIdx].enabled = true;
+                    changed = true;
+                }
+            }
+
+            if (changed)
+            {
+                EditorBuildSettings.scenes = scenes.ToArray();
             }
         }
 
@@ -417,6 +449,25 @@ namespace LuckyNumber.EditorTools
 
             registry.dust1Sprites = LoadSortedSpritesAtPath("Assets/Tiny Swords/Particle FX/Dust_01.png");
             registry.dust2Sprites = LoadSortedSpritesAtPath("Assets/Tiny Swords/Particle FX/Dust_02.png");
+            EnsureVfxResourceCopy("Assets/Tiny Swords/Particle FX/Fire_01.png", "Assets/Resources/VFX/Fire_01.png");
+            EnsureVfxResourceCopy("Assets/Tiny Swords/Particle FX/Fire_02.png", "Assets/Resources/VFX/Fire_02.png");
+            EnsureVfxResourceCopy("Assets/Tiny Swords/Particle FX/Explosion_01.png", "Assets/Resources/VFX/Explosion_01.png");
+            EnsureVfxResourceCopy("Assets/Tiny Swords/Particle FX/Explosion_02.png", "Assets/Resources/VFX/Explosion_02.png");
+            EnsureVfxResourceCopy("Assets/VFXPACK_IMPACT_WALLCOEUR_FreeVersion/03_Texture/SlashV3.png", "Assets/Resources/VFX/SlashV3.png");
+            EnsureVfxResourceCopy("Assets/VFXPACK_IMPACT_WALLCOEUR_FreeVersion/03_Texture/CircleImpact02.png", "Assets/Resources/VFX/CircleImpact02.png");
+            EnsureVfxResourceCopy("Assets/VFXPACK_IMPACT_WALLCOEUR_FreeVersion/03_Texture/ImpactValo.png", "Assets/Resources/VFX/ImpactValo.png");
+            EnsureVfxResourceCopy("Assets/VFXPACK_IMPACT_WALLCOEUR_FreeVersion/03_Texture/impact_1.1.0/Impact06.png", "Assets/Resources/VFX/Impact06.png");
+            EnsureVfxResourceCopy("Assets/VFXPACK_IMPACT_WALLCOEUR_FreeVersion/03_Texture/VFX_FP_SmokeCircleGround.png", "Assets/Resources/VFX/Smoke.png");
+            registry.fireSprites = LoadSortedSpritesAtPath("Assets/Tiny Swords/Particle FX/Fire_02.png");
+            if (registry.fireSprites == null || registry.fireSprites.Length == 0)
+            {
+                registry.fireSprites = LoadSortedSpritesAtPath("Assets/Tiny Swords/Particle FX/Fire_01.png");
+            }
+            registry.explosionSprites = LoadSortedSpritesAtPath("Assets/Tiny Swords/Particle FX/Explosion_01.png");
+            if (registry.explosionSprites == null || registry.explosionSprites.Length == 0)
+            {
+                registry.explosionSprites = LoadSortedSpritesAtPath("Assets/Tiny Swords/Particle FX/Explosion_02.png");
+            }
             registry.cloudSprites = new[]
             {
                 AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Tiny Swords/Terrain/Decorations/Clouds/Clouds_01.png"),
@@ -455,9 +506,27 @@ namespace LuckyNumber.EditorTools
                 AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Resources/Cutscenes/ending_4_peace.png")
             };
 
+            if (registry.customUIFont == null)
+            {
+                registry.customUIFont = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>("Assets/Asset/Font/IMFellEnglish-Regular SDF.asset");
+            }
+
             EditorUtility.SetDirty(registry);
             AssetDatabase.SaveAssets();
             return registry;
+        }
+
+        private static void EnsureVfxResourceCopy(string srcPath, string dstPath)
+        {
+            if (AssetDatabase.LoadAssetAtPath<Texture2D>(dstPath) != null) return;
+            if (!AssetDatabase.IsValidFolder("Assets/Resources/VFX"))
+            {
+                AssetDatabase.CreateFolder("Assets/Resources", "VFX");
+            }
+            if (AssetDatabase.LoadAssetAtPath<Texture2D>(srcPath) != null)
+            {
+                AssetDatabase.CopyAsset(srcPath, dstPath);
+            }
         }
 
         private static Sprite[] LoadSortedSpritesAtPath(string assetPath)

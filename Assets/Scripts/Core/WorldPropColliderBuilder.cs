@@ -42,12 +42,24 @@ namespace LuckyNumber.Core
             new Vector2(-0.5f, 15.0f),  // Percabangan South Gate
             new Vector2(-9.2f, 23.5f),  // Percabangan West Gate
             new Vector2(-17.0f, 23.5f), // Boss 1 Entrance
+            new Vector2(-36.5f, 22.2f), // Boss 1 Cave Door Approach
+            new Vector2(-36.5f, 23.4f), // Boss 1 Cave Portal
             new Vector2(-3.8f, 28.8f),  // Percabangan NW Gate
             new Vector2(-11.5f, 44.0f), // Boss 2 Entrance
             new Vector2(3.5f, 28.8f),   // Percabangan NE Gate
             new Vector2(14.5f, 44.0f),  // Boss 3 Entrance
             new Vector2(8.2f, 23.5f),   // Percabangan East Gate
             new Vector2(17.0f, 23.5f)   // Boss 4 Entrance
+        };
+
+        // Gateway corridors & walkable bridge bands that perimeter wall generation must never seal
+        private static readonly Rect[] ProtectedCorridors =
+        {
+            new Rect(-5.0f, 7.5f, 10.0f, 6.5f),   // Desa <-> Percabangan
+            new Rect(-16.0f, 20.5f, 7.5f, 6.2f),  // Percabangan <-> Boss 1 Bridge
+            new Rect(-16.5f, 29.8f, 13.5f, 15.0f),// Percabangan <-> Boss 2 Bridge
+            new Rect(0.5f, 29.8f, 19.0f, 15.0f),  // Percabangan <-> Boss 3 Bridge
+            new Rect(7.8f, 20.5f, 10.2f, 6.2f),   // Percabangan <-> Boss 4 Bridge
         };
 
         private void Awake()
@@ -92,6 +104,7 @@ namespace LuckyNumber.Core
                 totalColliders += BuildCollidersForTilemap(tm);
             }
 
+            totalColliders += BuildIslandBoundaryColliders(allTilemaps);
             EnsureNPCSolidFootprints();
             return totalColliders;
         }
@@ -147,45 +160,48 @@ namespace LuckyNumber.Core
                     switch (category)
                     {
                         case PropColliderCategory.BuildingOrCave:
-                            // Houses and Boss Caves: solid lower/middle structure, leaving upper roof/peak for depth overlap
-                            colSize = new Vector2(Mathf.Max(1.2f, spriteW * 0.80f), Mathf.Max(1.2f, spriteH * 0.62f));
+                            // Houses and Boss Caves: cover virtually the full building/cave footprint so player cannot walk behind roofs or caves
+                            colSize = new Vector2(Mathf.Max(1.2f, spriteW * 0.90f), Mathf.Max(1.2f, spriteH * 0.88f));
                             colCenter = new Vector2(
                                 cellCenterWorld.x + spriteBounds.center.x,
-                                cellCenterWorld.y + spriteBounds.center.y - (spriteH * 0.10f)
+                                cellCenterWorld.y + spriteBounds.center.y - (spriteH * 0.03f)
                             );
                             break;
 
                         case PropColliderCategory.Tree:
-                            // Trees: solid collider around the trunk/base so player doesn't get stuck on upper leaves
-                            colSize = new Vector2(Mathf.Clamp(spriteW * 0.42f, 0.70f, 1.85f), Mathf.Clamp(spriteH * 0.34f, 0.65f, 1.50f));
+                            // Trees: cover trunk and canopy footprint so player cannot clip behind tree tops
+                            colSize = new Vector2(Mathf.Clamp(spriteW * 0.72f, 0.90f, 3.20f), Mathf.Clamp(spriteH * 0.82f, 0.90f, 3.80f));
                             colCenter = new Vector2(
                                 cellCenterWorld.x + spriteBounds.center.x,
-                                cellCenterWorld.y + spriteBounds.min.y + (colSize.y * 0.58f)
+                                cellCenterWorld.y + spriteBounds.center.y - (spriteH * 0.04f)
                             );
                             break;
 
                         case PropColliderCategory.BorderTile:
                             // 1x1 Cliff/Water border tiles
-                            colSize = new Vector2(0.92f, 0.92f);
+                            colSize = new Vector2(0.96f, 0.96f);
                             colCenter = new Vector2(cellCenterWorld.x, cellCenterWorld.y);
                             break;
 
                         case PropColliderCategory.SolidProp:
                         default:
-                            // Rocks, stumps, logs, bushes, fences, walls, lamps, barrels, banners, lava pools
-                            colSize = new Vector2(Mathf.Max(0.55f, spriteW * 0.74f), Mathf.Max(0.45f, spriteH * 0.58f));
+                            // Rocks, stumps, logs, bushes, fences, walls, lamps, barrels, banners, lava/tar pools
+                            colSize = new Vector2(Mathf.Max(0.65f, spriteW * 0.86f), Mathf.Max(0.60f, spriteH * 0.82f));
                             colCenter = new Vector2(
                                 cellCenterWorld.x + spriteBounds.center.x,
-                                cellCenterWorld.y + spriteBounds.min.y + (colSize.y * 0.55f)
+                                cellCenterWorld.y + spriteBounds.center.y - (spriteH * 0.03f)
                             );
                             break;
                     }
 
-                    // Ensure no collider accidentally overlaps a protected spawn or gateway point
-                    Rect worldColRect = new Rect(colCenter.x - colSize.x * 0.5f, colCenter.y - colSize.y * 0.5f, colSize.x, colSize.y);
-                    if (OverlapsProtectedPoint(worldColRect))
+                    // Ensure small props/borders never trap protected spawn or gateway points (never drop major buildings/caves)
+                    if (category != PropColliderCategory.BuildingOrCave)
                     {
-                        continue;
+                        Rect worldColRect = new Rect(colCenter.x - colSize.x * 0.5f, colCenter.y - colSize.y * 0.5f, colSize.x, colSize.y);
+                        if (OverlapsProtectedPoint(worldColRect))
+                        {
+                            continue;
+                        }
                     }
 
                     BoxCollider2D box = containerObj.AddComponent<BoxCollider2D>();
@@ -199,9 +215,121 @@ namespace LuckyNumber.Core
             return count;
         }
 
+        private static int BuildIslandBoundaryColliders(Tilemap[] allTilemaps)
+        {
+            if (allTilemaps == null || allTilemaps.Length == 0) return 0;
+
+            Transform gridTransform = allTilemaps[0].transform.parent;
+            if (gridTransform == null) return 0;
+
+            const string boundaryName = "_IslandBoundaryColliders";
+            Transform existing = gridTransform.Find(boundaryName);
+            if (existing != null)
+            {
+                if (Application.isPlaying) Destroy(existing.gameObject);
+                else DestroyImmediate(existing.gameObject);
+            }
+
+            var occupiedCells = new HashSet<Vector2Int>();
+            Tilemap referenceTilemap = null;
+
+            foreach (Tilemap tm in allTilemaps)
+            {
+                if (tm == null) continue;
+                string tmName = tm.gameObject.name;
+                if (!tmName.StartsWith("Ground", System.StringComparison.OrdinalIgnoreCase) &&
+                    !tmName.StartsWith("Prop", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                if (referenceTilemap == null && tmName.StartsWith("Ground", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    referenceTilemap = tm;
+                }
+
+                BoundsInt bounds = tm.cellBounds;
+                for (int x = bounds.xMin; x < bounds.xMax; x++)
+                {
+                    for (int y = bounds.yMin; y < bounds.yMax; y++)
+                    {
+                        if (tm.HasTile(new Vector3Int(x, y, 0)))
+                        {
+                            occupiedCells.Add(new Vector2Int(x, y));
+                        }
+                    }
+                }
+            }
+
+            if (referenceTilemap == null || occupiedCells.Count == 0) return 0;
+
+            var voidEdgeCells = new HashSet<Vector2Int>();
+            Vector2Int[] dirs =
+            {
+                new Vector2Int(1, 0),
+                new Vector2Int(-1, 0),
+                new Vector2Int(0, 1),
+                new Vector2Int(0, -1)
+            };
+
+            foreach (Vector2Int cell in occupiedCells)
+            {
+                for (int i = 0; i < dirs.Length; i++)
+                {
+                    Vector2Int neighbor = cell + dirs[i];
+                    if (!occupiedCells.Contains(neighbor))
+                    {
+                        voidEdgeCells.Add(neighbor);
+                    }
+                }
+            }
+
+            GameObject boundaryObj = new GameObject(boundaryName);
+            boundaryObj.transform.SetParent(gridTransform, false);
+            boundaryObj.transform.localPosition = Vector3.zero;
+            boundaryObj.transform.localRotation = Quaternion.identity;
+            boundaryObj.transform.localScale = Vector3.one;
+
+            Rigidbody2D staticRb = boundaryObj.AddComponent<Rigidbody2D>();
+            staticRb.bodyType = RigidbodyType2D.Static;
+            staticRb.simulated = true;
+
+            int added = 0;
+            foreach (Vector2Int edgeCell in voidEdgeCells)
+            {
+                Vector3 worldCenter = referenceTilemap.GetCellCenterWorld(new Vector3Int(edgeCell.x, edgeCell.y, 0));
+                Rect edgeRect = new Rect(worldCenter.x - 0.45f, worldCenter.y - 0.45f, 0.90f, 0.90f);
+
+                if (OverlapsProtectedPoint(edgeRect) || OverlapsProtectedCorridor(edgeRect))
+                {
+                    continue;
+                }
+
+                BoxCollider2D box = boundaryObj.AddComponent<BoxCollider2D>();
+                Vector3 localCenter = boundaryObj.transform.InverseTransformPoint(worldCenter);
+                box.offset = new Vector2(localCenter.x, localCenter.y);
+                box.size = new Vector2(0.95f, 0.95f);
+                added++;
+            }
+
+            return added;
+        }
+
+        private static bool OverlapsProtectedCorridor(Rect worldRect)
+        {
+            for (int i = 0; i < ProtectedCorridors.Length; i++)
+            {
+                if (ProtectedCorridors[i].Overlaps(worldRect))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private static void EnsureNPCSolidFootprints()
         {
-            // Give Chief Arvand a small solid collider at his feet so Malios cannot walk through his body
+            // Give Chief Arvand a solid collider covering his body footprint so Malios cannot walk through or clip behind him
             GameObject arvandObj = GameObject.Find("NPC_Arvand");
             if (arvandObj != null)
             {
@@ -212,8 +340,8 @@ namespace LuckyNumber.Core
                 CircleCollider2D col = arvandObj.GetComponent<CircleCollider2D>();
                 if (col == null) col = arvandObj.AddComponent<CircleCollider2D>();
                 col.isTrigger = false;
-                col.radius = 1.25f; // ~0.275 world units at scale 0.22
-                col.offset = new Vector2(0f, -1.5f);
+                col.radius = 1.6f; // ~0.35 world units at scale 0.22
+                col.offset = new Vector2(0f, -0.5f);
             }
         }
 

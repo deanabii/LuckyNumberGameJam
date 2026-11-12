@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0fed80d5ef0ee4d9ff6f115a70b24d, type: 3}
   m_Name: GameAssetRegistry
   m_EditorClassIdentifier: Assembly-CSharp::LuckyNumber.Core.GameAssetRegistry
-  customUIFont: {fileID: 0}
+  customUIFont: {fileID: 11400000, guid: 82387c4e6807db54aadf23d839a43960, type: 2}
   maliosSprites:
   - {fileID: 4237681542253015899, guid: b1290cf9d98fb064692b7fc9b77bc283, type: 3}
   - {fileID: -1253462998148892557, guid: b1290cf9d98fb064692b7fc9b77bc283, type: 3}
@@ -90,6 +90,62 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2ed26cb6dd1041dd9ee9c41ab988af0, type: 3}
   - {fileID: 21300000, guid: b4fdf8be587754c7ea72d1cabd4347b1, type: 3}
   - {fileID: 21300000, guid: 678a2da2eafd845eb929587b3b44d4c6, type: 3}
+  fireSprites:
+  - {fileID: -67924925095688269, guid: 6be67de53fcad41de87517dd2c5f0bcd, type: 3}
+  - {fileID: -1473440142343485929, guid: 6be67de53fcad41de87517dd2c5f0bcd, type: 3}
+  - {fileID: 6065719682878445309, guid: 6be67de53fcad41de87517dd2c5f0bcd, type: 3}
+  - {fileID: 9165710306475261066, guid: 6be67de53fcad41de87517dd2c5f0bcd, type: 3}
+  - {fileID: -2092317922923651828, guid: 6be67de53fcad41de87517dd2c5f0bcd, type: 3}
+  - {fileID: 9015670353412449868, guid: 6be67de53fcad41de87517dd2c5f0bcd, type: 3}
+  - {fileID: 3556718046733199388, guid: 6be67de53fcad41de87517dd2c5f0bcd, type: 3}
+  - {fileID: -7910140599244389621, guid: 6be67de53fcad41de87517dd2c5f0bcd, type: 3}
+  - {fileID: 1556029973359163379, guid: 6be67de53fcad41de87517dd2c5f0bcd, type: 3}
+  - {fileID: 8596063046478050488, guid: 6be67de53fcad41de87517dd2c5f0bcd, type: 3}
+  explosionSprites:
+  - {fileID: -3777264317062036557, guid: 56a3b5149926b4979abbac26270054ec, type: 3}
+  - {fileID: -8905821008626868714, guid: 56a3b5149926b4979abbac26270054ec, type: 3}
+  - {fileID: -24568505368720062, guid: 56a3b5149926b4979abbac26270054ec, type: 3}
+  - {fileID: 196447884637387898, guid: 56a3b5149926b4979abbac26270054ec, type: 3}
+  - {fileID: 6230661102287994122, guid: 56a3b5149926b4979abbac26270054ec, type: 3}
+  - {fileID: 3570182968233781638, guid: 56a3b5149926b4979abbac26270054ec, type: 3}
+  - {fileID: 7073276248712390129, guid: 56a3b5149926b4979abbac26270054ec, type: 3}
+  - {fileID: -4795900648182059264, guid: 56a3b5149926b4979abbac26270054ec, type: 3}
+  vfxSlashSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  vfxShockwaveSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  vfxImpactBlastSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  vfxCritCrossSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   dialogueBoardSprite: {fileID: 21300000, guid: 43a7d98bd4222b64e933596512dc09ad, type: 3}
   smallBoardSprite: {fileID: 21300000, guid: a454050719005b444b59a84eaafba779, type: 3}
   stoneBoardSprite: {fileID: 21300000, guid: 9a6560e5bacb40847bb1b879ede354fb, type: 3}

@@ -27,6 +27,32 @@ namespace LuckyNumber.Core
 
         private MapZoneId _currentZone = MapZoneId.DesaEldoria;
 
+        // Session state shared across TestMap <-> Boss scenes during a Play session
+        private static bool _hasSessionSnapshot;
+        private static bool _sessionHasWatchedIntro;
+        private static bool _sessionHasTalkedToArvand;
+        private static readonly bool[] _sessionBossDefeated = new bool[4];
+        private static bool _sessionHasRestoredHoki;
+
+        private static bool _returningFromBossScene;
+        private static MapZoneId _pendingReturnZone = MapZoneId.DesaEldoria;
+        private static Vector3 _pendingReturnPosition;
+        private static int _pendingBossVictoryIndex = -1;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStaticSessionOnPlay()
+        {
+            _hasSessionSnapshot = false;
+            _sessionHasWatchedIntro = false;
+            _sessionHasTalkedToArvand = false;
+            for (int i = 0; i < _sessionBossDefeated.Length; i++) _sessionBossDefeated[i] = false;
+            _sessionHasRestoredHoki = false;
+            _returningFromBossScene = false;
+            _pendingReturnZone = MapZoneId.DesaEldoria;
+            _pendingReturnPosition = Vector3.zero;
+            _pendingBossVictoryIndex = -1;
+        }
+
         public bool HasWatchedIntro => hasWatchedIntro;
         public bool HasTalkedToArvand => hasTalkedToArvand;
         public bool HasRestoredHokiAtAltar => hasRestoredHokiAtAltar;
@@ -55,11 +81,85 @@ namespace LuckyNumber.Core
                 return;
             }
             Instance = this;
+
+            if (_hasSessionSnapshot)
+            {
+                hasWatchedIntro = _sessionHasWatchedIntro;
+                hasTalkedToArvand = _sessionHasTalkedToArvand;
+                hasRestoredHokiAtAltar = _sessionHasRestoredHoki;
+                for (int i = 0; i < bossDefeated.Length && i < _sessionBossDefeated.Length; i++)
+                {
+                    bossDefeated[i] = _sessionBossDefeated[i];
+                }
+            }
+            else
+            {
+                SyncSessionSnapshot();
+            }
+        }
+
+        private void SyncSessionSnapshot()
+        {
+            _hasSessionSnapshot = true;
+            _sessionHasWatchedIntro = hasWatchedIntro;
+            _sessionHasTalkedToArvand = hasTalkedToArvand;
+            _sessionHasRestoredHoki = hasRestoredHokiAtAltar;
+            for (int i = 0; i < bossDefeated.Length && i < _sessionBossDefeated.Length; i++)
+            {
+                _sessionBossDefeated[i] = bossDefeated[i];
+            }
+        }
+
+        public void PrepareEnterBossScene(MapZoneId returnZone, Vector3 returnPosition)
+        {
+            hasWatchedIntro = true;
+            SyncSessionSnapshot();
+            _returningFromBossScene = false;
+            _pendingReturnZone = returnZone;
+            _pendingReturnPosition = returnPosition;
+            _pendingBossVictoryIndex = -1;
+        }
+
+        public static void CompleteBossBattleAndPrepareReturn(int bossIndex, bool defeated)
+        {
+            _hasSessionSnapshot = true;
+            _sessionHasWatchedIntro = true;
+            _sessionHasTalkedToArvand = true;
+            if (defeated && bossIndex >= 0 && bossIndex < _sessionBossDefeated.Length)
+            {
+                _sessionBossDefeated[bossIndex] = true;
+            }
+            _returningFromBossScene = true;
+            _pendingBossVictoryIndex = defeated ? bossIndex : -1;
+            if (_pendingReturnZone == MapZoneId.DesaEldoria)
+            {
+                _pendingReturnZone = bossIndex == 0 ? MapZoneId.Boss1_GunungBara : MapZoneId.AreaPercabangan;
+                _pendingReturnPosition = bossIndex == 0 ? new Vector3(-36.5f, 21.4f, 0f) : new Vector3(-0.5f, 22.5f, 0f);
+            }
+        }
+
+        public bool ConsumeBossReturnState(out MapZoneId returnZone, out Vector3 returnPosition, out int wonBossIndex)
+        {
+            if (!_returningFromBossScene)
+            {
+                returnZone = MapZoneId.DesaEldoria;
+                returnPosition = Vector3.zero;
+                wonBossIndex = -1;
+                return false;
+            }
+
+            returnZone = _pendingReturnZone;
+            returnPosition = _pendingReturnPosition;
+            wonBossIndex = _pendingBossVictoryIndex;
+            _returningFromBossScene = false;
+            _pendingBossVictoryIndex = -1;
+            return true;
         }
 
         public void MarkIntroWatched()
         {
             hasWatchedIntro = true;
+            SyncSessionSnapshot();
             OnProgressionChanged?.Invoke();
         }
 
@@ -68,6 +168,7 @@ namespace LuckyNumber.Core
             if (!hasTalkedToArvand)
             {
                 hasTalkedToArvand = true;
+                SyncSessionSnapshot();
                 OnProgressionChanged?.Invoke();
             }
         }
@@ -84,6 +185,7 @@ namespace LuckyNumber.Core
             if (!bossDefeated[bossIndex])
             {
                 bossDefeated[bossIndex] = true;
+                SyncSessionSnapshot();
                 OnProgressionChanged?.Invoke();
             }
         }
@@ -91,6 +193,7 @@ namespace LuckyNumber.Core
         public void MarkHokiRestored()
         {
             hasRestoredHokiAtAltar = true;
+            SyncSessionSnapshot();
             OnProgressionChanged?.Invoke();
         }
 
