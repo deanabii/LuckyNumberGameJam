@@ -1,0 +1,296 @@
+fileFormatVersion: 2
+guid: 00fc41710346f974dbb226f5a11abfc4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6165004933097124476
+    second: Glowing Icy Heart with Gold Rim_0
+  - first:
+      213: 3591189724104903025
+    second: Glowing Icy Heart with Gold Rim_1
+  - first:
+      213: 734986164592900653
+    second: Glowing Icy Heart with Gold Rim_2
+  - first:
+      213: -4004155317722662889
+    second: Glowing Icy Heart with Gold Rim_3
+  - first:
+      213: 2441108654895709002
+    second: Glowing Icy Heart with Gold Rim_4
+  - first:
+      213: -1317859648860024090
+    second: Glowing Icy Heart with Gold Rim_5
+  - first:
+      213: 7158555793335769537
+    second: Glowing Icy Heart with Gold Rim_6
+  - first:
+      213: 200659620375062425
+    second: Glowing Icy Heart with Gold Rim_7
+  - first:
+      213: -8285632121854824166
+    second: Glowing Icy Heart with Gold Rim_8
+  - first:
+      213: -1962382836234509492
+    second: Glowing Icy Heart with Gold Rim_9
+  - first:
+      213: 5755338679615532280
+    second: Glowing Icy Heart with Gold Rim_10
+  - first:
+      213: -1413498899117124828
+    second: Glowing Icy Heart with Gold Rim_11
+  - first:
+      213: -7530150816749722268
+    second: Glowing Icy Heart with Gold Rim_12
+  - first:
+      213: -3704767695214118746
+    second: Glowing Icy Heart with Gold Rim_13
+  - first:
+      213: -3880287597196540228
+    second: Glowing Icy Heart with Gold Rim_14
+  - first:
+      213: 4997956748399070008
+    second: Glowing Icy Heart with Gold Rim_15
+  - first:
+      213: -4238128528168363645
+    second: Glowing Icy Heart with Gold Rim_16
+  - first:
+      213: 5523976129315593458
+    second: Glowing Icy Heart with Gold Rim_17
+  - first:
+      213: -1359749316783108126
+    second: Glowing Icy Heart with Gold Rim_18
+  - first:
+      213: 8534016420368115297
+    second: Glowing Icy Heart with Gold Rim_19
+  - first:
+      213: -6550129332725904281
+    second: Glowing Icy Heart with Gold Rim_20
+  - first:
+      213: 5371639448432858383
+    second: Glowing Icy Heart with Gold Rim_21
+  - first:
+      213: 191731715750427132
+    second: Glowing Icy Heart with Gold Rim_22
+  - first:
+      213: 8598594543532500518
+    second: Glowing Icy Heart with Gold Rim_23
+  - first:
+      213: -6080740517687432712
+    second: Glowing Icy Heart with Gold Rim_24
+  - first:
+      213: -6202416649217975543
+    second: Glowing Icy Heart with Gold Rim_25
+  - first:
+      213: -580879816431296688
+    second: Glowing Icy Heart with Gold Rim_26
+  - first:
+      213: -434557261748654024
+    second: Glowing Icy Heart with Gold Rim_27
+  - first:
+      213: -8340889095518613080
+    second: Glowing Icy Heart with Gold Rim_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Glowing Icy Heart with Gold Rim_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 40
+        width: 1163
+        height: 1095
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48d073c4da0817aa0800000000000000
+      internalID: -6165004933097124476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ba83f8f7410e74c459aba446559c8cbd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Glowing Icy Heart with Gold Rim_0: -6165004933097124476
+      Glowing Icy Heart with Gold Rim_1: 3591189724104903025
+      Glowing Icy Heart with Gold Rim_10: 5755338679615532280
+      Glowing Icy Heart with Gold Rim_11: -1413498899117124828
+      Glowing Icy Heart with Gold Rim_12: -7530150816749722268
+      Glowing Icy Heart with Gold Rim_13: -3704767695214118746
+      Glowing Icy Heart with Gold Rim_14: -3880287597196540228
+      Glowing Icy Heart with Gold Rim_15: 4997956748399070008
+      Glowing Icy Heart with Gold Rim_16: -4238128528168363645
+      Glowing Icy Heart with Gold Rim_17: 5523976129315593458
+      Glowing Icy Heart with Gold Rim_18: -1359749316783108126
+      Glowing Icy Heart with Gold Rim_19: 8534016420368115297
+      Glowing Icy Heart with Gold Rim_2: 734986164592900653
+      Glowing Icy Heart with Gold Rim_20: -6550129332725904281
+      Glowing Icy Heart with Gold Rim_21: 5371639448432858383
+      Glowing Icy Heart with Gold Rim_22: 191731715750427132
+      Glowing Icy Heart with Gold Rim_23: 8598594543532500518
+      Glowing Icy Heart with Gold Rim_24: -6080740517687432712
+      Glowing Icy Heart with Gold Rim_25: -6202416649217975543
+      Glowing Icy Heart with Gold Rim_26: -580879816431296688
+      Glowing Icy Heart with Gold Rim_27: -434557261748654024
+      Glowing Icy Heart with Gold Rim_28: -8340889095518613080
+      Glowing Icy Heart with Gold Rim_3: -4004155317722662889
+      Glowing Icy Heart with Gold Rim_4: 2441108654895709002
+      Glowing Icy Heart with Gold Rim_5: -1317859648860024090
+      Glowing Icy Heart with Gold Rim_6: 7158555793335769537
+      Glowing Icy Heart with Gold Rim_7: 200659620375062425
+      Glowing Icy Heart with Gold Rim_8: -8285632121854824166
+      Glowing Icy Heart with Gold Rim_9: -1962382836234509492
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

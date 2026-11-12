@@ -1,0 +1,250 @@
+fileFormatVersion: 2
+guid: 147a27fe61623e34c8610e7092852f03
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1680618400228527681
+    second: Chibi Pixel Hero with Teal Mantle_0
+  - first:
+      213: 5732548617488187110
+    second: Chibi Pixel Hero with Teal Mantle_1
+  - first:
+      213: 6393511667772648512
+    second: Chibi Pixel Hero with Teal Mantle_2
+  - first:
+      213: -4389366030024647526
+    second: Chibi Pixel Hero with Teal Mantle_3
+  - first:
+      213: -8296068339005310438
+    second: Chibi Pixel Hero with Teal Mantle_4
+  - first:
+      213: -3825976121531415260
+    second: Chibi Pixel Hero with Teal Mantle_5
+  - first:
+      213: 2661106483483997090
+    second: Chibi Pixel Hero with Teal Mantle_6
+  - first:
+      213: 227811031606908504
+    second: Chibi Pixel Hero with Teal Mantle_7
+  - first:
+      213: -1012423143465008590
+    second: Chibi Pixel Hero with Teal Mantle_8
+  - first:
+      213: 1609844987407596287
+    second: Chibi Pixel Hero with Teal Mantle_9
+  - first:
+      213: -3071817833199056231
+    second: Chibi Pixel Hero with Teal Mantle_10
+  - first:
+      213: -4632901097132567189
+    second: Chibi Pixel Hero with Teal Mantle_11
+  - first:
+      213: 5000110409682730431
+    second: Chibi Pixel Hero with Teal Mantle_12
+  - first:
+      213: -71047621191518427
+    second: Chibi Pixel Hero with Teal Mantle_13
+  - first:
+      213: -6649993027572477393
+    second: Chibi Pixel Hero with Teal Mantle_14
+  - first:
+      213: -7007117832878527973
+    second: Chibi Pixel Hero with Teal Mantle_15
+  - first:
+      213: 2319880794952799437
+    second: Chibi Pixel Hero with Teal Mantle_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KarakterDIBos2_0
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 25
+        width: 785
+        height: 1370
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d981315370a32894a852cef9be6f221a
+      internalID: 297916439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9aa1552b5e2c5294c994673b74bc48e9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Chibi Pixel Hero with Teal Mantle_0: 1680618400228527681
+      Chibi Pixel Hero with Teal Mantle_1: 5732548617488187110
+      Chibi Pixel Hero with Teal Mantle_10: -3071817833199056231
+      Chibi Pixel Hero with Teal Mantle_11: -4632901097132567189
+      Chibi Pixel Hero with Teal Mantle_12: 5000110409682730431
+      Chibi Pixel Hero with Teal Mantle_13: -71047621191518427
+      Chibi Pixel Hero with Teal Mantle_14: -6649993027572477393
+      Chibi Pixel Hero with Teal Mantle_15: -7007117832878527973
+      Chibi Pixel Hero with Teal Mantle_16: 2319880794952799437
+      Chibi Pixel Hero with Teal Mantle_2: 6393511667772648512
+      Chibi Pixel Hero with Teal Mantle_3: -4389366030024647526
+      Chibi Pixel Hero with Teal Mantle_4: -8296068339005310438
+      Chibi Pixel Hero with Teal Mantle_5: -3825976121531415260
+      Chibi Pixel Hero with Teal Mantle_6: 2661106483483997090
+      Chibi Pixel Hero with Teal Mantle_7: 227811031606908504
+      Chibi Pixel Hero with Teal Mantle_8: -1012423143465008590
+      Chibi Pixel Hero with Teal Mantle_9: 1609844987407596287
+      KarakterDIBos2_0: 297916439
+      KarakterDIBos2_1: 611911097
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

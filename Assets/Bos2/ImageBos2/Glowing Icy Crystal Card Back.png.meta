@@ -1,0 +1,268 @@
+fileFormatVersion: 2
+guid: c8af795991d30ab44abcc982408fefee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1819227526393806158
+    second: Glowing Icy Crystal Card Back_0
+  - first:
+      213: 6998514943101603140
+    second: Glowing Icy Crystal Card Back_1
+  - first:
+      213: 1149338262867445398
+    second: Glowing Icy Crystal Card Back_2
+  - first:
+      213: 7115121753297975008
+    second: Glowing Icy Crystal Card Back_3
+  - first:
+      213: -1069460704292944200
+    second: Glowing Icy Crystal Card Back_4
+  - first:
+      213: -1564023938116525254
+    second: Glowing Icy Crystal Card Back_5
+  - first:
+      213: 7868698940852142891
+    second: Glowing Icy Crystal Card Back_6
+  - first:
+      213: 8490197799836235186
+    second: Glowing Icy Crystal Card Back_7
+  - first:
+      213: -4483174129057191665
+    second: Glowing Icy Crystal Card Back_8
+  - first:
+      213: -8840081803310475983
+    second: Glowing Icy Crystal Card Back_9
+  - first:
+      213: 4143912349241946613
+    second: Glowing Icy Crystal Card Back_10
+  - first:
+      213: 6227235251750785861
+    second: Glowing Icy Crystal Card Back_11
+  - first:
+      213: 5313806548055582059
+    second: Glowing Icy Crystal Card Back_12
+  - first:
+      213: 8580948539081445355
+    second: Glowing Icy Crystal Card Back_13
+  - first:
+      213: -6874574320894928409
+    second: Glowing Icy Crystal Card Back_14
+  - first:
+      213: -953862744498124289
+    second: Glowing Icy Crystal Card Back_15
+  - first:
+      213: 4489289780328684072
+    second: Glowing Icy Crystal Card Back_16
+  - first:
+      213: 4208884980032738442
+    second: Glowing Icy Crystal Card Back_17
+  - first:
+      213: -5086432523019220391
+    second: Glowing Icy Crystal Card Back_18
+  - first:
+      213: 4998612889780877869
+    second: Glowing Icy Crystal Card Back_19
+  - first:
+      213: 806870565727450423
+    second: Glowing Icy Crystal Card Back_20
+  - first:
+      213: -8482301414743103183
+    second: Glowing Icy Crystal Card Back_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Glowing Icy Crystal Card Back_2
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 82
+        width: 683
+        height: 890
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6968af48f0543ff00800000000000000
+      internalID: 1149338262867445398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 05a983f9079fc66419a621dbc09fb1ea
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Glowing Icy Crystal Card Back_0: -1819227526393806158
+      Glowing Icy Crystal Card Back_1: 6998514943101603140
+      Glowing Icy Crystal Card Back_10: 4143912349241946613
+      Glowing Icy Crystal Card Back_11: 6227235251750785861
+      Glowing Icy Crystal Card Back_12: 5313806548055582059
+      Glowing Icy Crystal Card Back_13: 8580948539081445355
+      Glowing Icy Crystal Card Back_14: -6874574320894928409
+      Glowing Icy Crystal Card Back_15: -953862744498124289
+      Glowing Icy Crystal Card Back_16: 4489289780328684072
+      Glowing Icy Crystal Card Back_17: 4208884980032738442
+      Glowing Icy Crystal Card Back_18: -5086432523019220391
+      Glowing Icy Crystal Card Back_19: 4998612889780877869
+      Glowing Icy Crystal Card Back_2: 1149338262867445398
+      Glowing Icy Crystal Card Back_20: 806870565727450423
+      Glowing Icy Crystal Card Back_21: -8482301414743103183
+      Glowing Icy Crystal Card Back_3: 7115121753297975008
+      Glowing Icy Crystal Card Back_4: -1069460704292944200
+      Glowing Icy Crystal Card Back_5: -1564023938116525254
+      Glowing Icy Crystal Card Back_6: 7868698940852142891
+      Glowing Icy Crystal Card Back_7: 8490197799836235186
+      Glowing Icy Crystal Card Back_8: -4483174129057191665
+      Glowing Icy Crystal Card Back_9: -8840081803310475983
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
