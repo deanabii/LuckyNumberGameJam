@@ -229,13 +229,13 @@ public class GameManager : MonoBehaviour
         
         if (playerHP <= 0)
         {
-            statusText.text = "Game Over! Malios gugur.";
+            statusText.text = " ";
             losePanel.SetActive(true);
             LuckyNumber.UI.Boss1IntroGuideBridge.SetBattleEndedUI();
         }
         else if (bossHP <= 0)
         {
-            statusText.text = "Menang! Ignaroth hancur.";
+            statusText.text = " ";
             winPanel.SetActive(true);
             LuckyNumber.UI.Boss1IntroGuideBridge.SetBattleEndedUI();
         }
