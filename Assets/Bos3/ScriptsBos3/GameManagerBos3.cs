@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Wajib ditambahkan untuk mengakses TextMeshPro
+using TMPro; 
+using UnityEngine.SceneManagement; // Wajib untuk fungsi ganti scene (Restart, Exit, Next)
 
 public class GameManagerBos3 : MonoBehaviour
 {
@@ -12,8 +14,8 @@ public class GameManagerBos3 : MonoBehaviour
     public Button btnBuatRamuan;
 
     [Header("UI Teks Informasi")]
-    public TextMeshProUGUI txtRonde;   // Referensi untuk teks Ronde
-    public TextMeshProUGUI txtTarget;  // Referensi untuk teks Target Ramuan
+    public TextMeshProUGUI txtRonde;   
+    public TextMeshProUGUI txtTarget;  
 
     [Header("UI Nyawa (Hearts)")]
     public GameObject[] playerHearts; 
@@ -26,13 +28,33 @@ public class GameManagerBos3 : MonoBehaviour
     public CardData dataMawarBiru;
     public CardData dataLilyPutih;
 
+    [Header("Panels & Transitions")]
+    public GameObject winPanel1;
+    public GameObject winPanel2;
+    public GameObject losePanel;
+    public Image fadePanel;
+
     [Header("Status Permainan")]
     public int currentRound = 1;
     public int playerHP = 3;
     public int bossHP = 3;
 
+    private bool isTransitioning = false; // Penanda agar pemain tidak bisa interaksi saat layar memudar
+
     private void Start()
     {
+        // Pastikan semua panel tertutup di awal game
+        if (winPanel1 != null) winPanel1.SetActive(false);
+        if (winPanel2 != null) winPanel2.SetActive(false);
+        if (losePanel != null) losePanel.SetActive(false);
+        
+        // Pastikan layar terang/tembus pandang di awal game
+        if (fadePanel != null)
+        {
+            fadePanel.color = new Color(0, 0, 0, 0);
+            fadePanel.raycastTarget = false;
+        }
+
         btnBuatRamuan.onClick.AddListener(CheckPotion);
         UpdateHealthUI(); 
         StartRound();
@@ -40,6 +62,13 @@ public class GameManagerBos3 : MonoBehaviour
 
     private void Update()
     {
+        // Jika sedang transisi/animasi, matikan tombol agar tidak di-spam
+        if (isTransitioning)
+        {
+            btnBuatRamuan.gameObject.SetActive(false);
+            return;
+        }
+
         bool isSemuaSlotTerisi = (craftSlots[0].transform.childCount > 0 && 
                                   craftSlots[1].transform.childCount > 0 && 
                                   craftSlots[2].transform.childCount > 0);
@@ -51,29 +80,26 @@ public class GameManagerBos3 : MonoBehaviour
     {
         ClearTable();
         GenerateDeck();
-        UpdateInformasiUI(); // Panggil fungsi perbarui teks setiap ronde dimulai
+        UpdateInformasiUI(); 
     }
 
-    // Fungsi baru untuk mengatur teks Ronde dan Target
     private void UpdateInformasiUI()
     {
-        // 1. Logika Teks Ronde
         if (currentRound == 1) 
             txtRonde.text = "Ronde 1";
         else if (currentRound == 2) 
             txtRonde.text = "Ronde 2";
         else if (currentRound == 3) 
-            txtRonde.text = "Last Round!"; // Sesuai permintaan, ronde 3 menjadi Last Round
+            txtRonde.text = "Last Round!";
         else 
             txtRonde.text = "Selesai";
 
-        // 2. Logika Teks Target Ramuan
         if (currentRound == 1) 
-            txtTarget.text = "Target: Chronix\n(Butuh: Mawar Biru)";
+            txtTarget.text = "Target: Chronix";
         else if (currentRound == 2) 
-            txtTarget.text = "Target: Aethel\n(Butuh: Lily Putih)";
+            txtTarget.text = "Target: Aethel";
         else if (currentRound == 3) 
-            txtTarget.text = "Target: Panacea\n(Butuh: Gingseng)";
+            txtTarget.text = "Target: Panacea";
     }
 
     private void ClearTable()
@@ -91,10 +117,10 @@ public class GameManagerBos3 : MonoBehaviour
         List<CardData> deck = new List<CardData>();
 
         int valDaun = Random.Range(3, 9);
-        int minAkar = Mathf.Max(1, 12 - valDaun);
-        int maxAkar = Mathf.Min(9, 20 - valDaun);
+        int minAkar = Mathf.Max(1, 12 - valDaun);   // Typo diperbaiki (-)
+        int maxAkar = Mathf.Min(9, 20 - valDaun);   // Typo diperbaiki (-)
         int valAkar = Random.Range(minAkar, maxAkar + 1);
-        int valBahan3 = 21 - (valDaun + valAkar);
+        int valBahan3 = 21 - (valDaun + valAkar);   // Typo diperbaiki (-)
 
         deck.Add(CreateDynamicCard(dataDaun, valDaun));
         deck.Add(CreateDynamicCard(dataAkar, valAkar));
@@ -156,13 +182,11 @@ public class GameManagerBos3 : MonoBehaviour
 
         if (isOrderCorrect && isTotal21)
         {
-            Debug.Log("SUKSES! Ramuan dibuat.");
             bossHP--;
             UpdateHealthUI(); 
             
             if (bossHP <= 0) {
-                Debug.Log("MENANG!");
-                txtRonde.text = "BOSS DIKALAHKAN!";
+                StartCoroutine(ShowWinSequenceRoutine());
             } else {
                 currentRound++;
                 StartRound();
@@ -170,13 +194,11 @@ public class GameManagerBos3 : MonoBehaviour
         }
         else
         {
-            Debug.Log("GAGAL!");
             playerHP--;
             UpdateHealthUI(); 
 
             if (playerHP <= 0) {
-                Debug.Log("GAME OVER!");
-                txtRonde.text = "MALIOS GUGUR...";
+                GameOver();
             } else {
                 StartRound();
             }
@@ -194,5 +216,79 @@ public class GameManagerBos3 : MonoBehaviour
         {
             bossHearts[i].SetActive(i < bossHP);
         }
+    }
+
+    // --- LOGIKA TRANSISI FADE & PANELS ---
+
+    private IEnumerator ShowWinSequenceRoutine()
+    {
+        isTransitioning = true; // Kunci permainan
+        
+        yield return StartCoroutine(FadeScreen(1f, 1f)); // Fade out ke hitam
+        if (winPanel1 != null) winPanel1.SetActive(true); // Tampilkan Panel 1
+        yield return StartCoroutine(FadeScreen(0f, 1f)); // Fade in ke terang
+    }
+
+    // Hubungkan fungsi ini ke tombol "Continue" di WinPanel 1
+    public void GoToNextWinPanel()
+    {
+        StartCoroutine(SwitchWinPanelRoutine());
+    }
+
+    private IEnumerator SwitchWinPanelRoutine()
+    {
+        isTransitioning = true;
+        yield return StartCoroutine(FadeScreen(1f, 1f));
+
+        if (winPanel1 != null) winPanel1.SetActive(false);
+        if (winPanel2 != null) winPanel2.SetActive(true);
+
+        yield return StartCoroutine(FadeScreen(0f, 1f));
+    }
+
+    private IEnumerator FadeScreen(float targetAlpha, float duration)
+    {
+        if (fadePanel == null) yield break; 
+
+        fadePanel.raycastTarget = true; // Blokir interaksi UI di belakang
+        Color startColor = fadePanel.color;
+        Color endColor = new Color(0, 0, 0, targetAlpha);
+        
+        float timer = 0;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            fadePanel.color = Color.Lerp(startColor, endColor, timer / duration);
+            yield return null;
+        }
+        fadePanel.color = endColor;
+        
+        fadePanel.raycastTarget = (targetAlpha > 0); 
+    }
+
+    private void GameOver()
+    {
+        isTransitioning = true; 
+        if (losePanel != null) losePanel.SetActive(true);
+    }
+
+    // --- LOGIKA TOMBOL ---
+
+    // Hubungkan ke tombol "Restart" di Lose Panel
+    public void RestartGame() 
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // Hubungkan ke tombol "Exit" di Lose Panel
+    public void ExitGame() 
+    {
+        SceneManager.LoadScene("MainMenuScene"); // Ganti nama scene jika berbeda
+    }
+
+    // Hubungkan ke tombol "Continue" di Win Panel 2
+    public void GoToNextScene() 
+    {
+        SceneManager.LoadScene("Bos4"); // Menuju Last Bos sesuai rancangan Anda
     }
 }
