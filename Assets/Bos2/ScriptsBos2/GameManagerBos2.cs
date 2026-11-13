@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement; // Ditambahkan untuk fungsi Restart & Exit
 
 public class GameManagerBos2 : MonoBehaviour
 {
@@ -19,8 +20,14 @@ public class GameManagerBos2 : MonoBehaviour
     public GameObject[] bossHearts;
     public TextMeshProUGUI mistakesText;
     public TextMeshProUGUI roundText;
-    public GridLayoutGroup boardLayout; // Referensi untuk mengubah kolom kartu
+    public GridLayoutGroup boardLayout; 
     public GameObject cardPrefab;
+
+    [Header("Panels & Transitions")]
+    public GameObject winPanel1;
+    public GameObject winPanel2;
+    public GameObject losePanel;    // Referensi untuk Lose Panel
+    public Image fadePanel;         // Referensi untuk Image hitam pekat
 
     [Header("Variabel Mekanik (Jangan diisi manual)")]
     public bool isChecking = false;
@@ -37,6 +44,18 @@ public class GameManagerBos2 : MonoBehaviour
 
     void Start()
     {
+        // Pastikan semua panel kemenangan/kekalahan mati di awal game
+        if (winPanel1 != null) winPanel1.SetActive(false);
+        if (winPanel2 != null) winPanel2.SetActive(false);
+        if (losePanel != null) losePanel.SetActive(false);
+        
+        // Pastikan layar terang/tembus pandang di awal game
+        if (fadePanel != null)
+        {
+            fadePanel.color = new Color(0, 0, 0, 0);
+            fadePanel.raycastTarget = false;
+        }
+
         StartRound(currentRound);
     }
 
@@ -45,7 +64,6 @@ public class GameManagerBos2 : MonoBehaviour
         pairsFound = 0;
         currentRound = round;
 
-        // Mengatur aturan pasangan, batas kesalahan, dan JUMLAH KOLOM GRID
         boardLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
 
         switch(round)
@@ -53,20 +71,19 @@ public class GameManagerBos2 : MonoBehaviour
             case 1: 
                 pairsNeeded = 3; 
                 mistakesAllowed = 1; 
-                boardLayout.constraintCount = 3; // 3 Atas, 3 Bawah
+                boardLayout.constraintCount = 3; 
                 break;
             case 2: 
                 pairsNeeded = 4; 
                 mistakesAllowed = 2; 
-                boardLayout.constraintCount = 4; // 4 Atas, 4 Bawah
+                boardLayout.constraintCount = 4; 
                 break;
             case 3: 
                 pairsNeeded = 5; 
                 mistakesAllowed = 3; 
-                boardLayout.constraintCount = 5; // 5 Atas, 5 Bawah
+                boardLayout.constraintCount = 5; 
                 break;
             default: 
-                Debug.Log("Game Selesai! Pemain Menang Total!"); 
                 return;
         }
 
@@ -87,11 +104,12 @@ public class GameManagerBos2 : MonoBehaviour
         for (int i = 0; i < pairsNeeded; i++)
         {
             int num1 = Random.Range(2, 12);
-            int num2 = 13 - num1;
+            int num2 = 13 - num1; // Typo telah diperbaiki (13 - num1)
             cardValues.Add(num1);
             cardValues.Add(num2);
         }
 
+        // Algoritma pengacakan kartu (Fisher-Yates Shuffle)
         for (int i = 0; i < cardValues.Count; i++)
         {
             int temp = cardValues[i];
@@ -100,6 +118,7 @@ public class GameManagerBos2 : MonoBehaviour
             cardValues[randomIndex] = temp;
         }
 
+        // Spawn kartu
         foreach (int value in cardValues)
         {
             GameObject newCard = Instantiate(cardPrefab, boardLayout.transform);
@@ -138,7 +157,7 @@ public class GameManagerBos2 : MonoBehaviour
         }
         else
         {
-            firstCard.CloseCard(); // Animasi menutup akan dipicu di sini
+            firstCard.CloseCard(); 
             secondCard.CloseCard();
 
             if (mistakesAllowed > 0)
@@ -156,13 +175,16 @@ public class GameManagerBos2 : MonoBehaviour
             UpdateUI();
         }
 
-        // Tambahkan jeda ekstra 0.4 detik agar pemain tidak bisa mengklik kartu lain 
-        // selama kartu yang salah sedang melakukan animasi menutup (fade memakan waktu 0.3 detik).
         yield return new WaitForSeconds(0.4f);
 
         firstCard = null;
         secondCard = null;
-        isChecking = false;
+        
+        // Buka kunci hanya jika game belum over atau belum menang
+        if (playerHP > 0 && bossHP > 0) 
+        {
+            isChecking = false; 
+        }
     }
 
     void RoundComplete()
@@ -170,7 +192,7 @@ public class GameManagerBos2 : MonoBehaviour
         bossHP--;
         if (bossHP <= 0)
         {
-            Debug.Log("Bos Glaciera Kalah!"); 
+            StartCoroutine(ShowWinSequenceRoutine());
         }
         else
         {
@@ -179,30 +201,104 @@ public class GameManagerBos2 : MonoBehaviour
         UpdateUI();
     }
 
+    // --- LOGIKA TRANSISI FADE & PANELS ---
+
+    IEnumerator ShowWinSequenceRoutine()
+    {
+        isChecking = true; // Kunci interaksi kartu
+        
+        yield return StartCoroutine(FadeScreen(1f, 1f)); // Fade out ke hitam
+        if (winPanel1 != null) winPanel1.SetActive(true); // Tampilkan Panel 1
+        yield return StartCoroutine(FadeScreen(0f, 1f)); // Fade in ke terang
+    }
+
+    public void GoToNextWinPanel()
+    {
+        StartCoroutine(SwitchWinPanelRoutine());
+    }
+
+    IEnumerator SwitchWinPanelRoutine()
+    {
+        isChecking = true;
+        yield return StartCoroutine(FadeScreen(1f, 1f));
+
+        if (winPanel1 != null) winPanel1.SetActive(false);
+        if (winPanel2 != null) winPanel2.SetActive(true);
+
+        yield return StartCoroutine(FadeScreen(0f, 1f));
+    }
+
+    IEnumerator FadeScreen(float targetAlpha, float duration)
+    {
+        if (fadePanel == null) yield break; // Keamanan jika fadePanel belum diisi
+
+        fadePanel.raycastTarget = true; 
+        Color startColor = fadePanel.color;
+        Color endColor = new Color(0, 0, 0, targetAlpha);
+        
+        float timer = 0;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            fadePanel.color = Color.Lerp(startColor, endColor, timer / duration);
+            yield return null;
+        }
+        fadePanel.color = endColor;
+        
+        fadePanel.raycastTarget = (targetAlpha > 0); 
+    }
+
     void GameOver()
     {
-        Debug.Log("Game Over! Nyawa Pemain Habis."); 
+        isChecking = true; // Kunci interaksi kartu
+        if (losePanel != null) losePanel.SetActive(true);
     }
+
+    // --- LOGIKA TOMBOL RESTART & EXIT ---
+
+    public void RestartGame() 
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ExitGame() 
+    {
+        // Sesuaikan dengan nama scene menu utama Anda, misalnya "MainMenu"
+        SceneManager.LoadScene("MainMenuScene"); 
+    }
+
+    public void GoToNextScene() 
+    {
+        // Ganti "NamaSceneSelanjutnya" dengan nama scene Boss 3 Anda nanti jika sudah dibuat
+        SceneManager.LoadScene("NamaSceneSelanjutnya"); 
+    }
+
+    // --- UPDATE UI ---
 
     void UpdateUI()
     {
         for (int i = 0; i < playerHearts.Length; i++)
         {
-            playerHearts[i].SetActive(i < playerHP);
+            if (playerHearts[i] != null)
+                playerHearts[i].SetActive(i < playerHP);
         }
 
         for (int i = 0; i < bossHearts.Length; i++)
         {
-            bossHearts[i].SetActive(i < bossHP);
+            if (bossHearts[i] != null)
+                bossHearts[i].SetActive(i < bossHP);
         }
 
-        mistakesText.text = mistakesAllowed.ToString();
+        if (mistakesText != null) mistakesText.text = mistakesAllowed.ToString();
 
-        switch (currentRound)
+        if (roundText != null)
         {
-            case 1: roundText.text = "Round 1"; break;
-            case 2: roundText.text = "Round 2"; break;
-            case 3: roundText.text = "Last Round"; break;
+            switch (currentRound)
+            {
+                case 1: roundText.text = "Round 1"; break;
+                case 2: roundText.text = "Round 2"; break;
+                case 3: roundText.text = "Last Round"; break;
+            }
         }
     }
 }
