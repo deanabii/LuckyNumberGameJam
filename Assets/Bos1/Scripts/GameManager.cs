@@ -36,11 +36,18 @@ public class GameManager : MonoBehaviour
     public Transform centerPoint;
 
     [Header("Placeholder Sound Effect (Drag AudioClip ke Sini)")]
+    public AudioSource bgmAudioSource;
     public AudioSource sfxAudioSource;
+    public AudioSource bossAudioSource;
+    public AudioClip bgmMusic;
     public AudioClip playerHitEnemySFX;
     public AudioClip playerHeavyFinisherSFX;
     public AudioClip enemyHitPlayerSFX;
+    public AudioClip bossSoundSFX;
+    public bool loopBossSound = true;
+    [Range(0f, 1f)] public float bgmVolume = 0.6f;
     [Range(0f, 1f)] public float sfxVolume = 1f;
+    [Range(0f, 1f)] public float bossSoundVolume = 0.75f;
     
     private List<Card> selectedCards = new List<Card>();
     private Dictionary<Card, Vector3> cardInitialPositions = new Dictionary<Card, Vector3>();
@@ -51,6 +58,11 @@ public class GameManager : MonoBehaviour
         winPanel.SetActive(false);
         losePanel.SetActive(false);
         LuckyNumber.UI.Boss1IntroGuideBridge.EnsureForActiveScene();
+        PlayBGM();
+        if (bossSoundSFX != null && loopBossSound)
+        {
+            PlayBossSoundSFX();
+        }
         
         UpdateUI();
         StartNewTurn();
@@ -66,10 +78,10 @@ public class GameManager : MonoBehaviour
 
         int currentTarget = roundTargets[currentRound - 1];
         
-        roundText.text = "Ronde " + currentRound;
+        roundText.text = "Round " + currentRound;
         targetText.text = currentTarget.ToString();
         successText.text = successfulGuesses + "/3";
-        statusText.text = "Pilih dua kartu"; 
+        statusText.text = "Select two cards"; 
         
         GenerateCards(currentTarget);
         BukaSemuaKartu(); 
@@ -198,7 +210,7 @@ public class GameManager : MonoBehaviour
             successfulGuesses++;
             bool isFinisherHit = (successfulGuesses >= 3);
             AudioClip hitClip = (isFinisherHit && playerHeavyFinisherSFX != null) ? playerHeavyFinisherSFX : playerHitEnemySFX;
-            LuckyNumber.UI.Boss1IntroGuideBridge.PlayPlayerAttackEffect(isFinisherHit, () => PlayBattleSFX(hitClip));
+            LuckyNumber.UI.Boss1IntroGuideBridge.PlayPlayerAttackEffect(isFinisherHit, () => { PlayBattleSFX(hitClip); PlayBossSoundSFX(); });
             successText.text = successfulGuesses + "/3";
             
             if (successfulGuesses >= 3)
@@ -209,19 +221,19 @@ public class GameManager : MonoBehaviour
                 if (bossHP > 0)
                 {
                     currentRound++;
-                    statusText.text = "MEGA BOOM!! Ignaroth hancur -1 HP!";
+                    statusText.text = "MEGA BOOM! Ignaroth lost 1 HP!";
                 }
             }
             else
             {
-                statusText.text = successfulGuesses == 1 ? "BOOM!! Serangan telak!" : "DUARRR!! Combo menghantam!";
+                statusText.text = successfulGuesses == 1 ? "BOOM! Direct hit!" : "BLAM! Combo hit!";
             }
         }
         else
         {
             yield return new WaitForSeconds(0.10f);
             playerHP--;
-            statusText.text = "Kombinasi Salah!";
+            statusText.text = "Wrong combination!";
             LuckyNumber.UI.Boss1IntroGuideBridge.PlayBossAttackOnPlayerEffect(() => PlayBattleSFX(enemyHitPlayerSFX));
         }
 
@@ -230,12 +242,14 @@ public class GameManager : MonoBehaviour
         if (playerHP <= 0)
         {
             statusText.text = " ";
+            StopBossSoundSFX();
             losePanel.SetActive(true);
             LuckyNumber.UI.Boss1IntroGuideBridge.SetBattleEndedUI();
         }
         else if (bossHP <= 0)
         {
             statusText.text = " ";
+            StopBossSoundSFX();
             winPanel.SetActive(true);
             LuckyNumber.UI.Boss1IntroGuideBridge.SetBattleEndedUI();
         }
@@ -283,18 +297,74 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        StopBossSoundSFX();
         LuckyNumber.UI.Boss1IntroGuideBridge.MarkRestartNextLoad();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ExitGame()
     {
+        StopBossSoundSFX();
         LuckyNumber.UI.Boss1IntroGuideBridge.ReturnToMapFromBoss1(false);
     }
 
     public void ContinueGame()
     {
+        StopBossSoundSFX();
         LuckyNumber.UI.Boss1IntroGuideBridge.ReturnToMapFromBoss1(true);
+    }
+
+    public void PlayBGM()
+    {
+        if (bgmAudioSource == null)
+        {
+            bgmAudioSource = gameObject.AddComponent<AudioSource>();
+            bgmAudioSource.playOnAwake = false;
+        }
+        if (bgmMusic != null)
+        {
+            if (bgmAudioSource.clip != bgmMusic || !bgmAudioSource.isPlaying)
+            {
+                bgmAudioSource.clip = bgmMusic;
+                bgmAudioSource.loop = true;
+                bgmAudioSource.volume = bgmVolume;
+                bgmAudioSource.Play();
+            }
+        }
+    }
+
+    public void PlayBossSoundSFX()
+    {
+        if (bossSoundSFX == null) return;
+        EnsureBossAudioSource();
+        if (bossAudioSource != null)
+        {
+            bossAudioSource.clip = bossSoundSFX;
+            bossAudioSource.loop = loopBossSound;
+            bossAudioSource.volume = bossSoundVolume;
+            if (!bossAudioSource.isPlaying)
+            {
+                bossAudioSource.Play();
+            }
+        }
+    }
+
+    public void StopBossSoundSFX()
+    {
+        if (bossAudioSource != null && bossAudioSource.isPlaying)
+        {
+            bossAudioSource.Stop();
+        }
+    }
+
+    private void EnsureBossAudioSource()
+    {
+        if (bossAudioSource == null)
+        {
+            bossAudioSource = gameObject.AddComponent<AudioSource>();
+            bossAudioSource.playOnAwake = false;
+            bossAudioSource.loop = loopBossSound;
+        }
     }
 
     private void PlayBattleSFX(AudioClip clip)

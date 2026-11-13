@@ -109,7 +109,7 @@ namespace LuckyNumber.Core
             NPCInteractable arvandNpc = arvandObj.GetComponent<NPCInteractable>();
             if (arvandNpc != null)
             {
-                arvandNpc.Configure(InteractableRole.ArvandVillageChief, "Kepala Desa Arvand", 0, 2.8f);
+                arvandNpc.Configure(InteractableRole.ArvandVillageChief, "Chief Arvand", 0, 2.8f);
             }
 
             // 3. Attach SmoothCameraFollow to Main Camera

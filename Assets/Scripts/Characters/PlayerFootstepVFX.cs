@@ -17,6 +17,13 @@ namespace LuckyNumber.Characters
         [SerializeField] private Vector2 footWorldOffset = new Vector2(0f, -0.34f);
         [SerializeField] private Color dustColor = new Color(1f, 0.97f, 0.90f, 0.88f);
 
+        [Header("Footstep Audio Settings (Placeholder)")]
+        [Tooltip("AudioSource untuk memutar suara langkah kaki Malios. Otomatis dibuat jika kosong.")]
+        public AudioSource footstepSource;
+        [Tooltip("Placeholder untuk meletakkan klip suara langkah kaki (step/footstep) karakter.")]
+        public AudioClip[] footstepClips;
+        [Range(0f, 1f)] public float footstepVolume = 0.45f;
+
         private class ActiveDustPuff
         {
             public GameObject gameObject;
@@ -102,6 +109,8 @@ namespace LuckyNumber.Characters
                 : (registry.dust1Sprites != null && registry.dust1Sprites.Length > 0 ? registry.dust1Sprites : registry.dust2Sprites);
 
             if (frames == null || frames.Length == 0 || frames[0] == null) return;
+
+            PlayFootstepSound();
 
             EnsureContainer();
 
@@ -194,6 +203,24 @@ namespace LuckyNumber.Characters
             };
             _pool.Add(created);
             return created;
+        }
+
+        private void PlayFootstepSound()
+        {
+            if (footstepClips == null || footstepClips.Length == 0) return;
+            if (footstepSource == null)
+            {
+                footstepSource = GetComponent<AudioSource>();
+                if (footstepSource == null) footstepSource = gameObject.AddComponent<AudioSource>();
+                footstepSource.playOnAwake = false;
+            }
+            int rIdx = Random.Range(0, footstepClips.Length);
+            AudioClip clip = footstepClips[rIdx];
+            if (clip != null)
+            {
+                footstepSource.pitch = Random.Range(0.92f, 1.08f);
+                footstepSource.PlayOneShot(clip, footstepVolume);
+            }
         }
     }
 }

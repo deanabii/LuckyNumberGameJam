@@ -15,7 +15,7 @@ namespace LuckyNumber.Characters
     {
         [Header("Interactable Configuration")]
         [SerializeField] private InteractableRole role = InteractableRole.ArvandVillageChief;
-        [SerializeField] private string displayName = "Kepala Desa Arvand";
+        [SerializeField] private string displayName = "Chief Arvand";
         [SerializeField] private float interactionRadius = 2.6f;
         [SerializeField] private int bossIndex = 0; // 0=Ignaroth, 1=Glaciera, 2=Venomark, 3=Nocthar
 
@@ -33,13 +33,13 @@ namespace LuckyNumber.Characters
                 switch (role)
                 {
                     case InteractableRole.ArvandVillageChief:
-                        return $"[E] Bicara dengan {displayName}";
+                        return $"[E] Talk to {displayName}";
                     case InteractableRole.HokiSacredAltar:
-                        return "[E] Periksa Altar Suci HOKI";
+                        return "[E] Inspect Sacred HOKI Altar";
                     case InteractableRole.BossEncounter:
-                        return $"[E] Hadapi {displayName}";
+                        return $"[E] Challenge {displayName}";
                     default:
-                        return $"[E] Interaksi {displayName}";
+                        return $"[E] Interact with {displayName}";
                 }
             }
         }
@@ -144,36 +144,36 @@ namespace LuckyNumber.Characters
                 {
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Syukurlah kau telah tiba di Desa Eldoria, Malios! Kutukan Vorthak membuat desa kami berada di ambang kehancuran.",
+                        speakerName = "Chief Arvand",
+                        text = "Thank goodness you have arrived in Eldoria Village, Malios! The curse of Vorthak has pushed our village to the brink of ruin.",
                         portrait = arvandPortrait,
                         isPlayerSpeaking = false
                     },
                     new DialogueLine
                     {
                         speakerName = "Malios",
-                        text = "Kepala Desa Eldric dari Valoria telah menceritakan semuanya kepadaku, Tuan Arvand. Bagaimana cara kita memulihkan Artefak HOKI?",
+                        text = "Elder Eldric of Valoria told me everything, Chief Arvand. How do we restore the HOKI Artifact?",
                         portrait = maliosPortrait,
                         isPlayerSpeaking = true
                     },
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Artefak HOKI—segel suci angka 6 dan 7—telah dipecahkan menjadi empat kepingan oleh empat demon bawahan Vorthak.",
+                        speakerName = "Chief Arvand",
+                        text = "The HOKI Artifact, sacred seal of numbers 6 and 7, was shattered into four fragments by Vorthak's four demon lieutenants.",
                         portrait = arvandPortrait,
                         isPlayerSpeaking = false
                     },
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Kau harus mengalahkan mereka secara berurutan! Pergilah ke Utara keluar desa menuju Area Percabangan, lalu ambil JALUR KIRI menuju Gunung Bara untuk menghadapi BOS 1: Ignaroth (Demon Api)!",
+                        speakerName = "Chief Arvand",
+                        text = "You must defeat them in sequence! Head North out of the village to the Crossroads, then take the LEFT PATH toward Mount Cinder to confront BOSS 1: Ignaroth, the Fire Demon!",
                         portrait = arvandPortrait,
                         isPlayerSpeaking = false
                     },
                     new DialogueLine
                     {
                         speakerName = "Malios",
-                        text = "Baik! Aku akan menuju Gunung Bara di jalur kiri terlebih dahulu dan merebut kembali seluruh pecahan HOKI!",
+                        text = "Understood! I will head to Mount Cinder on the left path first and reclaim all the lost fragments of HOKI!",
                         portrait = maliosPortrait,
                         isPlayerSpeaking = true
                     }
@@ -193,8 +193,8 @@ namespace LuckyNumber.Characters
                 {
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Berjalanlah ke jalan Utara Desa Eldoria menuju Persimpangan. Ambil JALUR KIRI (Gunung Bara) untuk mengalahkan Demon Api Ignaroth terlebih dahulu!",
+                        speakerName = "Chief Arvand",
+                        text = "Walk north out of Eldoria Village to the Crossroads. Take the LEFT PATH to Mount Cinder and defeat the Fire Demon Ignaroth first!",
                         portrait = arvandPortrait
                     }
                 });
@@ -205,14 +205,14 @@ namespace LuckyNumber.Characters
                 {
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Luar biasa, Malios! Kau sudah mendapatkan Pecahan HOKI Pertama dan Kunci Gua Es dari Ignaroth!",
+                        speakerName = "Chief Arvand",
+                        text = "Outstanding, Malios! You have secured the First HOKI Fragment and the Ice Cavern Key from Ignaroth!",
                         portrait = arvandPortrait
                     },
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Sekarang pergilah ke JALUR KIRI ATAS di Persimpangan untuk memasuki Gua Es Abadi dan kalahkan BOS 2: Glaciera!",
+                        speakerName = "Chief Arvand",
+                        text = "Now head to the UPPER-LEFT PATH at the Crossroads to enter the Eternal Ice Cavern and defeat BOSS 2: Glaciera!",
                         portrait = arvandPortrait
                     }
                 });
@@ -223,14 +223,14 @@ namespace LuckyNumber.Characters
                 {
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Kekuatan SIXSEVEN telah bangkit di dalam dirimu! Dengan Kunci Hutan Racun dari Glaciera, kini JALUR KANAN ATAS telah terbuka.",
+                        speakerName = "Chief Arvand",
+                        text = "The power of SIXSEVEN awakens within you! With the Poison Forest Key obtained from Glaciera, the UPPER-RIGHT PATH is now open.",
                         portrait = arvandPortrait
                     },
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Masuklah ke Hutan Racun dan kalahkan BOS 3: Venomark untuk merebut Pecahan HOKI Ketiga!",
+                        speakerName = "Chief Arvand",
+                        text = "Enter the Poison Forest and defeat BOSS 3: Venomark to claim the Third HOKI Fragment!",
                         portrait = arvandPortrait
                     }
                 });
@@ -241,8 +241,8 @@ namespace LuckyNumber.Characters
                 {
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Tinggal satu pecahan lagi! Gunakan Kunci Kastil Bayangan untuk membuka JALUR KANAN di Persimpangan dan kalahkan BOS 4: Nocthar!",
+                        speakerName = "Chief Arvand",
+                        text = "Only one fragment remains! Use the Shadow Castle Key to unlock the RIGHT PATH at the Crossroads and defeat BOSS 4: Nocthar!",
                         portrait = arvandPortrait
                     }
                 });
@@ -253,8 +253,8 @@ namespace LuckyNumber.Characters
                 {
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Kau berhasil mengumpulkan keempat pecahan HOKI, Malios! Cepat berinteraksi dengan Altar Suci HOKI di sebelahku untuk menyatukannya kembali!",
+                        speakerName = "Chief Arvand",
+                        text = "You have gathered all four HOKI fragments, Malios! Approach the Sacred HOKI Altar beside me to unite them once more!",
                         portrait = arvandPortrait
                     }
                 });
@@ -275,8 +275,8 @@ namespace LuckyNumber.Characters
                 {
                     new DialogueLine
                     {
-                        speakerName = "Altar Suci HOKI",
-                        text = $"Altar kuno tempat Artefak HOKI (Angka 6 & 7) disemayamkan tampak retak.\n(Kepingan HOKI terkumpul: {count} / 4. Kumpulkan seluruh 4 kepingan dari keempat demon untuk memulihkan altar!)",
+                        speakerName = "Sacred HOKI Altar",
+                        text = $"The ancient altar enshrining the HOKI Artifact (Numbers 6 & 7) is cracked and dormant.\n(HOKI Fragments collected: {count} / 4. Gather all 4 fragments from the four demons to restore the altar!)",
                         portrait = maliosPortrait,
                         isPlayerSpeaking = true
                     }
@@ -288,15 +288,15 @@ namespace LuckyNumber.Characters
                 {
                     new DialogueLine
                     {
-                        speakerName = "Kepala Desa Arvand",
-                        text = "Malios! Letakkan keempat pecahan HOKI itu pada slot altar sesuai urutannya agar kekuatannya kembali menyatu!",
+                        speakerName = "Chief Arvand",
+                        text = "Malios! Place all four HOKI fragments into the altar slots in sequence to restore their sacred power!",
                         portrait = arvandPortrait,
                         isPlayerSpeaking = false
                     },
                     new DialogueLine
                     {
                         speakerName = "Malios",
-                        text = "Keempat pecahan HOKI mulai bersinar... dan kekuatan SIXSEVEN di tubuhku ikut beresonansi!",
+                        text = "The four HOKI fragments are beginning to glow... and the power of SIXSEVEN resonates within me!",
                         portrait = maliosPortrait,
                         isPlayerSpeaking = true
                     }
@@ -325,7 +325,7 @@ namespace LuckyNumber.Characters
                     new DialogueLine
                     {
                         speakerName = "Malios",
-                        text = $"{displayName} sudah dikalahkan dan kepingan HOKI di area ini telah diamankan. Saatnya melanjutkan perjalanan!",
+                        text = $"{displayName} has already been defeated and this cave is conquered! Proceed to the next cave or return to the Sacred Altar.",
                         portrait = maliosPortrait,
                         isPlayerSpeaking = true
                     }
@@ -334,28 +334,20 @@ namespace LuckyNumber.Characters
             }
 
             string cardGameName = GetBossCardGameTitle(bossIndex);
-            string rewardDesc = GetBossRewardDescription(bossIndex);
 
             DialogueLine[] bossLines =
             {
                 new DialogueLine
                 {
                     speakerName = displayName,
-                    text = $"Kau berani memasuki arenaku, Malios?! Untuk menghancurkan perisaiku, kau harus menaklukkan tantangan kartu {cardGameName}!",
+                    text = $"You dare enter my domain, Malios?! Face the {cardGameName} challenge within this cave!",
                     portrait = null,
                     isPlayerSpeaking = false
                 },
                 new DialogueLine
                 {
                     speakerName = "Malios",
-                    text = $"Aku tidak akan mundur! Dengan perhitungan Lucky Number, aku akan mematahkan segelmu dan mengambil kembali pecahan HOKI!",
-                    portrait = maliosPortrait,
-                    isPlayerSpeaking = true
-                },
-                new DialogueLine
-                {
-                    speakerName = "Sistem Pertarungan",
-                    text = $"[Simulasi Kemenangan Boss {bossIndex + 1} – Card Battle UI akan diaktifkan pada tahap berikutnya]\n\nBerhasil mengalahkan {displayName}!\nReward diperoleh: {rewardDesc}",
+                    text = "I will not back down! With the calculations of Lucky Number, I will break your seal and reclaim the HOKI Fragment!",
                     portrait = maliosPortrait,
                     isPlayerSpeaking = true
                 }
@@ -363,9 +355,9 @@ namespace LuckyNumber.Characters
 
             DialogueSystem.Instance.StartDialogue(bossLines, () =>
             {
-                if (prog != null)
+                if (MapZoneProgressionManager.Instance != null)
                 {
-                    prog.MarkBossDefeated(bossIndex);
+                    MapZoneProgressionManager.Instance.EnterBossScene(bossIndex);
                 }
             });
         }
@@ -374,10 +366,10 @@ namespace LuckyNumber.Characters
         {
             switch (idx)
             {
-                case 0: return "Lucky 13 (3 Pilar Api - Target Angka 13)";
-                case 1: return "Frozen Memory (8 Kartu Es - Pasangan Jumlah 13)";
-                case 2: return "Poison Combination (Resep Daun + Akar + Bunga = 21)";
-                case 3: return "Shadow Sequence (4 Segel Urutan Logika Angka)";
+                case 0: return "Lucky 13 (3 Fire Pillars: Target 13)";
+                case 1: return "Frozen Memory (8 Ice Cards: Pairs Summing to 13)";
+                case 2: return "Poison Concoction (Leaf + Root + Flower = 21)";
+                case 3: return "Shadow Sequence (4 Number Logic Seals)";
                 default: return "Lucky Number";
             }
         }
@@ -386,11 +378,11 @@ namespace LuckyNumber.Characters
         {
             switch (idx)
             {
-                case 0: return "Pecahan HOKI #1 + Kunci Gua Es Abadi (Jalur Boss 2 Terbuka!)";
-                case 1: return "Pecahan HOKI #2 + Ultimate SIXSEVEN Terbuka + Kunci Hutan Racun (Jalur Boss 3 Terbuka!)";
-                case 2: return "Pecahan HOKI #3 + Kunci Kastil Bayangan (Jalur Boss 4 Terbuka!)";
-                case 3: return "Pecahan HOKI #4 (Seluruh Kepingan Terkumpul! Kembali ke Altar Desa Eldoria!)";
-                default: return "Pecahan HOKI";
+                case 0: return "HOKI Fragment #1 + Ice Cavern Key (Boss 2 Path Unlocked!)";
+                case 1: return "HOKI Fragment #2 + SIXSEVEN Ultimate Unlocked + Poison Forest Key (Boss 3 Path Unlocked!)";
+                case 2: return "HOKI Fragment #3 + Shadow Castle Key (Boss 4 Path Unlocked!)";
+                case 3: return "HOKI Fragment #4 (All Fragments Collected! Return to Eldoria Altar!)";
+                default: return "HOKI Fragment";
             }
         }
     }

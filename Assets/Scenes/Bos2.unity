@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 87068657}
   - component: {fileID: 87068659}
   - component: {fileID: 87068658}
+  - component: {fileID: 87068660}
   m_Layer: 5
   m_Name: KarakterBOS
   m_TagString: Untagged
@@ -463,9 +464,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6372550566843930681, guid: 3a349f450fd4cac4e8b3d21883243533, type: 3}
+  m_Sprite: {fileID: -5003282015602443741, guid: 8c59419e243fbde46a30e355fff0e9fb, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -481,6 +482,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87068656}
   m_CullTransparentMesh: 1
+--- !u!95 &87068660
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87068656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a3407ab0749442a9d301f823ae81ae8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &232267506
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +744,7 @@ RectTransform:
   m_GameObject: {fileID: 381786070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8828901, y: 0.9172884, z: 0.8064074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2002134030}
@@ -1070,7 +1093,7 @@ RectTransform:
   m_GameObject: {fileID: 716098004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8828901, y: 0.9172884, z: 0.8064074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2002134030}
@@ -1708,7 +1731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &849232011
 SpriteRenderer:
   serializedVersion: 3
@@ -2027,7 +2050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.9103, y: 500}
+  m_AnchoredPosition: {x: 792, y: 461.2}
   m_SizeDelta: {x: 154.6099, y: 51.8427}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1171346839
@@ -2300,6 +2323,14 @@ MonoBehaviour:
   losePanel: {fileID: 1206788511}
   fadePanel: {fileID: 728265813}
   isChecking: 0
+  bgmSource: {fileID: 0}
+  sfxSource: {fileID: 0}
+  bgmMusic: {fileID: 0}
+  playerHitEnemySFX: {fileID: 0}
+  enemyHitPlayerSFX: {fileID: 0}
+  bossSoundSFX: {fileID: 0}
+  bgmVolume: 0.6
+  sfxVolume: 1
 --- !u!4 &1393967037
 Transform:
   m_ObjectHideFlags: 0
@@ -2513,7 +2544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 796.41614, y: 392.33508}
+  m_AnchoredPosition: {x: 745, y: 214.65}
   m_SizeDelta: {x: 265.6617, y: 247.8273}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1665313315
@@ -2781,6 +2812,7 @@ GameObject:
   - component: {fileID: 1908243757}
   - component: {fileID: 1908243759}
   - component: {fileID: 1908243758}
+  - component: {fileID: 1908243760}
   m_Layer: 5
   m_Name: KarakterMC
   m_TagString: Untagged
@@ -2804,8 +2836,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -751, y: -250.11}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -778, y: -281}
+  m_SizeDelta: {x: 204.9189, y: 108.9701}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1908243758
 MonoBehaviour:
@@ -2827,9 +2859,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 297916439, guid: 147a27fe61623e34c8610e7092852f03, type: 3}
+  m_Sprite: {fileID: -1076127280655250035, guid: 73e9bc2abdbdc2c468d6c0049bf1f005, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2845,6 +2877,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908243756}
   m_CullTransparentMesh: 1
+--- !u!95 &1908243760
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908243756}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a82e9102484a92e4ab5c4e7fbcf20202, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1950914898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,7 +2926,7 @@ RectTransform:
   m_GameObject: {fileID: 1950914898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8828901, y: 0.9172884, z: 0.8064074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2002134030}
@@ -3095,8 +3149,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.9103, y: 456.7}
-  m_SizeDelta: {x: 229.8574, y: 60.8525}
+  m_AnchoredPosition: {x: 785, y: 388.31}
+  m_SizeDelta: {x: 218.8, y: 93.9345}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2002134031
 MonoBehaviour:
@@ -3116,7 +3170,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 9.63
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0

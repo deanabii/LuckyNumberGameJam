@@ -26,6 +26,8 @@ namespace LuckyNumber.UI
         [SerializeField] private TMP_FontAsset customCutsceneFont;
         [SerializeField] private float typewriterCharDelay = 0.018f;
         [SerializeField] private bool playIntroOnStart = true;
+        [Tooltip("Jika true, script akan menimpa posisi UI cutscene dengan preset script. Jika false (default), posisi yang diatur user di TestMap tidak akan ditimpa.")]
+        [SerializeField] private bool overrideExistingLayoutWithPreset = false;
 
         [Header("Daftar Slide Cutscene (Otomatis Terisi, Bisa Diedit di Inspector)")]
         [SerializeField] private CutsceneSlide[] introSlides;
@@ -129,7 +131,10 @@ namespace LuckyNumber.UI
             if (_cutsceneRoot != null)
             {
                 BindExistingUIReferences();
-                ApplyFullScreenSeamlessLayout();
+                if (overrideExistingLayoutWithPreset)
+                {
+                    ApplyFullScreenSeamlessLayout();
+                }
 
                 // PENTING: Hanya timpa font jika user secara spesifik mengisi customCutsceneFont di Inspector CutsceneManager.
                 // Jika customCutsceneFont kosong, JANGAN menimpa font yang sudah diatur manual oleh user di scene hierarchy!
@@ -277,7 +282,7 @@ namespace LuckyNumber.UI
                 frameObj.transform,
                 new Vector2(0.40f, 0.032f),
                 new Vector2(0.60f, 0.086f),
-                "Panel Berikutnya [E]",
+                "Next Panel [E]",
                 font,
                 registry,
                 out _nextButtonLabel
@@ -289,7 +294,7 @@ namespace LuckyNumber.UI
                 frameObj.transform,
                 new Vector2(0.025f, 0.032f),
                 new Vector2(0.185f, 0.082f),
-                "Lewati Cerita [Esc]",
+                "Skip Story [Esc]",
                 font,
                 registry,
                 out _skipButtonLabel
@@ -471,10 +476,7 @@ namespace LuckyNumber.UI
                 {
                     _nextButtonLabel.fontSize = 15.5f;
                     _nextButtonLabel.color = new Color(0.99f, 0.95f, 0.82f, 0.96f);
-                    if (_nextButtonLabel.text.Contains("▶") || _nextButtonLabel.text.Contains("✔"))
-                    {
-                        _nextButtonLabel.text = "Panel Berikutnya [E]";
-                    }
+                    _nextButtonLabel.text = "Next Panel [E]";
                 }
             }
 
@@ -498,6 +500,7 @@ namespace LuckyNumber.UI
                 {
                     _skipButtonLabel.fontSize = 14f;
                     _skipButtonLabel.color = new Color(0.96f, 0.91f, 0.80f, 0.90f);
+                    _skipButtonLabel.text = "Skip Story [Esc]";
                 }
             }
         }
@@ -590,42 +593,42 @@ namespace LuckyNumber.UI
             {
                 new CutsceneSlide
                 {
-                    chapterTitle = "BAGIAN 1: PULAU AETHERIA & DESA ELDORIA",
+                    chapterTitle = "CHAPTER 1: AETHERIA ISLAND & ELDORIA VILLAGE",
                     narrativeText =
-                        "Di tengah lautan luas Pulau Aetheria, berdiri sebuah desa makmur bernama Desa Eldoria yang dipimpin oleh Kepala Desa Arvand. " +
-                        "Selama ratusan tahun, kedamaian dan kesuburan desa tersebut terjaga berkat perlindungan sebuah artefak kuno.",
+                        "In the vast ocean of Aetheria Island stood a prosperous village called Eldoria Village, guided by Village Chief Arvand. " +
+                        "For centuries, peace and fertility flourished beneath the protection of an ancient artifact.",
                     artwork = GetSafeSprite(sprites, 0)
                 },
                 new CutsceneSlide
                 {
-                    chapterTitle = "ARTEFAK HOKI – THE ANCIENT SEAL OF FORTUNE",
+                    chapterTitle = "THE HOKI ARTIFACT: ANCIENT SEAL OF FORTUNE",
                     narrativeText =
-                        "Artefak tersebut bernama HOKI—berbentuk dua angka keramat (6 dan 7) yang berdampingan di atas altar rumah suci di tengah Desa Eldoria. " +
-                        "Selama Artefak HOKI tetap utuh, air tetap jernih dan penduduk terhindar dari segala bencana.",
+                        "The sacred relic was known as HOKI, bearing two sacred numbers, 6 and 7, enshrined upon the altar at the heart of Eldoria Village. " +
+                        "As long as the HOKI Artifact remained whole, waters ran clear and the people remained safe from calamity.",
                     artwork = GetSafeSprite(sprites, 1)
                 },
                 new CutsceneSlide
                 {
-                    chapterTitle = "BAGIAN 2: KEBANGKITAN IBLIS KUNO VORTHAK",
+                    chapterTitle = "CHAPTER 2: AWAKENING OF ANCIENT DEMON VORTHAK",
                     narrativeText =
-                        "Namun pada suatu malam, iblis kuno bernama Vorthak yang tersegel di bawah altar berusaha membebaskan dirinya. " +
-                        "Vorthak memanggil empat demon bawahannya untuk menghancurkan segel hingga Artefak HOKI retak dan terpecah menjadi empat kepingan!",
+                        "Yet one fateful night, an ancient demon named Vorthak sealed beneath the altar sought to break free. " +
+                        "Vorthak summoned four demon lieutenants to shatter the seal, breaking the HOKI Artifact into four fragments!",
                     artwork = GetSafeSprite(sprites, 2)
                 },
                 new CutsceneSlide
                 {
-                    chapterTitle = "BAGIAN 3: EMPAT DEMON PENJAGA PECAHAN HOKI",
+                    chapterTitle = "CHAPTER 3: FOUR DEMON GUARDIANS OF HOKI",
                     narrativeText =
-                        "Keempat kepingan HOKI dibawa kabur ke penjuru pulau oleh empat demon: Ignaroth (Api), Glaciera (Es), Venomark (Racun), dan Nocthar (Bayangan). " +
-                        "Kutukan pun menyebar—tanaman mengering, sungai keruh, dan Desa Eldoria berada di ambang kehancuran.",
+                        "The four HOKI fragments were scattered across the island by the four demons: Ignaroth (Fire), Glaciera (Ice), Venomark (Poison), and Nocthar (Shadow). " +
+                        "A dark curse spread rapidly, withering crops, tainting rivers, and bringing Eldoria Village to the verge of ruin.",
                     artwork = GetSafeSprite(sprites, 3)
                 },
                 new CutsceneSlide
                 {
-                    chapterTitle = "BAGIAN 4: AWAL PERJALANAN MALIOS",
+                    chapterTitle = "CHAPTER 4: THE JOURNEY OF MALIOS BEGINS",
                     narrativeText =
-                        "Kepala Desa Arvand meminta bantuan kepada Eldric di Desa Valoria, yang kemudian mengutus petualang pemberani bernama Malios. " +
-                        "\"Temukan keempat demon, kalahkan mereka secara berurutan, dan kembalikan 4 pecahan HOKI ke altar Desa Eldoria!\"",
+                        "Chief Arvand sent an urgent plea to Eldric in Valoria Village, who called upon a courageous hero named Malios. " +
+                        "\"Track down the four demons, conquer their trials in order, and return all 4 HOKI fragments to the altar in Eldoria Village!\"",
                     artwork = GetSafeSprite(sprites, 4)
                 }
             };
@@ -637,34 +640,34 @@ namespace LuckyNumber.UI
             {
                 new CutsceneSlide
                 {
-                    chapterTitle = "BABAK AKHIR: PECAHAN TERAKHIR HOKI",
+                    chapterTitle = "FINAL CHAPTER: THE LAST HOKI FRAGMENT",
                     narrativeText =
-                        "Setelah pertarungan panjang di Kastil Bayangan, Malios akhirnya mengalahkan Nocthar! " +
-                        "Kekuatan kegelapan perlahan menghilang dan pecahan keempat Artefak HOKI memancarkan cahaya misterius. Seluruh 4 kepingan kini telah terkumpul!",
+                        "After an intense trial in Shadow Castle, Malios finally triumphed over Nocthar! " +
+                        "The dark shadows faded away as the fourth HOKI fragment emitted a mystical glow. All 4 fragments have at last been gathered!",
                     artwork = GetSafeSprite(sprites, 0)
                 },
                 new CutsceneSlide
                 {
-                    chapterTitle = "MENYATUKAN KEMBALI EMPAT PECAHAN HOKI",
+                    chapterTitle = "RESTORING THE FOUR HOKI FRAGMENTS",
                     narrativeText =
-                        "Malios kembali ke rumah suci Desa Eldoria. Di hadapan altar yang dipenuhi retakan, Kepala Desa Arvand memandu Malios " +
-                        "menempatkan keempat pecahan HOKI kembali pada posisi aslinya hingga artefak kuno itu kembali utuh.",
+                        "Malios returned to the sacred grounds of Eldoria Village. Standing before the cracked altar, Chief Arvand guided Malios " +
+                        "to restore the four HOKI fragments back into their sacred positions, reuniting the ancient artifact.",
                     artwork = GetSafeSprite(sprites, 1)
                 },
                 new CutsceneSlide
                 {
-                    chapterTitle = "KEBANGKITAN SIXSEVEN & PENYEGELAN VORTHAK",
+                    chapterTitle = "THE POWER OF SIXSEVEN & SEALING VORTHAK",
                     narrativeText =
-                        "Tiba-tiba tanah bergetar hebat dan Vorthak bangkit dari bawah altar! \"Malios! Jangan biarkan HOKI kehilangan cahayanya!\" seru Arvand. " +
-                        "Malios mengerahkan kekuatan SIXSEVEN—dua energi angka 6 dan 7 menyatu dengan cahaya HOKI dan menyegel Vorthak kembali ke dalam kegelapan!",
+                        "Suddenly the earth trembled violently as Vorthak attempted to emerge from beneath the altar! \"Malios! Do not let HOKI lose its radiance!\" cried Arvand. " +
+                        "Malios channeled the ultimate power of SIXSEVEN, uniting numbers 6 and 7 with the light of HOKI to seal Vorthak away once and for all!",
                     artwork = GetSafeSprite(sprites, 2)
                 },
                 new CutsceneSlide
                 {
-                    chapterTitle = "THE GUARDIAN OF HOKI – KEDAMAIAN ELDORIA",
+                    chapterTitle = "GUARDIAN OF HOKI: PEACE RESTORED TO ELDORIA",
                     narrativeText =
-                        "Kutukan di Desa Eldoria pun sirna. Seluruh penduduk mengadakan perayaan dan Kepala Desa Arvand memberikan medali kehormatan kepada Malios: " +
-                        "\"Berkat keberanianmu, Artefak HOKI kembali bersinar menjaga keseimbangan Pulau Aetheria!\"",
+                        "The ancient curse vanished across the island. The villagers rejoiced, and Chief Arvand presented a medal of eternal honor to Malios: " +
+                        "\"Thanks to your courage, the HOKI Artifact shines once more, safeguarding the harmony of Aetheria Island!\"",
                     artwork = GetSafeSprite(sprites, 3)
                 }
             };
@@ -686,7 +689,10 @@ namespace LuckyNumber.UI
             else
             {
                 BindExistingUIReferences();
-                ApplyFullScreenSeamlessLayout();
+                if (overrideExistingLayoutWithPreset)
+                {
+                    ApplyFullScreenSeamlessLayout();
+                }
                 BindRuntimeButtons();
             }
 
@@ -728,7 +734,7 @@ namespace LuckyNumber.UI
             bool isLast = (index == _activeSlides.Length - 1);
             if (_nextButtonLabel != null)
             {
-                _nextButtonLabel.text = isLast ? "Mulai Petualangan [E]" : "Panel Berikutnya [E]";
+                _nextButtonLabel.text = isLast ? "Start Adventure [E]" : "Next Panel [E]";
             }
 
             _fullSlideText = slide.narrativeText ?? string.Empty;

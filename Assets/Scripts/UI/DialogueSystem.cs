@@ -215,7 +215,7 @@ namespace LuckyNumber.UI
 
             _hudZoneText = CreateTMP("HUD_ZoneText", hudBoard.transform, font, 16f, FontStyles.Bold, TextAlignmentOptions.Left);
             _hudZoneText.color = new Color(0.32f, 0.18f, 0.06f, 1f);
-            _hudZoneText.text = "Lokasi: Desa Eldoria";
+            _hudZoneText.text = "Location: Eldoria Village";
             _hudZoneText.rectTransform.anchorMin = new Vector2(0.08f, 0.70f);
             _hudZoneText.rectTransform.anchorMax = new Vector2(0.92f, 0.92f);
             _hudZoneText.rectTransform.offsetMin = Vector2.zero;
@@ -223,7 +223,7 @@ namespace LuckyNumber.UI
 
             _hudHokiProgressText = CreateTMP("HUD_HokiText", hudBoard.transform, font, 15f, FontStyles.Bold, TextAlignmentOptions.Left);
             _hudHokiProgressText.color = new Color(0.58f, 0.22f, 0.04f, 1f);
-            _hudHokiProgressText.text = "Kepingan HOKI: 0 / 4";
+            _hudHokiProgressText.text = "HOKI Fragments: 0 / 4";
             _hudHokiProgressText.rectTransform.anchorMin = new Vector2(0.08f, 0.48f);
             _hudHokiProgressText.rectTransform.anchorMax = new Vector2(0.92f, 0.70f);
             _hudHokiProgressText.rectTransform.offsetMin = Vector2.zero;
@@ -232,7 +232,7 @@ namespace LuckyNumber.UI
             _hudObjectiveText = CreateTMP("HUD_ObjectiveText", hudBoard.transform, font, 14f, FontStyles.Normal, TextAlignmentOptions.TopLeft);
             _hudObjectiveText.color = new Color(0.18f, 0.12f, 0.06f, 1f);
             _hudObjectiveText.textWrappingMode = TextWrappingModes.Normal;
-            _hudObjectiveText.text = "Misi: Temui Kepala Desa Arvand di tengah Desa Eldoria [Tekan E]";
+            _hudObjectiveText.text = "Quest: Speak with Chief Arvand in the center of Eldoria Village [Press E]";
             _hudObjectiveText.rectTransform.anchorMin = new Vector2(0.08f, 0.08f);
             _hudObjectiveText.rectTransform.anchorMax = new Vector2(0.92f, 0.48f);
             _hudObjectiveText.rectTransform.offsetMin = Vector2.zero;
@@ -263,7 +263,7 @@ namespace LuckyNumber.UI
 
             _interactionPromptText = CreateTMP("PromptText", _interactionPromptBar.transform, font, 18f, FontStyles.Bold, TextAlignmentOptions.Center);
             _interactionPromptText.color = new Color(1f, 0.94f, 0.72f, 1f);
-            _interactionPromptText.text = "[E] Bicara dengan Kepala Desa Arvand";
+            _interactionPromptText.text = "[E] Talk to Chief Arvand";
             SetStretch(_interactionPromptText.rectTransform, 14f, 4f, 14f, 6f);
 
             _interactionPromptBar.SetActive(false);
@@ -317,7 +317,7 @@ namespace LuckyNumber.UI
 
             _speakerNameText = CreateTMP("SpeakerName", ribbonObj.transform, font, 20f, FontStyles.Bold, TextAlignmentOptions.Center);
             _speakerNameText.color = new Color(1f, 0.95f, 0.78f, 1f);
-            _speakerNameText.text = "Kepala Desa Arvand";
+            _speakerNameText.text = "Chief Arvand";
             SetStretch(_speakerNameText.rectTransform, 14f, 6f, 14f, 8f);
 
             // Portrait Box (Left side of wooden board)
@@ -356,7 +356,7 @@ namespace LuckyNumber.UI
             _dialogueBodyText = CreateTMP("DialogueBodyText", _dialoguePanel.transform, font, 20f, FontStyles.Normal, TextAlignmentOptions.TopLeft);
             _dialogueBodyText.color = new Color(0.20f, 0.12f, 0.06f, 1f);
             _dialogueBodyText.textWrappingMode = TextWrappingModes.Normal;
-            _dialogueBodyText.text = "Syukurlah kau tiba, Malios! Empat demon Vorthak telah mencuri pecahan Artefak HOKI dari Desa Eldoria.";
+            _dialogueBodyText.text = "Thank goodness you arrived, Malios! Four demons of Vorthak have stolen the HOKI Artifact fragments from Eldoria Village.";
             _dialogueBodyText.rectTransform.anchorMin = new Vector2(0.24f, 0.24f);
             _dialogueBodyText.rectTransform.anchorMax = new Vector2(0.94f, 0.77f);
             _dialogueBodyText.rectTransform.offsetMin = Vector2.zero;
@@ -384,7 +384,7 @@ namespace LuckyNumber.UI
 
             _continueHintText = CreateTMP("NextLabel", nextBtnObj.transform, font, 16f, FontStyles.Bold, TextAlignmentOptions.Center);
             _continueHintText.color = new Color(1f, 0.94f, 0.76f, 1f);
-            _continueHintText.text = "Lanjut [E] ▶";
+            _continueHintText.text = "Next [E] ▶";
             SetStretch(_continueHintText.rectTransform, 6f, 2f, 6f, 2f);
 
             _nextLineButton = nextBtnObj.GetComponent<Button>();
@@ -494,7 +494,7 @@ namespace LuckyNumber.UI
             bool isLast = (_lineIndex == _currentLines.Length - 1);
             if (_continueHintText != null)
             {
-                _continueHintText.text = isLast ? "Selesai [E] ✔" : "Lanjut [E] ▶";
+                _continueHintText.text = isLast ? "Finish [E] ✔" : "Next [E] ▶";
             }
 
             _currentFullText = line.text ?? string.Empty;
@@ -565,18 +565,18 @@ namespace LuckyNumber.UI
 
             if (_hudZoneText != null)
             {
-                _hudZoneText.text = $"Lokasi: {GameProgressionManager.GetZoneDisplayName(prog.CurrentZone)}";
+                _hudZoneText.text = $"Location: {GameProgressionManager.GetZoneDisplayName(prog.CurrentZone)}";
             }
 
             if (_hudHokiProgressText != null)
             {
-                string sixSevenTag = prog.HasSixSevenUltimate ? " | Ultimate: SIXSEVEN Aktif" : "";
-                _hudHokiProgressText.text = $"Kepingan HOKI: {prog.HokiFragmentsCollected} / 4{sixSevenTag}";
+                string sixSevenTag = prog.HasSixSevenUltimate ? " | Ultimate: SIXSEVEN Active" : "";
+                _hudHokiProgressText.text = $"HOKI Fragments: {prog.HokiFragmentsCollected} / 4{sixSevenTag}";
             }
 
             if (_hudObjectiveText != null)
             {
-                _hudObjectiveText.text = $"Misi: {prog.GetCurrentQuestObjective()}";
+                _hudObjectiveText.text = $"Quest: {prog.GetCurrentQuestObjective()}";
             }
         }
 

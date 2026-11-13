@@ -87,9 +87,14 @@ namespace LuckyNumber.UI
             SceneManager.sceneLoaded += OnAnySceneLoaded;
         }
 
+        public static bool IsBattleScene(string sceneName)
+        {
+            return sceneName == "Bos1 Test" || sceneName == "Bos1" || sceneName == "Bos2" || sceneName == "Bos3" || sceneName == "Bos4";
+        }
+
         private static void OnAnySceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if (scene.IsValid() && scene.name == Boss1SceneName)
+            if (scene.IsValid() && IsBattleScene(scene.name))
             {
                 EnsureForActiveScene();
             }
@@ -98,7 +103,7 @@ namespace LuckyNumber.UI
         public static Boss1IntroGuideBridge EnsureForActiveScene()
         {
             Scene active = SceneManager.GetActiveScene();
-            if (!active.IsValid() || active.name != Boss1SceneName) return null;
+            if (!active.IsValid() || !IsBattleScene(active.name)) return null;
 
             if (Instance != null)
             {
@@ -113,7 +118,7 @@ namespace LuckyNumber.UI
                 return existing;
             }
 
-            GameObject go = new GameObject("Boss1_GuideBridge");
+            GameObject go = new GameObject("BossBattle_VFXBridge");
             Boss1IntroGuideBridge created = go.AddComponent<Boss1IntroGuideBridge>();
             created.EnsureInitialized();
             return created;
@@ -282,6 +287,8 @@ namespace LuckyNumber.UI
         private void CacheBattleSceneActors()
         {
             GameObject mcObj = GameObject.Find("MC");
+            if (mcObj == null) mcObj = GameObject.Find("KarakterMC");
+            if (mcObj == null) mcObj = GameObject.Find("Player");
             if (mcObj != null)
             {
                 _mcRect = mcObj.GetComponent<RectTransform>();
@@ -294,6 +301,8 @@ namespace LuckyNumber.UI
             }
 
             GameObject bosObj = GameObject.Find("BOS");
+            if (bosObj == null) bosObj = GameObject.Find("KarakterBOS");
+            if (bosObj == null) bosObj = GameObject.Find("Boss");
             if (bosObj != null)
             {
                 _bosRect = bosObj.GetComponent<RectTransform>();
@@ -307,6 +316,9 @@ namespace LuckyNumber.UI
             }
 
             GameObject hpBarObj = GameObject.Find("PlayerHealthBar");
+            if (hpBarObj == null) hpBarObj = GameObject.Find("PlayerHeartPanel");
+            if (hpBarObj == null) hpBarObj = GameObject.Find("PlayerHP");
+            if (hpBarObj == null) hpBarObj = GameObject.Find("PlayerHeart");
             if (hpBarObj != null)
             {
                 _playerHpBarRect = hpBarObj.GetComponent<RectTransform>();
@@ -318,6 +330,9 @@ namespace LuckyNumber.UI
             }
 
             GameObject bossHpObj = GameObject.Find("BossHealthBar");
+            if (bossHpObj == null) bossHpObj = GameObject.Find("BossHeartPanel");
+            if (bossHpObj == null) bossHpObj = GameObject.Find("BossHP");
+            if (bossHpObj == null) bossHpObj = GameObject.Find("BossHeart");
             if (bossHpObj != null)
             {
                 _bossHpBarRect = bossHpObj.GetComponent<RectTransform>();
@@ -402,7 +417,7 @@ namespace LuckyNumber.UI
 
             TextMeshProUGUI helpLabel = CreateTMP("Label", _reopenHelpBtnObj.transform, font, 16f, FontStyles.Bold, TextAlignmentOptions.Center);
             helpLabel.color = new Color(1f, 0.95f, 0.80f, 1f);
-            helpLabel.text = "? Cara Main";
+            helpLabel.text = "? How to Play";
             SetStretch(helpLabel.rectTransform, 6f, 2f, 6f, 2f);
 
             _reopenHelpBtnObj.GetComponent<Button>().onClick.AddListener(OpenGuide);
@@ -460,38 +475,32 @@ namespace LuckyNumber.UI
                 headerImg.color = new Color(0.45f, 0.16f, 0.08f, 0.98f);
             }
 
-            TextMeshProUGUI titleTmp = CreateTMP("TitleText", headerObj.transform, font, 28f, FontStyles.Bold, TextAlignmentOptions.Center);
+            GetGuideContentForCurrentScene(out string titleText, out string subText, out string bodyText);
+
+            TextMeshProUGUI titleTmp = CreateTMP("TitleText", headerObj.transform, font, 26f, FontStyles.Bold, TextAlignmentOptions.Center);
             titleTmp.color = new Color(1f, 0.94f, 0.74f, 1f);
-            titleTmp.text = "STAGE 1: GUNUNG BARA — IGNAROTH";
+            titleTmp.text = titleText;
             SetStretch(titleTmp.rectTransform, 14f, 4f, 14f, 6f);
 
             // Subtitle
-            TextMeshProUGUI subTmp = CreateTMP("SubtitleText", boardObj.transform, font, 22f, FontStyles.Bold, TextAlignmentOptions.Center);
+            TextMeshProUGUI subTmp = CreateTMP("SubtitleText", boardObj.transform, font, 21f, FontStyles.Bold, TextAlignmentOptions.Center);
             subTmp.color = new Color(0.62f, 0.14f, 0.06f, 1f);
-            subTmp.text = "Cara Mengalahkan Bos: Penjumlahan Kartu Angka";
+            subTmp.text = subText;
             subTmp.rectTransform.anchorMin = new Vector2(0.08f, 0.74f);
             subTmp.rectTransform.anchorMax = new Vector2(0.92f, 0.83f);
             subTmp.rectTransform.offsetMin = Vector2.zero;
             subTmp.rectTransform.offsetMax = Vector2.zero;
 
             // Rules Body
-            TextMeshProUGUI bodyTmp = CreateTMP("RulesBodyText", boardObj.transform, font, 21f, FontStyles.Normal, TextAlignmentOptions.TopLeft);
+            TextMeshProUGUI bodyTmp = CreateTMP("RulesBodyText", boardObj.transform, font, 20f, FontStyles.Normal, TextAlignmentOptions.TopLeft);
             bodyTmp.color = new Color(0.18f, 0.10f, 0.05f, 1f);
             bodyTmp.textWrappingMode = TextWrappingModes.Normal;
-            bodyTmp.lineSpacing = 8f;
-            bodyTmp.rectTransform.anchorMin = new Vector2(0.09f, 0.21f);
+            bodyTmp.lineSpacing = 6f;
+            bodyTmp.rectTransform.anchorMin = new Vector2(0.09f, 0.20f);
             bodyTmp.rectTransform.anchorMax = new Vector2(0.91f, 0.73f);
             bodyTmp.rectTransform.offsetMin = Vector2.zero;
             bodyTmp.rectTransform.offsetMax = Vector2.zero;
-            bodyTmp.text =
-                "<b>Tujuan:</b> Kalahkan <b>Ignaroth (3 Nyawa)</b> untuk merebut <b>Kepingan HOKI Pertama</b>!\n\n" +
-                "<b>Cara Bermain:</b>\n" +
-                "  1. Lihat <b>Angka Target</b> yang diminta di layar (<i>Ronde 1: 9  →  Ronde 2: 11  →  Ronde 3: 13</i>).\n" +
-                "  2. Dari <b>5 kartu angka</b> di bawah, pilih <b>2 kartu</b> yang jika <b>dijumlahkan</b> sama dengan angka yang diminta.\n" +
-                "  3. Klik ulang kartu yang terpilih jika ingin mengganti pilihan.\n\n" +
-                "<b>Efek Pertarungan:</b>\n" +
-                "  • <b>3 Kali Benar (3/3)</b> dalam 1 ronde → <b>Malios menyerang</b>, HP Ignaroth berkurang 1 & masuk ronde berikutnya!\n" +
-                "  • <b>Kombinasi Salah</b> → <b>Ignaroth menyerang balik</b>, nyawa Malios berkurang 1.";
+            bodyTmp.text = bodyText;
 
             // Start Battle Button
             GameObject startBtnObj = new GameObject("StartBossBattleBtn", typeof(RectTransform), typeof(Image), typeof(Button));
@@ -515,7 +524,7 @@ namespace LuckyNumber.UI
 
             TextMeshProUGUI startLabel = CreateTMP("Label", startBtnObj.transform, font, 22f, FontStyles.Bold, TextAlignmentOptions.Center);
             startLabel.color = new Color(1f, 0.95f, 0.80f, 1f);
-            startLabel.text = "Mulai Pertarungan [E / Spasi]";
+            startLabel.text = "Start Battle [E / Space]";
             SetStretch(startLabel.rectTransform, 8f, 4f, 8f, 4f);
 
             startBtnObj.GetComponent<Button>().onClick.AddListener(CloseGuide);
@@ -530,6 +539,76 @@ namespace LuckyNumber.UI
             _fadeGroup.blocksRaycasts = true;
 
             _fadeObj.GetComponent<Image>().color = new Color(0.03f, 0.02f, 0.05f, 1f);
+        }
+
+        private void GetGuideContentForCurrentScene(out string title, out string subtitle, out string body)
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            if (sceneName == "Bos2")
+            {
+                title = "STAGE 2: ETERNAL ICE CAVERN - GLACIERA";
+                subtitle = "Objective: Match Frozen Number Pairs that Add Up to 13";
+                body =
+                    "<b>Objective:</b> Defeat <b>Glaciera (3 HP)</b> to reclaim the <b>Second HOKI Fragment</b>!\n\n" +
+                    "<b>How to Play:</b>\n" +
+                    "  1. Flip and find pairs of cards that <b>add up to 13</b> (e.g. 2+11, 3+10, 4+9, 5+8, 6+7).\n" +
+                    "  2. Match all required pairs before exceeding the maximum allowed mistakes:\n" +
+                    "     • <i>Round 1: 3 pairs (Max 1 mistake)</i>\n" +
+                    "     • <i>Round 2: 4 pairs (Max 2 mistakes)</i>\n" +
+                    "     • <i>Round 3: 5 pairs (Max 3 mistakes)</i>\n\n" +
+                    "<b>Battle Rules:</b>\n" +
+                    "  • <b>Complete all pairs:</b> <b>Malios strikes Glaciera</b> for 1 damage and advances to the next round!\n" +
+                    "  • <b>Exceeding mistake limit:</b> <b>Glaciera strikes back</b>, and Malios loses 1 HP.";
+            }
+            else if (sceneName == "Bos3")
+            {
+                title = "STAGE 3: POISON FOREST - VENOMARK";
+                subtitle = "Objective: Brew Alchemical Counter-Potions Equal to 21";
+                body =
+                    "<b>Objective:</b> Defeat <b>Venomark (3 HP)</b> to reclaim the <b>Third HOKI Fragment</b>!\n\n" +
+                    "<b>How to Play:</b>\n" +
+                    "  1. Drag <b>3 ingredient cards</b> into the crafting slots in the exact recipe order:\n" +
+                    "     • <b>Slot 1:</b> Leaf (Daun)\n" +
+                    "     • <b>Slot 2:</b> Root (Akar)\n" +
+                    "     • <b>Slot 3:</b> Target Herb (<i>Round 1: Blue Rose | Round 2: White Lily | Round 3: Ginseng</i>)\n" +
+                    "  2. The sum of all 3 card values must equal exactly <b>21</b>!\n" +
+                    "  3. Click <b>Brew Potion</b> once all 3 slots are filled.\n\n" +
+                    "<b>Battle Rules:</b>\n" +
+                    "  • <b>Correct Recipe (Sum = 21):</b> <b>Malios strikes Venomark</b> for 1 damage!\n" +
+                    "  • <b>Wrong Recipe or Sum:</b> The concoction backfires, and Malios loses 1 HP.";
+            }
+            else if (sceneName == "Bos4")
+            {
+                title = "STAGE 4: SHADOW CASTLE - NOCTHAR";
+                subtitle = "Objective: Break the 3 Shadow Seals using Logic Sequence";
+                body =
+                    "<b>Objective:</b> Defeat <b>Nocthar (3 HP)</b> to reclaim the <b>Final HOKI Fragment</b>!\n\n" +
+                    "<b>How to Play:</b>\n" +
+                    "  1. Review the <b>Order Instructions</b> clue displayed on the right for the active round.\n" +
+                    "  2. Select <b>4 cards</b> from your hand in sequence according to the rules:\n" +
+                    "     • <b>Slot 1:</b> Must be an <b>Even number</b> (2, 4, 6, 8).\n" +
+                    "     • <b>Slot 2:</b> Follow the clue (<i>Round 1 & 2: Greater than Slot 1 | Round 3: Smaller than Slot 1</i>).\n" +
+                    "     • <b>Slot 3:</b> Must be an <b>Odd number</b> (1, 3, 7, 9).\n" +
+                    "     • <b>Slot 4:</b> Must be the <b>Largest number</b> (9).\n" +
+                    "  3. Click <b>Combine</b> to break the Shadow Seal!\n\n" +
+                    "<b>Battle Rules:</b>\n" +
+                    "  • <b>Correct Sequence:</b> Breaks 1 Shadow Seal and damages Nocthar!\n" +
+                    "  • <b>Wrong Sequence:</b> Nocthar strikes back, and Malios loses 1 HP.";
+            }
+            else
+            {
+                title = "STAGE 1: MOUNT CINDER - IGNAROTH";
+                subtitle = "Objective: Number Cards Addition Target";
+                body =
+                    "<b>Objective:</b> Defeat <b>Ignaroth (3 HP)</b> to reclaim the <b>First HOKI Fragment</b>!\n\n" +
+                    "<b>How to Play:</b>\n" +
+                    "  1. Observe the <b>Target Number</b> requested on screen (<i>Round 1: 9  →  Round 2: 11  →  Round 3: 13</i>).\n" +
+                    "  2. From the <b>5 number cards</b> below, select <b>2 cards</b> that <b>add up</b> to the required target number.\n" +
+                    "  3. Click a selected card again if you want to cancel or change your selection.\n\n" +
+                    "<b>Battle Rules:</b>\n" +
+                    "  • <b>3 Correct Pairs (3/3)</b> in a round: <b>Malios attacks</b>, Ignaroth loses 1 HP and you advance to the next round!\n" +
+                    "  • <b>Wrong Combination:</b> <b>Ignaroth counters</b>, and Malios loses 1 HP.";
+            }
         }
 
         private IEnumerator IntroTransitionSequence()

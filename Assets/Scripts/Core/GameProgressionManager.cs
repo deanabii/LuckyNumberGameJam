@@ -25,6 +25,13 @@ namespace LuckyNumber.Core
         [SerializeField] private bool[] bossDefeated = new bool[4];
         [SerializeField] private bool hasRestoredHokiAtAltar;
 
+        [Header("TestMap Audio Settings (Placeholder)")]
+        [Tooltip("AudioSource untuk memutar BGM TestMap. Otomatis dibuat jika belum diisi.")]
+        public AudioSource bgmSource;
+        [Tooltip("Placeholder untuk klip Background Music (BGM) scene TestMap.")]
+        public AudioClip testMapBgmMusic;
+        [Range(0f, 1f)] public float bgmVolume = 0.5f;
+
         private MapZoneId _currentZone = MapZoneId.DesaEldoria;
 
         // Session state shared across TestMap <-> Boss scenes during a Play session
@@ -95,6 +102,31 @@ namespace LuckyNumber.Core
             else
             {
                 SyncSessionSnapshot();
+            }
+        }
+
+        private void Start()
+        {
+            PlayBGM();
+        }
+
+        public void PlayBGM()
+        {
+            if (bgmSource == null)
+            {
+                bgmSource = GetComponent<AudioSource>();
+                if (bgmSource == null) bgmSource = gameObject.AddComponent<AudioSource>();
+                bgmSource.playOnAwake = false;
+            }
+            if (testMapBgmMusic != null)
+            {
+                if (bgmSource.clip != testMapBgmMusic || !bgmSource.isPlaying)
+                {
+                    bgmSource.clip = testMapBgmMusic;
+                    bgmSource.loop = true;
+                    bgmSource.volume = bgmVolume;
+                    bgmSource.Play();
+                }
             }
         }
 
@@ -205,7 +237,7 @@ namespace LuckyNumber.Core
 
         public bool CanEnterZone(MapZoneId targetZone, out string warningTitle, out string warningMessage)
         {
-            warningTitle = "BAGIAN INI BELUM BISA KAMU MASUKI";
+            warningTitle = "THIS AREA CANNOT BE ACCESSED YET";
             warningMessage = string.Empty;
 
             switch (targetZone)
@@ -217,8 +249,8 @@ namespace LuckyNumber.Core
                     if (!hasTalkedToArvand)
                     {
                         warningMessage =
-                            "Kamu belum menerima petunjuk misi!\n\n" +
-                            "Temui Kepala Desa Arvand di tengah Desa Eldoria terlebih dahulu (Tekan E) sebelum keluar desa.";
+                            "You have not received your quest briefing yet!\n\n" +
+                            "Speak with Chief Arvand in the center of Eldoria Village first [Press E] before venturing out of the village.";
                         return false;
                     }
                     return true;
@@ -227,7 +259,7 @@ namespace LuckyNumber.Core
                     if (!hasTalkedToArvand)
                     {
                         warningMessage =
-                            "Temui Kepala Desa Arvand di Desa Eldoria terlebih dahulu untuk memulai perjalanan!";
+                            "Speak with Chief Arvand in Eldoria Village first to begin your adventure!";
                         return false;
                     }
                     return true;
@@ -236,8 +268,8 @@ namespace LuckyNumber.Core
                     if (!IsBossDefeated(0))
                     {
                         warningMessage =
-                            "Jalur menuju Gua Es Abadi (Glaciera) masih disegel oleh dinding es kuno!\n\n" +
-                            "Kamu harus mengalahkan BOS 1 – Ignaroth di Gunung Bara (Jalur Kiri) terlebih dahulu untuk mendapatkan Kunci Gua Es & Pecahan HOKI Pertama.";
+                            "The path to the Eternal Ice Cavern (Glaciera) is sealed by an ancient frost barrier!\n\n" +
+                            "You must defeat BOSS 1: Ignaroth at Mount Cinder (Left Path) first to obtain the Ice Cavern Key & First HOKI Fragment.";
                         return false;
                     }
                     return true;
@@ -246,8 +278,8 @@ namespace LuckyNumber.Core
                     if (!IsBossDefeated(1))
                     {
                         warningMessage =
-                            "Kabut beracun di Hutan Racun (Venomark) masih terlalu pekat untuk dilewati!\n\n" +
-                            "Kamu harus mengalahkan BOS 2 – Glaciera di Gua Es Abadi (Jalur Kiri Atas) terlebih dahulu untuk mendapatkan Kunci Hutan Racun & Pecahan HOKI Kedua.";
+                            "The toxic mist in the Poison Forest (Venomark) is far too thick to cross safely!\n\n" +
+                            "You must defeat BOSS 2: Glaciera in the Eternal Ice Cavern (Upper-Left Path) first to obtain the Poison Forest Key & Second HOKI Fragment.";
                         return false;
                     }
                     return true;
@@ -256,8 +288,8 @@ namespace LuckyNumber.Core
                     if (!IsBossDefeated(2))
                     {
                         warningMessage =
-                            "Gerbang Kastil Bayangan (Nocthar) terkunci rapat oleh segel kegelapan!\n\n" +
-                            "Kamu harus mengalahkan BOS 3 – Venomark di Hutan Racun (Jalur Kanan Atas) terlebih dahulu untuk mendapatkan Kunci Kastil Bayangan & Pecahan HOKI Ketiga.";
+                            "The gates of Shadow Castle (Nocthar) are sealed tight by shadowy magic!\n\n" +
+                            "You must defeat BOSS 3: Venomark in the Poison Forest (Upper-Right Path) first to obtain the Shadow Castle Key & Third HOKI Fragment.";
                         return false;
                     }
                     return true;
@@ -270,37 +302,37 @@ namespace LuckyNumber.Core
         public string GetCurrentQuestObjective()
         {
             if (!hasTalkedToArvand)
-                return "Temui Kepala Desa Arvand di Desa Eldoria [Tekan E]";
+                return "Speak with Chief Arvand in Eldoria Village [Press E]";
 
             if (!IsBossDefeated(0))
-                return "Pergi ke Utara (Percabangan) → Jalur Kiri (Gunung Bara) & kalahkan BOS 1: Ignaroth";
+                return "Head North (Crossroads) -> Left Path (Mount Cinder) & defeat BOSS 1: Ignaroth";
 
             if (!IsBossDefeated(1))
-                return "Pergi ke Percabangan → Jalur Kiri Atas (Gua Es Abadi) & kalahkan BOS 2: Glaciera";
+                return "Head to Crossroads -> Upper-Left Path (Eternal Ice Cavern) & defeat BOSS 2: Glaciera";
 
             if (!IsBossDefeated(2))
-                return "Pergi ke Percabangan → Jalur Kanan Atas (Hutan Racun) & kalahkan BOS 3: Venomark";
+                return "Head to Crossroads -> Upper-Right Path (Poison Forest) & defeat BOSS 3: Venomark";
 
             if (!IsBossDefeated(3))
-                return "Pergi ke Percabangan → Jalur Kanan (Kastil Bayangan) & kalahkan BOS 4: Nocthar";
+                return "Head to Crossroads -> Right Path (Shadow Castle) & defeat BOSS 4: Nocthar";
 
             if (!hasRestoredHokiAtAltar)
-                return "Kembali ke Desa Eldoria & satukan 4 Kepingan HOKI di Altar Suci [Tekan E]!";
+                return "Return to Eldoria Village & unite all 4 HOKI Fragments at the Sacred Altar [Press E]!";
 
-            return "Desa Eldoria kembali damai! Artefak HOKI telah pulih.";
+            return "Eldoria Village is at peace! The HOKI Artifact is fully restored.";
         }
 
         public static string GetZoneDisplayName(MapZoneId zone)
         {
             switch (zone)
             {
-                case MapZoneId.DesaEldoria: return "Desa Eldoria (Desa Terkutuk)";
-                case MapZoneId.AreaPercabangan: return "Persimpangan Empat Demon";
-                case MapZoneId.Boss1_GunungBara: return "Gunung Bara – Arena Ignaroth (Boss 1)";
-                case MapZoneId.Boss2_GuaEsAbadi: return "Gua Es Abadi – Arena Glaciera (Boss 2)";
-                case MapZoneId.Boss3_HutanRacun: return "Hutan Racun – Arena Venomark (Boss 3)";
-                case MapZoneId.Boss4_KastilBayangan: return "Kastil Bayangan – Arena Nocthar (Boss 4)";
-                default: return "Pulau Aetheria";
+                case MapZoneId.DesaEldoria: return "Eldoria Village (Cursed Village)";
+                case MapZoneId.AreaPercabangan: return "Crossroads of the Four Demons";
+                case MapZoneId.Boss1_GunungBara: return "Mount Cinder: Ignaroth Arena (Boss 1)";
+                case MapZoneId.Boss2_GuaEsAbadi: return "Eternal Ice Cavern: Glaciera Arena (Boss 2)";
+                case MapZoneId.Boss3_HutanRacun: return "Poison Forest: Venomark Arena (Boss 3)";
+                case MapZoneId.Boss4_KastilBayangan: return "Shadow Castle: Nocthar Arena (Boss 4)";
+                default: return "Aetheria Island";
             }
         }
     }

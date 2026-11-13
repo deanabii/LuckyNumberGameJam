@@ -41,8 +41,114 @@ public class GameManagerBos3 : MonoBehaviour
 
     private bool isTransitioning = false; // Penanda agar pemain tidak bisa interaksi saat layar memudar
 
-    private void Start()
+    private void Awake()
     {
+        bossHP = 3;
+        playerHP = 3;
+        currentRound = 1;
+    }
+
+    [Header("Audio Settings (Placeholder)")]
+    public AudioSource bgmSource;
+    public AudioSource sfxSource;
+    public AudioSource bossAudioSource;
+    public AudioClip bgmMusic;
+    public AudioClip playerHitEnemySFX;
+    public AudioClip enemyHitPlayerSFX;
+    public AudioClip bossSoundSFX;
+    public bool loopBossSound = true;
+    [Range(0f, 1f)] public float bgmVolume = 0.6f;
+    [Range(0f, 1f)] public float sfxVolume = 1.0f;
+    [Range(0f, 1f)] public float bossSoundVolume = 0.75f;
+
+    public void PlayBGM()
+    {
+        EnsureAudioSources();
+        if (bgmSource != null && bgmMusic != null)
+        {
+            if (bgmSource.clip != bgmMusic || !bgmSource.isPlaying)
+            {
+                bgmSource.clip = bgmMusic;
+                bgmSource.loop = true;
+                bgmSource.volume = bgmVolume;
+                bgmSource.Play();
+            }
+        }
+    }
+
+    public void PlayPlayerHitEnemySFX()
+    {
+        EnsureAudioSources();
+        if (sfxSource != null && playerHitEnemySFX != null)
+        {
+            sfxSource.PlayOneShot(playerHitEnemySFX, sfxVolume);
+        }
+    }
+
+    public void PlayEnemyHitPlayerSFX()
+    {
+        EnsureAudioSources();
+        if (sfxSource != null && enemyHitPlayerSFX != null)
+        {
+            sfxSource.PlayOneShot(enemyHitPlayerSFX, sfxVolume);
+        }
+    }
+
+    public void PlayBossSoundSFX()
+    {
+        EnsureAudioSources();
+        if (bossAudioSource != null && bossSoundSFX != null)
+        {
+            bossAudioSource.clip = bossSoundSFX;
+            bossAudioSource.loop = loopBossSound;
+            bossAudioSource.volume = bossSoundVolume;
+            if (!bossAudioSource.isPlaying)
+            {
+                bossAudioSource.Play();
+            }
+        }
+    }
+
+    public void StopBossSoundSFX()
+    {
+        if (bossAudioSource != null && bossAudioSource.isPlaying)
+        {
+            bossAudioSource.Stop();
+        }
+    }
+
+    private void EnsureAudioSources()
+    {
+        if (bgmSource == null)
+        {
+            bgmSource = GetComponent<AudioSource>();
+            if (bgmSource == null) bgmSource = gameObject.AddComponent<AudioSource>();
+            bgmSource.playOnAwake = false;
+        }
+        if (sfxSource == null)
+        {
+            sfxSource = gameObject.AddComponent<AudioSource>();
+            sfxSource.playOnAwake = false;
+        }
+        if (bossAudioSource == null)
+        {
+            bossAudioSource = gameObject.AddComponent<AudioSource>();
+            bossAudioSource.playOnAwake = false;
+            bossAudioSource.loop = loopBossSound;
+        }
+    }
+
+    void Start()
+    {
+        bossHP = 3;
+        playerHP = 3;
+        currentRound = 1;
+        PlayBGM();
+        if (bossSoundSFX != null && loopBossSound)
+        {
+            PlayBossSoundSFX();
+        }
+        LuckyNumber.UI.Boss1IntroGuideBridge.EnsureForActiveScene();
         // Pastikan semua panel tertutup di awal game
         if (winPanel1 != null) winPanel1.SetActive(false);
         if (winPanel2 != null) winPanel2.SetActive(false);
@@ -86,13 +192,13 @@ public class GameManagerBos3 : MonoBehaviour
     private void UpdateInformasiUI()
     {
         if (currentRound == 1) 
-            txtRonde.text = "Ronde 1";
+            txtRonde.text = "Round 1";
         else if (currentRound == 2) 
-            txtRonde.text = "Ronde 2";
+            txtRonde.text = "Round 2";
         else if (currentRound == 3) 
             txtRonde.text = "Last Round!";
         else 
-            txtRonde.text = "Selesai";
+            txtRonde.text = "Finished";
 
         if (currentRound == 1) 
             txtTarget.text = "Target: Chronix";
@@ -223,7 +329,7 @@ public class GameManagerBos3 : MonoBehaviour
     private IEnumerator ShowWinSequenceRoutine()
     {
         isTransitioning = true; // Kunci permainan
-        
+        StopBossSoundSFX();
         yield return StartCoroutine(FadeScreen(1f, 1f)); // Fade out ke hitam
         if (winPanel1 != null) winPanel1.SetActive(true); // Tampilkan Panel 1
         yield return StartCoroutine(FadeScreen(0f, 1f)); // Fade in ke terang
@@ -269,6 +375,7 @@ public class GameManagerBos3 : MonoBehaviour
     private void GameOver()
     {
         isTransitioning = true; 
+        StopBossSoundSFX();
         if (losePanel != null) losePanel.SetActive(true);
     }
 
@@ -277,18 +384,23 @@ public class GameManagerBos3 : MonoBehaviour
     // Hubungkan ke tombol "Restart" di Lose Panel
     public void RestartGame() 
     {
+        StopBossSoundSFX();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // Hubungkan ke tombol "Exit" di Lose Panel
     public void ExitGame() 
     {
-        SceneManager.LoadScene("MainMenuScene"); // Ganti nama scene jika berbeda
+        StopBossSoundSFX();
+        LuckyNumber.Core.GameProgressionManager.CompleteBossBattleAndPrepareReturn(2, false);
+        SceneManager.LoadScene("TestMap");
     }
 
     // Hubungkan ke tombol "Continue" di Win Panel 2
     public void GoToNextScene() 
     {
-        SceneManager.LoadScene("Bos4"); // Menuju Last Bos sesuai rancangan Anda
+        StopBossSoundSFX();
+        LuckyNumber.Core.GameProgressionManager.CompleteBossBattleAndPrepareReturn(2, true);
+        SceneManager.LoadScene("TestMap");
     }
 }

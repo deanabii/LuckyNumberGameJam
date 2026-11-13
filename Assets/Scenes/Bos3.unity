@@ -1157,7 +1157,7 @@ MonoBehaviour:
   fadePanel: {fileID: 705367338}
   currentRound: 1
   playerHP: 3
-  bossHP: 1
+  bossHP: 3
 --- !u!4 &366305165
 Transform:
   m_ObjectHideFlags: 0
@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5887363184887071687, guid: de858cd57721aa74da73cb059079d797, type: 3}
+  m_Sprite: {fileID: 6068562633086401313, guid: b8eb1423dd0f6864fb7d554fa6cae11a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3318,6 +3318,7 @@ GameObject:
   - component: {fileID: 1630904174}
   - component: {fileID: 1630904176}
   - component: {fileID: 1630904175}
+  - component: {fileID: 1630904177}
   m_Layer: 5
   m_Name: MC
   m_TagString: Untagged
@@ -3364,9 +3365,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1680618400228527681, guid: 0e39c2485c977c34eaee4001cd4287d3, type: 3}
+  m_Sprite: {fileID: -1076127280655250035, guid: 73e9bc2abdbdc2c468d6c0049bf1f005, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4217,3 +4218,26 @@ SceneRoots:
   - {fileID: 763060953}
   - {fileID: 355911810}
   - {fileID: 366305165}
+
+--- !u!95 &1630904177
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630904173}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a82e9102484a92e4ab5c4e7fbcf20202, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

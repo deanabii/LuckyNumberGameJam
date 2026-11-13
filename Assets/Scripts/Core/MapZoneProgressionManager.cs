@@ -44,12 +44,23 @@ namespace LuckyNumber.Core
         [SerializeField] private TextMeshProUGUI _zoneBannerText;
 
         private const string Boss1SceneName = "Bos1 Test";
+        private const string Boss2SceneName = "Bos2";
+        private const string Boss3SceneName = "Bos3";
+        private const string Boss4SceneName = "Bos4";
+
         private static readonly Rect Boss1CavePortalRect = new Rect(-38.6f, 22.4f, 4.2f, 2.4f);
+        private static readonly Rect Boss2CavePortalRect = new Rect(-14.5f, 51.0f, 4.2f, 3.2f);
+        private static readonly Rect Boss3CavePortalRect = new Rect(12.5f, 51.0f, 4.2f, 3.2f);
+        private static readonly Rect Boss4CavePortalRect = new Rect(24.5f, 22.0f, 4.5f, 3.5f);
 
         private readonly List<ZoneGatewayDefinition> _gateways = new List<ZoneGatewayDefinition>();
         private readonly Dictionary<MapZoneId, Rect> _zoneCameraBounds = new Dictionary<MapZoneId, Rect>();
         private readonly List<TextMeshPro> _gateSignpostLabels = new List<TextMeshPro>();
         private TextMeshPro _boss1CaveLabel;
+        private TextMeshPro _boss2CaveLabel;
+        private TextMeshPro _boss3CaveLabel;
+        private TextMeshPro _boss4CaveLabel;
+        private static bool _hasShownInitialGuide;
 
         private Coroutine _bannerRoutine;
         private bool _isTransitioning;
@@ -92,9 +103,11 @@ namespace LuckyNumber.Core
                 }
 
                 StartCoroutine(FadeInFromBlackOnReturn(
-                    wonBossIndex == 0
-                        ? "★ Kepingan HOKI Api Diperoleh! ★"
-                        : GameProgressionManager.GetZoneDisplayName(returnZone)
+                    wonBossIndex == 0 ? "★ Fire HOKI Fragment Obtained! ★" :
+                    wonBossIndex == 1 ? "★ Ice HOKI Fragment Obtained! (SIXSEVEN Ultimate Unlocked!) ★" :
+                    wonBossIndex == 2 ? "★ Poison HOKI Fragment Obtained! ★" :
+                    wonBossIndex == 3 ? "★ Shadow HOKI Fragment Obtained! (Return to the Altar!) ★" :
+                    GameProgressionManager.GetZoneDisplayName(returnZone)
                 ));
             }
             else
@@ -332,7 +345,7 @@ namespace LuckyNumber.Core
 
             _zoneBannerText = CreateTMP("ZoneBannerText", _zoneBannerObj.transform, font, 19f, FontStyles.Bold, TextAlignmentOptions.Center);
             _zoneBannerText.color = new Color(1f, 0.95f, 0.76f, 1f);
-            _zoneBannerText.text = "Desa Eldoria";
+            _zoneBannerText.text = "Eldoria Village";
             SetStretch(_zoneBannerText.rectTransform, 14f, 4f, 14f, 6f);
             _zoneBannerObj.SetActive(false);
 
@@ -373,7 +386,7 @@ namespace LuckyNumber.Core
 
             _warningTitleText = CreateTMP("WarningTitle", _warningCardObj.transform, font, 24f, FontStyles.Bold, TextAlignmentOptions.Center);
             _warningTitleText.color = new Color(0.68f, 0.14f, 0.08f, 1f);
-            _warningTitleText.text = "BAGIAN INI BELUM BISA KAMU MASUKI";
+            _warningTitleText.text = "PATH CURRENTLY LOCKED";
             _warningTitleText.rectTransform.anchorMin = new Vector2(0.08f, 0.72f);
             _warningTitleText.rectTransform.anchorMax = new Vector2(0.92f, 0.90f);
             _warningTitleText.rectTransform.offsetMin = Vector2.zero;
@@ -382,7 +395,7 @@ namespace LuckyNumber.Core
             _warningBodyText = CreateTMP("WarningBody", _warningCardObj.transform, font, 19f, FontStyles.Normal, TextAlignmentOptions.Center);
             _warningBodyText.color = new Color(0.20f, 0.12f, 0.06f, 1f);
             _warningBodyText.textWrappingMode = TextWrappingModes.Normal;
-            _warningBodyText.text = "Segel di jalur ini masih terkunci rapat. Selesaikan pertarungan bos sebelumnya secara berurutan!";
+            _warningBodyText.text = "The magical seal along this path is firmly locked. Defeat the previous boss first to break the barrier!";
             _warningBodyText.rectTransform.anchorMin = new Vector2(0.10f, 0.26f);
             _warningBodyText.rectTransform.anchorMax = new Vector2(0.90f, 0.70f);
             _warningBodyText.rectTransform.offsetMin = Vector2.zero;
@@ -409,7 +422,7 @@ namespace LuckyNumber.Core
 
             _warningButtonLabel = CreateTMP("Label", closeBtnObj.transform, font, 17f, FontStyles.Bold, TextAlignmentOptions.Center);
             _warningButtonLabel.color = new Color(1f, 0.94f, 0.78f, 1f);
-            _warningButtonLabel.text = "Mengerti [E / Spasi]";
+            _warningButtonLabel.text = "Understood [E / Space]";
             SetStretch(_warningButtonLabel.rectTransform, 6f, 2f, 6f, 2f);
 
             _warningCloseButton = closeBtnObj.GetComponent<Button>();
@@ -492,21 +505,33 @@ namespace LuckyNumber.Core
                 ? GameProgressionManager.Instance.CurrentZone
                 : MapZoneId.DesaEldoria;
 
+            // Tekan [H] untuk membuka petunjuk kapan saja
+            Keyboard kbPress = Keyboard.current;
+            if (kbPress != null && kbPress.hKey.wasPressedThisFrame)
+            {
+                ShowInitialGuidePrompt();
+                return;
+            }
+
+            // Pintu Masuk / Trigger Goa 4 Bos
             if (currentZone == MapZoneId.Boss1_GunungBara && Boss1CavePortalRect.Contains(playerPos))
             {
-                if (GameProgressionManager.Instance != null && GameProgressionManager.Instance.IsBossDefeated(0))
-                {
-                    StartCoroutine(ShowBlockedAccessRoutine(
-                        new Vector3(-36.5f, 20.8f, 0f),
-                        FacingDirection.Down,
-                        "STAGE BOS SUDAH DISELESAIKAN",
-                        "Kamu sudah berhasil mengalahkan BOS 1 – Ignaroth!\n\nGoa Gunung Bara telah selesai ditaklukkan dan tidak bisa dimasuki lagi. Silakan lanjut ke area bos berikutnya!"
-                    ));
-                }
-                else
-                {
-                    StartCoroutine(EnterBoss1CaveRoutine());
-                }
+                TriggerBossCaveEntry(0);
+                return;
+            }
+            if (currentZone == MapZoneId.Boss2_GuaEsAbadi && Boss2CavePortalRect.Contains(playerPos))
+            {
+                TriggerBossCaveEntry(1);
+                return;
+            }
+            if (currentZone == MapZoneId.Boss3_HutanRacun && Boss3CavePortalRect.Contains(playerPos))
+            {
+                TriggerBossCaveEntry(2);
+                return;
+            }
+            if (currentZone == MapZoneId.Boss4_KastilBayangan && Boss4CavePortalRect.Contains(playerPos))
+            {
+                TriggerBossCaveEntry(3);
                 return;
             }
 
@@ -675,7 +700,43 @@ namespace LuckyNumber.Core
             _isTransitioning = false;
         }
 
-        private IEnumerator EnterBoss1CaveRoutine()
+        public void TriggerBossCaveEntry(int bossIdx)
+        {
+            if (_isTransitioning) return;
+            var prog = GameProgressionManager.Instance;
+            if (prog != null && prog.IsBossDefeated(bossIdx))
+            {
+                StartCoroutine(ShowBlockedAccessRoutine(
+                    GetBossCavePushbackPosition(bossIdx),
+                    FacingDirection.Down,
+                    "STAGE ALREADY CLEARED",
+                    $"You have already defeated {GetBossName(bossIdx)}!\n\nThis cave has been conquered and its HOKI fragment retrieved. Proceed to the next boss cave or return to the Sacred Altar!"
+                ));
+            }
+            else
+            {
+                EnterBossScene(bossIdx);
+            }
+        }
+
+        public void EnterBossScene(int bossIdx)
+        {
+            if (_isTransitioning) return;
+            var prog = GameProgressionManager.Instance;
+            if (prog != null && prog.IsBossDefeated(bossIdx))
+            {
+                StartCoroutine(ShowBlockedAccessRoutine(
+                    GetBossCavePushbackPosition(bossIdx),
+                    FacingDirection.Down,
+                    "STAGE ALREADY CLEARED",
+                    $"You have already defeated {GetBossName(bossIdx)}!\n\nThis cave has been conquered and its HOKI fragment retrieved."
+                ));
+                return;
+            }
+            StartCoroutine(EnterBossCaveRoutine(bossIdx));
+        }
+
+        private IEnumerator EnterBossCaveRoutine(int bossIdx)
         {
             _isTransitioning = true;
             if (PlayerController.Instance != null)
@@ -705,12 +766,162 @@ namespace LuckyNumber.Core
             if (GameProgressionManager.Instance != null)
             {
                 GameProgressionManager.Instance.PrepareEnterBossScene(
-                    MapZoneId.Boss1_GunungBara,
-                    new Vector3(-36.5f, 21.2f, 0f)
+                    GetBossReturnZone(bossIdx),
+                    GetBossReturnPosition(bossIdx)
                 );
             }
 
-            SceneManager.LoadScene(Boss1SceneName);
+            string sceneName = GetBossSceneName(bossIdx);
+            Debug.Log($"[MapZoneProgressionManager] Memasuki Goa/Arena {GetBossName(bossIdx)} -> Memuat scene '{sceneName}'...");
+            SceneManager.LoadScene(sceneName);
+        }
+
+        private static string GetBossName(int idx)
+        {
+            switch (idx)
+            {
+                case 0: return "BOSS 1: Ignaroth";
+                case 1: return "BOSS 2: Glaciera";
+                case 2: return "BOSS 3: Venomark";
+                case 3: return "BOSS 4: Nocthar";
+                default: return "Boss";
+            }
+        }
+
+        private static string GetBossSceneName(int idx)
+        {
+            switch (idx)
+            {
+                case 0: return Boss1SceneName;
+                case 1: return Boss2SceneName;
+                case 2: return Boss3SceneName;
+                case 3: return Boss4SceneName;
+                default: return Boss1SceneName;
+            }
+        }
+
+        private static MapZoneId GetBossReturnZone(int idx)
+        {
+            switch (idx)
+            {
+                case 0: return MapZoneId.Boss1_GunungBara;
+                case 1: return MapZoneId.Boss2_GuaEsAbadi;
+                case 2: return MapZoneId.Boss3_HutanRacun;
+                case 3: return MapZoneId.Boss4_KastilBayangan;
+                default: return MapZoneId.Boss1_GunungBara;
+            }
+        }
+
+        private static Vector3 GetBossReturnPosition(int idx)
+        {
+            switch (idx)
+            {
+                case 0: return new Vector3(-36.5f, 21.2f, 0f);
+                case 1: return new Vector3(-12.5f, 49.8f, 0f);
+                case 2: return new Vector3(14.5f, 49.8f, 0f);
+                case 3: return new Vector3(24.0f, 23.5f, 0f);
+                default: return new Vector3(-36.5f, 21.2f, 0f);
+            }
+        }
+
+        private static Vector3 GetBossCavePushbackPosition(int idx)
+        {
+            switch (idx)
+            {
+                case 0: return new Vector3(-36.5f, 20.8f, 0f);
+                case 1: return new Vector3(-12.5f, 49.2f, 0f);
+                case 2: return new Vector3(14.5f, 49.2f, 0f);
+                case 3: return new Vector3(23.2f, 23.5f, 0f);
+                default: return new Vector3(-36.5f, 20.8f, 0f);
+            }
+        }
+
+        private IEnumerator DelayedInitialGuidePrompt()
+        {
+            yield return new WaitForSeconds(0.6f);
+            while (LuckyNumber.UI.CutsceneManager.Instance != null && LuckyNumber.UI.CutsceneManager.Instance.IsPlaying)
+            {
+                yield return null;
+            }
+            yield return new WaitForSeconds(0.3f);
+            if (!_hasShownInitialGuide)
+            {
+                ShowInitialGuidePrompt();
+            }
+        }
+
+        public void ShowInitialGuidePrompt()
+        {
+            if (_isTransitioning) return;
+            StartCoroutine(ShowGuideModalRoutine());
+        }
+
+        private IEnumerator ShowGuideModalRoutine()
+        {
+            _hasShownInitialGuide = true;
+            _isTransitioning = true;
+            if (PlayerController.Instance != null)
+            {
+                PlayerController.Instance.IsMovementLocked = true;
+            }
+
+            if (_transitionOverlayObj != null)
+            {
+                _transitionOverlayObj.SetActive(true);
+                _transitionOverlayObj.transform.SetAsLastSibling();
+            }
+            if (_warningCardObj != null) _warningCardObj.SetActive(true);
+            if (_warningTitleText != null) _warningTitleText.text = "★ MALIOS JOURNEY GUIDE ★";
+            if (_warningBodyText != null)
+            {
+                _warningBodyText.text =
+                    "Welcome to Aetheria Island!\n\n" +
+                    "<b>Main Steps and Guide:</b>\n" +
+                    "1. <b>Talk to Village Chief Arvand</b> in the center of Eldoria Village [Press E] for initial guidance.\n" +
+                    "2. <b>Head North (Demon Crossroads)</b> and defeat the 4 cave bosses in sequence:\n" +
+                    "   • <b>Cave 1: Ignaroth (Mount Cinder)</b>: Lucky 13 Challenge\n" +
+                    "   • <b>Cave 2: Glaciera (Eternal Ice Cavern)</b>: Frozen Memory 13 Pairs\n" +
+                    "   • <b>Cave 3: Venomark (Poison Forest)</b>: Poison Concoction 21\n" +
+                    "   • <b>Cave 4: Nocthar (Shadow Castle)</b>: Shadow Logic Sequence\n" +
+                    "3. <b>Collect all 4 HOKI Fragments</b> and restore the Sacred Altar in Eldoria Village!\n\n" +
+                    "<b>Controls:</b> [W,A,S,D / Arrows] Move  |  [E] Interact and Enter Cave  |  [H] Guide";
+            }
+            if (_warningButtonLabel != null) _warningButtonLabel.text = "Start Adventure [E / Space]";
+
+            float t = 0f;
+            while (t < 0.22f)
+            {
+                t += Time.unscaledDeltaTime;
+                if (_transitionCanvasGroup != null) _transitionCanvasGroup.alpha = Mathf.Clamp01(t / 0.22f);
+                yield return null;
+            }
+            if (_transitionCanvasGroup != null) _transitionCanvasGroup.alpha = 1f;
+
+            _waitingForWarningDismiss = true;
+            while (_waitingForWarningDismiss)
+            {
+                yield return null;
+            }
+
+            if (_warningCardObj != null) _warningCardObj.SetActive(false);
+            if (_warningButtonLabel != null) _warningButtonLabel.text = "Return to Safe Path [E / Space]";
+
+            t = 0f;
+            while (t < 0.22f)
+            {
+                t += Time.unscaledDeltaTime;
+                if (_transitionCanvasGroup != null) _transitionCanvasGroup.alpha = 1f - Mathf.Clamp01(t / 0.22f);
+                yield return null;
+            }
+            if (_transitionCanvasGroup != null) _transitionCanvasGroup.alpha = 0f;
+            if (_transitionOverlayObj != null) _transitionOverlayObj.SetActive(false);
+
+            if (PlayerController.Instance != null)
+            {
+                PlayerController.Instance.IsMovementLocked = false;
+            }
+            _cooldownUntilTime = Time.time + 0.5f;
+            _isTransitioning = false;
         }
 
         private IEnumerator FadeInFromBlackOnReturn(string bannerTitle)
@@ -788,38 +999,32 @@ namespace LuckyNumber.Core
             _gateSignpostLabels.Add(GetOrCreateWorldLabel("Sign_Boss2", new Vector3(-4.0f, 30.8f, 0f), ""));
             _gateSignpostLabels.Add(GetOrCreateWorldLabel("Sign_Boss3", new Vector3(3.8f, 30.8f, 0f), ""));
             _gateSignpostLabels.Add(GetOrCreateWorldLabel("Sign_Boss4", new Vector3(8.5f, 25.0f, 0f), ""));
-            GetOrCreateWorldLabel("Sign_BackToVillage", new Vector3(0f, 14.0f, 0f), "▼ Selatan: Desa Eldoria");
-            GetOrCreateWorldLabel("Sign_NorthToCrossroads", new Vector3(0f, 7.8f, 0f), "▲ Utara: Persimpangan 4 Demon");
+            GetOrCreateWorldLabel("Sign_BackToVillage", new Vector3(0f, 14.0f, 0f), "▼ South: Eldoria Village");
+            GetOrCreateWorldLabel("Sign_NorthToCrossroads", new Vector3(0f, 7.8f, 0f), "▲ North: Crossroads of the 4 Demons");
 
-            // Sacred Altar in Desa Eldoria
+            // Sacred Altar in Eldoria Village
             CreateAltarInteractable(new Vector3(-3.2f, 2.2f, 0f));
 
-            // Boss 1 Cave Entrance Portal Marker at Giant Volcano Cave (-36.5, 24.4)
-            Transform oldBoss1Pedestal = transform.Find("BossEncounter_1");
-            if (oldBoss1Pedestal != null)
+            // Clean up any old text labels in front of the caves
+            string[] labelsToClean = {
+                "Boss1_CavePortalLabel", "Boss2_CavePortalLabel", "Boss3_CavePortalLabel", "Boss4_CavePortalLabel",
+                "BossLabel_1", "BossLabel_2", "BossLabel_3", "BossLabel_4"
+            };
+            foreach (string lbl in labelsToClean)
             {
-                if (Application.isPlaying) Destroy(oldBoss1Pedestal.gameObject);
-                else DestroyImmediate(oldBoss1Pedestal.gameObject);
-            }
-            Transform oldBoss1Label = transform.Find("BossLabel_1");
-            if (oldBoss1Label != null)
-            {
-                if (Application.isPlaying) Destroy(oldBoss1Label.gameObject);
-                else DestroyImmediate(oldBoss1Label.gameObject);
+                Transform t = transform.Find(lbl);
+                if (t != null)
+                {
+                    if (Application.isPlaying) Destroy(t.gameObject);
+                    else DestroyImmediate(t.gameObject);
+                }
             }
 
-            _boss1CaveLabel = GetOrCreateWorldLabel(
-                "Boss1_CavePortalLabel",
-                new Vector3(-36.5f, 24.4f, 0f),
-                "▲ GOA IGNAROTH\n[Dekati Pintu Goa untuk Masuk]"
-            );
-            _boss1CaveLabel.color = new Color(1f, 0.48f, 0.20f, 1f);
-            _boss1CaveLabel.fontSize = 3.2f;
-
-            // Boss 2-4 Encounter Pedestals (untouched for now)
-            CreateBossPedestal(1, "BOS 2 – Glaciera (Demon Es)", new Vector3(-12.5f, 52.0f, 0f), new Color(0.35f, 0.85f, 1f, 1f));
-            CreateBossPedestal(2, "BOS 3 – Venomark (Demon Racun)", new Vector3(14.5f, 52.0f, 0f), new Color(0.45f, 0.95f, 0.35f, 1f));
-            CreateBossPedestal(3, "BOS 4 – Nocthar (Demon Bayangan)", new Vector3(26.5f, 23.5f, 0f), new Color(0.75f, 0.45f, 1f, 1f));
+            // Create Boss Encounter markers right in front of the cave entrances with floating exclamation mark icon (!)
+            CreateBossPedestal(0, "BOSS 1: Ignaroth", new Vector3(-36.5f, 22.8f, 0f));
+            CreateBossPedestal(1, "BOSS 2: Glaciera", new Vector3(-12.5f, 52.0f, 0f));
+            CreateBossPedestal(2, "BOSS 3: Venomark", new Vector3(14.5f, 52.0f, 0f));
+            CreateBossPedestal(3, "BOSS 4: Nocthar", new Vector3(26.5f, 23.5f, 0f));
         }
 
         private void RefreshGateSignposts()
@@ -834,31 +1039,34 @@ namespace LuckyNumber.Core
             bool b4Done = prog != null && prog.IsBossDefeated(3);
 
             _gateSignpostLabels[0].text = b1Done
-                ? "◀ BOS 1: Ignaroth\n[SELESAI ✔]"
-                : (b1Open ? "◀ BOS 1: Gunung Bara\n[TERBUKA]" : "◀ BOS 1: Gunung Bara\n[BICARA ARVAND DULU]");
+                ? "◀ BOSS 1: Ignaroth\n[CLEARED ✔]"
+                : (b1Open ? "◀ BOSS 1: Mount Cinder\n[OPEN]" : "◀ BOSS 1: Mount Cinder\n[SPEAK WITH ARVAND]");
             _gateSignpostLabels[0].color = b1Done ? new Color(0.5f, 1f, 0.5f) : (b1Open ? new Color(1f, 0.92f, 0.45f) : new Color(1f, 0.5f, 0.5f));
 
             _gateSignpostLabels[1].text = b2Done
-                ? "▲ BOS 2: Glaciera\n[SELESAI ✔]"
-                : (b1Done ? "▲ BOS 2: Gua Es Abadi\n[TERBUKA]" : "▲ BOS 2: Gua Es Abadi\n[TERKUNCI - Butuh Kunci Bos 1]");
+                ? "▲ BOSS 2: Glaciera\n[CLEARED ✔]"
+                : (b1Done ? "▲ BOSS 2: Eternal Ice Cavern\n[OPEN]" : "▲ BOSS 2: Eternal Ice Cavern\n[LOCKED: Needs Boss 1 Key]");
             _gateSignpostLabels[1].color = b2Done ? new Color(0.5f, 1f, 0.5f) : (b1Done ? new Color(1f, 0.92f, 0.45f) : new Color(1f, 0.5f, 0.5f));
 
             _gateSignpostLabels[2].text = b3Done
-                ? "▲ BOS 3: Venomark\n[SELESAI ✔]"
-                : (b2Done ? "▲ BOS 3: Hutan Racun\n[TERBUKA]" : "▲ BOS 3: Hutan Racun\n[TERKUNCI - Butuh Kunci Bos 2]");
+                ? "▲ BOSS 3: Venomark\n[CLEARED ✔]"
+                : (b2Done ? "▲ BOSS 3: Poison Forest\n[OPEN]" : "▲ BOSS 3: Poison Forest\n[LOCKED: Needs Boss 2 Key]");
             _gateSignpostLabels[2].color = b3Done ? new Color(0.5f, 1f, 0.5f) : (b2Done ? new Color(1f, 0.92f, 0.45f) : new Color(1f, 0.5f, 0.5f));
 
             _gateSignpostLabels[3].text = b4Done
-                ? "▶ BOS 4: Nocthar\n[SELESAI ✔]"
-                : (b3Done ? "▶ BOS 4: Kastil Bayangan\n[TERBUKA]" : "▶ BOS 4: Kastil Bayangan\n[TERKUNCI - Butuh Kunci Bos 3]");
+                ? "▶ BOSS 4: Nocthar\n[CLEARED ✔]"
+                : (b3Done ? "▶ BOSS 4: Shadow Castle\n[OPEN]" : "▶ BOSS 4: Shadow Castle\n[LOCKED: Needs Boss 3 Key]");
             _gateSignpostLabels[3].color = b4Done ? new Color(0.5f, 1f, 0.5f) : (b3Done ? new Color(1f, 0.92f, 0.45f) : new Color(1f, 0.5f, 0.5f));
 
-            if (_boss1CaveLabel != null)
+            // Hide the exclamation mark icon (!) in front of the cave if the boss is already defeated
+            for (int i = 0; i < 4; i++)
             {
-                _boss1CaveLabel.text = b1Done
-                    ? "✔ GOA IGNAROTH [SELESAI]\n[Bos Sudah Dikalahkan]"
-                    : "▲ GOA IGNAROTH\n[Dekati Pintu Goa untuk Masuk]";
-                _boss1CaveLabel.color = b1Done ? new Color(0.45f, 1f, 0.55f, 1f) : new Color(1f, 0.48f, 0.20f, 1f);
+                Transform encounter = transform.Find($"BossEncounter_{i + 1}");
+                if (encounter != null)
+                {
+                    bool isDefeated = prog != null && prog.IsBossDefeated(i);
+                    encounter.gameObject.SetActive(!isDefeated);
+                }
             }
         }
 
@@ -905,14 +1113,14 @@ namespace LuckyNumber.Core
             altarObj.transform.position = position;
 
             NPCInteractable interactable = altarObj.GetComponent<NPCInteractable>();
-            interactable.Configure(InteractableRole.HokiSacredAltar, "Altar Suci HOKI (6 & 7)", 0, 2.5f);
+            interactable.Configure(InteractableRole.HokiSacredAltar, "Sacred HOKI Altar [6 & 7]", 0, 2.5f);
 
-            TextMeshPro label = GetOrCreateWorldLabel("AltarLabel", position + new Vector3(0f, 0.9f, 0f), "★ ALTAR SUCI HOKI [6 & 7] ★");
+            TextMeshPro label = GetOrCreateWorldLabel("AltarLabel", position + new Vector3(0f, 0.9f, 0f), "★ SACRED HOKI ALTAR [6 & 7] ★");
             label.color = new Color(1f, 0.88f, 0.35f, 1f);
             label.fontSize = 3.0f;
         }
 
-        private void CreateBossPedestal(int bossIndex, string bossTitle, Vector3 position, Color themeColor)
+        private void CreateBossPedestal(int bossIndex, string bossTitle, Vector3 position)
         {
             string objName = $"BossEncounter_{bossIndex + 1}";
             Transform existing = transform.Find(objName);
@@ -924,11 +1132,15 @@ namespace LuckyNumber.Core
             bossObj.transform.position = position;
 
             NPCInteractable interactable = bossObj.GetComponent<NPCInteractable>();
-            interactable.Configure(InteractableRole.BossEncounter, bossTitle, bossIndex, 3.0f);
+            interactable.Configure(InteractableRole.BossEncounter, bossTitle, bossIndex, 2.8f);
 
-            TextMeshPro label = GetOrCreateWorldLabel($"BossLabel_{bossIndex + 1}", position + new Vector3(0f, 1.1f, 0f), $"⚔ {bossTitle}\n[Tekan E untuk Bertarung]");
-            label.color = themeColor;
-            label.fontSize = 3.4f;
+            // Ensure no old text labels remain
+            Transform oldLabel = transform.Find($"BossLabel_{bossIndex + 1}");
+            if (oldLabel != null)
+            {
+                if (Application.isPlaying) Destroy(oldLabel.gameObject);
+                else DestroyImmediate(oldLabel.gameObject);
+            }
         }
 
         private static TextMeshProUGUI CreateTMP(

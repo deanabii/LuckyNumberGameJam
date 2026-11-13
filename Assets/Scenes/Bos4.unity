@@ -2724,6 +2724,7 @@ GameObject:
   - component: {fileID: 1115626781}
   - component: {fileID: 1115626783}
   - component: {fileID: 1115626782}
+  - component: {fileID: 1115626784}
   m_Layer: 5
   m_Name: MC
   m_TagString: Untagged
@@ -2770,9 +2771,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3292312392937379113, guid: ce56f1f4fac35a04cbbfc94fdf375c92, type: 3}
+  m_Sprite: {fileID: -1076127280655250035, guid: 73e9bc2abdbdc2c468d6c0049bf1f005, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4444,6 +4445,7 @@ GameObject:
   - component: {fileID: 1950498874}
   - component: {fileID: 1950498876}
   - component: {fileID: 1950498875}
+  - component: {fileID: 1950498877}
   m_Layer: 5
   m_Name: BOS
   m_TagString: Untagged
@@ -4490,9 +4492,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2138883920705041782, guid: b50cfbde0201b7a4b9a418b3355f6aea, type: 3}
+  m_Sprite: {fileID: 2055680381481106116, guid: a11abf9ed89fa5e4a944594ecf83d43b, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4508,6 +4510,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950498873}
   m_CullTransparentMesh: 1
+--- !u!95 &1950498877
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950498873}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dba6e06b34b241c2bfe24ce3bca02b86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+
 --- !u!1 &1980434377
 GameObject:
   m_ObjectHideFlags: 0
@@ -4803,3 +4828,26 @@ SceneRoots:
   - {fileID: 1388299578}
   - {fileID: 1381944829}
   - {fileID: 544839696}
+
+--- !u!95 &1115626784
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115626780}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a82e9102484a92e4ab5c4e7fbcf20202, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
