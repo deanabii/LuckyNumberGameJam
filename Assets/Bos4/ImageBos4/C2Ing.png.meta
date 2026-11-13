@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 30ce263bccec5b1488e4226d6df72e85
+guid: 0a9e7ead25c587f46bd720ec62a4b71e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1768627175446221488
-    second: Indonesian Card Order Guide_0
+      213: -4668454844907877111
+    second: C2Ing_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -141,7 +141,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Indonesian Card Order Guide_0
+      name: C2Ing_0
       rect:
         serializedVersion: 2
         x: 0
@@ -156,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b21394ab0d6b8810800000000000000
-      internalID: 1768627175446221488
+      spriteID: 90d80579d01563fb0800000000000000
+      internalID: -4668454844907877111
       vertices: []
       indices: 
       edges: []
@@ -176,7 +176,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Indonesian Card Order Guide_0: 1768627175446221488
+      C2Ing_0: -4668454844907877111
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
