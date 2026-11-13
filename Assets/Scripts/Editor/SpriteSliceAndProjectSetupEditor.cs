@@ -546,6 +546,36 @@ namespace LuckyNumber.EditorTools
             sprites.Sort(GameAssetRegistry.CompareSpritesByTrailingNumber);
             return sprites.ToArray();
         }
+
+        [MenuItem("Tools/Scene Management/Register All Scenes In Build Settings")]
+        public static void RegisterAllScenesInBuildSettings()
+        {
+            string[] guids = AssetDatabase.FindAssets("t:Scene", new[] { "Assets/Scenes" });
+            List<EditorBuildSettingsScene> buildScenes = new List<EditorBuildSettingsScene>();
+
+            // Prioritize MainMenu as index 0 if it exists
+            string mainMenuPath = "Assets/Scenes/MainMenu.unity";
+            string testMapPath = "Assets/Scenes/TestMap.unity";
+
+            if (System.IO.File.Exists(mainMenuPath))
+            {
+                buildScenes.Add(new EditorBuildSettingsScene(mainMenuPath, true));
+            }
+            if (System.IO.File.Exists(testMapPath))
+            {
+                buildScenes.Add(new EditorBuildSettingsScene(testMapPath, true));
+            }
+
+            foreach (string guid in guids)
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                if (path == mainMenuPath || path == testMapPath) continue;
+                buildScenes.Add(new EditorBuildSettingsScene(path, true));
+            }
+
+            EditorBuildSettings.scenes = buildScenes.ToArray();
+            Debug.Log($"[Scene Management] Berhasil mendaftarkan {buildScenes.Count} scene ke Build Settings!");
+        }
     }
 }
 #endif

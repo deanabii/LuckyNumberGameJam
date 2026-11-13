@@ -113,9 +113,6 @@ namespace LuckyNumber.UI
         public void InitializeUI(Transform canvasTransform)
         {
             var registry = GameAssetRegistry.Instance;
-            TMP_FontAsset font = registry != null
-                ? registry.GetPreferredFont(customCutsceneFont)
-                : customCutsceneFont ?? Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
 
             EnsureDefaultSlidesPopulated();
 
@@ -132,10 +129,19 @@ namespace LuckyNumber.UI
             if (_cutsceneRoot != null)
             {
                 BindExistingUIReferences();
-                if (customCutsceneFont != null || (registry != null && registry.customUIFont != null))
+
+                // PENTING: Hanya timpa font jika user secara spesifik mengisi customCutsceneFont di Inspector CutsceneManager.
+                // Jika customCutsceneFont kosong, JANGAN menimpa font yang sudah diatur manual oleh user di scene hierarchy!
+                if (customCutsceneFont != null)
                 {
-                    ApplyFont(font);
+                    ApplyFont(customCutsceneFont);
                 }
+                else if (_narrativeText != null && _narrativeText.font != null)
+                {
+                    // Ambil font yang sudah diset user di scene agar teks/tombol lain seragam
+                    customCutsceneFont = _narrativeText.font;
+                }
+
                 BindRuntimeButtons();
                 if (Application.isPlaying && !_isPlaying)
                 {
@@ -143,6 +149,10 @@ namespace LuckyNumber.UI
                 }
                 return;
             }
+
+            TMP_FontAsset font = customCutsceneFont 
+                ?? (registry != null ? registry.GetPreferredFont() : null) 
+                ?? Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
 
             if (canvasTransform == null) return;
 

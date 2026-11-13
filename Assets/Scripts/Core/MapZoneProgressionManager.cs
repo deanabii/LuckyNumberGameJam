@@ -286,9 +286,13 @@ namespace LuckyNumber.Core
             {
                 RemoveLegacyCloudCurtainIfAny();
                 BindExistingUIReferences();
-                if (customTransitionFont != null || (registry != null && registry.customUIFont != null))
+                if (customTransitionFont != null)
                 {
-                    ApplyFont(font);
+                    ApplyFont(customTransitionFont);
+                }
+                else if (_warningBodyText != null && _warningBodyText.font != null)
+                {
+                    customTransitionFont = _warningBodyText.font;
                 }
                 BindRuntimeButtons();
                 if (Application.isPlaying && !_isTransitioning)

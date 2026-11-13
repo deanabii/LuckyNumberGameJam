@@ -2,7 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using TMPro;
+using LuckyNumber.Core;
 
 namespace LuckyNumber.UI
 {
@@ -46,10 +49,26 @@ namespace LuckyNumber.UI
         {
             Instance = this;
 
+            EnsureEventSystem();
             SetupAudio();
             SetupButtons();
             SetupFadeOverlay();
             SetupCreditsModal();
+        }
+
+        private void EnsureEventSystem()
+        {
+            EventSystem es = FindFirstObjectByType<EventSystem>();
+            if (es == null)
+            {
+                new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
+            }
+            else if (es.GetComponent<InputSystemUIInputModule>() == null)
+            {
+                StandaloneInputModule legacy = es.GetComponent<StandaloneInputModule>();
+                if (legacy != null) Destroy(legacy);
+                es.gameObject.AddComponent<InputSystemUIInputModule>();
+            }
         }
 
         private void Start()
@@ -172,7 +191,7 @@ namespace LuckyNumber.UI
                 yield return new WaitForSecondsRealtime(fadeDuration);
             }
 
-            SceneManager.LoadScene(GameSceneName);
+            SceneLoader.Load(GameSceneName, false);
         }
 
         public void OnCreditClicked()
@@ -184,12 +203,7 @@ namespace LuckyNumber.UI
         public void OnExitClicked()
         {
             PlayClickSound();
-            Debug.Log("[MainMenuController] Exiting game...");
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
+            SceneLoader.Quit();
         }
 
         public void ToggleCredits()

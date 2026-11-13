@@ -93,9 +93,13 @@ namespace LuckyNumber.UI
             if (_dialoguePanel != null)
             {
                 BindExistingUIReferences(canvasTransform);
-                if (customDialogueFont != null || (registry != null && registry.customUIFont != null))
+                if (customDialogueFont != null)
                 {
-                    ApplyFont(font);
+                    ApplyFont(customDialogueFont);
+                }
+                else if (_dialogueBodyText != null && _dialogueBodyText.font != null)
+                {
+                    customDialogueFont = _dialogueBodyText.font;
                 }
                 BindRuntimeButtons();
                 if (Application.isPlaying)

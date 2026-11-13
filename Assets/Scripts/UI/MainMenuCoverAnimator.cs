@@ -172,7 +172,9 @@ namespace LuckyNumber.UI
             var vel = _fireflyPS.velocityOverLifetime;
             vel.enabled = true;
             vel.space = ParticleSystemSimulationSpace.World;
+            vel.x = new ParticleSystem.MinMaxCurve(-0.1f, 0.1f);
             vel.y = new ParticleSystem.MinMaxCurve(0.25f, 0.60f); // Float upwards gently
+            vel.z = new ParticleSystem.MinMaxCurve(0f, 0f);
 
             var noise = _fireflyPS.noise;
             noise.enabled = true;
