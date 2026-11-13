@@ -129,6 +129,7 @@ namespace LuckyNumber.UI
             if (_cutsceneRoot != null)
             {
                 BindExistingUIReferences();
+                ApplyFullScreenSeamlessLayout();
 
                 // PENTING: Hanya timpa font jika user secara spesifik mengisi customCutsceneFont di Inspector CutsceneManager.
                 // Jika customCutsceneFont kosong, JANGAN menimpa font yang sudah diatur manual oleh user di scene hierarchy!
@@ -156,7 +157,7 @@ namespace LuckyNumber.UI
 
             if (canvasTransform == null) return;
 
-            // Create CutsceneComicOverlay in Canvas Hierarchy
+            // Create CutsceneComicOverlay in Canvas Hierarchy (Full-Screen Layout)
             _cutsceneRoot = new GameObject("CutsceneComicOverlay", typeof(RectTransform), typeof(CanvasGroup), typeof(Image));
             _cutsceneRoot.transform.SetParent(canvasTransform, false);
             RectTransform rootRect = _cutsceneRoot.GetComponent<RectTransform>();
@@ -167,99 +168,86 @@ namespace LuckyNumber.UI
 
             _rootCanvasGroup = _cutsceneRoot.GetComponent<CanvasGroup>();
             Image bgImg = _cutsceneRoot.GetComponent<Image>();
-            bgImg.color = new Color(0.05f, 0.04f, 0.08f, 0.97f);
+            bgImg.color = new Color(0.03f, 0.02f, 0.05f, 1f);
 
-            // Outer Comic Frame (Wooden Parchment Board)
+            // Outer Container (Full-Screen transparent container)
             GameObject frameObj = new GameObject("ComicBoardFrame", typeof(RectTransform), typeof(Image));
             frameObj.transform.SetParent(_cutsceneRoot.transform, false);
             RectTransform frameRect = frameObj.GetComponent<RectTransform>();
-            frameRect.anchorMin = new Vector2(0.08f, 0.06f);
-            frameRect.anchorMax = new Vector2(0.92f, 0.94f);
+            frameRect.anchorMin = Vector2.zero;
+            frameRect.anchorMax = Vector2.one;
             frameRect.offsetMin = Vector2.zero;
             frameRect.offsetMax = Vector2.zero;
 
             Image frameImg = frameObj.GetComponent<Image>();
-            if (registry != null && registry.dialogueBoardSprite != null)
-            {
-                frameImg.sprite = registry.dialogueBoardSprite;
-                frameImg.color = new Color(0.96f, 0.92f, 0.84f, 1f);
-            }
-            else
-            {
-                frameImg.color = new Color(0.18f, 0.13f, 0.09f, 1f);
-            }
+            frameImg.color = Color.clear;
+            frameImg.raycastTarget = false;
 
-            // Header Ribbon (Chapter Title)
+            // Header Ribbon (Hidden for clean full-screen layout like Image 2)
             GameObject headerObj = new GameObject("ChapterHeader", typeof(RectTransform), typeof(Image));
             headerObj.transform.SetParent(frameObj.transform, false);
             RectTransform headerRect = headerObj.GetComponent<RectTransform>();
-            headerRect.anchorMin = new Vector2(0.18f, 0.89f);
-            headerRect.anchorMax = new Vector2(0.82f, 0.985f);
+            headerRect.anchorMin = new Vector2(0.25f, 0.93f);
+            headerRect.anchorMax = new Vector2(0.75f, 0.985f);
             headerRect.offsetMin = Vector2.zero;
             headerRect.offsetMax = Vector2.zero;
-
             Image headerImg = headerObj.GetComponent<Image>();
-            if (registry != null && registry.titleBannerSprite != null)
-            {
-                headerImg.sprite = registry.titleBannerSprite;
-                headerImg.color = Color.white;
-            }
-            else
-            {
-                headerImg.color = new Color(0.32f, 0.2f, 0.1f, 0.95f);
-            }
+            headerImg.color = Color.clear;
+            headerObj.SetActive(false);
 
-            _chapterTitleText = CreateTMPText("ChapterTitleText", headerObj.transform, font, 24f, FontStyles.Bold, TextAlignmentOptions.Center);
+            _chapterTitleText = CreateTMPText("ChapterTitleText", headerObj.transform, font, 20f, FontStyles.Bold, TextAlignmentOptions.Center);
             _chapterTitleText.color = new Color(1f, 0.93f, 0.72f, 1f);
-            SetStretch(_chapterTitleText.rectTransform, 20f, 6f, 20f, 8f);
+            SetStretch(_chapterTitleText.rectTransform, 20f, 4f, 20f, 4f);
 
-            // Comic Illustration Viewport (with RectMask2D for clean comic border & zoom)
+            // Full-Screen Illustration Viewport
             GameObject viewportBorderObj = new GameObject("ComicPanelBorder", typeof(RectTransform), typeof(Image));
             viewportBorderObj.transform.SetParent(frameObj.transform, false);
             RectTransform vpBorderRect = viewportBorderObj.GetComponent<RectTransform>();
-            vpBorderRect.anchorMin = new Vector2(0.07f, 0.36f);
-            vpBorderRect.anchorMax = new Vector2(0.93f, 0.87f);
+            vpBorderRect.anchorMin = Vector2.zero;
+            vpBorderRect.anchorMax = Vector2.one;
             vpBorderRect.offsetMin = Vector2.zero;
             vpBorderRect.offsetMax = Vector2.zero;
             Image vpBorderImg = viewportBorderObj.GetComponent<Image>();
-            vpBorderImg.color = new Color(0.12f, 0.09f, 0.07f, 1f);
+            vpBorderImg.color = Color.clear;
+            vpBorderImg.raycastTarget = false;
 
             GameObject viewportObj = new GameObject("ComicPanelViewport", typeof(RectTransform), typeof(RectMask2D), typeof(Image));
             viewportObj.transform.SetParent(viewportBorderObj.transform, false);
             RectTransform vpRect = viewportObj.GetComponent<RectTransform>();
-            SetStretch(vpRect, 6f, 6f, 6f, 6f);
+            SetStretch(vpRect, 0f, 0f, 0f, 0f);
             Image vpBg = viewportObj.GetComponent<Image>();
-            vpBg.color = new Color(0.06f, 0.05f, 0.08f, 1f);
+            vpBg.color = new Color(0.04f, 0.03f, 0.06f, 1f);
 
             GameObject artObj = new GameObject("ComicArtwork", typeof(RectTransform), typeof(Image));
             artObj.transform.SetParent(viewportObj.transform, false);
             _comicArtworkRect = artObj.GetComponent<RectTransform>();
             SetStretch(_comicArtworkRect, 0f, 0f, 0f, 0f);
             _comicArtworkImage = artObj.GetComponent<Image>();
-            _comicArtworkImage.preserveAspect = true;
+            _comicArtworkImage.preserveAspect = false;
             _comicArtworkImage.raycastTarget = false;
 
-            // Page Badge in top-right of comic panel
+            // Page Badge (Hidden for clean full-screen layout)
             GameObject badgeObj = new GameObject("PageBadge", typeof(RectTransform), typeof(Image));
             badgeObj.transform.SetParent(viewportBorderObj.transform, false);
             RectTransform badgeRect = badgeObj.GetComponent<RectTransform>();
-            badgeRect.anchorMin = new Vector2(0.82f, 0.86f);
-            badgeRect.anchorMax = new Vector2(0.985f, 0.975f);
+            badgeRect.anchorMin = new Vector2(0.86f, 0.92f);
+            badgeRect.anchorMax = new Vector2(0.98f, 0.975f);
             badgeRect.offsetMin = Vector2.zero;
             badgeRect.offsetMax = Vector2.zero;
             Image badgeImg = badgeObj.GetComponent<Image>();
-            badgeImg.color = new Color(0.1f, 0.08f, 0.06f, 0.88f);
+            badgeImg.color = Color.clear;
+            badgeObj.SetActive(false);
 
-            _pageCounterText = CreateTMPText("PageCounterText", badgeObj.transform, font, 16f, FontStyles.Bold, TextAlignmentOptions.Center);
+            _pageCounterText = CreateTMPText("PageCounterText", badgeObj.transform, font, 14f, FontStyles.Bold, TextAlignmentOptions.Center);
             _pageCounterText.color = new Color(1f, 0.85f, 0.45f, 1f);
             SetStretch(_pageCounterText.rectTransform, 4f, 2f, 4f, 2f);
 
-            // Narrative Caption Box (Bottom area of comic frame)
+            // Narrative Caption Box (Floating in Upper-Center like Image 2, smooth & blended)
             GameObject captionBoxObj = new GameObject("NarrativeBox", typeof(RectTransform), typeof(Image));
             captionBoxObj.transform.SetParent(frameObj.transform, false);
             RectTransform captionRect = captionBoxObj.GetComponent<RectTransform>();
-            captionRect.anchorMin = new Vector2(0.07f, 0.13f);
-            captionRect.anchorMax = new Vector2(0.93f, 0.34f);
+            captionRect.anchorMin = new Vector2(0.18f, 0.71f);
+            captionRect.anchorMax = new Vector2(0.82f, 0.94f);
             captionRect.offsetMin = Vector2.zero;
             captionRect.offsetMax = Vector2.zero;
 
@@ -267,41 +255,47 @@ namespace LuckyNumber.UI
             if (registry != null && registry.regularPaperSprite != null)
             {
                 captionImg.sprite = registry.regularPaperSprite;
-                captionImg.color = new Color(0.98f, 0.95f, 0.88f, 1f);
+                captionImg.color = new Color(0.98f, 0.95f, 0.88f, 0.92f);
             }
             else
             {
-                captionImg.color = new Color(0.93f, 0.88f, 0.76f, 0.98f);
+                captionImg.color = new Color(0.95f, 0.90f, 0.79f, 0.90f);
             }
+            captionImg.raycastTarget = false;
 
-            _narrativeText = CreateTMPText("NarrativeText", captionBoxObj.transform, font, 20f, FontStyles.Normal, TextAlignmentOptions.TopLeft);
-            _narrativeText.color = new Color(0.16f, 0.11f, 0.07f, 1f);
+            _narrativeText = CreateTMPText("NarrativeText", captionBoxObj.transform, font, 24f, FontStyles.Normal, TextAlignmentOptions.Center);
+            _narrativeText.color = new Color(0.185f, 0.094f, 0.023f, 1f);
             _narrativeText.textWrappingMode = TextWrappingModes.Normal;
-            SetStretch(_narrativeText.rectTransform, 28f, 16f, 28f, 16f);
+            _narrativeText.enableAutoSizing = true;
+            _narrativeText.fontSizeMin = 18f;
+            _narrativeText.fontSizeMax = 26f;
+            SetStretch(_narrativeText.rectTransform, 55f, 16f, 55f, 16f);
 
-            // Next Button (Bottom Right)
+            // Next Button (Bottom-Center like Image 2, sleek golden-amber blend)
             _nextButton = CreateWoodenButton(
                 "NextSlideButton",
                 frameObj.transform,
-                new Vector2(0.70f, 0.03f),
-                new Vector2(0.93f, 0.115f),
-                "Lanjut [E / Spasi] ▶",
+                new Vector2(0.40f, 0.032f),
+                new Vector2(0.60f, 0.086f),
+                "Panel Berikutnya [E]",
                 font,
                 registry,
                 out _nextButtonLabel
             );
 
-            // Skip Button (Bottom Left)
+            // Skip Button (Bottom-Left, subtle & unobtrusive blend)
             _skipButton = CreateWoodenButton(
                 "SkipCutsceneButton",
                 frameObj.transform,
-                new Vector2(0.07f, 0.03f),
-                new Vector2(0.26f, 0.115f),
+                new Vector2(0.025f, 0.032f),
+                new Vector2(0.185f, 0.082f),
                 "Lewati Cerita [Esc]",
                 font,
                 registry,
                 out _skipButtonLabel
             );
+
+            ApplyFullScreenSeamlessLayout();
 
             // Populate slide 0 preview so when toggled active in Edit Mode, user sees actual cutscene layout
             if (introSlides != null && introSlides.Length > 0)
@@ -346,6 +340,166 @@ namespace LuckyNumber.UI
                 _skipButton = frame.Find("SkipCutsceneButton")?.GetComponent<Button>();
             if (_skipButtonLabel == null && _skipButton != null)
                 _skipButtonLabel = _skipButton.GetComponentInChildren<TextMeshProUGUI>(true);
+        }
+
+        /// <summary>
+        /// Menata ulang layout Cutscene agar gambar 100% Full Screen (1 layar penuh),
+        /// kotak cerita (NarrativeBox) mengambang rapi di bagian atas-tengah seperti referensi gambar kedua,
+        /// dan tombol Skip [Esc] serta Lanjut [E] tampil ramping & menyatu dengan background di bagian bawah.
+        /// </summary>
+        private void ApplyFullScreenSeamlessLayout()
+        {
+            if (_cutsceneRoot == null) return;
+
+            Transform frame = _cutsceneRoot.transform.Find("ComicBoardFrame");
+            if (frame != null)
+            {
+                RectTransform frameRt = frame.GetComponent<RectTransform>();
+                if (frameRt != null)
+                {
+                    frameRt.anchorMin = Vector2.zero;
+                    frameRt.anchorMax = Vector2.one;
+                    frameRt.offsetMin = Vector2.zero;
+                    frameRt.offsetMax = Vector2.zero;
+                }
+                Image frameImg = frame.GetComponent<Image>();
+                if (frameImg != null)
+                {
+                    frameImg.color = Color.clear;
+                    frameImg.raycastTarget = false;
+                }
+
+                // Sembunyikan header dan badge agar ilustrasi full-screen bersih seperti referensi gambar kedua
+                Transform header = frame.Find("ChapterHeader");
+                if (header != null) header.gameObject.SetActive(false);
+
+                Transform border = frame.Find("ComicPanelBorder");
+                if (border != null)
+                {
+                    RectTransform borderRt = border.GetComponent<RectTransform>();
+                    if (borderRt != null)
+                    {
+                        borderRt.anchorMin = Vector2.zero;
+                        borderRt.anchorMax = Vector2.one;
+                        borderRt.offsetMin = Vector2.zero;
+                        borderRt.offsetMax = Vector2.zero;
+                    }
+                    Image borderImg = border.GetComponent<Image>();
+                    if (borderImg != null)
+                    {
+                        borderImg.color = Color.clear;
+                        borderImg.raycastTarget = false;
+                    }
+
+                    Transform badge = border.Find("PageBadge");
+                    if (badge != null) badge.gameObject.SetActive(false);
+
+                    Transform viewport = border.Find("ComicPanelViewport");
+                    if (viewport != null)
+                    {
+                        RectTransform vpRt = viewport.GetComponent<RectTransform>();
+                        if (vpRt != null)
+                        {
+                            vpRt.anchorMin = Vector2.zero;
+                            vpRt.anchorMax = Vector2.one;
+                            vpRt.offsetMin = Vector2.zero;
+                            vpRt.offsetMax = Vector2.zero;
+                        }
+                    }
+                }
+
+                // Posisikan NarrativeBox di bagian atas-tengah (seperti referensi gambar kedua)
+                Transform narrativeBox = frame.Find("NarrativeBox");
+                if (narrativeBox != null)
+                {
+                    RectTransform nbRt = narrativeBox.GetComponent<RectTransform>();
+                    if (nbRt != null)
+                    {
+                        nbRt.anchorMin = new Vector2(0.18f, 0.71f);
+                        nbRt.anchorMax = new Vector2(0.82f, 0.94f);
+                        nbRt.offsetMin = Vector2.zero;
+                        nbRt.offsetMax = Vector2.zero;
+                    }
+                    Image nbImg = narrativeBox.GetComponent<Image>();
+                    if (nbImg != null)
+                    {
+                        nbImg.color = new Color(0.98f, 0.95f, 0.88f, 0.92f);
+                        nbImg.raycastTarget = false;
+                    }
+                }
+            }
+
+            if (_comicArtworkImage != null)
+            {
+                _comicArtworkImage.preserveAspect = false;
+                _comicArtworkImage.raycastTarget = false;
+            }
+            if (_comicArtworkRect != null)
+            {
+                _comicArtworkRect.anchorMin = Vector2.zero;
+                _comicArtworkRect.anchorMax = Vector2.one;
+                _comicArtworkRect.offsetMin = Vector2.zero;
+                _comicArtworkRect.offsetMax = Vector2.zero;
+            }
+
+            if (_narrativeText != null)
+            {
+                SetStretch(_narrativeText.rectTransform, 55f, 16f, 55f, 16f);
+                _narrativeText.alignment = TextAlignmentOptions.Center;
+                _narrativeText.enableAutoSizing = true;
+                _narrativeText.fontSizeMin = 18f;
+                _narrativeText.fontSizeMax = 26f;
+            }
+
+            // Tombol Lanjut [E] di tengah-bawah (ramping & menyatu hangat seperti tombol Continue di gambar kedua)
+            if (_nextButton != null)
+            {
+                RectTransform nextRt = _nextButton.GetComponent<RectTransform>();
+                if (nextRt != null)
+                {
+                    nextRt.anchorMin = new Vector2(0.40f, 0.032f);
+                    nextRt.anchorMax = new Vector2(0.60f, 0.086f);
+                    nextRt.offsetMin = Vector2.zero;
+                    nextRt.offsetMax = Vector2.zero;
+                }
+                Image nextImg = _nextButton.GetComponent<Image>();
+                if (nextImg != null)
+                {
+                    nextImg.color = new Color(0.96f, 0.86f, 0.62f, 0.86f);
+                }
+                if (_nextButtonLabel != null)
+                {
+                    _nextButtonLabel.fontSize = 15.5f;
+                    _nextButtonLabel.color = new Color(0.99f, 0.95f, 0.82f, 0.96f);
+                    if (_nextButtonLabel.text.Contains("▶") || _nextButtonLabel.text.Contains("✔"))
+                    {
+                        _nextButtonLabel.text = "Panel Berikutnya [E]";
+                    }
+                }
+            }
+
+            // Tombol Lewati Cerita [Esc] di kiri-bawah (lebih lembut & menyatu dengan background)
+            if (_skipButton != null)
+            {
+                RectTransform skipRt = _skipButton.GetComponent<RectTransform>();
+                if (skipRt != null)
+                {
+                    skipRt.anchorMin = new Vector2(0.025f, 0.032f);
+                    skipRt.anchorMax = new Vector2(0.185f, 0.082f);
+                    skipRt.offsetMin = Vector2.zero;
+                    skipRt.offsetMax = Vector2.zero;
+                }
+                Image skipImg = _skipButton.GetComponent<Image>();
+                if (skipImg != null)
+                {
+                    skipImg.color = new Color(0.85f, 0.78f, 0.66f, 0.72f);
+                }
+                if (_skipButtonLabel != null)
+                {
+                    _skipButtonLabel.fontSize = 14f;
+                    _skipButtonLabel.color = new Color(0.96f, 0.91f, 0.80f, 0.90f);
+                }
+            }
         }
 
         private void BindRuntimeButtons()
@@ -532,6 +686,7 @@ namespace LuckyNumber.UI
             else
             {
                 BindExistingUIReferences();
+                ApplyFullScreenSeamlessLayout();
                 BindRuntimeButtons();
             }
 
@@ -573,7 +728,7 @@ namespace LuckyNumber.UI
             bool isLast = (index == _activeSlides.Length - 1);
             if (_nextButtonLabel != null)
             {
-                _nextButtonLabel.text = isLast ? "Mulai Petualangan [E] ✔" : "Panel Berikutnya [E] ▶";
+                _nextButtonLabel.text = isLast ? "Mulai Petualangan [E]" : "Panel Berikutnya [E]";
             }
 
             _fullSlideText = slide.narrativeText ?? string.Empty;

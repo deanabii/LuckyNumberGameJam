@@ -100,6 +100,11 @@ namespace LuckyNumber.UI
 
         private void TriggerClick()
         {
+            // Jika ada komponen Button standar Unity, biarkan Button.onClick yang menangani klik
+            // agar tidak terjadi eksekusi dobel (misal toggle credit langsung terbuka dan tertutup kembali)
+            Button btn = GetComponent<Button>();
+            if (btn != null) return;
+
             MainMenuController controller = GetComponentInParent<MainMenuController>();
             if (controller != null)
             {

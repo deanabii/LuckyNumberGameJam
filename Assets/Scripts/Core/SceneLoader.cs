@@ -45,11 +45,28 @@ namespace LuckyNumber.Core
         [Tooltip("Teks persentase loading opsional (TMP).")]
         [SerializeField] private TextMeshProUGUI progressText;
 
+        [Header("Credits Modal Settings")]
+        [Tooltip("Panel / Modal Credit di scene. Bisa di-assign manual di Inspector atau dicari otomatis jika kosong.")]
+        [SerializeField] private GameObject creditsPanel;
+
+        [Tooltip("CanvasGroup dari Panel Credit untuk efek fade in/out mulus.")]
+        [SerializeField] private CanvasGroup creditsCanvasGroup;
+
+        [Tooltip("Durasi animasi fade panel credit (detik).")]
+        [SerializeField] private float creditsFadeDuration = 0.25f;
+
+        [Tooltip("Tutup panel credit otomatis saat pemain menekan tombol ESC?")]
+        [SerializeField] private bool closeCreditsOnEsc = true;
+
         // Internal references
         private Canvas _fadeCanvas;
         private CanvasGroup _fadeCanvasGroup;
         private Image _fadeImage;
         private bool _isTransitioning;
+        private bool _isCreditsOpen;
+        private Coroutine _creditFadeCoroutine;
+
+        public bool IsCreditsOpen => _isCreditsOpen;
 
         // Events
         public event Action<string> OnSceneLoadStarted;
@@ -86,6 +103,10 @@ namespace LuckyNumber.Core
                 // PENTING: JANGAN hancurkan gameObject karena gameObject bisa jadi adalah Canvas atau UI penting!
                 // JANGAN pula hancurkan komponen ini agar referensi OnClick() di Inspector tetap valid.
                 // Instance lokal ini akan otomatis meneruskan panggilan (delegator) ke singleton Instance global.
+                if (creditsPanel != null)
+                {
+                    Instance.SetCreditsPanel(creditsPanel);
+                }
             }
         }
 
@@ -113,6 +134,13 @@ namespace LuckyNumber.Core
                 if (_fadeCanvasGroup != null && _fadeCanvasGroup.alpha > 0.05f)
                 {
                     StartCoroutine(FadeRoutine(1f, 0f, defaultFadeDuration));
+                }
+            }
+            else
+            {
+                if (creditsPanel != null)
+                {
+                    Instance.SetCreditsPanel(creditsPanel);
                 }
             }
         }
@@ -165,9 +193,41 @@ namespace LuckyNumber.Core
 
             OnSceneLoadCompleted?.Invoke(scene.name);
 
+            _isCreditsOpen = false;
+
             if (autoFadeInOnLoad && _fadeCanvasGroup != null && _fadeCanvasGroup.alpha > 0.01f)
             {
                 StartCoroutine(FadeRoutine(1f, 0f, defaultFadeDuration));
+            }
+        }
+
+        private void Update()
+        {
+            if (closeCreditsOnEsc)
+            {
+                GameObject panel = creditsPanel;
+                if (panel == null && _isCreditsOpen) panel = ResolveCreditsPanel();
+
+                if (panel != null && panel.activeSelf)
+                {
+                    bool escPressed = false;
+                    try
+                    {
+                        var kb = UnityEngine.InputSystem.Keyboard.current;
+                        if (kb != null && kb.escapeKey.wasPressedThisFrame) escPressed = true;
+                    }
+                    catch { }
+
+                    if (!escPressed && Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        escPressed = true;
+                    }
+
+                    if (escPressed)
+                    {
+                        HideCredits();
+                    }
+                }
             }
         }
 
@@ -202,6 +262,15 @@ namespace LuckyNumber.Core
             if (string.IsNullOrEmpty(sceneName))
             {
                 Debug.LogWarning("[SceneLoader] Nama scene kosong atau null!");
+                return;
+            }
+
+            // Jika user memanggil LoadScene("Credit") padahal Credit adalah UI Panel di MainMenu, buka Panel Credit
+            if ((sceneName.Equals("Credit", StringComparison.OrdinalIgnoreCase) ||
+                 sceneName.Equals("Credits", StringComparison.OrdinalIgnoreCase)) &&
+                !Application.CanStreamedLevelBeLoaded(sceneName))
+            {
+                ShowCredits();
                 return;
             }
 
@@ -302,9 +371,123 @@ namespace LuckyNumber.Core
 #endif
         }
 
+        /// <summary>
+        /// Menampilkan Panel / Modal Credit di layar.
+        /// </summary>
+        public void ShowCredits()
+        {
+            GameObject panel = ResolveCreditsPanel();
+            if (panel == null && Instance != null && Instance != this)
+            {
+                panel = Instance.ResolveCreditsPanel();
+            }
+
+            if (panel == null)
+            {
+                Debug.LogWarning("[SceneLoader] creditsPanel belum diatur di Inspector dan tidak ditemukan di scene!");
+                return;
+            }
+
+            _isCreditsOpen = true;
+            panel.SetActive(true);
+            panel.transform.SetAsLastSibling();
+
+            if (creditsCanvasGroup != null)
+            {
+                if (_creditFadeCoroutine != null) StopCoroutine(_creditFadeCoroutine);
+                _creditFadeCoroutine = StartCoroutine(FadeCreditsRoutine(open: true));
+            }
+        }
+
+        /// <summary>
+        /// Menutup Panel / Modal Credit di layar.
+        /// </summary>
+        public void HideCredits()
+        {
+            GameObject panel = ResolveCreditsPanel();
+            if (panel == null && Instance != null && Instance != this)
+            {
+                panel = Instance.ResolveCreditsPanel();
+            }
+
+            if (panel == null)
+            {
+                _isCreditsOpen = false;
+                return;
+            }
+
+            _isCreditsOpen = false;
+
+            if (creditsCanvasGroup != null && panel.activeInHierarchy)
+            {
+                if (_creditFadeCoroutine != null) StopCoroutine(_creditFadeCoroutine);
+                _creditFadeCoroutine = StartCoroutine(FadeCreditsRoutine(open: false));
+            }
+            else
+            {
+                panel.SetActive(false);
+            }
+        }
+
+        /// <summary>
+        /// Membuka atau menutup Panel Credit (toggle).
+        /// </summary>
+        public void ToggleCredits()
+        {
+            GameObject panel = ResolveCreditsPanel();
+            if (panel != null)
+            {
+                if (panel.activeSelf)
+                    HideCredits();
+                else
+                    ShowCredits();
+            }
+            else
+            {
+                if (_isCreditsOpen)
+                    HideCredits();
+                else
+                    ShowCredits();
+            }
+        }
+
+        // Alias fungsi publik INSTANCE agar bisa langsung dipilih di Unity Inspector Button OnClick()
+        public void OpenCredits() => ShowCredits();
+        public void CloseCredits() => HideCredits();
+        public void ToggleCreditsModal() => ToggleCredits();
+        public void OpenCreditsModal() => ShowCredits();
+        public void CloseCreditsModal() => HideCredits();
+
+        /// <summary>
+        /// Menghubungkan GameObject Panel Credit secara runtime jika diperlukan.
+        /// </summary>
+        public void SetCreditsPanel(GameObject panel)
+        {
+            if (panel != null && IsMenuButtonObject(panel)) return;
+            creditsPanel = panel;
+            if (panel != null)
+            {
+                creditsCanvasGroup = panel.GetComponent<CanvasGroup>();
+            }
+        }
+
         // =========================================================================
         // STATIC CONVENIENCE METHODS (BISA DIPANGGIL DARI SCRIPT APAPUN TANPA REFERENSI)
         // =========================================================================
+
+        public static void OpenCreditsStatic()
+        {
+            var local = FindFirstObjectByType<SceneLoader>();
+            if (local != null) local.ShowCredits();
+            else if (Instance != null) Instance.ShowCredits();
+        }
+
+        public static void CloseCreditsStatic()
+        {
+            var local = FindFirstObjectByType<SceneLoader>();
+            if (local != null) local.HideCredits();
+            else if (Instance != null) Instance.HideCredits();
+        }
 
         public static void Load(string sceneName, bool useFade = true)
         {
@@ -443,6 +626,126 @@ namespace LuckyNumber.Core
 
             _fadeCanvasGroup.alpha = targetAlpha;
             _fadeCanvasGroup.blocksRaycasts = (targetAlpha > 0.05f);
+        }
+
+        private static bool IsMenuButtonObject(GameObject go)
+        {
+            if (go == null) return false;
+            // Jangan salah mengenali tombol menu "Credit" (yang memiliki komponen Button) sebagai Panel Credit!
+            return go.GetComponent<Button>() != null ||
+                   go.GetComponent<LuckyNumber.UI.MainMenuButtonHoverEffect>() != null;
+        }
+
+        private GameObject ResolveCreditsPanel()
+        {
+            if (creditsPanel != null && !IsMenuButtonObject(creditsPanel))
+            {
+                if (creditsCanvasGroup == null)
+                    creditsCanvasGroup = creditsPanel.GetComponent<CanvasGroup>();
+                return creditsPanel;
+            }
+
+            string[] candidateNames = new string[] { "Credit", "Credits", "CreditPanel", "CreditsPanel", "Panel_Credit", "Modal_Credits", "CreditsModal" };
+
+            // 1. Coba cari di child langsung GameObject ini (misal Canvas -> Credit)
+            foreach (string cName in candidateNames)
+            {
+                Transform t = transform.Find(cName);
+                if (t != null && !IsMenuButtonObject(t.gameObject))
+                {
+                    creditsPanel = t.gameObject;
+                    creditsCanvasGroup = creditsPanel.GetComponent<CanvasGroup>();
+                    return creditsPanel;
+                }
+            }
+
+            // 2. Coba cari di MainMenuController jika ada
+            var menuCtrl = FindFirstObjectByType<LuckyNumber.UI.MainMenuController>();
+            if (menuCtrl != null && menuCtrl.CreditPanel != null && !IsMenuButtonObject(menuCtrl.CreditPanel))
+            {
+                creditsPanel = menuCtrl.CreditPanel;
+                creditsCanvasGroup = creditsPanel.GetComponent<CanvasGroup>();
+                return creditsPanel;
+            }
+
+            // 3. Coba cari di seluruh root scene aktif (termasuk hierarki objek non-aktif, skip yang merupakan Button)
+            Scene activeScene = SceneManager.GetActiveScene();
+            if (activeScene.isLoaded)
+            {
+                GameObject[] roots = activeScene.GetRootGameObjects();
+                foreach (var root in roots)
+                {
+                    Transform[] allTransforms = root.GetComponentsInChildren<Transform>(true);
+                    foreach (var tr in allTransforms)
+                    {
+                        if (IsMenuButtonObject(tr.gameObject)) continue;
+                        foreach (string cName in candidateNames)
+                        {
+                            if (tr.name.Equals(cName, StringComparison.OrdinalIgnoreCase))
+                            {
+                                creditsPanel = tr.gameObject;
+                                creditsCanvasGroup = creditsPanel.GetComponent<CanvasGroup>();
+                                return creditsPanel;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 4. Coba cari di seluruh objek loaded scene
+            var allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+            foreach (var go in allObjects)
+            {
+                if (go.hideFlags != HideFlags.None || !go.scene.isLoaded || IsMenuButtonObject(go)) continue;
+                foreach (string cName in candidateNames)
+                {
+                    if (go.name.Equals(cName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        creditsPanel = go;
+                        creditsCanvasGroup = creditsPanel.GetComponent<CanvasGroup>();
+                        return creditsPanel;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private IEnumerator FadeCreditsRoutine(bool open)
+        {
+            if (creditsCanvasGroup == null) yield break;
+
+            if (open && creditsPanel != null)
+            {
+                creditsPanel.SetActive(true);
+            }
+
+            float startAlpha = creditsCanvasGroup.alpha;
+            float targetAlpha = open ? 1.0f : 0.0f;
+            float elapsed = 0f;
+            float duration = creditsFadeDuration > 0f ? creditsFadeDuration : 0.25f;
+
+            creditsCanvasGroup.blocksRaycasts = open;
+            creditsCanvasGroup.interactable = open;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+                creditsCanvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
+                yield return null;
+            }
+
+            creditsCanvasGroup.alpha = targetAlpha;
+            creditsCanvasGroup.blocksRaycasts = open;
+            creditsCanvasGroup.interactable = open;
+
+            if (!open && creditsPanel != null)
+            {
+                creditsPanel.SetActive(false);
+            }
+
+            _creditFadeCoroutine = null;
         }
     }
 }

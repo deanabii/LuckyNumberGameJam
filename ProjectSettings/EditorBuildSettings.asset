@@ -24,9 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Bos3.unity
     guid: f3e8b17417f3e1c499822ca8b2042cb0
   - enabled: 1
+    path: Assets/Scenes/Bos4.unity
+    guid: ffd4dac994c58ec47a53cc0a3ee3425c
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ContohScene.unity
     guid: dd27dae9ab830a94c9a21eb6f9967d94
   m_configObjects:
