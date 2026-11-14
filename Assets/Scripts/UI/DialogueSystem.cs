@@ -118,7 +118,14 @@ namespace LuckyNumber.UI
 
             if (canvasTransform == null) return;
 
-            CreateMainHUD(canvasTransform, registry, font);
+            // Mission / HUD panel in the top-left is removed as requested by user
+            Transform oldHudBoard = canvasTransform.Find("MainHUD_QuestBoard");
+            if (oldHudBoard != null)
+            {
+                if (Application.isPlaying) Destroy(oldHudBoard.gameObject);
+                else DestroyImmediate(oldHudBoard.gameObject);
+            }
+
             CreateInteractionPromptUI(canvasTransform, registry, font);
             CreateDialogueBoxUI(canvasTransform, registry, font);
             BindRuntimeButtons();
@@ -138,9 +145,8 @@ namespace LuckyNumber.UI
                 Transform hudBoard = canvasTransform.Find("MainHUD_QuestBoard");
                 if (hudBoard != null)
                 {
-                    if (_hudZoneText == null) _hudZoneText = hudBoard.Find("HUD_ZoneText")?.GetComponent<TextMeshProUGUI>();
-                    if (_hudHokiProgressText == null) _hudHokiProgressText = hudBoard.Find("HUD_HokiText")?.GetComponent<TextMeshProUGUI>();
-                    if (_hudObjectiveText == null) _hudObjectiveText = hudBoard.Find("HUD_ObjectiveText")?.GetComponent<TextMeshProUGUI>();
+                    if (Application.isPlaying) Destroy(hudBoard.gameObject);
+                    else DestroyImmediate(hudBoard.gameObject);
                 }
 
                 Transform replayBtn = canvasTransform.Find("ReplayIntroCutsceneBtn");

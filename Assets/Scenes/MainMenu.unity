@@ -382,7 +382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21.643322, y: -254.2354}
+  m_AnchoredPosition: {x: 230.00006, y: 132.9527}
   m_SizeDelta: {x: 671.0685, y: 178.2535}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &408616388
@@ -405,11 +405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tiny Swords by Pixel Frog
-
-    Wooden GUI by TkKoi
-
-    VFX Impact & Hit by Wallcoeur'
+  m_text: "Pixabay\nYT Video\nSuno AI\t"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aecd0fc8d6abea84ba0dfb1a93928353, type: 2}
   m_sharedMaterial: {fileID: -3827782841601419767, guid: aecd0fc8d6abea84ba0dfb1a93928353, type: 2}
@@ -934,7 +930,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21.643322, y: -146.1881}
+  m_AnchoredPosition: {x: 230, y: 241}
   m_SizeDelta: {x: 452.9318, y: 178.2535}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &673741345
@@ -1494,7 +1490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21.643322, y: 75.2552}
+  m_AnchoredPosition: {x: 31, y: -35}
   m_SizeDelta: {x: 452.9318, y: 178.2535}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &870968616
@@ -1631,7 +1627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27.203522, y: -28.5129}
+  m_AnchoredPosition: {x: 25.439789, y: -156.51291}
   m_SizeDelta: {x: 671.0685, y: 178.2535}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &923312114
@@ -1658,7 +1654,9 @@ MonoBehaviour:
 
     Wooden GUI by TkKoi
 
-    VFX Impact & Hit by Wallcoeur'
+    VFX Impact & Hit by Wallcoeur
+
+    CHAT GPT & Gemini'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aecd0fc8d6abea84ba0dfb1a93928353, type: 2}
   m_sharedMaterial: {fileID: -3827782841601419767, guid: aecd0fc8d6abea84ba0dfb1a93928353, type: 2}
@@ -1772,7 +1770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27, y: 258.1868}
+  m_AnchoredPosition: {x: -265.99994, y: 234.41895}
   m_SizeDelta: {x: 452.9318, y: 178.2535}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1244209984
@@ -2320,7 +2318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27.000023, y: 205.7678}
+  m_AnchoredPosition: {x: -266, y: 182}
   m_SizeDelta: {x: 452.9318, y: 178.2535}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1572323138
@@ -2923,8 +2921,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a010fd53ad43be81760083df9cc3fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSFX: {fileID: 0}
-  clickSFX: {fileID: 0}
+  hoverSFX: {fileID: 8300000, guid: 48735a1f172a9c043809344401b16f52, type: 3}
+  clickSFX: {fileID: 8300000, guid: 5d33864b56dd73c46b2b3be938f20ee1, type: 3}
   bgmMusic: {fileID: 0}
   sfxVolume: 1
   bgmVolume: 0.7

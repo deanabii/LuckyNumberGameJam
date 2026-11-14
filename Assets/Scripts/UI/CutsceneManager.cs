@@ -85,9 +85,39 @@ namespace LuckyNumber.UI
             Sprite[] introSprites = registry != null ? registry.introCutsceneSprites : null;
             Sprite[] endingSprites = registry != null ? registry.endingCutsceneSprites : null;
 
-            if (introSlides == null || introSlides.Length == 0)
+            CutsceneSlide[] defaultIntro = CreateDefaultIntroSlides(introSprites);
+            bool needsIntroRefresh = (introSlides == null || introSlides.Length != defaultIntro.Length);
+            if (!needsIntroRefresh)
             {
-                introSlides = CreateDefaultIntroSlides(introSprites);
+                for (int i = 0; i < introSlides.Length; i++)
+                {
+                    if (introSlides[i] == null || string.IsNullOrWhiteSpace(introSlides[i].narrativeText))
+                    {
+                        needsIntroRefresh = true;
+                        break;
+                    }
+                    string txt = introSlides[i].narrativeText;
+                    string title = introSlides[i].chapterTitle ?? string.Empty;
+                    if (txt.Contains("Di tengah") || txt.Contains("desa makmur") || txt.Contains("Kepala Desa") || 
+                        title.Contains("BAGIAN") || title.Contains("ARTEFAK") || txt.Contains("Selama ratusan tahun"))
+                    {
+                        needsIntroRefresh = true;
+                        break;
+                    }
+                }
+            }
+
+            if (needsIntroRefresh)
+            {
+                if (introSlides != null)
+                {
+                    for (int i = 0; i < defaultIntro.Length && i < introSlides.Length; i++)
+                    {
+                        if (introSlides[i] != null && introSlides[i].artwork != null)
+                            defaultIntro[i].artwork = introSlides[i].artwork;
+                    }
+                }
+                introSlides = defaultIntro;
             }
             else
             {
@@ -95,12 +125,44 @@ namespace LuckyNumber.UI
                 {
                     if (introSlides[i].artwork == null)
                         introSlides[i].artwork = GetSafeSprite(introSprites, i);
+                    if (string.IsNullOrWhiteSpace(introSlides[i].narrativeText) && i < defaultIntro.Length)
+                        introSlides[i].narrativeText = defaultIntro[i].narrativeText;
                 }
             }
 
-            if (endingSlides == null || endingSlides.Length == 0)
+            CutsceneSlide[] defaultEnding = CreateDefaultEndingSlides(endingSprites);
+            bool needsEndingRefresh = (endingSlides == null || endingSlides.Length != defaultEnding.Length);
+            if (!needsEndingRefresh)
             {
-                endingSlides = CreateDefaultEndingSlides(endingSprites);
+                for (int i = 0; i < endingSlides.Length; i++)
+                {
+                    if (endingSlides[i] == null || string.IsNullOrWhiteSpace(endingSlides[i].narrativeText))
+                    {
+                        needsEndingRefresh = true;
+                        break;
+                    }
+                    string txt = endingSlides[i].narrativeText;
+                    string title = endingSlides[i].chapterTitle ?? string.Empty;
+                    if (txt.Contains("Setelah pertarungan") || txt.Contains("Malios kembali") || txt.Contains("Kutukan") ||
+                        title.Contains("BABAK") || title.Contains("MENYATUKAN") || title.Contains("KEBANGKITAN"))
+                    {
+                        needsEndingRefresh = true;
+                        break;
+                    }
+                }
+            }
+
+            if (needsEndingRefresh)
+            {
+                if (endingSlides != null)
+                {
+                    for (int i = 0; i < defaultEnding.Length && i < endingSlides.Length; i++)
+                    {
+                        if (endingSlides[i] != null && endingSlides[i].artwork != null)
+                            defaultEnding[i].artwork = endingSlides[i].artwork;
+                    }
+                }
+                endingSlides = defaultEnding;
             }
             else
             {
@@ -108,6 +170,8 @@ namespace LuckyNumber.UI
                 {
                     if (endingSlides[i].artwork == null)
                         endingSlides[i].artwork = GetSafeSprite(endingSprites, i);
+                    if (string.IsNullOrWhiteSpace(endingSlides[i].narrativeText) && i < defaultEnding.Length)
+                        endingSlides[i].narrativeText = defaultEnding[i].narrativeText;
                 }
             }
         }
@@ -716,6 +780,22 @@ namespace LuckyNumber.UI
             if (_activeSlides == null || index < 0 || index >= _activeSlides.Length) return;
 
             CutsceneSlide slide = _activeSlides[index];
+
+            // Safety fallback: if narrative text was somehow empty, immediately restore default text
+            if (string.IsNullOrWhiteSpace(slide.narrativeText))
+            {
+                var reg = GameAssetRegistry.Instance;
+                CutsceneSlide[] defs = (_activeSlides == introSlides)
+                    ? CreateDefaultIntroSlides(reg != null ? reg.introCutsceneSprites : null)
+                    : CreateDefaultEndingSlides(reg != null ? reg.endingCutsceneSprites : null);
+                if (defs != null && index < defs.Length)
+                {
+                    slide.narrativeText = defs[index].narrativeText;
+                    if (string.IsNullOrWhiteSpace(slide.chapterTitle))
+                        slide.chapterTitle = defs[index].chapterTitle;
+                }
+            }
+
             if (_chapterTitleText != null) _chapterTitleText.text = slide.chapterTitle;
             if (_pageCounterText != null) _pageCounterText.text = $"PANEL {index + 1} / {_activeSlides.Length}";
 

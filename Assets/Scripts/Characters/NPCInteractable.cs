@@ -254,7 +254,7 @@ namespace LuckyNumber.Characters
                     new DialogueLine
                     {
                         speakerName = "Chief Arvand",
-                        text = "You have gathered all four HOKI fragments, Malios! Approach the Sacred HOKI Altar beside me to unite them once more!",
+                        text = "You have gathered all four HOKI fragments, Malios! The curse is broken and peace has returned to Aetheria Island!",
                         portrait = arvandPortrait
                     }
                 });

@@ -207,6 +207,9 @@ namespace LuckyNumber.Characters
 
         private void PlayFootstepSound()
         {
+            // If PlayerController is attached, let PlayerController manage footstep sounds to avoid double triggers
+            if (GetComponent<PlayerController>() != null) return;
+
             if (footstepClips == null || footstepClips.Length == 0) return;
             if (footstepSource == null)
             {

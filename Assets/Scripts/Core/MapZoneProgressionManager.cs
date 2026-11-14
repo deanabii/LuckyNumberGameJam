@@ -1002,8 +1002,19 @@ namespace LuckyNumber.Core
             GetOrCreateWorldLabel("Sign_BackToVillage", new Vector3(0f, 14.0f, 0f), "▼ South: Eldoria Village");
             GetOrCreateWorldLabel("Sign_NorthToCrossroads", new Vector3(0f, 7.8f, 0f), "▲ North: Crossroads of the 4 Demons");
 
-            // Sacred Altar in Eldoria Village
-            CreateAltarInteractable(new Vector3(-3.2f, 2.2f, 0f));
+            // Clean up Sacred Altar and its elements
+            Transform altarObj = transform.Find("Altar_Suci_HOKI");
+            if (altarObj != null)
+            {
+                if (Application.isPlaying) Destroy(altarObj.gameObject);
+                else DestroyImmediate(altarObj.gameObject);
+            }
+            Transform altarLabel = transform.Find("AltarLabel");
+            if (altarLabel != null)
+            {
+                if (Application.isPlaying) Destroy(altarLabel.gameObject);
+                else DestroyImmediate(altarLabel.gameObject);
+            }
 
             // Clean up any old text labels in front of the caves
             string[] labelsToClean = {
@@ -1100,24 +1111,6 @@ namespace LuckyNumber.Core
                 mr.sortingOrder = 120;
             }
             return tmp;
-        }
-
-        private void CreateAltarInteractable(Vector3 position)
-        {
-            Transform existing = transform.Find("Altar_Suci_HOKI");
-            GameObject altarObj = existing != null ? existing.gameObject : new GameObject("Altar_Suci_HOKI", typeof(NPCInteractable));
-            if (existing == null)
-            {
-                altarObj.transform.SetParent(transform, false);
-            }
-            altarObj.transform.position = position;
-
-            NPCInteractable interactable = altarObj.GetComponent<NPCInteractable>();
-            interactable.Configure(InteractableRole.HokiSacredAltar, "Sacred HOKI Altar [6 & 7]", 0, 2.5f);
-
-            TextMeshPro label = GetOrCreateWorldLabel("AltarLabel", position + new Vector3(0f, 0.9f, 0f), "★ SACRED HOKI ALTAR [6 & 7] ★");
-            label.color = new Color(1f, 0.88f, 0.35f, 1f);
-            label.fontSize = 3.0f;
         }
 
         private void CreateBossPedestal(int bossIndex, string bossTitle, Vector3 position)

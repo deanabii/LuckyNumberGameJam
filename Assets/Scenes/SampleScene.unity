@@ -2793,7 +2793,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lewati Cerita [Esc]'
+  m_text: 'Skip Story [Esc]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2930,7 +2930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[E] Bicara dengan Kepala Desa Arvand'
+  m_text: '[E] Talk to Chief Arvand'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3741,7 +3741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Kepingan HOKI: 0 / 4'
+  m_text: 'HOKI Fragments: 0 / 4'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4093,7 +4093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &263832806
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4571,7 +4571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BAGIAN INI BELUM BISA KAMU MASUKI
+  m_text: THIS AREA CANNOT BE ACCESSED YET
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5505,7 +5505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'BAGIAN 1: PULAU AETHERIA & DESA ELDORIA'
+  m_text: 'CHAPTER 1: AETHERIA ISLAND & ELDORIA VILLAGE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7054,7 +7054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lanjut [E] \u25B6"
+  m_text: "Next [E] \u25B6"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13249,7 +13249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lokasi: Desa Eldoria'
+  m_text: 'Location: Eldoria Village'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13567,7 +13567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Syukurlah kau tiba, Malios! Empat demon Vorthak telah mencuri pecahan Artefak HOKI dari Desa Eldoria.
+  m_text: Thank goodness you arrived, Malios! Four demons of Vorthak have stolen the HOKI Artifact fragments from Eldoria Village.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15060,7 +15060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &840116758
 Transform:
   m_ObjectHideFlags: 0
@@ -15090,7 +15090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuckyNumber.Characters.NPCInteractable
   role: 1
-  displayName: Altar Suci HOKI (6 & 7)
+  displayName: Sacred HOKI Altar [6 & 7]
   interactionRadius: 2.5
   bossIndex: 0
 --- !u!1 &853963469
@@ -15271,33 +15271,33 @@ MonoBehaviour:
   typewriterCharDelay: 0.018
   playIntroOnStart: 1
   introSlides:
-  - chapterTitle: 'BAGIAN 1: PULAU AETHERIA & DESA ELDORIA'
-    narrativeText: Di tengah lautan luas Pulau Aetheria, berdiri sebuah desa makmur bernama Desa Eldoria yang dipimpin oleh Kepala Desa Arvand. Selama ratusan tahun, kedamaian dan kesuburan desa tersebut terjaga berkat perlindungan sebuah artefak kuno.
+  - chapterTitle: 'CHAPTER 1: AETHERIA ISLAND & ELDORIA VILLAGE'
+    narrativeText: In the vast ocean of Aetheria Island stood a prosperous village called Eldoria Village, guided by Village Chief Arvand. For centuries, peace and fertility flourished beneath the protection of an ancient artifact.
     artwork: {fileID: 21300000, guid: 9c40c626e30c4df44ab995f3f33d17a0, type: 3}
-  - chapterTitle: "ARTEFAK HOKI \u2013 THE ANCIENT SEAL OF FORTUNE"
-    narrativeText: "Artefak tersebut bernama HOKI\u2014berbentuk dua angka keramat (6 dan 7) yang berdampingan di atas altar rumah suci di tengah Desa Eldoria. Selama Artefak HOKI tetap utuh, air tetap jernih dan penduduk terhindar dari segala bencana."
+  - chapterTitle: 'THE HOKI ARTIFACT: ANCIENT SEAL OF FORTUNE'
+    narrativeText: The sacred relic was known as HOKI, bearing two sacred numbers, 6 and 7, enshrined upon the altar at the heart of Eldoria Village. As long as the HOKI Artifact remained whole, waters ran clear and the people remained safe from calamity.
     artwork: {fileID: 21300000, guid: 32829a9cae165ec4382ff942d2fc8564, type: 3}
-  - chapterTitle: 'BAGIAN 2: KEBANGKITAN IBLIS KUNO VORTHAK'
-    narrativeText: Namun pada suatu malam, iblis kuno bernama Vorthak yang tersegel di bawah altar berusaha membebaskan dirinya. Vorthak memanggil empat demon bawahannya untuk menghancurkan segel hingga Artefak HOKI retak dan terpecah menjadi empat kepingan!
+  - chapterTitle: 'CHAPTER 2: AWAKENING OF ANCIENT DEMON VORTHAK'
+    narrativeText: Yet one fateful night, an ancient demon named Vorthak sealed beneath the altar sought to break free. Vorthak summoned four demon lieutenants to shatter the seal, breaking the HOKI Artifact into four fragments!
     artwork: {fileID: 21300000, guid: ab6d55797dc8de447a73530abe33fab1, type: 3}
-  - chapterTitle: 'BAGIAN 3: EMPAT DEMON PENJAGA PECAHAN HOKI'
-    narrativeText: "Keempat kepingan HOKI dibawa kabur ke penjuru pulau oleh empat demon: Ignaroth (Api), Glaciera (Es), Venomark (Racun), dan Nocthar (Bayangan). Kutukan pun menyebar\u2014tanaman mengering, sungai keruh, dan Desa Eldoria berada di ambang kehancuran."
+  - chapterTitle: 'CHAPTER 3: FOUR DEMON GUARDIANS OF HOKI'
+    narrativeText: 'The four HOKI fragments were scattered across the island by the four demons: Ignaroth (Fire), Glaciera (Ice), Venomark (Poison), and Nocthar (Shadow). A dark curse spread rapidly, withering crops, tainting rivers, and bringing Eldoria Village to the verge of ruin.'
     artwork: {fileID: 21300000, guid: 7c66904b4a11dec41902411b14b1c93e, type: 3}
-  - chapterTitle: 'BAGIAN 4: AWAL PERJALANAN MALIOS'
-    narrativeText: Kepala Desa Arvand meminta bantuan kepada Eldric di Desa Valoria, yang kemudian mengutus petualang pemberani bernama Malios. "Temukan keempat demon, kalahkan mereka secara berurutan, dan kembalikan 4 pecahan HOKI ke altar Desa Eldoria!"
+  - chapterTitle: 'CHAPTER 4: THE JOURNEY OF MALIOS BEGINS'
+    narrativeText: Chief Arvand sent an urgent plea to Eldric in Valoria Village, who called upon a courageous hero named Malios. "Track down the four demons, conquer their trials in order, and return all 4 HOKI fragments to the altar in Eldoria Village!"
     artwork: {fileID: 21300000, guid: 8f860df9728ef4d47b4883f52eb65faa, type: 3}
   endingSlides:
-  - chapterTitle: 'BABAK AKHIR: PECAHAN TERAKHIR HOKI'
-    narrativeText: Setelah pertarungan panjang di Kastil Bayangan, Malios akhirnya mengalahkan Nocthar! Kekuatan kegelapan perlahan menghilang dan pecahan keempat Artefak HOKI memancarkan cahaya misterius. Seluruh 4 kepingan kini telah terkumpul!
+  - chapterTitle: 'FINAL CHAPTER: THE LAST HOKI FRAGMENT'
+    narrativeText: After an intense trial in Shadow Castle, Malios finally triumphed over Nocthar! The dark shadows faded away as the fourth HOKI fragment emitted a mystical glow. All 4 fragments have at last been gathered!
     artwork: {fileID: 21300000, guid: 54e425bbaa1b25142a29a79bdd2f7edc, type: 3}
-  - chapterTitle: MENYATUKAN KEMBALI EMPAT PECAHAN HOKI
-    narrativeText: Malios kembali ke rumah suci Desa Eldoria. Di hadapan altar yang dipenuhi retakan, Kepala Desa Arvand memandu Malios menempatkan keempat pecahan HOKI kembali pada posisi aslinya hingga artefak kuno itu kembali utuh.
+  - chapterTitle: RESTORING THE FOUR HOKI FRAGMENTS
+    narrativeText: Malios returned to the sacred grounds of Eldoria Village. Standing before the cracked altar, Chief Arvand guided Malios to restore the four HOKI fragments back into their sacred positions, reuniting the ancient artifact.
     artwork: {fileID: 21300000, guid: 237b3ee83104e30459899d342968fc99, type: 3}
-  - chapterTitle: KEBANGKITAN SIXSEVEN & PENYEGELAN VORTHAK
-    narrativeText: "Tiba-tiba tanah bergetar hebat dan Vorthak bangkit dari bawah altar! \"Malios! Jangan biarkan HOKI kehilangan cahayanya!\" seru Arvand. Malios mengerahkan kekuatan SIXSEVEN\u2014dua energi angka 6 dan 7 menyatu dengan cahaya HOKI dan menyegel Vorthak kembali ke dalam kegelapan!"
+  - chapterTitle: THE POWER OF SIXSEVEN & SEALING VORTHAK
+    narrativeText: Suddenly the earth trembled violently as Vorthak attempted to emerge from beneath the altar! "Malios! Do not let HOKI lose its radiance!" cried Arvand. Malios channeled the ultimate power of SIXSEVEN, uniting numbers 6 and 7 with the light of HOKI to seal Vorthak away once and for all!
     artwork: {fileID: 21300000, guid: 4a54761997672d54b878ed8d38f15f3a, type: 3}
-  - chapterTitle: "THE GUARDIAN OF HOKI \u2013 KEDAMAIAN ELDORIA"
-    narrativeText: 'Kutukan di Desa Eldoria pun sirna. Seluruh penduduk mengadakan perayaan dan Kepala Desa Arvand memberikan medali kehormatan kepada Malios: "Berkat keberanianmu, Artefak HOKI kembali bersinar menjaga keseimbangan Pulau Aetheria!"'
+  - chapterTitle: 'GUARDIAN OF HOKI: PEACE RESTORED TO ELDORIA'
+    narrativeText: 'The ancient curse vanished across the island. The villagers rejoiced, and Chief Arvand presented a medal of eternal honor to Malios: "Thanks to your courage, the HOKI Artifact shines once more, safeguarding the harmony of Aetheria Island!"'
     artwork: {fileID: 21300000, guid: ca8728a852a97f540a9122a6c2230b59, type: 3}
   _cutsceneRoot: {fileID: 664752065}
   _rootCanvasGroup: {fileID: 664752069}
@@ -15632,7 +15632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuckyNumber.Characters.NPCInteractable
   role: 0
-  displayName: Kepala Desa Arvand
+  displayName: Chief Arvand
   interactionRadius: 2.8
   bossIndex: 0
 --- !u!114 &957065015
@@ -25041,7 +25041,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Segel di jalur ini masih terkunci rapat. Selesaikan pertarungan bos sebelumnya secara berurutan!
+  m_text: The seal on this path is firmly locked. Defeat the previous boss first!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -35338,7 +35338,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Di tengah lautan luas Pulau Aetheria, berdiri sebuah desa makmur bernama Desa Eldoria yang dipimpin oleh Kepala Desa Arvand. Selama ratusan tahun, kedamaian dan kesuburan desa tersebut terjaga berkat perlindungan sebuah artefak kuno.
+  m_text: In the vast ocean of Aetheria Island stood a prosperous village called Eldoria Village, guided by Village Chief Arvand. For centuries, peace and fertility flourished beneath the protection of an ancient artifact.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -35924,7 +35924,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kepala Desa Arvand
+  m_text: Chief Arvand
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36309,7 +36309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Misi: Temui Kepala Desa Arvand di tengah Desa Eldoria [Tekan E]'
+  m_text: 'Quest: Speak with Chief Arvand in the center of Eldoria Village [Press E]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -37222,7 +37222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1874283257
 RectTransform:
   m_ObjectHideFlags: 0

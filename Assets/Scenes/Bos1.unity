@@ -924,6 +924,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451892909}
   m_CullTransparentMesh: 1
+--- !u!95 &451892913
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451892909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a82e9102484a92e4ab5c4e7fbcf20202, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &481317481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4426,11 +4448,18 @@ MonoBehaviour:
   - {fileID: 481317486}
   cardLayoutGroup: {fileID: 1834179932}
   centerPoint: {fileID: 366092327}
+  bgmAudioSource: {fileID: 0}
   sfxAudioSource: {fileID: 0}
+  bossAudioSource: {fileID: 0}
+  bgmMusic: {fileID: 0}
   playerHitEnemySFX: {fileID: 0}
   playerHeavyFinisherSFX: {fileID: 0}
   enemyHitPlayerSFX: {fileID: 0}
+  bossSoundSFX: {fileID: 0}
+  loopBossSound: 1
+  bgmVolume: 0.6
   sfxVolume: 1
+  bossSoundVolume: 0.75
 --- !u!1 &1982764118
 GameObject:
   m_ObjectHideFlags: 0
@@ -5062,26 +5091,3 @@ SceneRoots:
   - {fileID: 1003664759}
   - {fileID: 2125158210}
   - {fileID: 1967460059}
-
---- !u!95 &451892913
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451892909}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a82e9102484a92e4ab5c4e7fbcf20202, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

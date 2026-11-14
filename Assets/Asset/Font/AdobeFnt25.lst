@@ -1,0 +1,136 @@
+%!Adobe-FontList 1.25
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\IMFellEnglish-Italic SDF.asset
+FileModTime:1794492813
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\IMFellEnglish-Italic SDF.asset.meta
+FileModTime:1794492694
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IM_FELL_English_Italic
+FamilyName:IM FELL English
+StyleName:Italic
+FullName:IM FELL English Italic
+MenuName:IM FELL English
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\IMFellEnglish-Italic.ttf
+DataFormat:sfntData
+hasSVG:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:198756
+FileModTime:1794492636
+WeightClass:400
+WidthClass:5
+AngleClass:1
+NameArray:0,Win,1,IM FELL English
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\IMFellEnglish-Italic.ttf.meta
+FileModTime:1794492672
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\IMFellEnglish-Regular SDF.asset
+FileModTime:1794492813
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\IMFellEnglish-Regular SDF.asset.meta
+FileModTime:1794492706
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:IM_FELL_English_Roman
+FamilyName:IM FELL English
+StyleName:Regular
+FullName:IM FELL English Roman
+MenuName:IM FELL English
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\IMFellEnglish-Regular.ttf
+DataFormat:sfntData
+hasSVG:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:191256
+FileModTime:1794492636
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,IM FELL English
+NameArray:0,Win,16,IM FELL English
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\IMFellEnglish-Regular.ttf.meta
+FileModTime:1794492672
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\Poppins-Bold SDF.asset
+FileModTime:1794597778
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\Poppins-Bold SDF.asset.meta
+FileModTime:1794597778
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Poppins-Bold
+FamilyName:Poppins
+StyleName:Bold
+FullName:Poppins Bold
+MenuName:Poppins
+StyleBits:2
+WritingScript:Roman
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\Poppins-Bold.ttf
+DataFormat:sfntData
+hasSVG:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:153944
+FileModTime:1794597778
+WeightClass:700
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,Poppins
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:D:\GameJam\LuckyNumberGameJam\Assets\Asset\Font\Poppins-Bold.ttf.meta
+FileModTime:1794597778
+%EndFont
+

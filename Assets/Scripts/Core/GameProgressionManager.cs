@@ -317,9 +317,9 @@ namespace LuckyNumber.Core
                 return "Head to Crossroads -> Right Path (Shadow Castle) & defeat BOSS 4: Nocthar";
 
             if (!hasRestoredHokiAtAltar)
-                return "Return to Eldoria Village & unite all 4 HOKI Fragments at the Sacred Altar [Press E]!";
+                return "Defeat all four bosses to shatter the dark curse!";
 
-            return "Eldoria Village is at peace! The HOKI Artifact is fully restored.";
+            return "Eldoria Village is at peace! The dark curse has been lifted.";
         }
 
         public static string GetZoneDisplayName(MapZoneId zone)

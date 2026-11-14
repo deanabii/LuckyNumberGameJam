@@ -25,6 +25,25 @@ namespace LuckyNumber.Characters
         [Header("Movement Settings")]
         [SerializeField] private float moveSpeed = 5.5f;
 
+        [Header("Walking Sound Effect (Placeholder)")]
+        [Tooltip("AudioSource untuk memutar suara langkah kaki karakter. Otomatis dibuat jika dibiarkan kosong.")]
+        public AudioSource footstepAudioSource;
+
+        [Tooltip("Placeholder klip suara langkah kaki / berjalan karakter. Masukkan AudioClip langkah kaki di sini.")]
+        public AudioClip walkingSoundClip;
+
+        [Tooltip("Daftar variasi suara langkah kaki (opsional jika memiliki beberapa variasi AudioClip langkah).")]
+        public AudioClip[] walkingSoundVariations;
+
+        [Range(0f, 1f)]
+        [Tooltip("Volume suara langkah karakter")]
+        public float walkingSoundVolume = 0.5f;
+
+        [Tooltip("Jeda interval antar suara langkah saat berjalan (detik). Default: 0.32 detik.")]
+        [SerializeField] private float stepSoundInterval = 0.32f;
+
+        private float _stepSoundTimer;
+
         private Rigidbody2D _rb;
         private CircleCollider2D _collider;
         private CharacterSpriteAnimator _animator;
@@ -83,6 +102,22 @@ namespace LuckyNumber.Characters
             _collider.isTrigger = false;
             _collider.radius = 0.85f;
             _collider.offset = new Vector2(0f, -1.55f);
+
+            EnsureFootstepAudioSource();
+        }
+
+        private void EnsureFootstepAudioSource()
+        {
+            if (footstepAudioSource == null)
+            {
+                footstepAudioSource = GetComponent<AudioSource>();
+                if (footstepAudioSource == null)
+                {
+                    footstepAudioSource = gameObject.AddComponent<AudioSource>();
+                }
+                footstepAudioSource.playOnAwake = false;
+                footstepAudioSource.spatialBlend = 0f;
+            }
         }
 
         private void Update()
@@ -91,11 +126,15 @@ namespace LuckyNumber.Characters
             {
                 _moveInput = Vector2.zero;
                 _animator.SetMovementState(Vector2.zero, false);
+                _stepSoundTimer = 0.06f;
                 return;
             }
 
             ReadMovementInput();
-            _animator.SetMovementState(_moveInput, _moveInput.sqrMagnitude > 0.001f);
+            bool isMoving = _moveInput.sqrMagnitude > 0.001f;
+            _animator.SetMovementState(_moveInput, isMoving);
+
+            UpdateWalkingSound(isMoving);
 
             UpdateNearestInteractable();
 
@@ -166,6 +205,72 @@ namespace LuckyNumber.Characters
                     bestDistSq = distSq;
                     _currentNearestInteractable = item;
                 }
+            }
+        }
+
+        private void UpdateWalkingSound(bool isMoving)
+        {
+            if (!isMoving)
+            {
+                _stepSoundTimer = 0.06f;
+                return;
+            }
+
+            _stepSoundTimer -= Time.deltaTime;
+            if (_stepSoundTimer <= 0f)
+            {
+                PlayWalkingFootstepSound();
+                _stepSoundTimer = Mathf.Max(0.1f, stepSoundInterval);
+            }
+        }
+
+        private void PlayWalkingFootstepSound()
+        {
+            AudioClip clipToPlay = null;
+
+            if (walkingSoundVariations != null && walkingSoundVariations.Length > 0)
+            {
+                List<AudioClip> validClips = new List<AudioClip>();
+                for (int i = 0; i < walkingSoundVariations.Length; i++)
+                {
+                    if (walkingSoundVariations[i] != null) validClips.Add(walkingSoundVariations[i]);
+                }
+                if (validClips.Count > 0)
+                {
+                    clipToPlay = validClips[Random.Range(0, validClips.Count)];
+                }
+            }
+
+            if (clipToPlay == null)
+            {
+                clipToPlay = walkingSoundClip;
+            }
+
+            // Fallback to PlayerFootstepVFX footstepClips if assigned there
+            if (clipToPlay == null)
+            {
+                PlayerFootstepVFX vfx = GetComponent<PlayerFootstepVFX>();
+                if (vfx != null && vfx.footstepClips != null && vfx.footstepClips.Length > 0)
+                {
+                    List<AudioClip> vfxClips = new List<AudioClip>();
+                    for (int i = 0; i < vfx.footstepClips.Length; i++)
+                    {
+                        if (vfx.footstepClips[i] != null) vfxClips.Add(vfx.footstepClips[i]);
+                    }
+                    if (vfxClips.Count > 0)
+                    {
+                        clipToPlay = vfxClips[Random.Range(0, vfxClips.Count)];
+                    }
+                }
+            }
+
+            if (clipToPlay == null) return;
+
+            EnsureFootstepAudioSource();
+            if (footstepAudioSource != null)
+            {
+                footstepAudioSource.pitch = Random.Range(0.93f, 1.07f);
+                footstepAudioSource.PlayOneShot(clipToPlay, walkingSoundVolume);
             }
         }
 
